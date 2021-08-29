@@ -1,0 +1,181 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="assets/css/styles.css">
+
+        <!-- =====BOX ICONS===== -->
+        <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+
+        <title>Portfolio website complete</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+
+* {box-sizing: border-box;}
+/* body {font-family: Verdana, sans-serif;} */
+.mySlides {display: none;}
+img {vertical-align: middle;}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+/* .active {
+  background-color: #717171;
+} */
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .text {font-size: 11px}
+}
+</style>
+
+    </head>
+
+    <body>
+        <header class="l-header">
+            <nav class="nav bd-grid">
+                <div>
+                    <a href="index.html" class="nav__logo">Kazi Tahsin Mahmood</a>
+                </div>
+
+                <div class="nav__menu" id="nav-menu">
+                    <ul class="nav__list">
+                        <li class="nav__item"><a href="index.html#about" class="nav__link active">Home</a></li>
+                        <li class="nav__item"><a href="index.html" class="nav__link">About</a></li>
+                        <li class="nav__item"><a href="index.html" class="nav__link">Skills</a></li>
+                        <li class="nav__item"><a href="#work" class="nav__link">Projects</a></li>
+                        <li class="nav__item"><a href="#Tahsin" class="nav__link">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="nav__toggle" id="nav-toggle">
+                    <i class='bx bx-menu'></i>
+                </div>
+            </nav>
+        </header>
+        <section class="work section" id="work">
+            <h2 class="section-title">Undergraduate Thesis</h2>
+
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<h class= "skills__subtitle" style="font-size: 30px;"> &ensp;&ensp;Electro-Thermo-Mechanical Analysis of a Thin Conductive Layer of Metal Matrix Composite Reinforced by Graphite Fiber
+</h>
+<center>
+<div class="slideshow-container">
+
+<div class="mySlides fade">
+  <div class="numbertext">1 / 3</div>
+  <img src="assets/img/Temperature Distribution_20.jpg" style="width:75%">
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">2 / 3</div>
+  <img src="assets/img/Stress Distribution_20.jpg" style="width:75%">
+</div>
+
+
+<!-- <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+<a class="next" onclick="plusSlides(1)">&#10095;</a> -->
+
+</div>
+</center>
+<br>
+
+<!-- <div style="text-align:center">
+  <span class="dot" onclick="currentSlide(1)"></span> 
+  <span class="dot" onclick="currentSlide(2)"></span> 
+  <span class="dot" onclick="currentSlide(3)"></span> 
+</div> -->
+
+</br>
+<p class= "skills__subtitle" style="font-size: 20px;" justify self: auto;>The paper was undertaken to analyze the electro thermo mechanical behavior of orthotropic material for metal line of PCB under DC electric field. The behavior was considered of Metal-Graphite composite consists of different mixture volume. The metal matrix was chosen Aluminium. Composite material parameter is calculated using rule of mixture law assuming up to 30% fiber volume content of graphite in the metal matrix. Governing equations describing electromagnetic, thermal and mechanical field in anisotropic materials are analyzed. There are different physical conditions like thermal insulation, natural convection and forced convection is considered to study the thermal behavior change in the composite. The governing equations are of both 2nd order and 4th order which is solved using finite difference method. There are mixed boundary values for both electrical and stress problem are applied in the boundary regions of metal line. A closed form solution for temperature field is obtained and used for determining the compressive stress developed across the metal line. The change of temperature and compressive stress generation with the different graphite volume has been observed. For the same volume composition, the temperature rises with the increase of current which results in increase of compressive stress. With that, the failure characteristics are studied to determine the sustainability of the composite metal line. Failure due to melting point temperature and mechanical failure due to stress has been observed.
+</p>
+<script>
+var slideIndex = 0;
+showSlides();
+
+function showSlides() {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1}
+  slides[slideIndex-1].style.display = "block";
+  setTimeout(showSlides, 5000); // Change image every 2 seconds
+}
+</script>
+        </section>
+        <footer class="footer">
+            <p class="footer__title">Kazi Tahsin Mahmood</p>
+            <div class="footer__social">
+                <a href="https://www.facebook.com/kazitashin.mahmood/" class="footer__icon"><i class='bx bxl-facebook' ></i></a>
+                <a href="https://www.instagram.com/kshifat97/" class="footer__icon"><i class='bx bxl-instagram' ></i></a>
+                <a href="https://twitter.com/KaziTahsinMahm1" class="footer__icon"><i class='bx bxl-twitter' ></i></a>
+            </div>
+        </footer>
+
+        <!--===== SCROLL REVEAL =====-->
+        <script src="https://unpkg.com/scrollreveal"></script>
+
+        <!--===== MAIN JS =====-->
+        <script src="assets/js/main.js"></script>
+
+    </body>
+  
+</html>
