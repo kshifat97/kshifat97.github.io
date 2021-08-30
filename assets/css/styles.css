@@ -309,6 +309,18 @@ img{
 .skills__latex{
   width: 90%;
 }
+.skills__auto{
+  width: 80%;
+}
+.skills__solid{
+  width: 85%;
+}
+.skills__bangla{
+  width: 100%;
+}
+.skills__english{
+  width: 85%;
+}
 .skills__img{
   border-radius: .5rem;
 }
@@ -466,6 +478,12 @@ contact__input{
   float: right;
   width: 80%;
   padding-top: 3rem;
+}
+
+.sidebar2_col{
+  float: right;
+  width: 80%;
+  padding-top: 0rem;
 }
 
 
