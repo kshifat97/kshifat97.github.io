@@ -1,65 +1,75 @@
-/*===== MENU SHOW =====*/ 
-const showMenu = (toggleId, navId) =>{
-    const toggle = document.getElementById(toggleId),
-    nav = document.getElementById(navId)
+/*==================== MENU SHOW Y HIDDEN ====================*/
+const navMenu = document.getElementById('nav-menu'),
+     navToggle = document.getElementById('nav-toggle'),
+     navClose = document.getElementById('nav-close')
 
-    if(toggle && nav){
-        toggle.addEventListener('click', ()=>{
-            nav.classList.toggle('show')
-        })
-    }
+/*===== MENU SHOW =====*/
+/* Validate if constant exists */
+
+
+/*===== MENU HIDDEN =====*/
+/* Validate if constant exists */
+if(navToggle){
+    navToggle.addEventListener('click', () =>{
+        navMenu.classList.add('show-menu')
+    })
 }
-showMenu('nav-toggle','nav-menu')
 
-/*===== ACTIVE AND REMOVE MENU =====*/
-const navLink = document.querySelectorAll('.nav__link');   
+if(navClose){
+    navClose.addEventListener('click', () =>{
+        navMenu.classList.remove('show-menu')
+    })
+}
+
+/*==================== REMOVE MENU MOBILE ====================*/
+const navLink = document.querySelectorAll('.nav__link')
 
 function linkAction(){
-  /*Active link*/
-  navLink.forEach(n => n.classList.remove('active'));
-  this.classList.add('active');
-  
-  /*Remove menu mobile*/
-  const navMenu = document.getElementById('nav-menu')
-  navMenu.classList.remove('show')
+    const navMenu = document.getElementById('nav-menu')
+    // When we click on each nav__link, we remove the show-menu class
+    navMenu.classList.remove('show-menu')
 }
-navLink.forEach(n => n.addEventListener('click', linkAction));
+navLink.forEach(n => n.addEventListener('click', linkAction))
 
-/*===== SCROLL REVEAL ANIMATION =====*/
-const sr = ScrollReveal({
-    origin: 'top',
-    distance: '80px',
-    duration: 2000,
-    reset: true
-});
+/*==================== ACCORDION SKILLS ====================*/
+const skillsContent = document.getElementsByClassName('skills__content'),
+      skillsHeader = document.querySelectorAll('skills__header'),
 
-/*SCROLL HOME*/
-sr.reveal('.home__title',{}); 
-sr.reveal('.button',{delay: 200}); 
-sr.reveal('.home__img',{delay: 400}); 
-sr.reveal('.home__social-icon',{ interval: 200}); 
+function toggleSkills(){
+    let itemClass = this.parentNode.ClassName
 
-/*SCROLL ABOUT*/
-sr.reveal('.about__img',{}); 
-sr.reveal('.about__subtitle',{delay: 400}); 
-sr.reveal('.about__text',{delay: 400}); 
-
-/*SCROLL SKILLS*/
-sr.reveal('.skills__subtitle',{}); 
-sr.reveal('.skills__text',{}); 
-sr.reveal('.skills__data',{interval: 200}); 
-sr.reveal('.skills__img',{delay: 600});
-
-/*SCROLL WORK*/
-sr.reveal('.work__img',{interval: 200}); 
-
-/*SCROLL CONTACT*/
-sr.reveal('.contact__input',{interval: 200}); 
-
-function scrollUp(){
-    const scrollUp = document.getElementById('scroll-up');
-    // When the scroll is higher than 560 viewport height, add the show-scroll class to the a tag with the scroll-top class
-    if(this.scrollY >= 560) scrollUp.classList.add('show-scroll'); else scrollUp.classList.remove('show-scroll')
+    for(i = 0; i < skillsContent.length; i++){
+        skillsContent[i].className = 'skills_content skills__close'
+    }
+    if(itemClass === 'skills__content skills__close'){
+        this.parentNode.className = 'skills_-content skills__open'
+    }
 }
-window.addEventListener('scroll', scrollUp)
 
+skillsHeader.forEach((el) =>{
+    el.addEventListener('click', toggleSkills)
+})
+
+
+/*==================== QUALIFICATION TABS ====================*/
+
+
+/*==================== SERVICES MODAL ====================*/
+
+
+/*==================== PORTFOLIO SWIPER  ====================*/
+
+
+/*==================== TESTIMONIAL ====================*/
+
+
+/*==================== SCROLL SECTIONS ACTIVE LINK ====================*/
+
+
+/*==================== CHANGE BACKGROUND HEADER ====================*/ 
+
+
+/*==================== SHOW SCROLL UP ====================*/ 
+
+
+/*==================== DARK LIGHT THEME ====================*/ 
