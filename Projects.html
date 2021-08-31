@@ -12,47 +12,6 @@
 
     <title>Projects</title>
     <link rel="icon" href="assets/img/logo_ico.ico">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-    * {box-sizing: border-box}
-    .mySlides1, .mySlides2 {display: none}
-    img {vertical-align: middle;}
-    
-    /* Slideshow container */
-    .slideshow-container {
-      max-width: 1000px;
-      position: relative;
-      margin: auto;
-    }
-    
-    /* Next & previous buttons */
-    .prev, .next {
-      cursor: pointer;
-      position: absolute;
-      top: 50%;
-      width: auto;
-      padding: 16px;
-      margin-top: -22px;
-      color: white;
-      font-weight: bold;
-      font-size: 18px;
-      transition: 0.6s ease;
-      border-radius: 0 3px 3px 0;
-      user-select: none;
-    }
-    
-    /* Position the "next button" to the right */
-    .next {
-      right: 0;
-      border-radius: 3px 0 0 3px;
-    }
-    
-    /* On hover, add a grey background color */
-    .prev:hover, .next:hover {
-      background-color: #f1f1f1;
-      color: black;
-    }
-</style>
 </head>
 <body>
     <!--===== HEADER =====-->
@@ -82,81 +41,51 @@
         </nav>
     </header>
 
-</br></br></br></br>
-<h class="skills__subtitle" style="font-size: 40px;">&ensp;&ensp;Industrial Crane Model</h>
-</br></br></br></br>
-<center>
-    <div class="slideshow-container">
-      <div class="mySlides1">
-        <img src="assets/img/Crane.png" style="width:75%">
+    <section class="about section " id="about">
+      <h2 class="section-title">Industrial Crane</h2>
+
+      <div class="about__container bd-grid">
+          <div class="about__img">
+              <img src="assets/img/Crane.png" alt="" style="width: 100%;">
+          </div>
+          
+          <div>
+              <h2 class="about__subtitle">Color Sorting Industrial Crane Model</h2>
+              <p class="about__text"></p>In this Project we have designed a crane structure which can sort the objects as there color. There is a sensor which can sense the color. There are two types of motors, servo and stepper motor. We used the Arduino programming to control the equipment
+            </div>                               
       </div>
+  </section>
     
-      <div class="mySlides1">
-        <img src="assets/img/Crane2.jpg" style="width:75%">
-      </div>
-    
-    
-      <a class="prev" onclick="plusSlides(-1, 0)">&#10094;</a>
-      <a class="next" onclick="plusSlides(1, 0)">&#10095;</a>
-    </br></br></br>
-      <p class= "skills__subtitle" style= "font-size: 20px;">In this Project we have designed a crane structure which can sort the objects as there color. There is a sensor which can sense the color. There are two types of motors, servo and stepper motor. We used the Arduino programming to control the equipment.
-    </p>
+  <section class="about section " id="about">
+    <h2 class="section-title">Heat Exchanger</h2>
+
+    <div class="about__container bd-grid">
+        <div class="about__img">
+            <img src="assets/img/htx2.png" alt="" style="width: 85%;">
+        </div>
+        
+        <div>
+            <h2 class="about__subtitle">Double Pipe and Shell & Tube Heat Exchanger</h2>
+            <p class="about__text"></p>In industrial sector, cooling is one of the most important field for smooth operation. So, we undertook a simple and effective cooling system for hot water and other fluids. We made a double pipe heat exchanger by calculating the heat load and the mass flow rate of the hot water. The body was made with cast iron for higher heat transfer and cost minimization.
+          </div>                               
     </div>
-</center>
-    
-    <h class="skills__subtitle" style="font-size: 40px;">&ensp;&ensp;Double Pipe Heat Exchanger</h>
-</br></br></br></br>
-<center>
-    <div class="slideshow-container">
-      <div class="mySlides2">
-        <img src="assets/img/htx1.jpg" style="width:75%">
+</section>
+
+
+<section class="about section " id="about">
+  <h2 class="section-title">Rescue Robot</h2>
+
+  <div class="about__container bd-grid">
+      <div class="about__img">
+          <img src="assets/img/Robot.png" alt="" style="width: 100%;">
       </div>
-    
-      <div class="mySlides2">
-        <img src="assets/img/htx2.png" style="width:75%">
-      </div>
-    
-    
-      <a class="prev" onclick="plusSlides(-1, 1)">&#10094;</a>
-      <a class="next" onclick="plusSlides(1, 1)">&#10095;</a>
-    </br></br></br>
-    <p class= "skills__subtitle" style= "font-size: 20px;"> In industrial sector, cooling is one of the most important field for smooth operation. So, we undertook a simple and effective cooling system for hot water and other fluids. We made a double pipe heat exchanger by calculating the heat load and the mass flow rate of the hot water. The body was made with cast iron for higher heat transfer and cost minimization.
-</p></p>
-    </div>
-</center>
-<h class="skills__subtitle", style="font-size: 50px;">&ensp;&ensp;Design of a Rescue Robot</h>
-</br></br></br></br>
-
-<script>
-var slideIndex = [1,1];
-var slideId = ["mySlides1", "mySlides2"]
-showSlides(1, 0);
-showSlides(1, 1);
-
-function plusSlides(n, no) {
-  showSlides(slideIndex[no] += n, no);
-}
-
-function showSlides(n, no) {
-  var i;
-  var x = document.getElementsByClassName(slideId[no]);
-  if (n > x.length) {slideIndex[no] = 1}    
-  if (n < 1) {slideIndex[no] = x.length}
-  for (i = 0; i < x.length; i++) {
-     x[i].style.display = "none";  
-  }
-  x[slideIndex[no]-1].style.display = "block";  
-}
-</script>
-
-<center>
-    <img src="assets/img/Robot.png" style="width: 75%">
-    </br></br></br>
-      <p class="about__text" style="font-size: 20px;">We have taken a simple design and simulation methodology for creating a rescue robot that can go and work on helping the trapped people in a hazardous environment.
-    </p>
-    </div>
-    </center>
-</br></br></br></br>
+      
+      <div>
+          <h2 class="about__subtitle">CAD Drawing a Rescue Robot</h2>
+          <p class="about__text"></p>We have taken a simple design and simulation methodology for creating a rescue robot that can go and work on helping the trapped people in a hazardous environment.
+        </div>                               
+  </div>
+</section>
 
 <!--===== FOOTER =====-->
 <footer class="footer">
