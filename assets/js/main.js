@@ -108,10 +108,10 @@ let swiperPortfolio = new Swiper('.portfolio__container', {
     },
   });
 
-function myFunction1() {
-  var dots = document.getElementById("dots");
-  var moreText = document.getElementById("more");
-  var btnText = document.getElementById("myBtn");
+function myFunction(number) {
+  let dots = document.querySelector(`.card[data-city="${city}"] .dots`);
+  let moreText = document.querySelector(`.card[data-city="${city}"] .more`);
+  let btnText = document.querySelector(`.card[data-city="${city}"] .myBtn`);
 
   if (dots.style.display === "none") {
     dots.style.display = "inline";
@@ -124,37 +124,6 @@ function myFunction1() {
   }
 }
 
-function myFunction2() {
-  var dots = document.getElementById("dots");
-  var moreText = document.getElementById("more");
-  var btnText = document.getElementById("myBtn");
-
-  if (dots.style.display === "none") {
-    dots.style.display = "inline";
-    btnText.innerHTML = "Read more"; 
-    moreText.style.display = "none";
-  } else {
-    dots.style.display = "none";
-    btnText.innerHTML = "Read less"; 
-    moreText.style.display = "inline";
-  }
-}
-
-function myFunction3() {
-  var dots = document.getElementById("dots");
-  var moreText = document.getElementById("more");
-  var btnText = document.getElementById("myBtn");
-
-  if (dots.style.display === "none") {
-    dots.style.display = "inline";
-    btnText.innerHTML = "Read more"; 
-    moreText.style.display = "none";
-  } else {
-    dots.style.display = "none";
-    btnText.innerHTML = "Read less"; 
-    moreText.style.display = "inline";
-  }
-}
 
 
 
