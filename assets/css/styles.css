@@ -779,6 +779,7 @@ img{
     outline: none;
 }
 
+#more {display: none;}
 
 /*==================== PROJECT IN MIND ====================*/
 .project{
