@@ -109,9 +109,9 @@ let swiperPortfolio = new Swiper('.portfolio__container', {
   });
 
 function myFunction(city) {
-  var dots = document.querySelector(`.potfolio__data[data-city="${city}"] .dots`);
-  var moreText = document.querySelector(`.potfolio__data[data-city="${city}"] .more`);
-  var btnText = document.querySelector(`.potfolio__data[data-city="${city}"] .myBtn`);
+  let dots = document.querySelector(`.potfolio__data[data-city="${city}"] .dots`);
+  let moreText = document.querySelector(`.potfolio__data[data-city="${city}"] .more`);
+  let btnText = document.querySelector(`.potfolio__data[data-city="${city}"] .myBtn`);
 
   if (dots.style.display === "none") {
     dots.style.display = "inline";
