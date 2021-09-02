@@ -114,13 +114,13 @@ function myFunction1() {
   var btnText = document.getElementById("myBtn1");
 
   if (dots.style.display === "none") {
-    dots.style.display = "none";
-    btnText.innerHTML = "Read more"; 
-    moreText.style.display = "inline";
-  } else {
     dots.style.display = "inline";
-    btnText.innerHTML = "Read less"; 
+    btnText.innerHTML = "Read More"; 
     moreText.style.display = "none";
+  } else {
+    dots.style.display = "none";
+    btnText.innerHTML = "Read Less"; 
+    moreText.style.display = "inline";
   }
 }
 
@@ -131,11 +131,11 @@ function myFunction2() {
 
   if (dots.style.display === "none") {
     dots.style.display = "none";
-    btnText.innerHTML = "Read more"; 
+    btnText.innerHTML = "Read More"; 
     moreText.style.display = "inline";
   } else {
     dots.style.display = "inline";
-    btnText.innerHTML = "Read less"; 
+    btnText.innerHTML = "Read Less"; 
     moreText.style.display = "none";
   }
 }
@@ -146,13 +146,13 @@ function myFunction3() {
   var btnText = document.getElementById("myBtn3");
 
   if (dots.style.display === "none") {
-    dots.style.display = "none";
-    btnText.innerHTML = "Read more"; 
-    moreText.style.display = "inline";
-  } else {
     dots.style.display = "inline";
-    btnText.innerHTML = "Read less"; 
+    btnText.innerHTML = "Read more"; 
     moreText.style.display = "none";
+  } else {
+    dots.style.display = "none";
+    btnText.innerHTML = "Read Less"; 
+    moreText.style.display = "inline";
   }
 }
 
