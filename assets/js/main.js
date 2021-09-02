@@ -146,13 +146,13 @@ function myFunction3() {
   var btnText = document.getElementById("myBtn3");
 
   if (dots.style.display === "none") {
-    dots.style.display = "inline";
-    btnText.innerHTML = "Read more"; 
-    moreText.style.display = "none";
-  } else {
     dots.style.display = "none";
-    btnText.innerHTML = "Read less"; 
+    btnText.innerHTML = "Read more"; 
     moreText.style.display = "inline";
+  } else {
+    dots.style.display = "inline";
+    btnText.innerHTML = "Read less"; 
+    moreText.style.display = "none";
   }
 }
 
