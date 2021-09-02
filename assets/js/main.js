@@ -108,7 +108,7 @@ let swiperPortfolio = new Swiper('.portfolio__container', {
     },
   });
 
-function myFunction(number) {
+function myFunction(city) {
   let dots = document.querySelector(`.card[data-city="${city}"] .dots`);
   let moreText = document.querySelector(`.card[data-city="${city}"] .more`);
   let btnText = document.querySelector(`.card[data-city="${city}"] .myBtn`);
