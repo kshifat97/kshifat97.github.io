@@ -743,8 +743,8 @@ img{
     transform: translateX(.25rem);
 }
 
-.swiper-button-prev:after,
-.services__button-next:after{
+.swiper-button-prev::after,
+.swiper-button-next::after{
     content: '';
 }
 
@@ -765,13 +765,13 @@ img{
     bottom: -2.5rem;
 }
 
-.swiper-pagination-bullets-active{
+.swiper-pagination-bullet-active{
     background-color: var(--first-color);
 }
 
 .swiper-button-prev,
 .swiper-button-next,
-.swiper-pagination-bullets{
+.swiper-pagination-bullet{
     outline: none;
 }
 
