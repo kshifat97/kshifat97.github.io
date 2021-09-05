@@ -356,7 +356,9 @@ img{
     color: #FFF;
     padding: 1rem;
     border-radius: .5rem;
+    border: none;
     font-weight: var(--font-medium);
+    font: var(--body-font);
 }
 
 .button:hover{
