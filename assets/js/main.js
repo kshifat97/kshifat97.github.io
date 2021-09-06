@@ -147,6 +147,20 @@ function myFunction3() {
   }
 }
 
+function myFunction3() {
+  var moreText = document.getElementById("more4");
+  var btnText = document.getElementById("myBtn4");
+
+  if (moreText.style.display === "none") {
+    btnText.innerHTML = "Read Less"; 
+    moreText.style.display = "inline-block";
+  } else {
+    btnText.innerHTML = "Read More"; 
+    moreText.style.display = "none";
+  }
+}
+
+
 
 
 
