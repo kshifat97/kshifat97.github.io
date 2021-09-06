@@ -97,7 +97,7 @@ modalCloses.forEach((modalClose) => {
 /*==================== PORTFOLIO SWIPER  ====================*/
 let swiperPortfolio = new Swiper('.portfolio__container', {
     cssMode: true,
-    loop: true,
+    loop: false,
     navigation: {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev',
@@ -109,53 +109,43 @@ let swiperPortfolio = new Swiper('.portfolio__container', {
   });
 
 function myFunction1() {
-  var dots = document.getElementById("dots1");
   var moreText = document.getElementById("more1");
   var btnText = document.getElementById("myBtn1");
 
-  if (dots.style.display === "none") {
-    dots.style.display = "inline";
-    btnText.innerHTML = "Read More"; 
-    moreText.style.display = "none";
-  } else {
-    dots.style.display = "none";
+  if (moreText.style.display === "none") {
     btnText.innerHTML = "Read Less"; 
     moreText.style.display = "inline";
+  } else {
+    btnText.innerHTML = "Read More"; 
+    moreText.style.display = "none";
   }
 }
 
-// function myFunction2() {
-//   var dots = document.getElementById("dots2");
-//   var moreText = document.getElementById("more2");
-//   var btnText = document.getElementById("myBtn2");
+function myFunction2() {
+  var moreText = document.getElementById("more2");
+  var btnText = document.getElementById("myBtn2");
 
-//   if (dots.style.display === "none") {
-//     dots.style.display = "none";
-//     btnText.innerHTML = "Read More"; 
-//     moreText.style.display = "inline";
-//   } else {
-//     dots.style.display = "inline";
-//     btnText.innerHTML = "Read Less"; 
-//     moreText.style.display = "none";
-//   }
-// }
+  if (moreText.style.display === "none") {
+    btnText.innerHTML = "Read Less"; 
+    moreText.style.display = "inline";
+  } else {
+    btnText.innerHTML = "Read More"; 
+    moreText.style.display = "none";
+  }
+}
 
-// function myFunction3() {
-//   var dots = document.getElementById("dots3");
-//   var moreText = document.getElementById("more3");
-//   var btnText = document.getElementById("myBtn3");
+function myFunction3() {
+  var moreText = document.getElementById("more3");
+  var btnText = document.getElementById("myBtn3");
 
-//   if (dots.style.display === "none") {
-//     dots.style.display = "inline";
-//     btnText.innerHTML = "Read more"; 
-//     moreText.style.display = "none";
-//   } else {
-//     dots.style.display = "none";
-//     btnText.innerHTML = "Read Less"; 
-//     moreText.style.display = "inline";
-//   }
-// }
-
+  if (moreText.style.display === "none") {
+    btnText.innerHTML = "Read Less"; 
+    moreText.style.display = "inline-block";
+  } else {
+    btnText.innerHTML = "Read More"; 
+    moreText.style.display = "none";
+  }
+}
 
 
 
