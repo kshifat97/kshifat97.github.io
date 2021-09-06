@@ -147,7 +147,7 @@ function myFunction3() {
   }
 }
 
-function myFunction3() {
+function myFunction4() {
   var moreText = document.getElementById("more4");
   var btnText = document.getElementById("myBtn4");
 
