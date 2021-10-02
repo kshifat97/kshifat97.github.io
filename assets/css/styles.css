@@ -309,18 +309,8 @@ img{
 
 .home__title{
     font-size: var(--big-font-size);
-    color: transparent;
-    -webkit-text-stroke: 1px #fff;
-    background: url(assets/img/back.png);
-    -webkit-background-clip: text;
-    background-position: 0 0;
-    animation: back 20s linear infinite;
 }
-@keyframes back{
-    100%{
-       background-position: 2000px 0; 
-    }
-}
+
 
 .home__subtitle{
     font-size: var(--h3-font-size);
