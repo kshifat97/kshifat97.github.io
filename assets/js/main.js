@@ -1,250 +1,248 @@
-/*==================== MENU SHOW Y HIDDEN ====================*/
-const navMenu = document.getElementById('nav-menu'),
-     navToggle = document.getElementById('nav-toggle'),
-     navClose = document.getElementById('nav-close')
+/*===== NAV MENU TOGGLE =====*/
+const navMenu   = document.getElementById('nav-menu'),
+      navToggle = document.getElementById('nav-toggle'),
+      navClose  = document.getElementById('nav-close')
 
-/*===== MENU SHOW =====*/
-/* Validate if constant exists */
-
-
-/*===== MENU HIDDEN =====*/
-/* Validate if constant exists */
-if(navToggle){
-    navToggle.addEventListener('click', () =>{
-        navMenu.classList.add('show-menu')
-    })
+if (navToggle) {
+    navToggle.addEventListener('click', () => navMenu.classList.add('show-menu'))
+}
+if (navClose) {
+    navClose.addEventListener('click', () => navMenu.classList.remove('show-menu'))
 }
 
-if(navClose){
-    navClose.addEventListener('click', () =>{
-        navMenu.classList.remove('show-menu')
-    })
-}
-
-/*==================== REMOVE MENU MOBILE ====================*/
-const navLink = document.querySelectorAll('.nav__link')
-
-function linkAction(){
-    const navMenu = document.getElementById('nav-menu')
-    // When we click on each nav__link, we remove the show-menu class
-    navMenu.classList.remove('show-menu')
-}
-navLink.forEach(n => n.addEventListener('click', linkAction))
-
-/*==================== ACCORDION SKILLS ====================*/
-     const skillsHeader = document.querySelectorAll('.skills__header')
-
-function toggleSkills(){
-    let itemClass = this.parentNode.className
-
-    if(itemClass === 'skills__content skills__close'){
-        this.parentNode.className = 'skills__content skills__open'
-    }
-else{
-this.parentNode.className = 'skills__content skills__close'
-}
-}
-
-skillsHeader.forEach((eL) =>{
-    eL.addEventListener('click', toggleSkills)
+document.querySelectorAll('.nav__link').forEach(link => {
+    link.addEventListener('click', () => navMenu.classList.remove('show-menu'))
 })
 
+/*===== SECTION ORDER =====*/
+const mainContent = document.querySelector('main')
 
-/*==================== QUALIFICATION TABS ====================*/
-const tabs = document.querySelectorAll('[data-target]'),
-    tabContents = document.querySelectorAll('[data-content]')
+if (mainContent) {
+    const orderedSectionIds = [
+        'home',
+        'about',
+        'education',
+        'publications',
+        'conferences',
+        'research',
+        'teaching',
+        'skills',
+        'projects',
+        'blogs',
+        'awards',
+        'contact'
+    ]
 
-tabs.forEach(tab =>{
-    tab.addEventListener('click', () =>{
-        const target = document.querySelector(tab.dataset.target)
-
-        tabContents.forEach(tabContent =>{
-            tabContent.classList.remove('qualification__active')
-        })
-        target.classList.add('qualification__active')
-
-        tab.forEach(tab =>{
-            tab.classList.remove('qualification__active')
-        })
-        tab.classList.add('qualification__active')
+    orderedSectionIds.forEach(id => {
+        const section = document.getElementById(id)
+        if (section) mainContent.appendChild(section)
     })
-})
-
-/*==================== SERVICES MODAL ====================*/
-const modalViews = document.querySelectorAll('.services__modal'),
-    modalBtns = document.querySelectorAll('.services__button'),
-    modalCloses = document.querySelectorAll('.services__modal-close')
-
-let modal = function(modalClick){
-    modalViews[modalClick].classList.add('active-modal')
 }
 
-modalBtns.forEach((modalBtn, i) =>{
-    modalBtn.addEventListener('click', () =>{
-        modal(i)
-    })
-})
-
-
-modalCloses.forEach((modalClose) => {
-    modalClose.addEventListener('click', () =>{
-        modalViews.forEach((modalView) =>{
-            modalView.classList.remove('active-modal')
-        })
-    })
-})
-
-/*==================== PORTFOLIO SWIPER  ====================*/
-let swiperPortfolio = new Swiper('.portfolio__container', {
-    cssMode: true,
-    loop: false,
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
-    },
-  });
-
-function myFunction1() {
-  var moreText = document.getElementById("more1");
-  var btnText = document.getElementById("myBtn1");
-
-  if (moreText.style.display === "none") {
-    btnText.innerHTML = "Read Less"; 
-    moreText.style.display = "inline";
-  } else {
-    btnText.innerHTML = "Read More"; 
-    moreText.style.display = "none";
-  }
-}
-
-function myFunction2() {
-  var moreText = document.getElementById("more2");
-  var btnText = document.getElementById("myBtn2");
-
-  if (moreText.style.display === "none") {
-    btnText.innerHTML = "Read Less"; 
-    moreText.style.display = "inline";
-  } else {
-    btnText.innerHTML = "Read More"; 
-    moreText.style.display = "none";
-  }
-}
-
-function myFunction3() {
-  var moreText = document.getElementById("more3");
-  var btnText = document.getElementById("myBtn3");
-
-  if (moreText.style.display === "none") {
-    btnText.innerHTML = "Read Less"; 
-    moreText.style.display = "inline-block";
-  } else {
-    btnText.innerHTML = "Read More"; 
-    moreText.style.display = "none";
-  }
-}
-
-function myFunction4() {
-  var moreText = document.getElementById("more4");
-  var btnText = document.getElementById("myBtn4");
-
-  if (moreText.style.display === "none") {
-    btnText.innerHTML = "Read Less"; 
-    moreText.style.display = "inline-block";
-  } else {
-    btnText.innerHTML = "Read More"; 
-    moreText.style.display = "none";
-  }
-}
-
-
-
-
-
-/*==================== TESTIMONIAL ====================*/
-let swiperTestimonial = new Swiper('.testimonial__container', {
-    loop: true,
-    grabCursor: true,
-    spaceBetween: 48,
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
-      dynamicBullets: true,
-    },
-    breakpoints:{
-        568:{
-            slidesPerView: 2,
-        }
-    }
-  });
-
-/*==================== SCROLL SECTIONS ACTIVE LINK ====================*/
+/*===== ACTIVE NAV LINK ON SCROLL =====*/
 const sections = document.querySelectorAll('section[id]')
 
-function scrollActive(){
+function updateActiveLink() {
     const scrollY = window.pageYOffset
-
-    sections.forEach(current =>{
-        const sectionHeight = current.offsetHeight
-        const sectionTop = current.offsetTop - 50;
-        sectionId = current.getAttribute('id')
-
-        if(scrollY > sectionTop && scrollY <= sectionTop + sectionHeight){
-            document.querySelector('.nav__menu a[href*=' + sectionId + ']').classList.add('active-link')
-        }else{
-            document.querySelector('.nav__menu a[href*=' + sectionId + ']').classList.remove('active-link')
+    sections.forEach(section => {
+        const top    = section.offsetTop - 90
+        const height = section.offsetHeight
+        const id     = section.getAttribute('id')
+        const link   = document.querySelector(`.nav__link[href="#${id}"]`)
+        if (!link) return
+        if (scrollY >= top && scrollY < top + height) {
+            link.classList.add('active-link')
+        } else {
+            link.classList.remove('active-link')
         }
     })
 }
-window.addEventListener('scroll', scrollActive)
+window.addEventListener('scroll', updateActiveLink)
+window.addEventListener('load', updateActiveLink)
 
-
-/*==================== CHANGE BACKGROUND HEADER ====================*/ 
-function scrollHeader(){
-    const nav = document.getElementById('header')
-    // When the scroll is greater than 200 viewport height, add the scroll-header class to the header tag
-    if(this.scrollY >= 80) nav.classList.add('scroll-header'); else nav.classList.remove('scroll-header')
+/*===== HEADER SHADOW ON SCROLL =====*/
+function toggleHeaderBg() {
+    const header = document.getElementById('header')
+    if (window.scrollY >= 80) header.classList.add('scroll-header')
+    else                       header.classList.remove('scroll-header')
 }
-window.addEventListener('scroll', scrollHeader)
+window.addEventListener('scroll', toggleHeaderBg)
+window.addEventListener('load', toggleHeaderBg)
 
-/*==================== SHOW SCROLL UP ====================*/ 
-function scrollUp(){
-    const scrollUp = document.getElementById('scroll-up');
-    // When the scroll is higher than 560 viewport height, add the show-scroll class to the a tag with the scroll-top class
-    if(this.scrollY >= 560) scrollUp.classList.add('show-scroll'); else scrollUp.classList.remove('show-scroll')
-}
-window.addEventListener('scroll', scrollUp)
+/*===== PROJECT CARD EXPANSION =====*/
+const projectCards = document.querySelectorAll('[data-project-card]')
 
-/*==================== DARK LIGHT THEME ====================*/ 
-
-const themeButton = document.getElementById('theme-button')
-const darkTheme = 'dark-theme'
-const iconTheme = 'uil-sun'
-
-// Previously selected topic (if user selected)
-const selectedTheme = localStorage.getItem('selected-theme')
-const selectedIcon = localStorage.getItem('selected-icon')
-
-// We obtain the current theme that the interface has by validating the dark-theme class
-const getCurrentTheme = () => document.body.classList.contains(darkTheme) ? 'dark' : 'light'
-const getCurrentIcon = () => themeButton.classList.contains(iconTheme) ? 'uil-moon' : 'uil-sun'
-
-// We validate if the user previously chose a topic
-if (selectedTheme) {
-  // If the validation is fulfilled, we ask what the issue was to know if we activated or deactivated the dark
-  document.body.classList[selectedTheme === 'dark' ? 'add' : 'remove'](darkTheme)
-  themeButton.classList[selectedIcon === 'uil-moon' ? 'add' : 'remove'](iconTheme)
+function closeAllProjectCards() {
+    projectCards.forEach(card => {
+        const toggle = card.querySelector('.project__card-toggle')
+        card.classList.remove('project__card--open')
+        if (toggle) toggle.setAttribute('aria-expanded', 'false')
+        setProjectCardHeight(card, false)
+    })
 }
 
-// Activate / deactivate the theme manually with the button
-themeButton.addEventListener('click', () => {
-    // Add or remove the dark / icon theme
-    document.body.classList.toggle(darkTheme)
-    themeButton.classList.toggle(iconTheme)
-    // We save the theme and the current icon that the user chose
-    localStorage.setItem('selected-theme', getCurrentTheme())
-    localStorage.setItem('selected-icon', getCurrentIcon())
+function setProjectCardHeight(card, isOpen) {
+    const detail = card.querySelector('.project__card-detail')
+    if (!detail) return
+    detail.style.maxHeight = isOpen ? `${detail.scrollHeight + 32}px` : '0'
+}
+
+projectCards.forEach(card => {
+    const toggle = card.querySelector('.project__card-toggle')
+    const isOpen = card.classList.contains('project__card--open')
+    setProjectCardHeight(card, isOpen)
+
+    if (!toggle) return
+
+    toggle.addEventListener('click', event => {
+        event.stopPropagation()
+        const willOpen = !card.classList.contains('project__card--open')
+
+        closeAllProjectCards()
+
+        if (willOpen) {
+            card.classList.add('project__card--open')
+            toggle.setAttribute('aria-expanded', 'true')
+            setProjectCardHeight(card, true)
+        }
+    })
 })
+
+document.addEventListener('click', event => {
+    if (!event.target.closest('[data-project-card]')) {
+        closeAllProjectCards()
+    }
+})
+
+window.addEventListener('resize', () => {
+    projectCards.forEach(card => {
+        setProjectCardHeight(card, card.classList.contains('project__card--open'))
+    })
+})
+
+/*===== BLOG POPUP VIEWER =====*/
+const blogCards = document.querySelectorAll('[data-blog-target]')
+const blogPanels = document.querySelectorAll('[data-blog-panel]')
+const blogsViewer = document.getElementById('blogs-viewer')
+const blogCloseButtons = document.querySelectorAll('[data-blog-close]')
+
+function openBlogPopup(targetId) {
+    if (!blogsViewer) return
+
+    blogCards.forEach(item => {
+        const isMatch = item.dataset.blogTarget === targetId
+        item.classList.toggle('blog__card--active', isMatch)
+        item.setAttribute('aria-selected', isMatch ? 'true' : 'false')
+    })
+
+    blogPanels.forEach(panel => {
+        const isMatch = panel.id === targetId
+        panel.hidden = !isMatch
+        panel.classList.toggle('blog__feature--active', isMatch)
+    })
+
+    blogsViewer.classList.add('blogs__viewer--open')
+    blogsViewer.setAttribute('aria-hidden', 'false')
+    document.body.classList.add('modal-open')
+}
+
+function closeBlogPopup() {
+    if (!blogsViewer) return
+    blogsViewer.classList.remove('blogs__viewer--open')
+    blogsViewer.setAttribute('aria-hidden', 'true')
+    document.body.classList.remove('modal-open')
+}
+
+blogCards.forEach(card => {
+    card.addEventListener('click', () => {
+        openBlogPopup(card.dataset.blogTarget)
+    })
+})
+
+blogCloseButtons.forEach(button => {
+    button.addEventListener('click', closeBlogPopup)
+})
+
+if (blogsViewer) {
+    blogsViewer.addEventListener('click', event => {
+        if (event.target === blogsViewer) closeBlogPopup()
+    })
+}
+
+window.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && blogsViewer?.classList.contains('blogs__viewer--open')) {
+        closeBlogPopup()
+    }
+})
+
+/*===== PUBLICATION ACCORDION =====*/
+document.querySelectorAll('.pub__item:not(.pub__item--more)').forEach(item => {
+    const abstract = item.querySelector('.pub__abstract')
+
+    function toggle() {
+        const isOpen = item.classList.toggle('pub--open')
+        item.setAttribute('aria-expanded', isOpen)
+        abstract.style.maxHeight = isOpen ? abstract.scrollHeight + 'px' : '0'
+    }
+
+    item.addEventListener('click', toggle)
+    item.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle() }
+    })
+})
+
+/*===== PUBLICATION SORTING =====*/
+const pubList = document.querySelector('.pub__list')
+
+if (pubList) {
+    const regularPubItems = Array.from(pubList.querySelectorAll('.pub__item:not(.pub__item--more)'))
+    const morePubItem = pubList.querySelector('.pub__item--more')
+
+    regularPubItems
+        .sort((a, b) => {
+            const yearA = Number(a.querySelector('.pub__year')?.textContent.trim() || 0)
+            const yearB = Number(b.querySelector('.pub__year')?.textContent.trim() || 0)
+            return yearB - yearA
+        })
+        .forEach((item, index) => {
+            const numberEl = item.querySelector('.pub__num')
+            if (numberEl) numberEl.textContent = String(index + 1)
+            pubList.appendChild(item)
+        })
+
+    if (morePubItem) pubList.appendChild(morePubItem)
+}
+
+/*===== PUBLICATION FILTERS =====*/
+const pubFilters = document.querySelectorAll('.pub__filter')
+const pubItems = document.querySelectorAll('.pub__item[data-topic]')
+
+pubFilters.forEach(filter => {
+    filter.addEventListener('click', () => {
+        const topic = filter.dataset.filter
+
+        pubFilters.forEach(btn => btn.classList.remove('pub__filter--active'))
+        filter.classList.add('pub__filter--active')
+
+        pubItems.forEach(item => {
+            const shouldShow = topic === 'all' || item.dataset.topic === topic
+            item.hidden = !shouldShow
+
+            if (!shouldShow) {
+                item.classList.remove('pub--open')
+                item.setAttribute('aria-expanded', 'false')
+                const abstract = item.querySelector('.pub__abstract')
+                if (abstract) abstract.style.maxHeight = '0'
+            }
+        })
+    })
+})
+
+/*===== SCROLL-TO-TOP BUTTON =====*/
+function toggleScrollUp() {
+    const btn = document.getElementById('scroll-up')
+    if (window.scrollY >= 560) btn.classList.add('show-scroll')
+    else                        btn.classList.remove('show-scroll')
+}
+window.addEventListener('scroll', toggleScrollUp)
+window.addEventListener('load', toggleScrollUp)

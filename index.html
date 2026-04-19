@@ -1,931 +1,1190 @@
 <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-        <!--==================== UNICONS ====================-->
-        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
-        
-        <!--==================== SWIPER CSS ====================-->
-        <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
-        
-        <!--==================== CSS ====================-->
-        <link rel="stylesheet" href="assets/css/styles.css">
-
-        <title>Kazi Tahsin Mahmood</title>
-    </head>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="icon" href="assets/img/logo_ico.ico">
-    <body>
-        <!--==================== HEADER ====================-->
-        <header class="header" id="header">
-            <nav class="nav container">
-                <a href="#home" class="nav__logo">Tahsin</a>
-                <div class="nav__menu" id="nav-menu">
-                    <ul class="nav__list grid">
-                        <li class="nav__item">
-                            <a href="#home" class="nav__link active-link">
-                            <i class="uil uil-estate nav__icon"></i> Home
-                            </a>
-                        </li>   
-                        <li class="nav__item">
-                            <a href="#about" class="nav__link">
-                            <i class="uil uil-user nav__icon"></i> About
-                            </a>
-                        </li> 
-                        <li class="nav__item">
-                            <a href="#skills" class="nav__link">
-                            <i class="uil uil-file-alt nav__icon"></i> Skills
-                            </a>
-                        </li> 
-                        <li class="nav__item">
-                            <a href="#services" class="nav__link">
-                            <i class="uil uil-briefcase-alt nav__icon"></i> Qualification
-                             </a>
-                        </li> 
-                        <li class="nav__item">
-                            <a href="#portfolio" class="nav__link">
-                            <i class="uil uil-scenery nav__icon"></i> Portfolio
-                            </a>
-                        </li> 
-                        <li class="nav__item">
-                            <a href="#contact" class="nav__link">
-                            <i class="uil uil-message nav__icon"></i> Contact
-                            </a>
-                        </li> 
-                    </ul>
-                    <i class="uil uil-times nav__close" id="nav-close"></i>
+    <title>Kazi Tahsin Mahmood | Ph.D. Mechanical Engineering</title>
+</head>
+<body>
+
+    <!--==================== HEADER ====================-->
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="#home" class="nav__logo">KTM</a>
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li><a href="#about"        class="nav__link">About</a></li>
+                    <li><a href="#education"    class="nav__link">Education</a></li>
+                    <li><a href="#publications" class="nav__link">Publications</a></li>
+                    <li><a href="#conferences"  class="nav__link">Conferences</a></li>
+                    <li><a href="#research"     class="nav__link">Research</a></li>
+                    <li><a href="#teaching"     class="nav__link">Teaching</a></li>
+                    <li><a href="#skills"       class="nav__link">Skills</a></li>
+                    <li><a href="#projects"     class="nav__link">Projects</a></li>
+                    <li><a href="#blogs"        class="nav__link">Blogs</a></li>
+                    <li><a href="#contact"      class="nav__link">Contact</a></li>
+                </ul>
+                <i class="uil uil-times nav__close" id="nav-close"></i>
+            </div>
+            <div class="nav__toggle" id="nav-toggle">
+                <i class="uil uil-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+
+        <!--==================== HERO ====================-->
+        <section class="hero" id="home">
+            <div class="hero__container container">
+                <div class="hero__bg-icons" aria-hidden="true">
+                    <span class="hero__bg-card hero__bg-card--book">Book</span>
+                    <span class="hero__bg-card hero__bg-card--journal">Journal</span>
+                    <span class="hero__bg-card hero__bg-card--news">News</span>
+                    <span class="hero__bg-card hero__bg-card--paper">Paper</span>
                 </div>
-                <div class="nav__btns">
-
-                    <!-- Theme Change -->
-
-                    <i class="uil uil-moon change-theme" id="theme-button"></i>
-
-                    <div class="nav__toggle" id="nav-toggle">
-                        <i class="uil uil-apps nav__icon"></i>
+                <div class="hero__poster">
+                    <div class="hero__nameboard" aria-label="Kazi Tahsin Mahmood">
+                        <div class="hero__name-row hero__name-row--top">KAZI</div>
+                        <div class="hero__name-pill">
+                            <span class="hero__name-pill-text">TAHSIN</span>
+                        </div>
+                        <div class="hero__name-row hero__name-row--bottom">MAHMOOD</div>
                     </div>
                 </div>
-        
-            </nav>
-        </header>
+            </div>
+            <a href="#about" class="hero__scroll">
+                <i class="uil uil-mouse-alt"></i>
+                <span>Scroll Down</span>
+                <i class="uil uil-arrow-down"></i>
+            </a>
+        </section>
 
-        <!--==================== MAIN ====================-->
-        <main class="main">
-            <!--==================== HOME ====================-->
-            <section class="home section" id="home">
-                <div class="home__container container grid">
-                    <div class="home__content grid">
-                        <div class="home__social">
-                            <a href="https://www.linkedin.com/in/kazitahsin/" target="_blank" class="home__social-icon">
-                                <i class="uil uil-linkedin-alt"></i>
-                            </a>
-                            <a href="mailto: kshifat97@gmail.com" target="_blank" class="home__social-icon">
-                                <i class="uil uil-envelope"></i>
-                                
-                            </a>
-                            <a href="https://twitter.com/KaziTahsinMahm1" target="_blank" class="home__social-icon">
-                                <i class="uil uil-twitter-alt"></i>
-                                
-                            </a>
-                        </div>
-                        <div class="home__img">
-                            <svg class="home__blob" viewBox="0 0 200 187" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                                <mask id="mask0" mask-type="alpha">
-                                    <path d="M190.312 36.4879C206.582 62.1187 201.309 102.826 182.328 134.186C163.346 165.547 
-                                    130.807 187.559 100.226 186.353C69.6454 185.297 41.0228 161.023 21.7403 129.362C2.45775 
-                                    97.8511 -7.48481 59.1033 6.67581 34.5279C20.9871 10.1032 59.7028 -0.149132 97.9666 
-                                    0.00163737C136.23 0.303176 174.193 10.857 190.312 36.4879Z"/>
-                                </mask>
-                                <g mask="url(#mask0)">
-                                    <path d="M190.312 36.4879C206.582 62.1187 201.309 102.826 182.328 134.186C163.346 
-                                    165.547 130.807 187.559 100.226 186.353C69.6454 185.297 41.0228 161.023 21.7403 
-                                    129.362C2.45775 97.8511 -7.48481 59.1033 6.67581 34.5279C20.9871 10.1032 59.7028 
-                                    -0.149132 97.9666 0.00163737C136.23 0.303176 174.193 10.857 190.312 36.4879Z"/>
-
-                                    <image class="home__blob-img" x='30' y='16' xlink:href="assets/img/tahsin.png"/>
-                                </g>
-                            </svg>
-                        </div>
-                        <div class="home__data">
-                            <h1 class="home__title">Hi, I'am Tahsin</h1>
-                            <h3 class="home__subtitle">Mechanical Engineer</h3>
-                            <p class="home__description">An Experienced Undergraduate Researcher and Engineer Working on Variety of Projects</p>
-                            <a href="#contact" class="button button--flex">
-                                Contact Me
-                                <i class="uil uil-message button__icon"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="home__scroll">
-                        <a href="#about" class="home__scroll-button button--flex">
-                            <i class="uil uil-mouse-alt home__scroll-mouse"></i>
-                            <span class="home__scroll-name">Scroll Down</span>
-                            <i class="uil uil-arrow-down"></i>
-                        </a>
-                    </div>
-                </div>
-            </section>
-
-            <!--==================== ABOUT ====================-->
-            <section class="about section" id="about">
+        <!--==================== ABOUT ====================-->
+        <section class="about section" id="about">
+            <div class="container">
                 <h2 class="section__title">About Me</h2>
-                <span class="section__subtitle">My Introduction</span>
+                <span class="section__subtitle">Summary</span>
 
-                <div class="about__container container grid">
-                    <img src="assets/img/about.jpg" alt="" class="about__img">
-
-                    <div class="about__data">
-                        <p class="about__description">My name is Kazi Tahsin Mahmood. I have completed my undergraduate in mechanical engineering from BUET. I have worked on variety of projects and researches. Currently looking for higher research opportunities</p>
-                   
-                        <div class="about__info">
-                            <div>
-                                <span class="about__info-title">2</span>
-                                <span class="about__info-name"> Years<br> research<br> experience</span>
-                            </div>
-                            <div>
-                                <span class="about__info-title">4</span>
-                                <span class="about__info-name"> Completed<br> project</span>
-                            </div>
-                            <div>
-                                <span class="about__info-title">1</span>
-                                <span class="about__info-name"> Companies<br> Worked</span>
-                            </div>
-                        </div>
-
-                            <div class="about__buttons">
-                                <a download href="assets/pdf/Kazi_Tahsin_Mahmood.pdf" class="button button--flex">
-                                    Download CV<i class="uil uil-download-alt button__icon"></i>
-                                </a>
-                            
-                        </div>
-                   
-                    </div>
-                </div>
-        
-            </section>
-
-            <!--==================== SKILLS ====================-->
-            <section class="skills section" id="skills">
-                <h2 class="section__title">Skills</h2>
-                <span class="section__subtitle">My technical level</span>
-
-                <div class="skills__container container grid">
-                    <div>
-                        <!-- skills1 -->
-                        <div class="skills__content skills__close">
-                            <div class="skills__header">
-                                <i class="uil uil-brackets-curly skills__icon"></i>
-
-                                <div>
-                                    <h1 class="skills__title">Programming Languages</h1>
-                                    <span class="skills__subtitle">Data Analysis & Problem Solving</span>
-                                </div>
-
-                                <i class="uil uil-angle-down skills__arrow"></i>
-                            </div>
-
-                            <div class="skills__list grid">
-                                <div class="skills__data">
-                                    <div class="skills__titles">
-                                        <h3 class="skills__name">C/C++</h3>
-                                    <span class="skills__number">65%</span>
-                                    </div>
-                                    <div class="skills__bar">
-                                        <span class="skills__percentage skills__CC"></span>    
-                                    </div>
-                                </div>
-
-                                <div class="skills__data">
-                                    <div class="skills__titles"><h3 class="skills__name">Python</h3>
-                                    <span class="skills__number">70%</span>
-                                    </div>
-                                    <div class="skills__bar">
-                                        <span class="skills__percentage skills__python"></span>    
-                                    </div>
-                                </div>
-
-                                <div class="skills__data">
-                                    <div class="skills__titles"><h3 class="skills__name">MATLAB</h3>
-                                    <span class="skills__number">75%</span>
-                                    </div>
-                                    <div class="skills__bar">
-                                        <span class="skills__percentage skills__MATLAB"></span>    
-                                    </div>
-                                </div>
+                <div class="about__container">
+                    <div class="about__text">
+                        <p>
+                            I am Kazi Tahsin Mahmood, a Ph.D. in Mechanical Engineering from Wayne State University.
+                            My research specializes in <strong>Nonlinear Dynamics</strong>, <strong>Topological Metamaterials</strong>,
+                            and <strong>Quantum Analogous Computing</strong>. I develop classical elastic analogs of quantum
+                            systems &mdash; from elastic bits and Berry phase generation to topological phase transitions
+                            in granular networks.
+                        </p>
+                        <p>
+                            My work sits at the intersection of mechanics, wave physics, and information science. I am particularly interested
+                            in how structured classical systems can reproduce key features that are usually associated with quantum platforms,
+                            such as two-state dynamics, superposition-like behavior, geometric phase, and topological protection. Through this lens,
+                            I use mechanical and acoustic systems not only as engineering objects, but also as physical platforms for studying
+                            computation-inspired behavior in a measurable and experimentally accessible way.
+                        </p>
+                        <p>
+                            I am currently a Research Assistant at Wayne State University and a Research Collaborator at the University
+                            of Arizona's <em>New Frontiers of Sound (NewFoS)</em> center. My research combines theory, numerical modeling,
+                            and experiment, with experience spanning nonlinear oscillator systems, granular metamaterials, acoustic waveguides,
+                            Bloch-sphere-based state representations, and topological phase analysis. Across these projects, I aim to build
+                            scalable and physically intuitive frameworks for quantum-inspired information processing in room-temperature classical systems.
+                        </p>
+                        <p>
+                            Beyond research, I enjoy mentoring students, teaching engineering mechanics, and communicating complex ideas in a way
+                            that is both rigorous and accessible. I also serve as a peer reviewer for <em>Scientific Reports</em> (Nature Portfolio),
+                            <em>Nonlinear Analysis</em> (Elsevier), and the <em>Journal of Vibration &amp; Acoustics</em> (ASME). More broadly,
+                            I am motivated by problems that connect deep physical principles with practical applications, especially where mechanics,
+                            topology, sensing, and computation begin to overlap.
+                        </p>
+                        <div class="about__interests">
+                            <h4>Research Interests</h4>
+                            <div class="tags">
+                                <span class="tag">Topological Metamaterials</span>
+                                <span class="tag">Quantum Analogous Mechanics</span>
+                                <span class="tag">Nonlinear Dynamics</span>
+                                <span class="tag">Acoustic Waveguides</span>
+                                <span class="tag">Vibrational Mechanics</span>
+                                <span class="tag">Elastic Bit Computing</span>
                             </div>
                         </div>
                     </div>
 
-                            <!-- skills2 -->
-                            <div>
-                        <div class="skills__content skills__close">
-                            <div class="skills__header">
-                                <i class="uil uil-server-network skills__icon"></i>
-
-                                <div>
-                                    <h1 class="skills__title">Modeling & Simulation</h1>
-                                    <span class="skills__subtitle">CAD Based Simulation</span>
-                                </div>
-
-                                <i class="uil uil-angle-down skills__arrow"></i>
-                            </div>
-
-                            <div class="skills__list grid">
-                                <div class="skills__data">
-                                    <div class="skills__titles"><h3 class="skills__name">COMSOL Multiphysics</h3>
-                                    <span class="skills__number">75%</span>
-                                    </div>
-                                    <div class="skills__bar">
-                                        <span class="skills__percentage skills__comsol"></span>    
-                                    </div>
-                                </div>
-
-                                <div class="skills__data">
-                                    <div class="skills__titles"><h3 class="skills__name">Ansys Simulation</h3>
-                                    <span class="skills__number">70%</span>
-                                    </div>
-                                    <div class="skills__bar">
-                                        <span class="skills__percentage skills__ansys"></span>    
-                                    </div>
-                                </div>
-                            </div>
+                    <div class="about__profile">
+                        <div class="about__photo">
+                            <img src="assets/img/Jakkas.jpg" alt="Kazi Tahsin Mahmood">
                         </div>
-                    </div>
-
-                        <!-- skills3 -->
-                        <div>
-                            <div class="skills__content skills__close">
-                                <div class="skills__header">
-                                    <i class="uil uil-swatchbook skills__icon"></i>
-    
-                                    <div>
-                                        <h1 class="skills__title">Drawing & Design Tool</h1>
-                                        <span class="skills__subtitle">Draw and Simulation</span>
-                                    </div>
-    
-                                    <i class="uil uil-angle-down skills__arrow"></i>
-                                </div>
-    
-                                <div class="skills__list grid">
-                                    <div class="skills__data">
-                                        <div class="skills__titles"><h3 class="skills__name">AutoCAD</h3>
-                                        <span class="skills__number">70%</span>
-                                        </div>
-                                        <div class="skills__bar">
-                                            <span class="skills__percentage skills__autocad"></span>    
-                                        </div>
-                                    </div>
-    
-                                    <div class="skills__data">
-                                        <div class="skills__titles"><h3 class="skills__name">SolidWorks</h3>
-                                        <span class="skills__number">75%</span>
-                                        </div>
-                                        <div class="skills__bar">
-                                            <span class="skills__percentage skills__solid"></span>    
-                                        </div>
-                                    </div>
-
-                                    <div class="skills__data">
-                                        <div class="skills__titles"><h3 class="skills__name">Inkscape</h3>
-                                        <span class="skills__number">80%</span>
-                                        </div>
-                                        <div class="skills__bar">
-                                            <span class="skills__percentage skills__ink"></span>    
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- skills4 -->
-                        <div>
-                            <div class="skills__content skills__close">
-                                <div class="skills__header">
-                                    <i class="uil uil-edit skills__icon"></i>
-    
-                                    <div>
-                                        <h1 class="skills__title">Productivity</h1>
-                                        <span class="skills__subtitle">Technical Writing & Presentation</span>
-                                    </div>
-    
-                                    <i class="uil uil-angle-down skills__arrow"></i>
-                                </div>
-    
-                                <div class="skills__list grid">
-                                    <div class="skills__data">
-                                        <div class="skills__titles"><h3 class="skills__name">Microsoft Office</h3>
-                                        <span class="skills__number">80%</span>
-                                        </div>
-                                        <div class="skills__bar">
-                                            <span class="skills__percentage skills__office"></span>    
-                                        </div>
-                                    </div>
-    
-                                    <div class="skills__data">
-                                        <div class="skills__titles"><h3 class="skills__name">Latex</h3>
-                                        <span class="skills__number">85%</span>
-                                        </div>
-                                        <div class="skills__bar">
-                                            <span class="skills__percentage skills__latex"></span>    
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                </div>
-
-            </section>
-
-            <!--==================== QUALIFICATION ====================-->
-            <section class="qualification section">
-                <h2 class="section__title">Qualification</h2>
-                <span class="section__subtitle">My Personal Journey</span>
-
-                <div class="qualification__container container">
-                    <div class="qualification__tabs">
-                        <div class="qualification__button button--flex qualification__active" data-target='#education'>
-                            <i class="uil uil-graduation-cap qualification__icon"></i>
-                            Education
-                        </div>
-                        <div class="qualification__button button--flex" data-target="#work">
-                            <i class="uil uil-briefcase-alt qualification__icon"></i>
-                            Work
-                        </div>
-                    </div>
-
-                    <div class="qualification__sections">
-                        <!-- Qualification content1 -->
-                        <div class="qualification__content qualification__active" data-content id="education">
-                            <!-- Qualification 1 -->
-                            <div class="qualification__data">
-                                <div>
-                                    <h3 class="qualification__title">B.Sc. in Mechanical Engineering</h3>
-                                    <span class="qualification__subtitle">Bangladesh University of Engineering & Technology</span>
-                                    <div class="qualification__calender">
-                                        <i class="uil uil-calendar-alt"></i>
-                                        2016 - 2021
-                                    </div>
-                                </div>
-                                <div>
-                                    <span class="qualification__rounder"></span>
-                                    <span class="qualification__line"></span>
-                                </div>
-                            </div>
-                            
-
-                            <!-- Qualification 2 --> 
-                            <div class="qualification__data">
-                            <div></div>
-
-                            <div>
-                                <span class="qualification__rounder"></span>
-                                <span class="qualification__line"></span>
-                            </div>
-
-
-                                <div>
-                                    <h3 class="qualification__title">H.S.C. in Science</h3>
-                                    <span class="qualification__subtitle">Chittagong College</span>
-                                    <div class="qualification__calender">
-                                        <i class="uil uil-calendar-alt"></i>
-                                        2015
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Qualification 3 -->
-                            <div class="qualification__data">
-                                <div>
-                                    <h3 class="qualification__title">S.S.C. in Science</h3>
-                                    <span class="qualification__subtitle">B.N. School & College</span>
-                                    <div class="qualification__calender">
-                                        <i class="uil uil-calendar-alt"></i>
-                                        2013
-                                    </div>
-                                </div>
-                                <div>
-                                    <span class="qualification__rounder"></span>
-                                    <span class="qualification__line"></span>
-                                </div>
-                            </div>
-                            <!-- Qualification 4 -->
-                            <div class="qualification__data">
-                                <div></div>
-                                <div>
-                                    <span class="qualification__rounder"></span>
-                                    <!-- <span class="qualification__line"></span> -->
-                                </div>
-                                <div>
-                                    <h3 class="qualification__title">J.S.C.</h3>
-                                    <span class="qualification__subtitle">B.N. School & College</span>
-                                    <div class="qualification__calender">
-                                        <i class="uil uil-calendar-alt"></i>
-                                        2010
-                                    </div>
-                                </div>
-                                
-                            </div>
-                        </div> 
-      
-
-                        <!-- Qualification content2 --> 
-                            <div class="qualification__content" data-content id="work">
-                                <!-- Qualification 1 -->
-                                <div class="qualification__data">
-                                    <div>
-                                        <h3 class="qualification__title">Industrial Visit</h3>
-                                        <span class="qualification__subtitle">Kaptai Water Power Plant</span>
-                                        <div class="qualification__calender">
-                                            <i class="uil uil-calendar-alt"></i>
-                                            2019
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <span class="qualification__rounder"></span>
-                                        <span class="qualification__line"></span>
-                                    </div>
-                                </div>
-                                
-    
-                                <!-- Qualification 2 --> 
-                                <div class="qualification__data">
-                                <div></div>
-    
-                                <div>
-                                    <span class="qualification__rounder"></span>
-                                    <span class="qualification__line"></span>
-                                </div>
-    
-    
-                                    <div>
-                                        <h3 class="qualification__title">Engineer Trainee</h3>
-                                        <span class="qualification__subtitle">BSRM Steels Ltd.</span>
-                                        <div class="qualification__calender">
-                                            <i class="uil uil-calendar-alt"></i>
-                                            2020
-                                        </div>
-                                    </div>
-                                </div>
-
-
-
-                              <!-- Qualification 3 -->
-                            <div class="qualification__data">
-                               
-                                
-                                <div>
-                                    <h3 class="qualification__title">Graduate Teaching Assistant</h3>
-                                    <span class="qualification__subtitle">Wayne State University</span>
-                                    <div class="qualification__calender">
-                                        <i class="uil uil-calendar-alt"></i>
-                                        2022 - Present
-                                    </div>
-                                </div>
-                                <div>
-                                    <span class="qualification__rounder"></span>
-                                    <!-- <span class="qualification__line"></span> -->
-                                </div>
-                            </div>
-
-
-    
-                            </div>         
-    
-                        </div>  
-                            </div>
-                        
-                    </div>
-                </div>
-
-            </section>
-
-            <!--==================== SERVICES ====================-->
-            <section class="services section" id="services">
-                <h2 class="section__title">Research Interest</h2>
-                <span class="section__subtitle">Can work on Variety of Research Fields</span>
-
-                <div class="services__container container grid">
-                    <!-- services1 -->
-
-                    <div class="services__content">
-                        <div>
-                            <i class="uil uil-web-grid services__icon"></i>
-                            <h3 class="services__title">Modeling & <br> Designing</h3>
-                        </div>
-
-                        <span class="button button--flex button--small button--link services__button">
-                            View More<i class="uil uil-arrow-right button__icon"></i>
-                        </span>
-
-                        <div class="services__modal">
-                            <div class="services__modal-content">
-                                <h4 class="services__modal-title">Modeling & <br> Designing</h4>
-                                <i class="uil uil-times services__modal-close"></i>
-
-                                <ul class="services__modal-services grid">
-                                    <li class="services__modal-service">
-                                         <i class="uil uil-check-circle services__modal-icon"></i>
-                                         <p>System Analysis</p>   
-                                    </li>
-                                    <li class="services__modal-service">
-                                        <i class="uil uil-check-circle services__modal-icon"></i>
-                                        <p>Computational Mechanics</p>   
-                                   </li>
-                                   <li class="services__modal-service">
-                                    <i class="uil uil-check-circle services__modal-icon"></i>
-                                    <p>Thermal & Stress Field Simulation</p>   
-                               </li>
-                               <li class="services__modal-service">
-                                <i class="uil uil-check-circle services__modal-icon"></i>
-                                <p>Electrical & Heat Generation Field</p>   
-                           </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- services2 -->
-
-                    <div class="services__content">
-                        <div>
-                            <i class="uil uil-arrow services__icon"></i>
-                            <h3 class="services__title">System & <br> Solving</h3>
-                        </div>
-
-                        <span class="button button--flex button--small button--link services__button">
-                            View More<i class="uil uil-arrow-right button__icon"></i>
-                        </span>
-
-                        <div class="services__modal">
-                            <div class="services__modal-content">
-                                <h4 class="services__modal-title">System & <br> Solving</h4>
-                                <i class="uil uil-times services__modal-close"></i>
-
-                                <ul class="services__modal-services grid">
-                                    <li class="services__modal-service">
-                                         <i class="uil uil-check-circle services__modal-icon"></i>
-                                         <p>Numerical Analysis</p>   
-                                    </li>
-                                    <li class="services__modal-service">
-                                        <i class="uil uil-check-circle services__modal-icon"></i>
-                                        <p>Finite Difference Method</p>   
-                                   </li>
-                                   <li class="services__modal-service">
-                                    <i class="uil uil-check-circle services__modal-icon"></i>
-                                    <p>Finite Element Method</p>   
-                               </li>
-                               <li class="services__modal-service">
-                                <i class="uil uil-check-circle services__modal-icon"></i>
-                                <p>FGM</p>   
-                           </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- services3 -->
-
-                    <div class="services__content">
-                        <div>
-                            <i class="uil uil-pen services__icon"></i>
-                            <h3 class="services__title">Application & <br> Solution</h3>
-                        </div>
-
-                        <span class="button button--flex button--small button--link services__button">
-                            View More<i class="uil uil-arrow-right button__icon"></i>
-                        </span>
-
-                        <div class="services__modal">
-                            <div class="services__modal-content">
-                                <h4 class="services__modal-title">Application & <br> Solution</h4>
-                                <i class="uil uil-times services__modal-close"></i>
-
-                                <ul class="services__modal-services grid">
-                                    <li class="services__modal-service">
-                                         <i class="uil uil-check-circle services__modal-icon"></i>
-                                         <p>Applied Mathematics</p>   
-                                    </li>
-                                    <li class="services__modal-service">
-                                        <i class="uil uil-check-circle services__modal-icon"></i>
-                                        <p>System Solving</p>   
-                                   </li>
-                                   <li class="services__modal-service">
-                                    <i class="uil uil-check-circle services__modal-icon"></i>
-                                    <p>Various Simulation Solving</p>   
-                               </li>
-                               <li class="services__modal-service">
-                                <i class="uil uil-check-circle services__modal-icon"></i>
-                                <p>Thermal Field Simulation</p>   
-                           </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </section>
-
-            <!--==================== PORTFOLIO ====================-->
-            <section class="portfolio section" id="portfolio">
-                <h2 class="section__title">Projects & Research</h2>
-                <span class="section__subtitle">Most Recent Work</span>
-
-                <div class="portfolio__container container swiper">
-                    <div class="swiper-wrapper">
-
-                            <!-- portfolio1 -->
-
-                        <div class="portfolio__content grid swiper-slide">
-                            <img src="assets/img/Robot.png" alt="" class="portfolio__img">
-
-                            <div class="portfolio__data">
-                                <h3 class="portfolio__title">Rescue Robot</h3>
-                               <p style="margin-left: 10px;">2018<span id="more1" style="display:none;"><br>CAD design of a rescue robot capable of working in hazardaous environment and providing food and medical supply</span></p>
-                                <br>
-                                <span onclick="myFunction1()" id="myBtn1" class="button button--flex button--small portfolio__button" onmousedown="myFunction1()">Read More
-                            </span>
-                            </div>
-                        </div>
-
-                           <!-- portfolio2 -->
-
-                           <div class="portfolio__content grid swiper-slide">
-                            <img src="assets/img/Crane2.jpg" alt="" class="portfolio__img">
-
-                            <div class="portfolio__data">
-                                <h3 class="portfolio__title">Automated Industrial Crane</h3>
-                               <p style="margin-left: 10px;">2019<span id="more2" style="display:none;"><br>A prototype of industrial crane than can work by using color sensor and move objects automatically by using arduino based microcontroller</span></p>
-                                <br>
-                                <span onclick="myFunction2()" id="myBtn2" class="button button--flex button--small portfolio__button" onmousedown="myFunction2()">Read More
-                            </span>
-                            </div>
-                        </div>
-                           <!-- portfolio3 -->
-
-                           <div class="portfolio__content grid swiper-slide">
-                            <img src="assets/img/pipe.jpg" alt="" class="portfolio__img">
-
-                            <div class="portfolio__data">
-                                <h3 class="portfolio__title">Double Pipe Heat Exchanger</h3>
-                               <p style="margin-left: 10px;">2019<span id="more3" style="display:none;">Thermo-fluid prototype design of a double pipe heat exchanger which can be used in industrial sector for thermal cooling of fluid</span></p>
-                                <br>
-                                <span onclick="myFunction3()" id="myBtn3" class="button button--flex button--small portfolio__button" onmousedown="myFunction3()">Read More
-                            </span>
-                            </div>
-                        </div>
-                        
-                        <!-- portfolio4 -->
-
-                        <div class="portfolio__content grid swiper-slide">
-                            <img src="assets/img/research.jpg" alt="" class="portfolio__img">
-
-                            <div class="portfolio__data">
-                                <h3 class="portfolio__title">Electro-Thermo-Mechanical</h3>
-                               <p style="margin-left: 10px;">Undergraduate Thesis<span id="more4" style="display:none;">Electro-Thermo-Mechanical response of a thin conductive layer of metal matrix composite reinforced by graphite fiber</span></p>
-                                <br>
-                                <span onclick="myFunction4()" id="myBtn4" class="button button--flex button--small portfolio__button" onmousedown="myFunction4()">Read More
-                            </span>
-                            </div>
-                        </div>
-  
-
-                    </div>
-
-                <div class="swiper-button-next">
-                    <i class="uil uil-angle-right-b swiper-portfolio-icon"></i>
-                </div>
-                 <div class="swiper-button-prev">
-                    <i class="uil uil-angle-left-b swiper-portfolio-icon"></i>
-                 </div>
-                  <div class="swiper-pagination"></div>
-
-                </div>
-
-            </section>
-
-            <!--==================== PROJECT IN MIND ====================-->
-            <section class="project section">
-                <div class="project__bg">
-                    <div class="project__container grid">
-                        <div class="project__data">
-                            <h2 class="project__title">Currently Looking for an Opportunity to Carry Out New Research</h2>
-                            <p class="project__description">You can contact me</p>
-                            <a href="#contact" class="button button--flex button--white">
-                                Contact Me
-                                <i class="uil uil-message project__icon button__icon"></i>
+                        <div class="about__links">
+                            <a href="https://www.linkedin.com/in/kazitahsin/" target="_blank" rel="noopener" class="profile__link profile__link--linkedin">
+                                <svg class="profile__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                                </svg>
+                                <span>LinkedIn</span>
+                            </a>
+                            <a href="https://scholar.google.com/citations?user=1GvXCO8AAAAJ&hl=en" target="_blank" rel="noopener" class="profile__link profile__link--scholar">
+                                <svg class="profile__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                    <path d="M12 24a7 7 0 110-14 7 7 0 010 14zm0-24L0 9.5l4.838 3.94A8 8 0 0112 10a8 8 0 017.162 3.44L24 9.5 12 0z"/>
+                                </svg>
+                                <span>Google Scholar</span>
+                            </a>
+                            <a href="https://orcid.org/YOUR-ORCID-ID" target="_blank" rel="noopener" class="profile__link profile__link--orcid">
+                                <svg class="profile__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                    <path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 01-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.025-5.325 5.025h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 4.022-2.484 4.022-3.722 0-1.253-.75-3.722-4.022-3.722H11.653z"/>
+                                </svg>
+                                <span>ORCID</span>
                             </a>
                         </div>
-                        <img src="assets/img/background.png" alt="" class="project__img">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--==================== EDUCATION ====================-->
+        <section class="education section" id="education">
+            <div class="container">
+                <h2 class="section__title">Education</h2>
+                <span class="section__subtitle">Academic Credentials</span>
+
+                <div class="timeline">
+
+                    <div class="timeline__item">
+                        <div class="timeline__dot"></div>
+                        <div class="timeline__card">
+                            <div class="timeline__header">
+                                <div>
+                                    <h3 class="timeline__title">Ph.D. in Mechanical Engineering</h3>
+                                    <span class="timeline__org">Wayne State University &mdash; Detroit, Michigan, USA</span>
+                                </div>
+                                <span class="timeline__date">Jan 2022 &ndash; Dec 2025</span>
+                            </div>
+                            <p class="timeline__detail">
+                                <strong>Dissertation:</strong>
+                                <em>Classical Realization of Quantum and Topological States through Nonlinear Elastic Networks</em>
+                            </p>
+                            <p class="timeline__detail">
+                                <strong>Committee:</strong>
+                                Dr. M. Arif Hasan (Chair) &middot; Dr. Sean Wu &middot; Dr. Chin-An Tan &middot;
+                                Dr. Mohammad Bukhari &middot; Dr. Pierre Deymier
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="timeline__item">
+                        <div class="timeline__dot"></div>
+                        <div class="timeline__card">
+                            <div class="timeline__header">
+                                <div>
+                                    <h3 class="timeline__title">M.Sc. in Mechanical Engineering</h3>
+                                    <span class="timeline__org">Wayne State University &mdash; Detroit, Michigan, USA</span>
+                                </div>
+                                <span class="timeline__date">Jan 2022 &ndash; May 2025</span>
+                            </div>
+                            <p class="timeline__detail">
+                                <strong>Thesis:</strong>
+                                <em>Nonlinear Dynamics Driven Quantum Analogous in Classical Granular Metamaterial</em>
+                            </p>
+                            <p class="timeline__detail">
+                                <strong>Advisor:</strong> Dr. M. Arif Hasan
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="timeline__item">
+                        <div class="timeline__dot"></div>
+                        <div class="timeline__card">
+                            <div class="timeline__header">
+                                <div>
+                                    <h3 class="timeline__title">B.Sc. (Engg.) in Mechanical Engineering</h3>
+                                    <span class="timeline__org">Bangladesh University of Engineering &amp; Technology (BUET) &mdash; Dhaka, Bangladesh</span>
+                                </div>
+                                <span class="timeline__date">Feb 2016 &ndash; Mar 2021</span>
+                            </div>
+                            <p class="timeline__detail">
+                                <strong>Thesis:</strong>
+                                <em>Electro-Thermo-Mechanical Response of a Thin Conductive Layer of Metal Matrix Composite Reinforced by Graphite Fibers</em>
+                            </p>
+                            <p class="timeline__detail">
+                                <strong>Advisor:</strong> Dr. Shaikh Reaz Ahmed
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!--==================== SKILLS ====================-->
+        <section class="skills section" id="skills">
+            <div class="container">
+                <h2 class="section__title">Technical Skills</h2>
+                <span class="section__subtitle">Tools &amp; Expertise</span>
+
+                <div class="skills__grid">
+
+                    <div class="skills__group">
+                        <div class="skills__group-header">
+                            <i class="uil uil-brackets-curly"></i>
+                            <h3>Programming &amp; Simulation</h3>
+                        </div>
+                        <div class="tags">
+                            <span class="tag">C / C++</span>
+                            <span class="tag">Python</span>
+                            <span class="tag">MATLAB</span>
+                            <span class="tag">COMSOL Multiphysics</span>
+                            <span class="tag">ANSYS</span>
+                        </div>
+                    </div>
+
+                    <div class="skills__group">
+                        <div class="skills__group-header">
+                            <i class="uil uil-sigma"></i>
+                            <h3>Mathematical Modeling</h3>
+                        </div>
+                        <div class="tags">
+                            <span class="tag">Finite Difference Method</span>
+                            <span class="tag">Finite Element Method</span>
+                            <span class="tag">Asymptotic Perturbation</span>
+                            <span class="tag">Fourier Harmonics</span>
+                            <span class="tag">Molecular Dynamics</span>
+                        </div>
+                    </div>
+
+                    <div class="skills__group">
+                        <div class="skills__group-header">
+                            <i class="uil uil-microscope"></i>
+                            <h3>Research Instrumentation</h3>
+                        </div>
+                        <div class="tags">
+                            <span class="tag">Laser Doppler Vibrometer (Polytec)</span>
+                            <span class="tag">Oscilloscope (Tektronix)</span>
+                            <span class="tag">Function Generator (B&amp;K Precision)</span>
+                            <span class="tag">Power Amplifier (Piezodrive)</span>
+                            <span class="tag">Vibration Exciters &amp; Transducers</span>
+                        </div>
+                    </div>
+
+                    <div class="skills__group">
+                        <div class="skills__group-header">
+                            <i class="uil uil-wrench"></i>
+                            <h3>Fabrication &amp; Design</h3>
+                        </div>
+                        <div class="tags">
+                            <span class="tag">AutoCAD</span>
+                            <span class="tag">SolidWorks</span>
+                            <span class="tag">Granular Bead Networks</span>
+                            <span class="tag">Mass-Conical Spring Models</span>
+                            <span class="tag">Coupled Linear Waveguides</span>
+                        </div>
+                    </div>
+
+                    <div class="skills__group">
+                        <div class="skills__group-header">
+                            <i class="uil uil-edit"></i>
+                            <h3>Productivity</h3>
+                        </div>
+                        <div class="tags">
+                            <span class="tag">LaTeX</span>
+                            <span class="tag">Microsoft Office</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!--==================== RESEARCH ====================-->
+        <section class="research section" id="research">
+            <div class="container">
+                <h2 class="section__title">Research Experience</h2>
+                <span class="section__subtitle">Academic &amp; Collaborative Projects</span>
+
+                <div class="research__overview">
+                    <article class="research__pill">
+                        <span class="research__pill-label">Current Direction</span>
+                        <p>Quantum-inspired state control in nonlinear elastic and acoustic networks.</p>
+                    </article>
+                    <article class="research__pill">
+                        <span class="research__pill-label">Core Methods</span>
+                        <p>Asymptotic perturbation, molecular dynamics, Bloch-sphere mapping, and experiment-driven modeling.</p>
+                    </article>
+                    <article class="research__pill">
+                        <span class="research__pill-label">Applications</span>
+                        <p>Wave-based information processing, topological sensing, and scalable classical analogues of qubits.</p>
+                    </article>
+                </div>
+
+                <div class="timeline">
+
+                    <div class="timeline__item">
+                        <div class="timeline__dot"></div>
+                        <div class="timeline__card">
+                            <div class="timeline__header">
+                                <div>
+                                    <h3 class="timeline__title">Graduate Research Assistant</h3>
+                                    <span class="timeline__org">Wayne State University &mdash; Department of Mechanical Engineering, Detroit, MI</span>
+                                </div>
+                                <span class="timeline__date">May 2024 &ndash; Present</span>
+                            </div>
+                            <ul class="timeline__list">
+                                <li>
+                                    <strong>Elastic Bit:</strong> Developed a classical analog of a quantum bit in granular bead networks
+                                    using asymptotic perturbation techniques. Designed experimental setup achieving decoherence-free
+                                    superposition of states for potential data transmission.
+                                    <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2204382&amp;HistoricalAwards=false" target="_blank" rel="noopener noreferrer" class="tag tag--sm tag--nsf" title="View the NSF award abstract for Grant 2204382">NSF Grant 2204382</a>
+                                </li>
+                                <li>
+                                    <strong>Berry Phase:</strong> Developed a theoretical framework for manipulating elastic bit
+                                    superposition states and generating Berry phase in linearized and nonlinear elastic networks,
+                                    demonstrating quantum-classical correlations.
+                                    <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2242925&amp;HistoricalAwards=false" target="_blank" rel="noopener noreferrer" class="tag tag--sm tag--nsf" title="View the NSF award abstract for Grant 2242925">NSF Grant 2242925</a>
+                                </li>
+                                <li>
+                                    <strong>Logical Elastic Bit:</strong> Developed algorithm to demonstrate scalability of the logical
+                                    elastic bit in a mass-conical spring model with time-dependent harmonic response.
+                                </li>
+                                <li>
+                                    <strong>Topological Transitions:</strong> Investigated symmetry breaking in granular networks via
+                                    2nd-order Molecular Dynamics, revealing internal parameter variations driving topological
+                                    transitions across the Brillouin Zone.
+                                </li>
+                                <li>
+                                    <strong>Topological Mass Sensor:</strong> Designed a topological phase-based mass sensor leveraging
+                                    sustained state superposition for enhanced sensitivity and precision.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="timeline__item">
+                        <div class="timeline__dot"></div>
+                        <div class="timeline__card">
+                            <div class="timeline__header">
+                                <div>
+                                    <h3 class="timeline__title">Research Collaborator</h3>
+                                    <span class="timeline__org">New Frontiers of Sound (NewFoS) &mdash; The University of Arizona, Tucson, AZ</span>
+                                </div>
+                                <span class="timeline__date">Sep 2023 &ndash; Present</span>
+                            </div>
+                            <div class="timeline__meta">
+                                <span class="tag tag--sm">Topological Acoustic QIS</span>
+                                <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2204400&amp;HistoricalAwards=false" target="_blank" rel="noopener noreferrer" class="tag tag--sm tag--nsf" title="View the NSF award abstract for Grant 2204400">NSF Grant 2204400</a>
+                            </div>
+                            <ul class="timeline__list">
+                                <li>
+                                    <strong>Primary Investigator:</strong> Investigation of multi-qubit analogue in classical nonlinear
+                                    mass-conical spring oscillator; demonstration of scalable Hadamard and Phase gate operations.
+                                </li>
+                                <li>
+                                    <strong>Co-Investigator:</strong> Developed the Phi-Bit (Phase Bit) through three coupled
+                                    finite-length acoustic waveguides, predicting continuous phase behaviors across varying conditions.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="timeline__item">
+                        <div class="timeline__dot"></div>
+                        <div class="timeline__card">
+                            <div class="timeline__header">
+                                <div>
+                                    <h3 class="timeline__title">Undergraduate Research Assistant</h3>
+                                    <span class="timeline__org">Bangladesh University of Engineering &amp; Technology (BUET) &mdash; Dhaka, Bangladesh</span>
+                                </div>
+                                <span class="timeline__date">Nov 2019 &ndash; Feb 2021</span>
+                            </div>
+                            <ul class="timeline__list">
+                                <li>Studied thermal stress in metal matrix composites (MMC) due to electrical current; analyzed
+                                    stress-tolerant limits and failure characteristics using tensile and compression strength machines.</li>
+                                <li>Developed a heat pipe exchanger model to improve heat transfer efficiency in compact thermal
+                                    management for high-performance induction motors.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!--==================== PROJECTS ====================-->
+        <section class="projects section" id="projects">
+            <div class="container">
+                <h2 class="section__title">Selected Projects</h2>
+                <span class="section__subtitle">Detailed Research Stories</span>
+
+                <div class="projects__cards">
+                    <article class="project__card" data-project-card>
+                        <button class="project__card-toggle" type="button" aria-expanded="false">
+                            <span class="project__card-kicker">Featured Project</span>
+                            <h3 class="project__card-title">Elastic Bit and Logical State Control</h3>
+                            <p class="project__card-brief">Nonlinear oscillator networks inspired by qubit behavior.</p>
+                        </button>
+                        <div class="project__card-detail">
+                            <div class="project__media">
+                                <img src="assets/img/Elastic_Bit.png" alt="Research setup and elastic network work" class="project__image">
+                            </div>
+                            <div class="project__content">
+                                <div class="project__meta">
+                                    <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2204382&amp;HistoricalAwards=false" target="_blank" rel="noopener noreferrer" class="tag" title="View the NSF award abstract for Grant 2204382">NSF Grant 2204382</a>
+                                    <span class="tag">Granular Metamaterials</span>
+                                    <span class="tag">Quantum Analogues</span>
+                                </div>
+                                <p class="project__summary">In our system, an elastic bit is a two-state classical information unit formed by the nonlinear vibration of coupled granular beads, where the measured amplitudes and relative phases of the participating modes define a state vector analogous to a qubit on the Bloch sphere.</p>
+                                <div class="project__grid">
+                                    <div>
+                                        <h4>Problem</h4>
+                                        <p>Most classical mechanical systems lose the delicate state behavior needed to mimic quantum-style information encoding.</p>
+                                    </div>
+                                    <div>
+                                        <h4>Approach</h4>
+                                        <p>Combined asymptotic perturbation methods, nonlinear oscillator design, and experiment-driven validation to identify protected operating regimes.</p>
+                                    </div>
+                                    <div>
+                                        <h4>Outcome</h4>
+                                        <p>Established a platform for elastic-bit realization, time-dependent state control, and logical extension toward multi-bit architectures.</p>
+                                    </div>
+                                </div>
+                                <ul class="project__highlights">
+                                    <li>The elastic bit behaves as a two-state classical system whose amplitudes and relative phase define a normalized state vector, making it directly comparable to a qubit representation.</li>
+                                    <li>Like a qubit, it can occupy superposition-like states and be visualized on a Bloch sphere, but unlike quantum qubits it operates through measurable macroscopic vibrations at room temperature.</li>
+                                    <li>The platform supports controllable state evolution, gate-like operations, and a natural pathway toward logical elastic bits and multi-bit architectures in later work.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="project__card" data-project-card>
+                        <button class="project__card-toggle" type="button" aria-expanded="false">
+                            <span class="project__card-kicker">Topological Mechanics</span>
+                            <h3 class="project__card-title">Berry Phase in Elastic Networks</h3>
+                            <p class="project__card-brief">State manipulation and phase accumulation in classical lattices.</p>
+                        </button>
+                        <div class="project__card-detail">
+                            <div class="project__media">
+                                <img src="assets/img/Berry_Phase.png" alt="Waveguide and phase-related research visual" class="project__image">
+                            </div>
+                            <div class="project__content">
+                                <div class="project__meta">
+                                    <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2242925&amp;HistoricalAwards=false" target="_blank" rel="noopener noreferrer" class="tag" title="View the NSF award abstract for Grant 2242925">NSF Grant 2242925</a>
+                                    <span class="tag">Berry Phase</span>
+                                    <span class="tag">Bloch-Sphere Mapping</span>
+                                </div>
+                                <p class="project__summary">Showed that Berry phase accumulation in our classical elastic system is a direct signature of its topological nature, allowing us to identify how controlled state evolution, symmetry, and parameter variation reveal robust topological behavior in a mechanical platform.</p>
+                                <div class="project__grid">
+                                    <div>
+                                        <h4>Problem</h4>
+                                        <p>Phase evolution in nonlinear networks is difficult to interpret and even harder to communicate visually.</p>
+                                    </div>
+                                    <div>
+                                        <h4>Approach</h4>
+                                        <p>Mapped elastic states to geometric representations and tracked how controlled parameter changes shape state trajectories.</p>
+                                    </div>
+                                    <div>
+                                        <h4>Outcome</h4>
+                                        <p>Produced a narrative framework that connects elastic state manipulation, topological insight, and measurable system response.</p>
+                                    </div>
+                                </div>
+                                <ul class="project__highlights">
+                                    <li>The system offers a controllable and measurable route to topological state manipulation without the fragility typically associated with quantum hardware.</li>
+                                    <li>Its phase-guided robustness makes it a promising platform for topological information processing, where encoded states can remain stable against local perturbations.</li>
+                                    <li>These results help pave the way toward topological and edge computing by showing how mechanical systems can host protected state evolution and computation-relevant transitions.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="project__card" data-project-card>
+                        <button class="project__card-toggle" type="button" aria-expanded="false">
+                            <span class="project__card-kicker">Applied Design</span>
+                            <h3 class="project__card-title">Topological Mass Sensor</h3>
+                            <p class="project__card-brief">Using robust phase behavior for precision sensing.</p>
+                        </button>
+                        <div class="project__card-detail">
+                            <div class="project__media">
+                                <img src="assets/img/Stress Distribution_20.jpg" alt="Stress distribution visualization for sensing and mechanics work" class="project__image">
+                            </div>
+                            <div class="project__content">
+                                <div class="project__meta">
+                                    <span class="tag">Topological Sensing</span>
+                                    <span class="tag">State Superposition</span>
+                                    <span class="tag">Precision Design</span>
+                                </div>
+                                <p class="project__summary">Developed a topological mass-sensing concept in which added mass shifts the phase and state evolution of an elastic system, allowing the sensing signal to be read through topologically informed response changes rather than only through conventional amplitude or frequency shifts.</p>
+                                <div class="project__grid">
+                                    <div>
+                                        <h4>Problem</h4>
+                                        <p>Conventional sensing architectures can be highly sensitive to noise, calibration drift, and geometric perturbation.</p>
+                                    </div>
+                                    <div>
+                                        <h4>Approach</h4>
+                                        <p>Used topological state behavior as the sensing backbone so response signatures remain distinct and easier to detect.</p>
+                                    </div>
+                                    <div>
+                                        <h4>Outcome</h4>
+                                        <p>Turned abstract topological mechanics ideas into a direct application story with clear engineering relevance.</p>
+                                    </div>
+                                </div>
+                                <ul class="project__highlights">
+                                    <li>The sensing platform is designed to be more robust because the readout is tied to phase-protected state behavior, which can be less vulnerable to noise and local imperfections.</li>
+                                    <li>By connecting sensing to topological state transitions, the system offers a more interpretable pathway for detecting small perturbations with high precision.</li>
+                                    <li>This work points toward a new class of topological sensors that combine mechanical simplicity with computation-aware, state-based readout strategies.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="project__card" data-project-card>
+                        <button class="project__card-toggle" type="button" aria-expanded="false">
+                            <span class="project__card-kicker">Earlier Work</span>
+                            <h3 class="project__card-title">MMC Thermo-Mechanical Modeling</h3>
+                            <p class="project__card-brief">Electro-thermo-mechanical response in composite structures.</p>
+                        </button>
+                        <div class="project__card-detail">
+                            <div class="project__media">
+                                <img src="assets/img/Temperature Distribution_20.jpg" alt="Temperature distribution visualization in composite material analysis" class="project__image">
+                            </div>
+                            <div class="project__content">
+                                <div class="project__meta">
+                                    <span class="tag">BUET</span>
+                                    <span class="tag">Finite Element Analysis</span>
+                                    <span class="tag">Composite Materials</span>
+                                </div>
+                                <p class="project__summary">Studied the electro-thermo-mechanical response of metal matrix composites reinforced by graphite fibers, with emphasis on stress limits, thermal gradients, and failure-prone operating regions.</p>
+                                <div class="project__grid">
+                                    <div>
+                                        <h4>Problem</h4>
+                                        <p>Composite systems under electrical loading can exhibit coupled stress and temperature fields that are difficult to predict safely.</p>
+                                    </div>
+                                    <div>
+                                        <h4>Approach</h4>
+                                        <p>Built numerical models and interpreted stress-temperature distributions to evaluate design constraints and material response.</p>
+                                    </div>
+                                    <div>
+                                        <h4>Outcome</h4>
+                                        <p>Created a solid mechanics foundation that now complements your current nonlinear and topological research portfolio.</p>
+                                    </div>
+                                </div>
+                                <ul class="project__highlights">
+                                    <li>Shows breadth in simulation, materials, and engineering analysis before the Ph.D. work.</li>
+                                    <li>Useful for demonstrating long-term development across research themes rather than a narrow single-topic profile.</li>
+                                    <li>Already has figure-ready visual outputs that fit naturally into the site.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!--==================== PUBLICATIONS ====================-->
+        <section class="publications section" id="publications">
+            <div class="container">
+                <h2 class="section__title">Publications</h2>
+                <span class="section__subtitle">Peer-Reviewed Journals</span>
+
+                <div class="pub__topbar">
+                    <div class="pub__filters" role="group" aria-label="Filter publications">
+                        <button class="pub__filter pub__filter--active" type="button" data-filter="all">All</button>
+                        <button class="pub__filter" type="button" data-filter="quantum">Quantum Analogues</button>
+                        <button class="pub__filter" type="button" data-filter="topology">Topological Mechanics</button>
+                        <button class="pub__filter" type="button" data-filter="acoustics">Acoustics</button>
                     </div>
                 </div>
 
-            </section>
+                <div class="pub__list">
 
-            <!--==================== TESTIMONIAL ====================-->
-            <section class="testimonial section">
-                <h2 class="section__title">Extra-Curricular Activities</h2>
-                <span class="section__subtitle">Standardized Test Scores</span>
-
-                <div class="testimonial__container container swiper mySwiper">
-                    <div class="swiper-wrapper">
-                        <!-- Testimonial1 -->
-                        <div class="testimonial__content swiper-slide">
-                            <div class="testimonial__data">
-                                <div class="testimonial__header">
-                                    <img src="assets/img/GRE_logo.png" alt="" class="testimonial__img">
-
-                                    <div>
-                                        <h3 class="testimonial__name">GRE</h3>
-                                        <span class="testimonial__client"></span>
-
-                                    </div>
-                                </div>
-                                <div>
-                                    <i class="uil uil-star testimonial__icon-star"></i>
-                                    <i class="uil uil-star testimonial__icon-star"></i>
-                                    <i class="uil uil-star testimonial__icon-star"></i>
-                                    <i class="uil uil-star testimonial__icon-star"></i>
-                                    <i class="uil uil-star testimonial__icon-star"></i>
+                    <div class="pub__item" role="button" tabindex="0" aria-expanded="false" data-topic="topology">
+                        <span class="pub__num">1</span>
+                        <div class="pub__body">
+                            <div class="pub__header">
+                                <p class="pub__title">Topological Vibration Analysis of Elastic Lattices Via Bloch-Sphere Mapping</p>
+                                <i class="uil uil-angle-down pub__chevron"></i>
+                            </div>
+                            <p class="pub__authors">K.T. Mahmood, M.A. Hasan</p>
+                            <p class="pub__venue"><em>Journal of Vibration and Acoustics</em>, 148(4), 041004 &middot; <span class="pub__year">2026</span></p>
+                            <p class="pub__doi"><a href="https://doi.org/10.1115/1.4070907" target="_blank" rel="noopener noreferrer">DOI: 10.1115/1.4070907</a></p>
+                            <div class="pub__tags">
+                                <span class="tag tag--sm">Abstract</span>
+                            </div>
+                            <div class="pub__abstract">
+                                <p>Mechanical lattices support topological wave phenomena governed by geometric phases. We develop a compact Hilbert-space description for one-dimensional elastic chains, expressing intracell motion as a normalized superposition of orthogonal eigenstates and tracking complex amplitudes as trajectories on a Bloch sphere. For diatomic lattices, this construction makes inversion symmetry protection explicit: the relative phase between in-phase and out-of-phase modes is piecewise locked, and the Zak phase is quantized with band-dependent jumps at symmetry points. Extending the framework to triatomic lattices shows that restoring inversion retains quantization, whereas breaking it dequantizes the geometric phase while leaving the spectrum origin invariant. Viewing norm-preserving transformations of the modal coefficient pair as Bloch-sphere rotations, we demonstrate classical analogs of single-qubit logic gates: a &pi; phase rotation about a transverse axis swaps the modal poles, and a longitudinal-axis phase flip maps balanced superpositions to their conjugates. These gate-like operations are realized by controlled evolution across wavenumber space and can be driven or reprogramed through spatiotemporal stiffness modulation. Introducing space–time modulation hybridizes carrier and sideband harmonics, producing continuous phase winding and open-path geometric phases accumulated along the Floquet trajectory. Across static and modulated regimes, the framework unifies algebraic and geometric viewpoints, is robust to gauge and basis choices, and operates directly on amplitude-phase data. Results clarify how symmetry, modulation, and topology jointly govern dispersion, modal mixing, and phase accumulation, providing tools to analyze and design vibration and acoustic functionalities in engineered structures.</p>
+                                <p class="pub__contribution"><strong>Your contribution:</strong> Developed the mechanics-driven interpretation that connects elastic state evolution to topological vibration signatures.</p>
+                                <div class="pub__figures">
+                                    <figure class="pub__figure">
+                                        <img src="assets/img/Topological_Vibration.png" alt="Representative figure for topological vibration analysis">
+                                    </figure>
                                 </div>
                             </div>
-
-                            <p class="testimonial__description">Score - 311/340<br>Verbal Reasoning - 150/170 (44<sup>th</sup>percentile)<br>Quantitative Analysis - 161/170 (74<sup>th</sup>percentile)<br>Analytical Writing - 3.5/6.0 (37<sup>th</sup>percentile)</p>
-                        
-                        
                         </div>
-
-                        <!-- Testimonial2 -->
-                        <div class="testimonial__content swiper-slide">
-                            <div class="testimonial__data">
-                                <div class="testimonial__header">
-                                    <img src="assets/img/Toefl_logo.png" alt="" class="testimonial__img">
-
-                                    <div>
-                                        <h3 class="testimonial__name">TOEFL</h3>
-                                        <span class="testimonial__client"></span>
-
-                                    </div>
-                                </div>
-                                <div>
-                                    <i class="uil uil-star testimonial__icon-star"></i>
-                                    <i class="uil uil-star testimonial__icon-star"></i>
-                                    <i class="uil uil-star testimonial__icon-star"></i>
-                                    <i class="uil uil-star testimonial__icon-star"></i>
-                                    <i class="uil uil-star testimonial__icon-star"></i>
-                                </div>
-                            </div>
-
-                            <p class="testimonial__description">Score - 98/120<br>Reading - 28/30<br>Listening - 22/30<br>Speaking - 23/30<br>Writing - 25/30</p>
-                        
-                        
-                        </div>
-
-                        <!-- Testimonial3 -->
-                        <div class="testimonial__content swiper-slide">
-                            <div class="testimonial__data">
-                                <div class="testimonial__header">
-                                    <img src="assets/img/scholarship.png" alt="" class="testimonial__img">
-
-                                    <div>
-                                        <h3 class="testimonial__name">Scholarship</h3>
-                                        <span class="testimonial__client"></span>
-
-                                    </div>
-                                </div>
-                                <div>
-                                    <i class="uil uil-star testimonial__icon-star"></i>
-                                    <i class="uil uil-star testimonial__icon-star"></i>
-                                    <i class="uil uil-star testimonial__icon-star"></i>
-                                    <i class="uil uil-star testimonial__icon-star"></i>
-                                    <i class="uil uil-star testimonial__icon-star"></i>
-                                </div>
-                            </div>
-
-                            <p class="testimonial__description">Education Board Scholarship<br>General Grade<br>2007</p>
-                        
-                        
-                        </div>
-                        
                     </div>
-                    <div class="swiper-pagination swiper-pagination-testimonial"></div>
+
+                    <div class="pub__item" role="button" tabindex="0" aria-expanded="false" data-topic="quantum">
+                        <span class="pub__num">2</span>
+                        <div class="pub__body">
+                            <div class="pub__header">
+                                <p class="pub__title">Multi-Bit Quantum-Inspired Dynamics in Nonlinear Mechanical Oscillators</p>
+                                <i class="uil uil-angle-down pub__chevron"></i>
+                            </div>
+                            <p class="pub__authors">K.T. Mahmood, M.A. Hasan, A.N.E. Faiaz, P.A. Deymier, K. Runge</p>
+                            <p class="pub__venue"><em>Journal of Applied Mechanics</em> &middot; <span class="pub__year">2026</span></p>
+                            <p class="pub__doi"><a href="https://doi.org/10.1115/1.4071523" target="_blank" rel="noopener noreferrer">DOI: 10.1115/1.4071523</a></p>
+                            <div class="pub__tags">
+                                <span class="tag tag--sm">Abstract</span>
+                            </div>
+                            <div class="pub__abstract">
+                                <p>Vibration responses from nonlinear mechanical systems exhibit rich dynamical structure that can be utilized for information encoding and processing. We demonstrate that such structures can be used to encode and manipulate information in a manner analogous to multi-qubit systems. Using a coupled mass and conical spring oscillator, we reveal that distinct harmonic segments of the nonlinear response can be projected onto modal eigenstates to form two-level elastic bit subsystems, which are analogous to qubits. These bits arise from measurable amplitudes and phase relationships across the Fourier spectrum and evolve deterministically under steady-state excitation. By combining multiple spectral segments within a single oscillator, we achieve two-bit and three-bit states that occupy four- and eight-dimensional Hilbert spaces, respectively. The time dependence of the complex modal coefficients yields intrinsic transformations that act as phase and rotation type gates. The temporal evolution of the complex modal coefficients results in phase accumulation and a rotation-like evolution within this state space. To characterize how the system moves between experimentally observed logical states at different times, we derive a Householder reflection that yields the exact Hermitian and unitary operator connecting these states. This unitary transformation is subsequently decomposed into sequences of analogous quantum gates, providing a representation of the observed modal evolution in terms of familiar multi-qubit logic primitives. This spectral encoding approach enables scalable state construction within a single mechanical platform, establishing a pathway toward room-temperature mechanical computation based on deterministic nonlinear dynamics.</p>
+                                <p class="pub__contribution"><strong>Your contribution:</strong> Contributed to the system design and interpretation pipeline linking nonlinear mechanical response to multi-bit state operations.</p>
+                                <div class="pub__figures">
+                                    <figure class="pub__figure">
+                                        <img src="assets/img/Multi_Bit.png" alt="Multi-bit quantum-inspired dynamics figure">
+                                    </figure>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pub__item" role="button" tabindex="0" aria-expanded="false" data-topic="quantum">
+                        <span class="pub__num">3</span>
+                        <div class="pub__body">
+                            <div class="pub__header">
+                                <p class="pub__title">Experimental Realization of Logical Elastic Bits as Qubit Analogues in a Nonlinear Oscillator</p>
+                                <i class="uil uil-angle-down pub__chevron"></i>
+                            </div>
+                            <p class="pub__authors">K.T. Mahmood, A.N.E. Faiaz, M.A. Hasan, P.A. Deymier, K. Runge, J.A. Levine</p>
+                            <p class="pub__venue"><em>Scientific Reports</em> (Nature Portfolio) &middot; <span class="pub__year">2025</span></p>
+                            <p class="pub__doi"><a href="https://doi.org/10.1038/s41598-025-33387-8" target="_blank" rel="noopener noreferrer">DOI: 10.1038/s41598-025-33387-8</a></p>
+                            <div class="pub__tags">
+                                <span class="tag tag--sm">Abstract</span>
+                            </div>
+                            <div class="pub__abstract">
+                                <p>Nonlinear mechanical oscillators can emulate qubit analogue algebra by leveraging multiple harmonics of large‑amplitude vibrations. We realize a logical elastic bit—a room temperature mechanical analogue of a qubit—in a two‑mass oscillator joined by a conical spring whose graded stiffness generates a robust sequence of phase‑coherent harmonics. From time‑series velocity measurements, a Fourier–projection maps the response onto the complete space of in‑phase and out‑of‑phase eigenvectors. The resulting complex coefficients define a Bloch‑sphere representation in which classical superpositions are directly controllable. Moreover, we gain more control over the coefficients by pairing the Fourier harmonics in different orders. When the paired Fourier components share a frequency, the coefficients are independent of time, producing tunable states that can serve as phase-defined memory. Pairing distinct harmonics introduces a beat frequency that drives deterministic precession of the Bloch vector, realizing single‑bit rotations (e.g., Pauli‑X and Hadamard analogues) without the need of additional external input, with time as the gate clock. By splitting the spectrum into blocks, a single resonator can host several elastic bits at once. The Hilbert space grows with the number of blocks while the hardware stays the same, allowing scalable architectures that show classical non-separable correlations. A linear mass-spring model yields closed‑form eigenfrequencies and Bloch‑angle formulas that overlay measured trajectories across resonance and provide design rules for state initialization and gate timing. All operations occur at ambient conditions and require no feedback or cryogenics, establishing a simple, reproducible route to quantum‑inspired logic in macroscopic mechanics.</p>
+                                <p class="pub__contribution"><strong>Your contribution:</strong> Helped connect theory, nonlinear dynamics, and experimental interpretation into a publishable mechanical computing narrative.</p>
+                                <div class="pub__figures">
+                                    <figure class="pub__figure">
+                                        <img src="assets/img/Logical_Elastic_Bit.png" alt="Experimental setup image for logical elastic bit research">
+                                    </figure>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pub__item" role="button" tabindex="0" aria-expanded="false" data-topic="topology">
+                        <span class="pub__num">4</span>
+                        <div class="pub__body">
+                            <div class="pub__header">
+                                <p class="pub__title">Topological Insights from State Manipulation in a Classical Elastic System</p>
+                                <i class="uil uil-angle-down pub__chevron"></i>
+                            </div>
+                            <p class="pub__authors">K.T. Mahmood, M.A. Hasan</p>
+                            <p class="pub__venue"><em>AIP Advances</em>, 15(2) &middot; <span class="pub__year">2025</span></p>
+                            <p class="pub__doi"><a href="https://doi.org/10.1063/5.0245354" target="_blank" rel="noopener noreferrer">DOI: 10.1063/5.0245354</a></p>
+                            <div class="pub__tags">
+                                <span class="tag tag--sm">Abstract</span>
+                            </div>
+                            <div class="pub__abstract">
+                                <p>The exploration of the Berry phase in classical mechanics has opened new frontiers in understanding the dynamics of physical systems, analogous to quantum mechanics. Here, we show controlled accumulation of the Berry phase in a two-level elastic bit, which is a classical counterpart to qubits, achieved by manipulating coupled granules with external drivers. Employing the Bloch sphere representation, the paper demonstrates the manipulation of elastic bit states and the realization of quantum-analog logic gates. A key achievement is the calculation of the Berry phase for various system states, revealing insights into the system’s topological nature. Unique to this study is the use of external parameters to explore topological transitions, contrasting with traditional approaches focusing on internal system modifications. By linking the classical and quantum worlds through the Berry phase of an elastic bit, this work extends the potential applications of topological concepts in designing new materials and computational models.</p>
+                                <p class="pub__contribution"><strong>Your contribution:</strong> Led the interpretation of how state-space trajectories reveal mechanically observable topological phenomena.</p>
+                                <div class="pub__figures">
+                                    <figure class="pub__figure">
+                                        <img src="assets/img/Topological_Insights.png" alt="Representative mechanics figure for topological state manipulation">
+                                    </figure>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="pub__item" role="button" tabindex="0" aria-expanded="false" data-topic="quantum">
+                        <span class="pub__num">6</span>
+                        <div class="pub__body">
+                            <div class="pub__header">
+                                <p class="pub__title">Experimental Demonstration of Classical Analogous Time-Dependent Superposition of States</p>
+                                <i class="uil uil-angle-down pub__chevron"></i>
+                            </div>
+                            <p class="pub__authors">K.T. Mahmood, M.A. Hasan</p>
+                            <p class="pub__venue"><em>Scientific Reports</em> (Nature Portfolio), 12(1), 22580 &middot; <span class="pub__year">2022</span></p>
+                            <p class="pub__doi"><a href="https://doi.org/10.1038/s41598-022-27239-y" target="_blank" rel="noopener noreferrer">DOI: 10.1038/s41598-022-27239-y</a></p>
+                            <div class="pub__tags">
+                                <span class="tag tag--sm">Abstract</span>
+                            </div>
+                            <div class="pub__abstract">
+                                <p>One of the quantum theory concepts on which quantum information processing stands is superposition. Here we provide experimental evidence for the existence of classical analogues to the coherent superposition of energy states, which is made possible by the Hertz-type nonlinearity of the granules together with the external driving field. The granules’ nonlinear vibrations are projected into the linear modes of vibration, which depend on one another through the phase and form a coherent superposition. We show that the amplitudes of the coherent states form the components of a state vector that spans a two-dimensional Hilbert space, and time enables the system to span its Hilbert space parametrically. Thus, the superposition of states can be exploited in two-state quantum-like computations without decoherence and wave function collapse. Finally, we demonstrate the experimental realization of applying a reversible Hadamard gate to a pure base state that brings the state into a superposition.</p>
+                                <p class="pub__contribution"><strong>Your contribution:</strong> Established one of the early experimental demonstrations that made the later logical and multi-bit extensions possible.</p>
+                                <div class="pub__figures">
+                                    <figure class="pub__figure">
+                                        <img src="assets/img/Experimental_Demnstration_of_Classical.png" alt="Placeholder research figure for time-dependent superposition paper">
+                                    </figure>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
-            </section>
 
-            <!--==================== CONTACT ME ====================-->
-            <section class="contact section" id="contact">
-                <h2 class="section__title">Contact Me</h2>
-                <span class="section__subtitle">Get in touch</span>
+                <div class="pub__scholar-btn">
+                    <a href="https://scholar.google.com/citations?user=1GvXCO8AAAAJ&hl=en" target="_blank" class="btn btn--primary">
+                        <i class="uil uil-graduation-cap"></i> View All on Google Scholar
+                    </a>
+                </div>
+            </div>
+        </section>
 
-                <div class="contact__container container grid">
-                    <div>
-                        <div class="contact__information">
-                            <i class="uil uil-phone contact__icon"></i>
+        <!--==================== CONFERENCES ====================-->
+        <section class="conferences section" id="conferences">
+            <div class="container">
+                <h2 class="section__title">Conference Presentations</h2>
+                <span class="section__subtitle">Proceedings &amp; Talks</span>
 
-                            <div>
-                                <a href="tel:+1-313-605-3754">
-                                <h3 class="contact__title">Call Me</h3>
-                                <span class="contact__subtitle">+1 313-296-8313</span>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="contact__information">
-                            <i class="uil uil-envelope contact__icon"></i>
+                <div class="conf__list">
 
-                            <div>
-                                <a href="mailto:kshifat97@gmail.com">
-                                <h3 class="contact__title">Email</h3>
-                                <span class="contact__subtitle">kshifat97@gmail.com</span>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="contact__information">
-                            <i class="uil uil-map-marker contact__icon"></i>
-
-                            <div>
-                                <a href="https://maps.app.goo.gl/Rzyi9k5T9Nkva73z9">
-                                <h3 class="contact__title">Location</h3>
-                                <span class="contact__subtitle">4294 Saint Antoine St, Detroit, Michigan-48201, USA</span>
-                                </a>
+                    <div class="conf__item">
+                        <span class="conf__year">2026</span>
+                        <div class="conf__body">
+                            <p class="conf__name">APS March Meeting, Denver, Colorado, USA</p>
+                            <div class="conf__badges">
+                                <span class="badge badge--talk">Technical Talk</span>
                             </div>
                         </div>
                     </div>
-                    <form method="post" action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSd36e3TGsuWBnrpDiI5UVAbv4HK0CXRfqu5t9-2iuZ-hyxQrA/formResponse" class="contact__form grid">
-                        <div class="contact__inputs grid">
-                            <div class="contact__content">
-                                <label for="Name" class="contact__label">Name</label>
-                                <input name="entry.695555210" type="text" class="contact__input" id="Name">
-                            </div>
-                            <div class="contact__content">
-                                <label for="Email" class="contact__label">Email</label>
-                                <input name="entry.1649250009" type="email" class="contact__input" id="Email">
+
+                    <div class="conf__item">
+                        <span class="conf__year">2025</span>
+                        <div class="conf__body">
+                            <p class="conf__name">188th Meeting of the Acoustical Society of America, New Orleans, Louisiana, USA</p>
+                            <div class="conf__badges">
+                                <span class="badge badge--talk">Technical Talk</span>
                             </div>
                         </div>
-                        <div class="contact__content">
-                            <label for="Message" class="contact__label">Subject</label>
-                            <input name="entry.1017129736" type="text" class="contact__input">
+                    </div>
+
+                    <div class="conf__item">
+                        <span class="conf__year">2024</span>
+                        <div class="conf__body">
+                            <p class="conf__name">International Mechanical Engineering Congress &amp; Exposition (IMECE), Portland, Oregon, USA</p>
+                            <div class="conf__badges">
+                                <span class="badge badge--talk">Technical Talk</span>
+                                <span class="badge badge--poster">Poster</span>
+                            </div>
                         </div>
-                        <div class="contact__content">
-                            <label for="" class="contact__label" id="Message">Message</label>
-                            <textarea name="entry.452453645" id="" cols="0" rows="7" class="contact__input"></textarea>
+                    </div>
+
+                    <div class="conf__item">
+                        <span class="conf__year">2024</span>
+                        <div class="conf__body">
+                            <p class="conf__name">APS Eastern Great Lakes Fall Meeting, Marietta College, Marietta, Ohio, USA</p>
+                            <div class="conf__badges">
+                                <span class="badge badge--talk">Technical Talk</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="conf__item">
+                        <span class="conf__year">2024</span>
+                        <div class="conf__body">
+                            <p class="conf__name">APS Eastern Great Lakes Spring Meeting, Kettering University, Flint, Michigan, USA</p>
+                            <div class="conf__badges">
+                                <span class="badge badge--talk">Technical Talk</span>
+                                <span class="badge badge--poster">Poster</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="conf__item">
+                        <span class="conf__year">2024</span>
+                        <div class="conf__body">
+                            <p class="conf__name">APS March Meeting, Minneapolis, USA</p>
+                            <div class="conf__badges">
+                                <span class="badge badge--talk">Technical Talk (Online)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="conf__item">
+                        <span class="conf__year">2024</span>
+                        <div class="conf__body">
+                            <p class="conf__name">187th Meeting of the Acoustical Society of America</p>
+                            <div class="conf__badges">
+                                <span class="badge badge--talk">Technical Talk (Online)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="conf__item">
+                        <span class="conf__year">2024</span>
+                        <div class="conf__body">
+                            <p class="conf__name">Graduate Research Symposium, Wayne State University</p>
+                            <div class="conf__badges">
+                                <span class="badge badge--poster">Poster</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="conf__item">
+                        <span class="conf__year">2023</span>
+                        <div class="conf__body">
+                            <p class="conf__name">International Conference on Smart Mobility and Vehicle Electrification, Lawrence Technological University, Detroit, Michigan, USA</p>
+                            <div class="conf__badges">
+                                <span class="badge badge--talk">Technical Talk</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="conf__item">
+                        <span class="conf__year">2023</span>
+                        <div class="conf__body">
+                            <p class="conf__name">184th Meeting of the Acoustical Society of America, Chicago, Illinois, USA</p>
+                            <div class="conf__badges">
+                                <span class="badge badge--talk">Technical Talk</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!--==================== TEACHING ====================-->
+        <section class="teaching section" id="teaching">
+            <div class="container">
+                <h2 class="section__title">Teaching &amp; Mentoring</h2>
+                <span class="section__subtitle">Academic Service &amp; Professional Experience</span>
+
+                <div class="timeline">
+
+                    <div class="timeline__item">
+                        <div class="timeline__dot"></div>
+                        <div class="timeline__card">
+                            <div class="timeline__header">
+                                <div>
+                                    <h3 class="timeline__title">Graduate Teaching Assistant</h3>
+                                    <span class="timeline__org">Wayne State University &mdash; Detroit, MI</span>
+                                </div>
+                                <span class="timeline__date">Jan 2022 &ndash; May 2024</span>
+                            </div>
+                            <div class="timeline__meta">
+                                <span class="tag tag--sm">ME 3400: Dynamics I</span>
+                                <span class="tag tag--sm">ME 5000: Engineering Analysis</span>
+                            </div>
+                            <ul class="timeline__list">
+                                <li>Served as <strong>Course Instructor</strong>, delivering lectures, designing problem sets, and evaluating student performance for undergraduate and graduate cohorts.</li>
+                                <li>Provided lab section support, grading, feedback, and individualized student mentoring; assisted in exam administration.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="timeline__item">
+                        <div class="timeline__dot"></div>
+                        <div class="timeline__card">
+                            <div class="timeline__header">
+                                <div>
+                                    <h3 class="timeline__title">Research Experience Mentor — NSF NewFoS REM Program</h3>
+                                    <span class="timeline__org">New Frontiers of Sound (NewFoS) &mdash; NSF Project</span>
+                                </div>
+                                <span class="timeline__date">Jan 2023 &ndash; May 2025</span>
+                            </div>
+                            <ul class="timeline__list">
+                                <li>Mentored and supervised <strong>8 undergraduate researchers</strong> through the NSF NewFoS Research Experience and Mentoring program in nonlinear and topological acoustics.</li>
+                                <li>Trained students in elastic waveguide systems: mode identification, dispersion characterization, and phase–amplitude mapping for classical analogues of quantum information states.</li>
+                                <li>Guided independent projects culminating in poster presentations at institutional and national conferences.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="timeline__item">
+                        <div class="timeline__dot"></div>
+                        <div class="timeline__card">
+                            <div class="timeline__header">
+                                <div>
+                                    <h3 class="timeline__title">Engineer Trainee (Intern)</h3>
+                                    <span class="timeline__org">BSRM Steel Limited &mdash; Chattogram, Bangladesh</span>
+                                </div>
+                                <span class="timeline__date">Jan 2020 &ndash; Feb 2020</span>
+                            </div>
+                            <ul class="timeline__list">
+                                <li>Gained hands-on experience in industrial steel-rod manufacturing: billet reheating, rolling, and controlled cooling for construction-grade reinforcement bars.</li>
+                                <li>Assisted in mechanical maintenance of re-rolling mill equipment: inspections, alignment, lubrication, and fault diagnostics.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!--==================== BLOGS ====================-->
+        <section class="blogs section" id="blogs">
+            <div class="container">
+                <h2 class="section__title">Blogs</h2>
+                <span class="section__subtitle">Writing, Ideas &amp; Research Notes</span>
+
+                <div class="blogs__grid" role="tablist" aria-label="Blog posts">
+                    <button class="blog__card" type="button" data-blog-target="blog-1" aria-selected="false">
+                        <span class="blog__card-type">Research Note</span>
+                        <h3 class="blog__card-title">What Does It Take to Build a Quantum Inspired Computer? A 1990s Idea Is Guiding New Research Today</h3>
+                        <p class="blog__card-excerpt">Revisiting DiVincenzo’s criteria through the lens of nonlinear mechanical vibrations offers intriguing insights. The interplay of elastic bits and topology highlights a robust classical pathway for qubit-like information processing. This exploration not only deepens our understanding of information theory but also paves the way for innovative applications in quantum computing.</p>
+                    </button>
+
+                    <button class="blog__card" type="button" data-blog-target="blog-2" aria-selected="false">
+                        <span class="blog__card-type">Explainer</span>
+                        <h3 class="blog__card-title">How Vibrations Reveal Topological Physics in Classical Mechanical Systems</h3>
+                        <p class="blog__card-excerpt">Exploring topology through classical mechanical vibrations reveals how Berry phase, symmetry, and structured state evolution can emerge in accessible macroscopic systems. This perspective shows that robust topological physics is not confined to quantum materials, but can also guide new ideas in classical information processing and wave-based engineering.</p>
+                    </button>
+
+                </div>
+
+                <div class="blogs__viewer" id="blogs-viewer" aria-hidden="true">
+                    <article class="blog__feature" id="blog-1" data-blog-panel hidden>
+                        <button class="blog__close" type="button" data-blog-close aria-label="Close blog preview">
+                            <i class="uil uil-times"></i>
+                        </button>
+                        <div class="blog__feature-media">
+                            <video class="blog__feature-video" controls autoplay loop muted playsinline preload="metadata">
+                                <source src="assets/img/Presentation1.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="blog__feature-content">
+                            <span class="blog__feature-kicker">Featured Post</span>
+                            <h3 class="blog__feature-title">What Does It Take to Build a Quantum Inspired Computer? A 1990s Idea Is Guiding New Research Today</h3>
+                            <p class="blog__feature-meta">Quantum-inspired computing, elastic bits, topology</p>
+                            <p class="blog__feature-summary">
+                                When quantum computing first emerged in the late 20th century, scientists were faced with a deceptively simple question: What does it actually take to build a working quantum computer? Classical computers had a straightforward answer. Their basic units of information bits are handled by transistors that reliably switch between 0 and 1. But quantum computers rely on qubits, tiny two-level systems that can exist in 0, or 1, or a combination of both at once. These delicate states can also become entangled, linking different qubits in ways that allow quantum computers to outperform even the fastest supercomputers for certain tasks.
+                            </p>
+                            <p class="blog__feature-summary">
+                                The challenge, however, is that qubits are extremely fragile. They lose their quantumness quickly, they require precise control, and they are notoriously difficult to scale into large, interconnected machines. To bring order to this new field, physicist David P. DiVincenzo proposed a simple but powerful checklist in 1996, now famously known as DiVincenzo’s criteria. His work identified the essential capabilities any real quantum computer must have. These criteria became a common language for the community: whether the platform used superconducting circuits, trapped ions, photon pulses, or spins in semiconductors, researchers would ask the same question: does it satisfy DiVincenzo’s requirements?
+                            </p>
+                            <p class="blog__feature-summary">
+                                At their heart, the criteria revolve around three big ideas. First, a functional device needs well-defined and controllable qubits that can be prepared, changed, and measured on demand. Second, the information stored in a qubit must survive long enough to perform calculations, requiring long-lived coherence. And third, a true quantum computer must be able to scale, hosting many qubits that interact in predictable and useful ways. These ideas helped transform quantum computing from a theoretical possibility into a global race to build practical machines. But they have also inspired a deeper question: Do these requirements apply only to quantum systems, or can we use them to benchmark new kinds of classical technologies that behave in quantum-like ways?
+                            </p>
+                            <h4 class="blog__feature-section-title">How a Mechanical Elastic-Bit Platform Meets Those Same Requirements</h4>
+                            <p class="blog__feature-summary">
+                                The core idea behind this work is the creation of an elastic bit, a qubit-like state that forms not from quantum particles but from the organized vibrations of a classical nonlinear mechanical system. When this kind of system is driven, it does not vibrate at just one frequency. Instead, it produces many harmonics, multiple tones whose amplitudes and phases change together in a structured and predictable way. By comparing how these harmonics align with the system’s two fundamental movement patterns, one where the components move together and one where they move in opposition, we can define a two-level state. This two-level mapping is what we call an elastic bit: a stable and controllable information unit stored in the rhythm of the system’s vibration.
+                            </p>
+                            <p class="blog__feature-summary">
+                                This approach naturally mirrors several of DiVincenzo’s original requirements. To create a starting state, we simply choose a set of driving conditions that force the nonlinear elastic network into a repeatable vibration pattern. Once active, the harmonics maintain steady phase relationships over long durations, allowing the encoded information to remain stable. The elastic bit can then be steered by adjusting how energy is fed into the network, changing the drive amplitude, its frequency, or how strongly different modes interact. These adjustments move the bit’s state along predictable paths, just like quantum gates move a qubit around the Bloch sphere. Impressively, the same mathematical tools that describe quantum operations, such as Householder reflections, also describe the transformations we observe in this classical system.
+                            </p>
+                            <p class="blog__feature-summary">
+                                A key requirement of any qubit platform is the ability to measure individual states without disturbing the rest of the system. The elastic-bit platform meets this requirement naturally because each bit corresponds to a distinct harmonic in the vibration spectrum. This means we can measure the bit’s amplitude and phase by observing only that harmonic, without affecting those at other frequencies. The result is a clean and selective readout method, very similar to how quantum systems measure qubits one at a time.
+                            </p>
+                            <p class="blog__feature-summary">
+                                All of these capabilities suggest something powerful: even though the elastic bit is entirely classical, it obeys many of the same structural rules as a real qubit. It has a controlled starting state, it evolves coherently, it can be manipulated through gate-like operations, and it can be measured independently of other bits. From the perspective of quantum information science, this means the elastic bit can act as a practical testbed for exploring quantum-style logic, geometric phase control, and gate design, without the fragility, cost, or temperature constraints of true quantum systems. In this way, classical nonlinear networks can help develop, prototype, and visualize concepts that are central to quantum technologies, offering a bridge between the quantum world and real-world experimental platforms.
+                            </p>
+                            <h4 class="blog__feature-section-title">Topological Structure and Its Role in Elastic-Bit Operations</h4>
+                            <p class="blog__feature-summary">
+                                Topology, in physics, refers to features of a system that stay the same even when the system is bent, stretched, or smoothly deformed. These features are not sensitive to small imperfections or noise, which makes topological effects extremely robust. In quantum materials, topology protects special states that can carry information without being easily disturbed, an idea that is central to topological quantum computing.
+                            </p>
+                            <p class="blog__feature-summary">
+                                In the elastic-bit platform, topology shows up in the way the system responds when external drive settings are slowly cycled. As the controls move the elastic bit around on the Bloch sphere, the state does more than simply trace a path, it accumulates a geometric phase that depends only on the area enclosed by that path. This is a topological effect: two very different paths can give the same result if they sweep out the same area, and no matter how complicated the motion is, if it encloses zero area, the phase remains trivial. Essentially, the system behaves like a switch that flips only when the control loop crosses a topologically meaningful threshold.
+                            </p>
+                            <p class="blog__feature-summary">
+                                This topological phase is directly imprinted onto the elastic bit, because the bit’s state is defined by the relative amplitude and phase of the network’s vibrations. As the control loop wraps around different portions of the Bloch sphere, the bit acquires a geometric shift that depends only on the global structure of that loop. In experiments, this shift reveals itself through clear physical signatures: energy concentrating onto one part of the system, or the phase difference between channels pausing at fixed points. These behaviors indicate that the system has undergone a topologically nontrivial evolution.
+                            </p>
+                            <p class="blog__feature-summary">
+                                The advantage of this topological layer is reliability. Topological operations do not depend on perfect timing or precise drive strength. Small changes in experimental conditions or tiny imperfections in the mechanical network do not affect the final outcome. Only a major change to the overall path, one that alters the area it covers, can modify the geometric phase. This resilience strengthens the entire elastic-bit architecture, allowing it to perform robust, repeatable transformations that mirror the protected operations sought in topological quantum computing. Even though the system is classical, it demonstrates that topological ideas can enhance information processing far beyond the quantum realm alone.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="blog__feature" id="blog-2" data-blog-panel hidden>
+                        <button class="blog__close" type="button" data-blog-close aria-label="Close blog preview">
+                            <i class="uil uil-times"></i>
+                        </button>
+                        <div class="blog__feature-media">
+                            <img src="assets/img/Logical_Elastic_Bit.png" alt="Logical elastic bit preview image" class="blog__feature-image">
+                        </div>
+                        <div class="blog__feature-content">
+                            <span class="blog__feature-kicker">Explainer</span>
+                            <h3 class="blog__feature-title">How Vibrations Reveal Topological Physics in Classical Mechanical Systems</h3>
+                            <p class="blog__feature-meta">Topology, Berry phase, classical mechanics</p>
+                            <p class="blog__feature-summary">
+                                For decades, topology has helped physicists explain why some systems behave in surprisingly robust ways. It has shaped how researchers think about quantum matter, protected edge states, and geometric phases that depend not on local details, but on the overall path a system takes. Now, a growing body of work is showing that some of these same ideas can appear in an unexpected place: ordinary mechanical systems made of masses, springs, and vibrations.
+                            </p>
+                            <p class="blog__feature-summary">
+                                Recent studies in elastic and nonlinear mechanical systems suggest that topology is not limited to exotic materials or cryogenic quantum devices. Instead, carefully designed classical structures can display Berry phases, Bloch-sphere trajectories, symmetry-protected phase behavior, and even logic-gate-like state transformations. In these systems, the key ingredients are not electrons or quantum wavefunctions, but measurable vibration amplitudes and phases.
+                            </p>
+                            <p class="blog__feature-summary">
+                                One important advance came from experiments showing that nonlinear granular systems can support classical analogues of coherent superposition. In that work, the vibration of two driven granules was projected onto a two-dimensional state space, allowing the motion to be described in a way that resembles a quantum two-state system. The result was not a true qubit, but a classical platform in which superposition-like states could be created, observed directly, and even manipulated through reversible gate-like operations such as a Hadamard analogue.
+                            </p>
+                            <p class="blog__feature-summary">
+                                That early result opened the door to a broader question: if classical mechanical motion can be organized into a two-state representation, can it also carry the geometric and topological structure that makes quantum-inspired systems so interesting? Later work answered that question by showing controlled accumulation of Berry phase in a two-level elastic bit, a classical counterpart to a qubit formed from coupled granules. Using external driving conditions, researchers traced the state on a Bloch sphere and connected the evolution of vibration states to topological phase behavior.
+                            </p>
+                            <p class="blog__feature-summary">
+                                The idea was pushed further in a study of strongly nonlinear classical dynamics, where Berry phase was shown to emerge over time without changing the system’s internal configuration or external loading conditions. Instead of manually steering the structure through different parameter settings, the system’s gauge-related quantities evolved naturally in time, producing phase accumulation through its own nonlinear motion. That work also reported something especially striking: multiple nontrivial Berry-phase signatures appearing at different frequencies in a classical system, rather than a single isolated topological resonance.
+                            </p>
+                            <p class="blog__feature-summary">
+                                In parallel, the field has expanded beyond granular contacts to simpler and more practical oscillator platforms. A recent study demonstrated logical elastic bits in a two-mass system connected by a conical spring. Because the spring’s graded stiffness generates a rich harmonic spectrum, the measured motion can be projected onto in-phase and out-of-phase eigenvectors and represented on a Bloch sphere. By selecting and pairing Fourier harmonics, the system can realize controllable static states, deterministic precession, and gate-like operations, all at room temperature and without the need for cryogenics or additional feedback. The same work suggests that multiple logical bits may be hosted in a single resonator by partitioning the spectrum into blocks, offering an intriguing route toward scalable quantum-inspired architectures built from classical hardware.
+                            </p>
+                            <p class="blog__feature-summary">
+                                The topological picture becomes even clearer in recent work on elastic lattices. There, researchers developed a compact Hilbert-space framework for one-dimensional mass-spring chains, mapping intracell motion onto the Bloch sphere. In diatomic lattices, inversion symmetry locks the relative phase between modal components and quantizes the Zak phase. In triatomic lattices, breaking inversion symmetry removes that quantization while leaving the spectrum’s origin unchanged. The framework also shows how state evolution in these lattices can be interpreted geometrically, with mode transformations appearing as rotations on the Bloch sphere and spatiotemporal modulation generating open-path geometric phases through Floquet-like trajectories.
+                            </p>
+                            <p class="blog__feature-summary">
+                                Taken together, these results point to a larger shift in how mechanical motion is understood. Vibrations are no longer just signals to be damped, controlled, or avoided. In the right structure, they can act as information-bearing states with geometry, phase, and topological organization. That matters because classical mechanical systems are accessible. They are macroscopic, measurable, and comparatively easy to build and test. Unlike fragile quantum devices, they can often operate at ambient conditions while still reproducing parts of the mathematical structure that makes topological and quantum-inspired systems powerful.
+                            </p>
+                            <p class="blog__feature-summary">
+                                This does not mean a vibrating spring is a quantum computer. These are classical analogues, not replacements for genuine quantum hardware. But that distinction does not make the work less important. In some ways, it makes it more useful. Classical topological mechanical systems offer a visible and tunable testbed for ideas that are often difficult to probe directly in microscopic settings. They may help researchers study state preparation, phase control, robustness, and logic-like evolution in platforms that are cheaper, simpler, and easier to manipulate.
+                            </p>
+                            <p class="blog__feature-summary">
+                                The broader promise is not just technological. It is conceptual. These studies suggest that topology is not tied to one material class, one length scale, or one branch of physics. It is a deeper organizing principle that can emerge wherever phases, symmetries, and structured state evolution come together. In that sense, the hum of a mechanical oscillator may be revealing something profound: topological physics is not confined to the quantum world. It can also be heard in the language of motion itself.
+                            </p>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!--==================== AWARDS & SERVICES ====================-->
+        <section class="awards section" id="awards">
+            <div class="container">
+                <h2 class="section__title">Awards &amp; Academic Service</h2>
+                <span class="section__subtitle">Recognition &amp; Contributions</span>
+
+                <div class="awards__grid">
+
+                    <div class="awards__col">
+                        <h3 class="awards__col-title">
+                            <i class="uil uil-trophy"></i> Awards &amp; Grants
+                        </h3>
+                        <div class="award__item">
+                            <p class="award__name">Graduate Student Professional Travel Grant</p>
+                            <p class="award__org">Wayne State University</p>
+                            <span class="award__year">2024</span>
+                        </div>
+                    </div>
+
+                    <div class="awards__col">
+                        <h3 class="awards__col-title">
+                            <i class="uil uil-file-check-alt"></i> Journal Reviewer
+                        </h3>
+                        <div class="award__item">
+                            <p class="award__name">Scientific Reports, Nature Portfolio</p>
+                            <span class="award__year">Jan 2024 &ndash; Present</span>
+                        </div>
+                        <div class="award__item">
+                            <p class="award__name">Nonlinear Analysis, Elsevier</p>
+                            <span class="award__year">May 2023 &ndash; Present</span>
+                        </div>
+                        <div class="award__item">
+                            <p class="award__name">Journal of Vibration &amp; Acoustics, ASME</p>
+                            <span class="award__year">Jan 2025 &ndash; Present</span>
+                        </div>
+                    </div>
+
+                    <div class="awards__col">
+                        <h3 class="awards__col-title">
+                            <i class="uil uil-users-alt"></i> Memberships
+                        </h3>
+                        <div class="award__item">
+                            <p class="award__name">Student Member, ASME</p>
+                            <span class="award__year">Jun 2024 &ndash; Present</span>
+                        </div>
+                        <div class="award__item">
+                            <p class="award__name">Student Member, American Physical Society (APS)</p>
+                            <span class="award__year">Jul 2023 &ndash; Present</span>
+                        </div>
+                        <div class="award__item">
+                            <p class="award__name">Member, Acoustical Society of America (ASA)</p>
+                            <span class="award__year">Jan 2023 &ndash; Present</span>
+                        </div>
+                        <div class="award__item">
+                            <p class="award__name">Executive Member, BUET Robotics Society</p>
+                            <span class="award__year">Feb 2016 &ndash; Jul 2020</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!--==================== CONTACT ====================-->
+        <section class="contact section" id="contact">
+            <div class="container">
+                <h2 class="section__title">Contact</h2>
+                <span class="section__subtitle">Get in Touch</span>
+
+                <div class="contact__container">
+                    <div class="contact__info">
+                        <h3>Let's Connect</h3>
+                        <p>Open to research collaborations, academic opportunities, and discussions about topological mechanics and quantum-analogous systems.</p>
+
+                        <div class="contact__details">
+                            <div class="contact__detail">
+                                <i class="uil uil-envelope"></i>
+                                <a href="mailto:kazi.mahmood@wayne.edu">kazi.mahmood@wayne.edu</a>
+                            </div>
+                            <div class="contact__detail">
+                                <i class="uil uil-phone"></i>
+                                <a href="tel:+13132968313">+1 (313) 296-8313</a>
+                            </div>
+                            <div class="contact__detail">
+                                <i class="uil uil-map-marker"></i>
+                                <span>Department of Mechanical Engineering<br>Wayne State University, Detroit, MI</span>
+                            </div>
                         </div>
 
-                        <div>
-                            <button type="submit" class="button button--flex">
-                                Send Message
-                                <i class="uil uil-message button__icon"></i>
-                            </button>
+                        <div class="contact__social">
+                            <a href="https://www.linkedin.com/in/kazitahsin/" target="_blank" class="contact__social-link">
+                                <i class="uil uil-linkedin-alt"></i> LinkedIn
+                            </a>
+                            <a href="https://scholar.google.com/citations?user=1GvXCO8AAAAJ&hl=en" target="_blank" class="contact__social-link">
+                                <i class="uil uil-graduation-cap"></i> Google Scholar
+                            </a>
                         </div>
+                    </div>
+
+                    <form method="post" action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSd36e3TGsuWBnrpDiI5UVAbv4HK0CXRfqu5t9-2iuZ-hyxQrA/formResponse" class="contact__form">
+                        <div class="form__group">
+                            <label for="Name">Name</label>
+                            <input name="entry.695555210" type="text" id="Name" placeholder="Your name" required>
+                        </div>
+                        <div class="form__group">
+                            <label for="Email">Email</label>
+                            <input name="entry.1649250009" type="email" id="Email" placeholder="your@email.com" required>
+                        </div>
+                        <div class="form__group">
+                            <label for="Subject">Subject</label>
+                            <input name="entry.1017129736" type="text" id="Subject" placeholder="Subject">
+                        </div>
+                        <div class="form__group">
+                            <label for="Message">Message</label>
+                            <textarea name="entry.452453645" id="Message" rows="6" placeholder="Your message..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn--primary">
+                            Send Message <i class="uil uil-message"></i>
+                        </button>
                     </form>
                 </div>
-            </section>
-        </main>
-
-        <!--==================== FOOTER ====================-->
-        <footer class="footer">
-            <div class="footer__bg">
-                <div class="footer__container container grid">
-                    <div>
-                        <h1 class="footer__title">Tahsin</h1>
-                        <span class="footer__subtitle">Mechanical Engineer</span>
-                    </div>
-
-                    <ul class="footer__links">
-                        <li>
-                            <a href="#services" class="footer__link">Projects</a>
-                        </li>
-                        <li>
-                            <a href="#portfolio" class="footer__link">Portfolio</a>
-                        </li>
-                        <li>
-                            <a href="#contact" class="footer__link">Contact</a>
-                        </li>
-                    </ul>
-
-                <div class="footer__socials">
-                    <a href="" target="blank" class="footer__social">
-                        <i class="uil uil-facebook-f"></i>
-                    </a>
-                    <a href="" target="blank" class="footer__social">
-                        <i class="uil uil-instagram"></i>
-                    </a>
-                    <a href="" target="blank" class="footer__social">
-                        <i class="uil uil-twitter-alt"></i>
-                    </a>
-                </div>
-
             </div>
-            
-        </footer>
-        
-        <!--==================== SCROLL TOP ====================-->
-        <a href="#" class="scrollup" id="scroll-up">
-            <i class="uil uil-arrow-up scrollup__icon"></i>
-        </a>
-         <!--==================== SWIPER JS ====================-->
-            <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+        </section>
 
-         <!--==================== MAIN JS ====================-->
-           <script src="assets/js/main.js"></script>
+    </main>
 
-    </body>
+    <!--==================== FOOTER ====================-->
+    <footer class="footer">
+        <div class="footer__container container">
+            <div class="footer__brand">
+                <h2>Kazi Tahsin Mahmood</h2>
+                <p>Ph.D. &middot; Mechanical Engineering &middot; Wayne State University</p>
+            </div>
+            <div class="footer__links">
+                <a href="#about">About</a>
+                <a href="#publications">Publications</a>
+                <a href="#conferences">Conferences</a>
+                <a href="#research">Research</a>
+                <a href="#skills">Skills</a>
+                <a href="#blogs">Blogs</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <p class="footer__copy">&copy; 2026 Kazi Tahsin Mahmood. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!--==================== SCROLL TOP ====================-->
+    <a href="#" class="scrollup" id="scroll-up">
+        <i class="uil uil-arrow-up"></i>
+    </a>
+
+    <script src="assets/js/main.js"></script>
+</body>
 </html>
