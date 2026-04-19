@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,9 +7,11 @@
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="icon" href="assets/img/logo_ico.ico">
     <title>Kazi Tahsin Mahmood | Ph.D. Mechanical Engineering</title>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 <body>
 
+    <div id="scroll-progress" aria-hidden="true"></div>
     <!--==================== HEADER ====================-->
     <header class="header" id="header">
         <nav class="nav container">
@@ -21,8 +23,9 @@
                     <li><a href="#publications" class="nav__link">Publications</a></li>
                     <li><a href="#conferences"  class="nav__link">Conferences</a></li>
                     <li><a href="#research"     class="nav__link">Research</a></li>
-                    <li><a href="#teaching"     class="nav__link">Teaching</a></li>
-                    <li><a href="#skills"       class="nav__link">Skills</a></li>
+                    <li><a href="#teaching"    class="nav__link">Teaching</a></li>
+                    <li><a href="#experience" class="nav__link">Experience</a></li>
+                    <li><a href="#skills"      class="nav__link">Skills</a></li>
                     <li><a href="#projects"     class="nav__link">Projects</a></li>
                     <li><a href="#blogs"        class="nav__link">Blogs</a></li>
                     <li><a href="#contact"      class="nav__link">Contact</a></li>
@@ -40,11 +43,14 @@
         <!--==================== HERO ====================-->
         <section class="hero" id="home">
             <div class="hero__container container">
-                <div class="hero__bg-icons" aria-hidden="true">
-                    <span class="hero__bg-card hero__bg-card--book">Book</span>
-                    <span class="hero__bg-card hero__bg-card--journal">Journal</span>
-                    <span class="hero__bg-card hero__bg-card--news">News</span>
-                    <span class="hero__bg-card hero__bg-card--paper">Paper</span>
+                <div class="hero__science" aria-hidden="true">
+                    <span class="hero__science-orbit hero__science-orbit--lg"></span>
+                    <span class="hero__science-orbit hero__science-orbit--sm"></span>
+                    <span class="hero__science-wave hero__science-wave--top"></span>
+                    <span class="hero__science-wave hero__science-wave--bottom"></span>
+                    <span class="hero__science-node hero__science-node--left"></span>
+                    <span class="hero__science-node hero__science-node--right"></span>
+                    <span class="hero__science-grid"></span>
                 </div>
                 <div class="hero__poster">
                     <div class="hero__nameboard" aria-label="Kazi Tahsin Mahmood">
@@ -65,6 +71,11 @@
 
         <!--==================== ABOUT ====================-->
         <section class="about section" id="about">
+            <div class="section__bg-icons" aria-hidden="true">
+                <i class="uil uil-star section__bg-icon section__bg-icon--tl"></i>
+                <i class="uil uil-atom section__bg-icon section__bg-icon--tr"></i>
+                <i class="uil uil-flask section__bg-icon section__bg-icon--br"></i>
+            </div>
             <div class="container">
                 <h2 class="section__title">About Me</h2>
                 <span class="section__subtitle">Summary</span>
@@ -116,32 +127,29 @@
                         <div class="about__photo">
                             <img src="assets/img/Jakkas.jpg" alt="Kazi Tahsin Mahmood">
                         </div>
-                        <div class="about__links">
-                            <a href="https://www.linkedin.com/in/kazitahsin/" target="_blank" rel="noopener" class="profile__link profile__link--linkedin">
+                        <div class="about__links" aria-label="Profile links">
+                            <a href="https://www.linkedin.com/in/kazitahsin/" target="_blank" rel="noopener" class="profile__link profile__link--linkedin" aria-label="LinkedIn">
                                 <svg class="profile__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                                     <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
                                 </svg>
-                                <span>LinkedIn</span>
                             </a>
-                            <a href="https://scholar.google.com/citations?user=1GvXCO8AAAAJ&hl=en" target="_blank" rel="noopener" class="profile__link profile__link--scholar">
+                            <a href="https://scholar.google.com/citations?user=1GvXCO8AAAAJ&hl=en" target="_blank" rel="noopener" class="profile__link profile__link--scholar" aria-label="Google Scholar">
                                 <svg class="profile__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                                     <path d="M12 24a7 7 0 110-14 7 7 0 010 14zm0-24L0 9.5l4.838 3.94A8 8 0 0112 10a8 8 0 017.162 3.44L24 9.5 12 0z"/>
                                 </svg>
-                                <span>Google Scholar</span>
                             </a>
-                            <a href="https://orcid.org/YOUR-ORCID-ID" target="_blank" rel="noopener" class="profile__link profile__link--orcid">
+                            <a href="https://orcid.org/0000-0001-9680-7252" target="_blank" rel="noopener" class="profile__link profile__link--orcid" aria-label="ORCID">
                                 <svg class="profile__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                                     <path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 01-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.025-5.325 5.025h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 4.022-2.484 4.022-3.722 0-1.253-.75-3.722-4.022-3.722H11.653z"/>
                                 </svg>
-                                <span>ORCID</span>
-                            </a>
-                            <a href="assets/pdf/Kazi_Tahsin_Mahmood.pdf" target="_blank" rel="noopener" class="profile__link profile__link--cv" download>
-                                <svg class="profile__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                                    <path d="M5 20h14v-2H5v2zm7-18L5.33 9h3.84v4h4.66V9h3.84L12 2z"/>
-                                </svg>
-                                <span>Download CV</span>
                             </a>
                         </div>
+                        <a href="assets/pdf/Kazi_Tahsin_Mahmood.pdf" target="_blank" rel="noopener" class="profile__cv" download>
+                            <svg class="profile__icon profile__icon--cv" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path d="M6 2h8l4 4v16H6V2zm8 1.5V7h3.5L14 3.5zM8.5 11h7v1.5h-7V11zm0 3h7v1.5h-7V14zm0 3h5v1.5h-5V17z"/>
+                            </svg>
+                            <span>Curriculum Vitae</span>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -149,6 +157,11 @@
 
         <!--==================== EDUCATION ====================-->
         <section class="education section" id="education">
+            <div class="section__bg-icons" aria-hidden="true">
+                <i class="uil uil-book-open section__bg-icon section__bg-icon--tl"></i>
+                <i class="uil uil-graduation-cap section__bg-icon section__bg-icon--tr"></i>
+                <i class="uil uil-file-alt section__bg-icon section__bg-icon--br"></i>
+            </div>
             <div class="container">
                 <h2 class="section__title">Education</h2>
                 <span class="section__subtitle">Academic Credentials</span>
@@ -223,6 +236,11 @@
 
         <!--==================== SKILLS ====================-->
         <section class="skills section" id="skills">
+            <div class="section__bg-icons" aria-hidden="true">
+                <i class="uil uil-processor section__bg-icon section__bg-icon--tl"></i>
+                <i class="uil uil-bolt-alt section__bg-icon section__bg-icon--tr"></i>
+                <i class="uil uil-layers-alt section__bg-icon section__bg-icon--br"></i>
+            </div>
             <div class="container">
                 <h2 class="section__title">Technical Skills</h2>
                 <span class="section__subtitle">Tools &amp; Expertise</span>
@@ -302,6 +320,11 @@
 
         <!--==================== RESEARCH ====================-->
         <section class="research section" id="research">
+            <div class="section__bg-icons" aria-hidden="true">
+                <i class="uil uil-flask section__bg-icon section__bg-icon--tl"></i>
+                <i class="uil uil-atom section__bg-icon section__bg-icon--tr"></i>
+                <i class="uil uil-microscope section__bg-icon section__bg-icon--br"></i>
+            </div>
             <div class="container">
                 <h2 class="section__title">Research Experience</h2>
                 <span class="section__subtitle">Academic &amp; Collaborative Projects</span>
@@ -335,29 +358,21 @@
                             </div>
                             <ul class="timeline__list">
                                 <li>
-                                    <strong>Elastic Bit:</strong> Developed a classical analog of a quantum bit in granular bead networks
-                                    using asymptotic perturbation techniques. Designed experimental setup achieving decoherence-free
-                                    superposition of states for potential data transmission.
+                                    <strong>Elastic Bit:</strong> Developed a classical two-state information unit in a nonlinear granular network, where harmonic amplitudes and phases map to a qubit-like Bloch-sphere state. Combined perturbation analysis and experiment to validate stable room-temperature superposition-like behavior.
                                     <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2204382&amp;HistoricalAwards=false" target="_blank" rel="noopener noreferrer" class="tag tag--sm tag--nsf" title="View the NSF award abstract for Grant 2204382">NSF Grant 2204382</a>
                                 </li>
                                 <li>
-                                    <strong>Berry Phase:</strong> Developed a theoretical framework for manipulating elastic bit
-                                    superposition states and generating Berry phase in linearized and nonlinear elastic networks,
-                                    demonstrating quantum-classical correlations.
+                                    <strong>Berry Phase:</strong> Built a theoretical and computational framework showing that elastic-bit states accumulate Berry phase under closed control loops on the Bloch sphere. Demonstrated gate-like state flips and phase operations tied to the system's topological character.
                                     <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2242925&amp;HistoricalAwards=false" target="_blank" rel="noopener noreferrer" class="tag tag--sm tag--nsf" title="View the NSF award abstract for Grant 2242925">NSF Grant 2242925</a>
                                 </li>
                                 <li>
-                                    <strong>Logical Elastic Bit:</strong> Developed algorithm to demonstrate scalability of the logical
-                                    elastic bit in a mass-conical spring model with time-dependent harmonic response.
+                                    <strong>Logical Elastic Bit:</strong> Extended the elastic-bit concept to a two-mass conical-spring oscillator and encoded multiple bits from distinct harmonic blocks within one resonator. Derived compact analytical formulas for state initialization, precession, and multi-bit scaling.
                                 </li>
                                 <li>
-                                    <strong>Topological Transitions:</strong> Investigated symmetry breaking in granular networks via
-                                    2nd-order Molecular Dynamics, revealing internal parameter variations driving topological
-                                    transitions across the Brillouin Zone.
+                                    <strong>Topological Transitions:</strong> Studied symmetry-driven topological transitions in granular lattices using molecular dynamics and band-structure analysis. Linked Zak-phase changes to inversion symmetry and to controllable edge-state behavior in elastic networks.
                                 </li>
                                 <li>
-                                    <strong>Topological Mass Sensor:</strong> Designed a topological phase-based mass sensor leveraging
-                                    sustained state superposition for enhanced sensitivity and precision.
+                                    <strong>Topological Mass Sensor:</strong> Translated elastic-bit state evolution into a sensing platform by tracking mass-induced shifts in geometric phase and Bloch-sphere trajectories. The phase-based readout improves robustness beyond conventional amplitude-only sensing.
                                 </li>
                             </ul>
                         </div>
@@ -373,18 +388,12 @@
                                 </div>
                                 <span class="timeline__date">Sep 2023 &ndash; Present</span>
                             </div>
-                            <div class="timeline__meta">
-                                <span class="tag tag--sm">Topological Acoustic QIS</span>
-                                <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2204400&amp;HistoricalAwards=false" target="_blank" rel="noopener noreferrer" class="tag tag--sm tag--nsf" title="View the NSF award abstract for Grant 2204400">NSF Grant 2204400</a>
-                            </div>
                             <ul class="timeline__list">
                                 <li>
-                                    <strong>Primary Investigator:</strong> Investigation of multi-qubit analogue in classical nonlinear
-                                    mass-conical spring oscillator; demonstration of scalable Hadamard and Phase gate operations.
+                                    <strong>Primary Investigator:</strong> Led a collaborative study on multi-qubit analogues in a nonlinear mass-conical spring oscillator, using harmonic spectral blocks to encode two-bit and three-bit elastic states. Derived gate-like operations and Householder-based state transitions for scalable room-temperature mechanical computation.
                                 </li>
                                 <li>
-                                    <strong>Co-Investigator:</strong> Developed the Phi-Bit (Phase Bit) through three coupled
-                                    finite-length acoustic waveguides, predicting continuous phase behaviors across varying conditions.
+                                    <strong>Co-Investigator:</strong> Contributed to the Phi-Bit, a classical acoustic qubit analogue built from three coupled waveguides. Developed modeling and analysis to identify stable, controllable phase states and extended the elastic-bit framework to continuous acoustic systems.
                                 </li>
                             </ul>
                         </div>
@@ -401,10 +410,12 @@
                                 <span class="timeline__date">Nov 2019 &ndash; Feb 2021</span>
                             </div>
                             <ul class="timeline__list">
-                                <li>Studied thermal stress in metal matrix composites (MMC) due to electrical current; analyzed
-                                    stress-tolerant limits and failure characteristics using tensile and compression strength machines.</li>
-                                <li>Developed a heat pipe exchanger model to improve heat transfer efficiency in compact thermal
-                                    management for high-performance induction motors.</li>
+                                <li>
+                                    <strong>Electro-Thermo-Mechanical Analysis of MMC:</strong> Studied Joule-heating-driven thermal stress in graphite-reinforced metal matrix composites under electrical loading. Combined finite element modeling with tensile and compression testing to identify stress limits and failure-prone regimes.
+                                </li>
+                                <li>
+                                    <strong>Heat Pipe Heat Exchanger Modeling:</strong> Developed analytical and numerical models of a heat-pipe heat exchanger for induction-motor cooling. Evaluated geometry, working fluid, and fin design to reduce thermal resistance and improve passive heat removal.
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -415,6 +426,11 @@
 
         <!--==================== PROJECTS ====================-->
         <section class="projects section" id="projects">
+            <div class="section__bg-icons" aria-hidden="true">
+                <i class="uil uil-rocket section__bg-icon section__bg-icon--tl"></i>
+                <i class="uil uil-bolt-alt section__bg-icon section__bg-icon--tr"></i>
+                <i class="uil uil-cube section__bg-icon section__bg-icon--br"></i>
+            </div>
             <div class="container">
                 <h2 class="section__title">Selected Projects</h2>
                 <span class="section__subtitle">Detailed Research Stories</span>
@@ -422,11 +438,18 @@
                 <div class="projects__cards">
                     <article class="project__card" data-project-card>
                         <button class="project__card-toggle" type="button" aria-expanded="false">
+                            <span class="project__card-index">01</span>
                             <span class="project__card-kicker">Featured Project</span>
                             <h3 class="project__card-title">Elastic Bit and Logical State Control</h3>
                             <p class="project__card-brief">Nonlinear oscillator networks inspired by qubit behavior.</p>
+                            <div class="project__card-signals">
+                                <span>Bloch Mapping</span>
+                                <span>Granular Modes</span>
+                                <span>State Control</span>
+                            </div>
                         </button>
                         <div class="project__card-detail">
+                            <div class="project__card-detail-inner">
                             <div class="project__media">
                                 <img src="assets/img/Elastic_Bit.png" alt="Research setup and elastic network work" class="project__image">
                             </div>
@@ -457,16 +480,24 @@
                                     <li>The platform supports controllable state evolution, gate-like operations, and a natural pathway toward logical elastic bits and multi-bit architectures in later work.</li>
                                 </ul>
                             </div>
+                            </div>
                         </div>
                     </article>
 
                     <article class="project__card" data-project-card>
                         <button class="project__card-toggle" type="button" aria-expanded="false">
+                            <span class="project__card-index">02</span>
                             <span class="project__card-kicker">Topological Mechanics</span>
                             <h3 class="project__card-title">Berry Phase in Elastic Networks</h3>
                             <p class="project__card-brief">State manipulation and phase accumulation in classical lattices.</p>
+                            <div class="project__card-signals">
+                                <span>Berry Phase</span>
+                                <span>Topology</span>
+                                <span>Protected States</span>
+                            </div>
                         </button>
                         <div class="project__card-detail">
+                            <div class="project__card-detail-inner">
                             <div class="project__media">
                                 <img src="assets/img/Berry_Phase.png" alt="Waveguide and phase-related research visual" class="project__image">
                             </div>
@@ -497,16 +528,24 @@
                                     <li>These results help pave the way toward topological and edge computing by showing how mechanical systems can host protected state evolution and computation-relevant transitions.</li>
                                 </ul>
                             </div>
+                            </div>
                         </div>
                     </article>
 
                     <article class="project__card" data-project-card>
                         <button class="project__card-toggle" type="button" aria-expanded="false">
+                            <span class="project__card-index">03</span>
                             <span class="project__card-kicker">Applied Design</span>
                             <h3 class="project__card-title">Topological Mass Sensor</h3>
                             <p class="project__card-brief">Using robust phase behavior for precision sensing.</p>
+                            <div class="project__card-signals">
+                                <span>Phase Readout</span>
+                                <span>Robust Sensing</span>
+                                <span>Precision Design</span>
+                            </div>
                         </button>
                         <div class="project__card-detail">
+                            <div class="project__card-detail-inner">
                             <div class="project__media">
                                 <img src="assets/img/Stress Distribution_20.jpg" alt="Stress distribution visualization for sensing and mechanics work" class="project__image">
                             </div>
@@ -537,16 +576,24 @@
                                     <li>This work points toward a new class of topological sensors that combine mechanical simplicity with computation-aware, state-based readout strategies.</li>
                                 </ul>
                             </div>
+                            </div>
                         </div>
                     </article>
 
                     <article class="project__card" data-project-card>
                         <button class="project__card-toggle" type="button" aria-expanded="false">
+                            <span class="project__card-index">04</span>
                             <span class="project__card-kicker">Earlier Work</span>
                             <h3 class="project__card-title">MMC Thermo-Mechanical Modeling</h3>
                             <p class="project__card-brief">Electro-thermo-mechanical response in composite structures.</p>
+                            <div class="project__card-signals">
+                                <span>Finite Element</span>
+                                <span>Thermal Stress</span>
+                                <span>Composite Design</span>
+                            </div>
                         </button>
                         <div class="project__card-detail">
+                            <div class="project__card-detail-inner">
                             <div class="project__media">
                                 <img src="assets/img/Temperature Distribution_20.jpg" alt="Temperature distribution visualization in composite material analysis" class="project__image">
                             </div>
@@ -577,6 +624,7 @@
                                     <li>Already has figure-ready visual outputs that fit naturally into the site.</li>
                                 </ul>
                             </div>
+                            </div>
                         </div>
                     </article>
                 </div>
@@ -585,6 +633,11 @@
 
         <!--==================== PUBLICATIONS ====================-->
         <section class="publications section" id="publications">
+            <div class="section__bg-icons" aria-hidden="true">
+                <i class="uil uil-book-open section__bg-icon section__bg-icon--tl"></i>
+                <i class="uil uil-file-alt section__bg-icon section__bg-icon--tr"></i>
+                <i class="uil uil-pen section__bg-icon section__bg-icon--br"></i>
+            </div>
             <div class="container">
                 <h2 class="section__title">Publications</h2>
                 <span class="section__subtitle">Peer-Reviewed Journals</span>
@@ -614,7 +667,7 @@
                                 <span class="tag tag--sm">Abstract</span>
                             </div>
                             <div class="pub__abstract">
-                                <p>Mechanical lattices support topological wave phenomena governed by geometric phases. We develop a compact Hilbert-space description for one-dimensional elastic chains, expressing intracell motion as a normalized superposition of orthogonal eigenstates and tracking complex amplitudes as trajectories on a Bloch sphere. For diatomic lattices, this construction makes inversion symmetry protection explicit: the relative phase between in-phase and out-of-phase modes is piecewise locked, and the Zak phase is quantized with band-dependent jumps at symmetry points. Extending the framework to triatomic lattices shows that restoring inversion retains quantization, whereas breaking it dequantizes the geometric phase while leaving the spectrum origin invariant. Viewing norm-preserving transformations of the modal coefficient pair as Bloch-sphere rotations, we demonstrate classical analogs of single-qubit logic gates: a &pi; phase rotation about a transverse axis swaps the modal poles, and a longitudinal-axis phase flip maps balanced superpositions to their conjugates. These gate-like operations are realized by controlled evolution across wavenumber space and can be driven or reprogramed through spatiotemporal stiffness modulation. Introducing space–time modulation hybridizes carrier and sideband harmonics, producing continuous phase winding and open-path geometric phases accumulated along the Floquet trajectory. Across static and modulated regimes, the framework unifies algebraic and geometric viewpoints, is robust to gauge and basis choices, and operates directly on amplitude-phase data. Results clarify how symmetry, modulation, and topology jointly govern dispersion, modal mixing, and phase accumulation, providing tools to analyze and design vibration and acoustic functionalities in engineered structures.</p>
+                                <p>Mechanical lattices support topological wave phenomena governed by geometric phases. We develop a compact Hilbert-space description for one-dimensional elastic chains, expressing intracell motion as a normalized superposition of orthogonal eigenstates and tracking complex amplitudes as trajectories on a Bloch sphere. For diatomic lattices, this construction makes inversion symmetry protection explicit: the relative phase between in-phase and out-of-phase modes is piecewise locked, and the Zak phase is quantized with band-dependent jumps at symmetry points. Extending the framework to triatomic lattices shows that restoring inversion retains quantization, whereas breaking it dequantizes the geometric phase while leaving the spectrum origin invariant. Viewing norm-preserving transformations of the modal coefficient pair as Bloch-sphere rotations, we demonstrate classical analogs of single-qubit logic gates: a &pi; phase rotation about a transverse axis swaps the modal poles, and a longitudinal-axis phase flip maps balanced superpositions to their conjugates. These gate-like operations are realized by controlled evolution across wavenumber space and can be driven or reprogramed through spatiotemporal stiffness modulation. Introducing space-time modulation hybridizes carrier and sideband harmonics, producing continuous phase winding and open-path geometric phases accumulated along the Floquet trajectory. Across static and modulated regimes, the framework unifies algebraic and geometric viewpoints, is robust to gauge and basis choices, and operates directly on amplitude-phase data. Results clarify how symmetry, modulation, and topology jointly govern dispersion, modal mixing, and phase accumulation, providing tools to analyze and design vibration and acoustic functionalities in engineered structures.</p>
                                 <p class="pub__contribution"><strong>Your contribution:</strong> Developed the mechanics-driven interpretation that connects elastic state evolution to topological vibration signatures.</p>
                                 <div class="pub__figures">
                                     <figure class="pub__figure">
@@ -664,7 +717,7 @@
                                 <span class="tag tag--sm">Abstract</span>
                             </div>
                             <div class="pub__abstract">
-                                <p>Nonlinear mechanical oscillators can emulate qubit analogue algebra by leveraging multiple harmonics of large‑amplitude vibrations. We realize a logical elastic bit—a room temperature mechanical analogue of a qubit—in a two‑mass oscillator joined by a conical spring whose graded stiffness generates a robust sequence of phase‑coherent harmonics. From time‑series velocity measurements, a Fourier–projection maps the response onto the complete space of in‑phase and out‑of‑phase eigenvectors. The resulting complex coefficients define a Bloch‑sphere representation in which classical superpositions are directly controllable. Moreover, we gain more control over the coefficients by pairing the Fourier harmonics in different orders. When the paired Fourier components share a frequency, the coefficients are independent of time, producing tunable states that can serve as phase-defined memory. Pairing distinct harmonics introduces a beat frequency that drives deterministic precession of the Bloch vector, realizing single‑bit rotations (e.g., Pauli‑X and Hadamard analogues) without the need of additional external input, with time as the gate clock. By splitting the spectrum into blocks, a single resonator can host several elastic bits at once. The Hilbert space grows with the number of blocks while the hardware stays the same, allowing scalable architectures that show classical non-separable correlations. A linear mass-spring model yields closed‑form eigenfrequencies and Bloch‑angle formulas that overlay measured trajectories across resonance and provide design rules for state initialization and gate timing. All operations occur at ambient conditions and require no feedback or cryogenics, establishing a simple, reproducible route to quantum‑inspired logic in macroscopic mechanics.</p>
+                                <p>Nonlinear mechanical oscillators can emulate qubit analogue algebra by leveraging multiple harmonics of large-amplitude vibrations. We realize a logical elastic bit, a room temperature mechanical analogue of a qubit, in a two-mass oscillator joined by a conical spring whose graded stiffness generates a robust sequence of phase-coherent harmonics. From time-series velocity measurements, a Fourier-projection maps the response onto the complete space of in-phase and out-of-phase eigenvectors. The resulting complex coefficients define a Bloch-sphere representation in which classical superpositions are directly controllable. Moreover, we gain more control over the coefficients by pairing the Fourier harmonics in different orders. When the paired Fourier components share a frequency, the coefficients are independent of time, producing tunable states that can serve as phase-defined memory. Pairing distinct harmonics introduces a beat frequency that drives deterministic precession of the Bloch vector, realizing single-bit rotations (e.g., Pauli-X and Hadamard analogues) without the need of additional external input, with time as the gate clock. By splitting the spectrum into blocks, a single resonator can host several elastic bits at once. The Hilbert space grows with the number of blocks while the hardware stays the same, allowing scalable architectures that show classical non-separable correlations. A linear mass-spring model yields closed-form eigenfrequencies and Bloch-angle formulas that overlay measured trajectories across resonance and provide design rules for state initialization and gate timing. All operations occur at ambient conditions and require no feedback or cryogenics, establishing a simple, reproducible route to quantum-inspired logic in macroscopic mechanics.</p>
                                 <p class="pub__contribution"><strong>Your contribution:</strong> Helped connect theory, nonlinear dynamics, and experimental interpretation into a publishable mechanical computing narrative.</p>
                                 <div class="pub__figures">
                                     <figure class="pub__figure">
@@ -689,7 +742,7 @@
                                 <span class="tag tag--sm">Abstract</span>
                             </div>
                             <div class="pub__abstract">
-                                <p>The exploration of the Berry phase in classical mechanics has opened new frontiers in understanding the dynamics of physical systems, analogous to quantum mechanics. Here, we show controlled accumulation of the Berry phase in a two-level elastic bit, which is a classical counterpart to qubits, achieved by manipulating coupled granules with external drivers. Employing the Bloch sphere representation, the paper demonstrates the manipulation of elastic bit states and the realization of quantum-analog logic gates. A key achievement is the calculation of the Berry phase for various system states, revealing insights into the system’s topological nature. Unique to this study is the use of external parameters to explore topological transitions, contrasting with traditional approaches focusing on internal system modifications. By linking the classical and quantum worlds through the Berry phase of an elastic bit, this work extends the potential applications of topological concepts in designing new materials and computational models.</p>
+                                <p>The exploration of the Berry phase in classical mechanics has opened new frontiers in understanding the dynamics of physical systems, analogous to quantum mechanics. Here, we show controlled accumulation of the Berry phase in a two-level elastic bit, which is a classical counterpart to qubits, achieved by manipulating coupled granules with external drivers. Employing the Bloch sphere representation, the paper demonstrates the manipulation of elastic bit states and the realization of quantum-analog logic gates. A key achievement is the calculation of the Berry phase for various system states, revealing insights into the system's topological nature. Unique to this study is the use of external parameters to explore topological transitions, contrasting with traditional approaches focusing on internal system modifications. By linking the classical and quantum worlds through the Berry phase of an elastic bit, this work extends the potential applications of topological concepts in designing new materials and computational models.</p>
                                 <p class="pub__contribution"><strong>Your contribution:</strong> Led the interpretation of how state-space trajectories reveal mechanically observable topological phenomena.</p>
                                 <div class="pub__figures">
                                     <figure class="pub__figure">
@@ -715,7 +768,7 @@
                                 <span class="tag tag--sm">Abstract</span>
                             </div>
                             <div class="pub__abstract">
-                                <p>One of the quantum theory concepts on which quantum information processing stands is superposition. Here we provide experimental evidence for the existence of classical analogues to the coherent superposition of energy states, which is made possible by the Hertz-type nonlinearity of the granules together with the external driving field. The granules’ nonlinear vibrations are projected into the linear modes of vibration, which depend on one another through the phase and form a coherent superposition. We show that the amplitudes of the coherent states form the components of a state vector that spans a two-dimensional Hilbert space, and time enables the system to span its Hilbert space parametrically. Thus, the superposition of states can be exploited in two-state quantum-like computations without decoherence and wave function collapse. Finally, we demonstrate the experimental realization of applying a reversible Hadamard gate to a pure base state that brings the state into a superposition.</p>
+                                <p>One of the quantum theory concepts on which quantum information processing stands is superposition. Here we provide experimental evidence for the existence of classical analogues to the coherent superposition of energy states, which is made possible by the Hertz-type nonlinearity of the granules together with the external driving field. The granules' nonlinear vibrations are projected into the linear modes of vibration, which depend on one another through the phase and form a coherent superposition. We show that the amplitudes of the coherent states form the components of a state vector that spans a two-dimensional Hilbert space, and time enables the system to span its Hilbert space parametrically. Thus, the superposition of states can be exploited in two-state quantum-like computations without decoherence and wave function collapse. Finally, we demonstrate the experimental realization of applying a reversible Hadamard gate to a pure base state that brings the state into a superposition.</p>
                                 <p class="pub__contribution"><strong>Your contribution:</strong> Established one of the early experimental demonstrations that made the later logical and multi-bit extensions possible.</p>
                                 <div class="pub__figures">
                                     <figure class="pub__figure">
@@ -738,6 +791,11 @@
 
         <!--==================== CONFERENCES ====================-->
         <section class="conferences section" id="conferences">
+            <div class="section__bg-icons" aria-hidden="true">
+                <i class="uil uil-presentation-line section__bg-icon section__bg-icon--tl"></i>
+                <i class="uil uil-microphone section__bg-icon section__bg-icon--tr"></i>
+                <i class="uil uil-users-alt section__bg-icon section__bg-icon--br"></i>
+            </div>
             <div class="container">
                 <h2 class="section__title">Conference Presentations</h2>
                 <span class="section__subtitle">Proceedings &amp; Talks</span>
@@ -852,6 +910,11 @@
 
         <!--==================== TEACHING ====================-->
         <section class="teaching section" id="teaching">
+            <div class="section__bg-icons" aria-hidden="true">
+                <i class="uil uil-book-open section__bg-icon section__bg-icon--tl"></i>
+                <i class="uil uil-presentation-play section__bg-icon section__bg-icon--tr"></i>
+                <i class="uil uil-edit section__bg-icon section__bg-icon--br"></i>
+            </div>
             <div class="container">
                 <h2 class="section__title">Teaching &amp; Mentoring</h2>
                 <span class="section__subtitle">Academic Service &amp; Professional Experience</span>
@@ -884,18 +947,35 @@
                         <div class="timeline__card">
                             <div class="timeline__header">
                                 <div>
-                                    <h3 class="timeline__title">Research Experience Mentor — NSF NewFoS REM Program</h3>
+                                    <h3 class="timeline__title">Research Experience Mentor - NSF NewFoS REM Program</h3>
                                     <span class="timeline__org">New Frontiers of Sound (NewFoS) &mdash; NSF Project</span>
                                 </div>
                                 <span class="timeline__date">Jan 2023 &ndash; May 2025</span>
                             </div>
                             <ul class="timeline__list">
                                 <li>Mentored and supervised <strong>8 undergraduate researchers</strong> through the NSF NewFoS Research Experience and Mentoring program in nonlinear and topological acoustics.</li>
-                                <li>Trained students in elastic waveguide systems: mode identification, dispersion characterization, and phase–amplitude mapping for classical analogues of quantum information states.</li>
+                                <li>Trained students in elastic waveguide systems: mode identification, dispersion characterization, and phase-amplitude mapping for classical analogues of quantum information states.</li>
                                 <li>Guided independent projects culminating in poster presentations at institutional and national conferences.</li>
                             </ul>
                         </div>
                     </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!--==================== PROFESSIONAL EXPERIENCE ====================-->
+        <section class="experience section" id="experience">
+            <div class="section__bg-icons" aria-hidden="true">
+                <i class="uil uil-briefcase-alt section__bg-icon section__bg-icon--tl"></i>
+                <i class="uil uil-cog section__bg-icon section__bg-icon--tr"></i>
+                <i class="uil uil-chart-line section__bg-icon section__bg-icon--br"></i>
+            </div>
+            <div class="container">
+                <h2 class="section__title">Professional Experience</h2>
+                <span class="section__subtitle">Industry & Internship</span>
+
+                <div class="timeline">
 
                     <div class="timeline__item">
                         <div class="timeline__dot"></div>
@@ -920,6 +1000,11 @@
 
         <!--==================== BLOGS ====================-->
         <section class="blogs section" id="blogs">
+            <div class="section__bg-icons" aria-hidden="true">
+                <i class="uil uil-pen section__bg-icon section__bg-icon--tl"></i>
+                <i class="uil uil-notes section__bg-icon section__bg-icon--tr"></i>
+                <i class="uil uil-comment-alt-dots section__bg-icon section__bg-icon--br"></i>
+            </div>
             <div class="container">
                 <h2 class="section__title">Blogs</h2>
                 <span class="section__subtitle">Writing, Ideas &amp; Research Notes</span>
@@ -928,7 +1013,7 @@
                     <button class="blog__card" type="button" data-blog-target="blog-1" aria-selected="false">
                         <span class="blog__card-type">Research Note</span>
                         <h3 class="blog__card-title">What Does It Take to Build a Quantum Inspired Computer? A 1990s Idea Is Guiding New Research Today</h3>
-                        <p class="blog__card-excerpt">Revisiting DiVincenzo’s criteria through the lens of nonlinear mechanical vibrations offers intriguing insights. The interplay of elastic bits and topology highlights a robust classical pathway for qubit-like information processing. This exploration not only deepens our understanding of information theory but also paves the way for innovative applications in quantum computing.</p>
+                        <p class="blog__card-excerpt">Revisiting DiVincenzo's criteria through the lens of nonlinear mechanical vibrations offers intriguing insights. The interplay of elastic bits and topology highlights a robust classical pathway for qubit-like information processing. This exploration not only deepens our understanding of information theory but also paves the way for innovative applications in quantum computing.</p>
                     </button>
 
                     <button class="blog__card" type="button" data-blog-target="blog-2" aria-selected="false">
@@ -958,20 +1043,20 @@
                                 When quantum computing first emerged in the late 20th century, scientists were faced with a deceptively simple question: What does it actually take to build a working quantum computer? Classical computers had a straightforward answer. Their basic units of information bits are handled by transistors that reliably switch between 0 and 1. But quantum computers rely on qubits, tiny two-level systems that can exist in 0, or 1, or a combination of both at once. These delicate states can also become entangled, linking different qubits in ways that allow quantum computers to outperform even the fastest supercomputers for certain tasks.
                             </p>
                             <p class="blog__feature-summary">
-                                The challenge, however, is that qubits are extremely fragile. They lose their quantumness quickly, they require precise control, and they are notoriously difficult to scale into large, interconnected machines. To bring order to this new field, physicist David P. DiVincenzo proposed a simple but powerful checklist in 1996, now famously known as DiVincenzo’s criteria. His work identified the essential capabilities any real quantum computer must have. These criteria became a common language for the community: whether the platform used superconducting circuits, trapped ions, photon pulses, or spins in semiconductors, researchers would ask the same question: does it satisfy DiVincenzo’s requirements?
+                                The challenge, however, is that qubits are extremely fragile. They lose their quantumness quickly, they require precise control, and they are notoriously difficult to scale into large, interconnected machines. To bring order to this new field, physicist David P. DiVincenzo proposed a simple but powerful checklist in 1996, now famously known as DiVincenzo's criteria. His work identified the essential capabilities any real quantum computer must have. These criteria became a common language for the community: whether the platform used superconducting circuits, trapped ions, photon pulses, or spins in semiconductors, researchers would ask the same question: does it satisfy DiVincenzo's requirements?
                             </p>
                             <p class="blog__feature-summary">
                                 At their heart, the criteria revolve around three big ideas. First, a functional device needs well-defined and controllable qubits that can be prepared, changed, and measured on demand. Second, the information stored in a qubit must survive long enough to perform calculations, requiring long-lived coherence. And third, a true quantum computer must be able to scale, hosting many qubits that interact in predictable and useful ways. These ideas helped transform quantum computing from a theoretical possibility into a global race to build practical machines. But they have also inspired a deeper question: Do these requirements apply only to quantum systems, or can we use them to benchmark new kinds of classical technologies that behave in quantum-like ways?
                             </p>
                             <h4 class="blog__feature-section-title">How a Mechanical Elastic-Bit Platform Meets Those Same Requirements</h4>
                             <p class="blog__feature-summary">
-                                The core idea behind this work is the creation of an elastic bit, a qubit-like state that forms not from quantum particles but from the organized vibrations of a classical nonlinear mechanical system. When this kind of system is driven, it does not vibrate at just one frequency. Instead, it produces many harmonics, multiple tones whose amplitudes and phases change together in a structured and predictable way. By comparing how these harmonics align with the system’s two fundamental movement patterns, one where the components move together and one where they move in opposition, we can define a two-level state. This two-level mapping is what we call an elastic bit: a stable and controllable information unit stored in the rhythm of the system’s vibration.
+                                The core idea behind this work is the creation of an elastic bit, a qubit-like state that forms not from quantum particles but from the organized vibrations of a classical nonlinear mechanical system. When this kind of system is driven, it does not vibrate at just one frequency. Instead, it produces many harmonics, multiple tones whose amplitudes and phases change together in a structured and predictable way. By comparing how these harmonics align with the system's two fundamental movement patterns, one where the components move together and one where they move in opposition, we can define a two-level state. This two-level mapping is what we call an elastic bit: a stable and controllable information unit stored in the rhythm of the system's vibration.
                             </p>
                             <p class="blog__feature-summary">
-                                This approach naturally mirrors several of DiVincenzo’s original requirements. To create a starting state, we simply choose a set of driving conditions that force the nonlinear elastic network into a repeatable vibration pattern. Once active, the harmonics maintain steady phase relationships over long durations, allowing the encoded information to remain stable. The elastic bit can then be steered by adjusting how energy is fed into the network, changing the drive amplitude, its frequency, or how strongly different modes interact. These adjustments move the bit’s state along predictable paths, just like quantum gates move a qubit around the Bloch sphere. Impressively, the same mathematical tools that describe quantum operations, such as Householder reflections, also describe the transformations we observe in this classical system.
+                                This approach naturally mirrors several of DiVincenzo's original requirements. To create a starting state, we simply choose a set of driving conditions that force the nonlinear elastic network into a repeatable vibration pattern. Once active, the harmonics maintain steady phase relationships over long durations, allowing the encoded information to remain stable. The elastic bit can then be steered by adjusting how energy is fed into the network, changing the drive amplitude, its frequency, or how strongly different modes interact. These adjustments move the bit's state along predictable paths, just like quantum gates move a qubit around the Bloch sphere. Impressively, the same mathematical tools that describe quantum operations, such as Householder reflections, also describe the transformations we observe in this classical system.
                             </p>
                             <p class="blog__feature-summary">
-                                A key requirement of any qubit platform is the ability to measure individual states without disturbing the rest of the system. The elastic-bit platform meets this requirement naturally because each bit corresponds to a distinct harmonic in the vibration spectrum. This means we can measure the bit’s amplitude and phase by observing only that harmonic, without affecting those at other frequencies. The result is a clean and selective readout method, very similar to how quantum systems measure qubits one at a time.
+                                A key requirement of any qubit platform is the ability to measure individual states without disturbing the rest of the system. The elastic-bit platform meets this requirement naturally because each bit corresponds to a distinct harmonic in the vibration spectrum. This means we can measure the bit's amplitude and phase by observing only that harmonic, without affecting those at other frequencies. The result is a clean and selective readout method, very similar to how quantum systems measure qubits one at a time.
                             </p>
                             <p class="blog__feature-summary">
                                 All of these capabilities suggest something powerful: even though the elastic bit is entirely classical, it obeys many of the same structural rules as a real qubit. It has a controlled starting state, it evolves coherently, it can be manipulated through gate-like operations, and it can be measured independently of other bits. From the perspective of quantum information science, this means the elastic bit can act as a practical testbed for exploring quantum-style logic, geometric phase control, and gate design, without the fragility, cost, or temperature constraints of true quantum systems. In this way, classical nonlinear networks can help develop, prototype, and visualize concepts that are central to quantum technologies, offering a bridge between the quantum world and real-world experimental platforms.
@@ -984,7 +1069,7 @@
                                 In the elastic-bit platform, topology shows up in the way the system responds when external drive settings are slowly cycled. As the controls move the elastic bit around on the Bloch sphere, the state does more than simply trace a path, it accumulates a geometric phase that depends only on the area enclosed by that path. This is a topological effect: two very different paths can give the same result if they sweep out the same area, and no matter how complicated the motion is, if it encloses zero area, the phase remains trivial. Essentially, the system behaves like a switch that flips only when the control loop crosses a topologically meaningful threshold.
                             </p>
                             <p class="blog__feature-summary">
-                                This topological phase is directly imprinted onto the elastic bit, because the bit’s state is defined by the relative amplitude and phase of the network’s vibrations. As the control loop wraps around different portions of the Bloch sphere, the bit acquires a geometric shift that depends only on the global structure of that loop. In experiments, this shift reveals itself through clear physical signatures: energy concentrating onto one part of the system, or the phase difference between channels pausing at fixed points. These behaviors indicate that the system has undergone a topologically nontrivial evolution.
+                                This topological phase is directly imprinted onto the elastic bit, because the bit's state is defined by the relative amplitude and phase of the network's vibrations. As the control loop wraps around different portions of the Bloch sphere, the bit acquires a geometric shift that depends only on the global structure of that loop. In experiments, this shift reveals itself through clear physical signatures: energy concentrating onto one part of the system, or the phase difference between channels pausing at fixed points. These behaviors indicate that the system has undergone a topologically nontrivial evolution.
                             </p>
                             <p class="blog__feature-summary">
                                 The advantage of this topological layer is reliability. Topological operations do not depend on perfect timing or precise drive strength. Small changes in experimental conditions or tiny imperfections in the mechanical network do not affect the final outcome. Only a major change to the overall path, one that alters the area it covers, can modify the geometric phase. This resilience strengthens the entire elastic-bit architecture, allowing it to perform robust, repeatable transformations that mirror the protected operations sought in topological quantum computing. Even though the system is classical, it demonstrates that topological ideas can enhance information processing far beyond the quantum realm alone.
@@ -1016,13 +1101,13 @@
                                 That early result opened the door to a broader question: if classical mechanical motion can be organized into a two-state representation, can it also carry the geometric and topological structure that makes quantum-inspired systems so interesting? Later work answered that question by showing controlled accumulation of Berry phase in a two-level elastic bit, a classical counterpart to a qubit formed from coupled granules. Using external driving conditions, researchers traced the state on a Bloch sphere and connected the evolution of vibration states to topological phase behavior.
                             </p>
                             <p class="blog__feature-summary">
-                                The idea was pushed further in a study of strongly nonlinear classical dynamics, where Berry phase was shown to emerge over time without changing the system’s internal configuration or external loading conditions. Instead of manually steering the structure through different parameter settings, the system’s gauge-related quantities evolved naturally in time, producing phase accumulation through its own nonlinear motion. That work also reported something especially striking: multiple nontrivial Berry-phase signatures appearing at different frequencies in a classical system, rather than a single isolated topological resonance.
+                                The idea was pushed further in a study of strongly nonlinear classical dynamics, where Berry phase was shown to emerge over time without changing the system's internal configuration or external loading conditions. Instead of manually steering the structure through different parameter settings, the system's gauge-related quantities evolved naturally in time, producing phase accumulation through its own nonlinear motion. That work also reported something especially striking: multiple nontrivial Berry-phase signatures appearing at different frequencies in a classical system, rather than a single isolated topological resonance.
                             </p>
                             <p class="blog__feature-summary">
-                                In parallel, the field has expanded beyond granular contacts to simpler and more practical oscillator platforms. A recent study demonstrated logical elastic bits in a two-mass system connected by a conical spring. Because the spring’s graded stiffness generates a rich harmonic spectrum, the measured motion can be projected onto in-phase and out-of-phase eigenvectors and represented on a Bloch sphere. By selecting and pairing Fourier harmonics, the system can realize controllable static states, deterministic precession, and gate-like operations, all at room temperature and without the need for cryogenics or additional feedback. The same work suggests that multiple logical bits may be hosted in a single resonator by partitioning the spectrum into blocks, offering an intriguing route toward scalable quantum-inspired architectures built from classical hardware.
+                                In parallel, the field has expanded beyond granular contacts to simpler and more practical oscillator platforms. A recent study demonstrated logical elastic bits in a two-mass system connected by a conical spring. Because the spring's graded stiffness generates a rich harmonic spectrum, the measured motion can be projected onto in-phase and out-of-phase eigenvectors and represented on a Bloch sphere. By selecting and pairing Fourier harmonics, the system can realize controllable static states, deterministic precession, and gate-like operations, all at room temperature and without the need for cryogenics or additional feedback. The same work suggests that multiple logical bits may be hosted in a single resonator by partitioning the spectrum into blocks, offering an intriguing route toward scalable quantum-inspired architectures built from classical hardware.
                             </p>
                             <p class="blog__feature-summary">
-                                The topological picture becomes even clearer in recent work on elastic lattices. There, researchers developed a compact Hilbert-space framework for one-dimensional mass-spring chains, mapping intracell motion onto the Bloch sphere. In diatomic lattices, inversion symmetry locks the relative phase between modal components and quantizes the Zak phase. In triatomic lattices, breaking inversion symmetry removes that quantization while leaving the spectrum’s origin unchanged. The framework also shows how state evolution in these lattices can be interpreted geometrically, with mode transformations appearing as rotations on the Bloch sphere and spatiotemporal modulation generating open-path geometric phases through Floquet-like trajectories.
+                                The topological picture becomes even clearer in recent work on elastic lattices. There, researchers developed a compact Hilbert-space framework for one-dimensional mass-spring chains, mapping intracell motion onto the Bloch sphere. In diatomic lattices, inversion symmetry locks the relative phase between modal components and quantizes the Zak phase. In triatomic lattices, breaking inversion symmetry removes that quantization while leaving the spectrum's origin unchanged. The framework also shows how state evolution in these lattices can be interpreted geometrically, with mode transformations appearing as rotations on the Bloch sphere and spatiotemporal modulation generating open-path geometric phases through Floquet-like trajectories.
                             </p>
                             <p class="blog__feature-summary">
                                 Taken together, these results point to a larger shift in how mechanical motion is understood. Vibrations are no longer just signals to be damped, controlled, or avoided. In the right structure, they can act as information-bearing states with geometry, phase, and topological organization. That matters because classical mechanical systems are accessible. They are macroscopic, measurable, and comparatively easy to build and test. Unlike fragile quantum devices, they can often operate at ambient conditions while still reproducing parts of the mathematical structure that makes topological and quantum-inspired systems powerful.
@@ -1042,6 +1127,11 @@
 
         <!--==================== AWARDS & SERVICES ====================-->
         <section class="awards section" id="awards">
+            <div class="section__bg-icons" aria-hidden="true">
+                <i class="uil uil-award section__bg-icon section__bg-icon--tl"></i>
+                <i class="uil uil-star section__bg-icon section__bg-icon--tr"></i>
+                <i class="uil uil-trophy section__bg-icon section__bg-icon--br"></i>
+            </div>
             <div class="container">
                 <h2 class="section__title">Awards &amp; Academic Service</h2>
                 <span class="section__subtitle">Recognition &amp; Contributions</span>
@@ -1105,6 +1195,11 @@
 
         <!--==================== CONTACT ====================-->
         <section class="contact section" id="contact">
+            <div class="section__bg-icons" aria-hidden="true">
+                <i class="uil uil-envelope section__bg-icon section__bg-icon--tl"></i>
+                <i class="uil uil-location-point section__bg-icon section__bg-icon--tr"></i>
+                <i class="uil uil-comment-alt-dots section__bg-icon section__bg-icon--br"></i>
+            </div>
             <div class="container">
                 <h2 class="section__title">Contact</h2>
                 <span class="section__subtitle">Get in Touch</span>
@@ -1139,26 +1234,27 @@
                         </div>
                     </div>
 
-                    <form method="post" action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSd36e3TGsuWBnrpDiI5UVAbv4HK0CXRfqu5t9-2iuZ-hyxQrA/formResponse" class="contact__form">
+                    <form id="contact-form" class="contact__form" novalidate>
                         <div class="form__group">
                             <label for="Name">Name</label>
-                            <input name="entry.695555210" type="text" id="Name" placeholder="Your name" required>
+                            <input name="user_name" type="text" id="Name" placeholder="Your name" required>
                         </div>
                         <div class="form__group">
                             <label for="Email">Email</label>
-                            <input name="entry.1649250009" type="email" id="Email" placeholder="your@email.com" required>
+                            <input name="user_email" type="email" id="Email" placeholder="your@email.com" required>
                         </div>
                         <div class="form__group">
                             <label for="Subject">Subject</label>
-                            <input name="entry.1017129736" type="text" id="Subject" placeholder="Subject">
+                            <input name="subject" type="text" id="Subject" placeholder="Subject">
                         </div>
                         <div class="form__group">
                             <label for="Message">Message</label>
-                            <textarea name="entry.452453645" id="Message" rows="6" placeholder="Your message..."></textarea>
+                            <textarea name="message" id="Message" rows="6" placeholder="Your message..."></textarea>
                         </div>
-                        <button type="submit" class="btn btn--primary">
+                        <button type="submit" class="btn btn--primary" id="contact-btn">
                             Send Message <i class="uil uil-message"></i>
                         </button>
+                        <p class="form__status" id="form-status"></p>
                     </form>
                 </div>
             </div>
@@ -1190,6 +1286,24 @@
     <a href="#" class="scrollup" id="scroll-up">
         <i class="uil uil-arrow-up"></i>
     </a>
+
+    <!--==================== DOT NAV ====================-->
+    <nav class="dot-nav" aria-label="Page sections" id="dot-nav">
+        <a class="dot-nav__dot" href="#home"         data-label="Home"          title="Home"></a>
+        <a class="dot-nav__dot" href="#about"        data-label="About"         title="About"></a>
+        <a class="dot-nav__dot" href="#education"    data-label="Education"     title="Education"></a>
+        <a class="dot-nav__dot" href="#publications" data-label="Publications"  title="Publications"></a>
+        <a class="dot-nav__dot" href="#conferences"  data-label="Conferences"   title="Conferences"></a>
+        <a class="dot-nav__dot" href="#research"     data-label="Research"      title="Research"></a>
+        <a class="dot-nav__dot" href="#teaching"    data-label="Teaching"    title="Teaching"></a>
+        <a class="dot-nav__dot" href="#experience" data-label="Experience"  title="Experience"></a>
+        <a class="dot-nav__dot" href="#skills"      data-label="Skills"      title="Skills"></a>
+        <a class="dot-nav__dot" href="#projects"     data-label="Projects"      title="Projects"></a>
+        <a class="dot-nav__dot" href="#blogs"        data-label="Blogs"         title="Blogs"></a>
+        <a class="dot-nav__dot" href="#awards"       data-label="Awards"        title="Awards"></a>
+        <a class="dot-nav__dot" href="#contact"      data-label="Contact"       title="Contact"></a>
+    </nav>
+
 
     <script src="assets/js/main.js"></script>
 </body>
