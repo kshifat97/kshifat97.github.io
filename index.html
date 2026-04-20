@@ -11,8 +11,7 @@
 </head>
 <body>
 
-    <div id="scroll-progress" aria-hidden="true"></div>
-    <!--==================== HEADER ====================-->
+<!--==================== HEADER ====================-->
     <header class="header" id="header">
         <nav class="nav container">
             <a href="#home" class="nav__logo">KTM</a>
@@ -43,6 +42,8 @@
 
         <!--==================== HERO ====================-->
         <section class="hero" id="home">
+            <canvas id="hero-canvas" aria-hidden="true"></canvas>
+            <div class="hero__mouse-glow" aria-hidden="true"></div>
             <div class="hero__container container">
                 <div class="hero__science" aria-hidden="true">
                     <span class="hero__science-orbit hero__science-orbit--lg"></span>
@@ -60,6 +61,9 @@
                             <span class="hero__name-pill-text">TAHSIN</span>
                         </div>
                         <div class="hero__name-row hero__name-row--bottom">MAHMOOD</div>
+                    </div>
+                    <div class="hero__typewriter" aria-live="polite">
+                        <span id="typewriter-text"></span><span class="hero__cursor" aria-hidden="true">|</span>
                     </div>
                 </div>
             </div>
@@ -156,6 +160,21 @@
                             </svg>
                             <span>Curriculum Vitae</span>
                         </a>
+                    </div>
+                </div>
+
+                <div class="about__stats">
+                    <div class="about__stat">
+                        <span class="about__stat-num" id="stat-publications">0</span>
+                        <span class="about__stat-label">Publications</span>
+                    </div>
+                    <div class="about__stat">
+                        <span class="about__stat-num" id="stat-citations">—</span>
+                        <span class="about__stat-label">Citations</span>
+                    </div>
+                    <div class="about__stat">
+                        <span class="about__stat-num" id="stat-conferences">0</span>
+                        <span class="about__stat-label">Conferences</span>
                     </div>
                 </div>
             </div>
@@ -823,6 +842,14 @@
                     <a href="https://scholar.google.com/citations?user=1GvXCO8AAAAJ&hl=en" target="_blank" class="btn btn--primary">
                         <i class="uil uil-graduation-cap"></i> View All on Google Scholar
                     </a>
+                    <div class="pub__cite-stat">
+                        <span class="pub__cite-num" id="scholar-citations">—</span>
+                        <span class="pub__cite-label">Citations</span>
+                    </div>
+                    <div class="pub__cite-stat">
+                        <span class="pub__cite-num" id="scholar-hindex">—</span>
+                        <span class="pub__cite-label">h-index</span>
+                    </div>
                 </div>
             </div>
         </section>
@@ -959,27 +986,63 @@
 
                 <div class="poster-gallery">
                     <div class="poster-gallery__item" onclick="openPosterModal('assets/img/Poster1.PNG')">
-                        <img src="assets/img/Poster1.PNG" alt="Research Poster 1" class="poster-gallery__img" loading="lazy">
-                        <div class="poster-gallery__overlay">
-                            <i class="uil uil-expand-arrows-alt"></i>
+                        <div class="poster-gallery__inner">
+                            <div class="poster-gallery__front">
+                                <img src="assets/img/Poster1.PNG" alt="Research Poster 1" class="poster-gallery__img" loading="lazy">
+                            </div>
+                            <div class="poster-gallery__back">
+                                <i class="uil uil-file-alt poster-gallery__back-icon"></i>
+                                <span class="poster-gallery__back-label">Poster 1</span>
+                                <span class="poster-gallery__back-cta">View Full Poster</span>
+                            </div>
                         </div>
                     </div>
                     <div class="poster-gallery__item" onclick="openPosterModal('assets/img/Poster2.png')">
-                        <img src="assets/img/Poster2.png" alt="Research Poster 2" class="poster-gallery__img" loading="lazy">
-                        <div class="poster-gallery__overlay">
-                            <i class="uil uil-expand-arrows-alt"></i>
+                        <div class="poster-gallery__inner">
+                            <div class="poster-gallery__front">
+                                <img src="assets/img/Poster2.png" alt="Research Poster 2" class="poster-gallery__img" loading="lazy">
+                            </div>
+                            <div class="poster-gallery__back">
+                                <i class="uil uil-file-alt poster-gallery__back-icon"></i>
+                                <span class="poster-gallery__back-label">Poster 2</span>
+                                <span class="poster-gallery__back-cta">View Full Poster</span>
+                            </div>
                         </div>
                     </div>
                     <div class="poster-gallery__item" onclick="openPosterModal('assets/img/Poster3.jfif')">
-                        <img src="assets/img/Poster3.jfif" alt="Research Poster 3" class="poster-gallery__img" loading="lazy">
-                        <div class="poster-gallery__overlay">
-                            <i class="uil uil-expand-arrows-alt"></i>
+                        <div class="poster-gallery__inner">
+                            <div class="poster-gallery__front">
+                                <img src="assets/img/Poster3.jfif" alt="Research Poster 3" class="poster-gallery__img" loading="lazy">
+                            </div>
+                            <div class="poster-gallery__back">
+                                <i class="uil uil-file-alt poster-gallery__back-icon"></i>
+                                <span class="poster-gallery__back-label">Poster 3</span>
+                                <span class="poster-gallery__back-cta">View Full Poster</span>
+                            </div>
                         </div>
                     </div>
                     <div class="poster-gallery__item" onclick="openPosterModal('assets/img/htx2.png')">
-                        <img src="assets/img/htx2.png" alt="Research Poster 4" class="poster-gallery__img" loading="lazy">
-                        <div class="poster-gallery__overlay">
-                            <i class="uil uil-expand-arrows-alt"></i>
+                        <div class="poster-gallery__inner">
+                            <div class="poster-gallery__front">
+                                <img src="assets/img/htx2.png" alt="Research Poster 4" class="poster-gallery__img" loading="lazy">
+                            </div>
+                            <div class="poster-gallery__back">
+                                <i class="uil uil-file-alt poster-gallery__back-icon"></i>
+                                <span class="poster-gallery__back-label">Poster 4</span>
+                                <span class="poster-gallery__back-cta">View Full Poster</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="poster-gallery__item" onclick="openPosterModal('assets/img/Topological_Vibration_Analysis.jpg')">
+                        <div class="poster-gallery__inner">
+                            <div class="poster-gallery__front">
+                                <img src="assets/img/Topological_Vibration_Analysis.jpg" alt="Topological Vibration Analysis" class="poster-gallery__img" loading="lazy">
+                            </div>
+                            <div class="poster-gallery__back">
+                                <i class="uil uil-file-alt poster-gallery__back-icon"></i>
+                                <span class="poster-gallery__back-label">Topological Vibration</span>
+                                <span class="poster-gallery__back-cta">View Full Poster</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1393,6 +1456,17 @@
         <a class="dot-nav__dot" href="#contact"      data-label="Contact"       title="Contact"></a>
     </nav>
 
+
+    <!--==================== CUSTOM CURSOR ====================-->
+    <div id="cursor-dot"  aria-hidden="true"></div>
+    <div id="cursor-ring" aria-hidden="true"></div>
+
+    <!--==================== SECTION TRACKER ====================-->
+    <div id="section-tracker" aria-hidden="true">
+        <span id="tracker-num">01</span>
+        <span class="tracker-line"></span>
+        <span id="tracker-name">Home</span>
+    </div>
 
     <script src="assets/js/main.js"></script>
 </body>

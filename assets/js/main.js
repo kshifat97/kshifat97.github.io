@@ -210,19 +210,39 @@ document.querySelectorAll('video[data-playback-rate]').forEach(video => {
 })
 
 /*===== PUBLICATION ACCORDION =====*/
-document.querySelectorAll('.pub__item:not(.pub__item--more)').forEach(item => {
-    const abstract = item.querySelector('.pub__abstract')
+const pubAccordionItems = document.querySelectorAll('.pub__item:not(.pub__item--more)')
 
+function closePubItem(item) {
+    item.classList.remove('pub--open')
+    item.setAttribute('aria-expanded', 'false')
+    const abstract = item.querySelector('.pub__abstract')
+    if (abstract) abstract.style.maxHeight = '0'
+}
+
+function openPubItem(item) {
+    item.classList.add('pub--open')
+    item.setAttribute('aria-expanded', 'true')
+    const abstract = item.querySelector('.pub__abstract')
+    if (abstract) abstract.style.maxHeight = abstract.scrollHeight + 'px'
+}
+
+pubAccordionItems.forEach(item => {
     function toggle() {
-        const isOpen = item.classList.toggle('pub--open')
-        item.setAttribute('aria-expanded', isOpen)
-        abstract.style.maxHeight = isOpen ? abstract.scrollHeight + 'px' : '0'
+        const isOpen = item.classList.contains('pub--open')
+        pubAccordionItems.forEach(other => { if (other !== item) closePubItem(other) })
+        isOpen ? closePubItem(item) : openPubItem(item)
     }
 
     item.addEventListener('click', toggle)
     item.addEventListener('keydown', e => {
         if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle() }
     })
+})
+
+document.addEventListener('click', e => {
+    if (!e.target.closest('.pub__item')) {
+        pubAccordionItems.forEach(closePubItem)
+    }
 })
 
 /*===== PUBLICATION SORTING =====*/
@@ -281,16 +301,6 @@ function toggleScrollUp() {
 window.addEventListener('scroll', toggleScrollUp)
 window.addEventListener('load', toggleScrollUp)
 
-/*===== SCROLL PROGRESS BAR =====*/
-const progressBar = document.getElementById('scroll-progress')
-if (progressBar) {
-    function updateProgress() {
-        const total = document.documentElement.scrollHeight - window.innerHeight
-        if (total > 0) progressBar.style.width = (window.scrollY / total * 100).toFixed(1) + '%'
-    }
-    window.addEventListener('scroll', updateProgress, { passive: true })
-    updateProgress()
-}
 
 /*===== SECTION TITLE UNDERLINE GROW =====*/
 const titleRevealObs = new IntersectionObserver(entries => {
@@ -310,10 +320,12 @@ const blockRevealObs = new IntersectionObserver(entries => {
     })
 }, { threshold: 0.08 })
 ;[
-    '.about__text', '.about__profile',
+    '.about__text', '.about__profile', '.about__stats',
     '.pub__hint', '.pub__list', '.pub__scholar-btn',
     '.skills__group',
     '.contact__info', '.contact__form',
+    '.poster-gallery', '.conf__list', '.projects__cards',
+    '.section__subtitle',
 ].forEach(sel => {
     document.querySelectorAll(sel).forEach(el => {
         el.classList.add('anim-ready')
@@ -532,3 +544,281 @@ function closePosterModal() {
 document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') closePosterModal()
 })
+
+/*===== HERO PARTICLES =====*/
+;(function () {
+    const canvas = document.getElementById('hero-canvas')
+    const hero   = canvas && canvas.closest('.hero')
+    if (!canvas || !hero) return
+    const ctx = canvas.getContext('2d')
+    let W, H, particles = []
+    let mx = -999, my = -999
+
+    function resize() {
+        W = canvas.width  = canvas.offsetWidth
+        H = canvas.height = canvas.offsetHeight
+    }
+    resize()
+    window.addEventListener('resize', resize)
+
+    hero.addEventListener('mousemove', e => {
+        const r = hero.getBoundingClientRect()
+        mx = e.clientX - r.left
+        my = e.clientY - r.top
+    })
+    hero.addEventListener('mouseleave', () => { mx = -999; my = -999 })
+
+    function rand(a, b) { return a + Math.random() * (b - a) }
+    for (let i = 0; i < 55; i++) {
+        particles.push({
+            x: rand(0, 1), y: rand(0, 1),
+            vx: rand(-0.06, 0.06), vy: rand(-0.06, 0.06),
+            r: rand(1, 2.5),
+            baseA: rand(0.15, 0.45),
+            phase: rand(0, Math.PI * 2),
+            twinkleSpeed: rand(0.0008, 0.0018)
+        })
+    }
+
+    function draw() {
+        const now = Date.now()
+        ctx.clearRect(0, 0, W, H)
+        const pts = particles.map(p => {
+            p.x += p.vx / W; p.y += p.vy / H
+            if (p.x < 0) p.x = 1; if (p.x > 1) p.x = 0
+            if (p.y < 0) p.y = 1; if (p.y > 1) p.y = 0
+            const a = p.baseA * (0.5 + 0.5 * Math.sin(now * p.twinkleSpeed + p.phase))
+            return { px: p.x * W, py: p.y * H, a, r: p.r }
+        })
+
+        // particle-to-particle connections
+        for (let i = 0; i < pts.length; i++) {
+            for (let j = i + 1; j < pts.length; j++) {
+                const dx = pts[i].px - pts[j].px, dy = pts[i].py - pts[j].py
+                const d = Math.sqrt(dx*dx + dy*dy)
+                if (d < 110) {
+                    ctx.beginPath()
+                    ctx.moveTo(pts[i].px, pts[i].py)
+                    ctx.lineTo(pts[j].px, pts[j].py)
+                    ctx.strokeStyle = `rgba(240,192,64,${0.1 * (1 - d/110)})`
+                    ctx.lineWidth = 0.6
+                    ctx.stroke()
+                }
+            }
+        }
+
+        // cursor-to-particle connections
+        pts.forEach(p => {
+            const dx = p.px - mx, dy = p.py - my
+            const d = Math.sqrt(dx*dx + dy*dy)
+            if (d < 140) {
+                ctx.beginPath()
+                ctx.moveTo(p.px, p.py)
+                ctx.lineTo(mx, my)
+                ctx.strokeStyle = `rgba(240,192,64,${0.35 * (1 - d/140)})`
+                ctx.lineWidth = 1
+                ctx.stroke()
+            }
+        })
+
+        // draw dots
+        pts.forEach(p => {
+            ctx.beginPath()
+            ctx.arc(p.px, p.py, p.r, 0, Math.PI * 2)
+            ctx.fillStyle = `rgba(240,192,64,${p.a})`
+            ctx.fill()
+        })
+        requestAnimationFrame(draw)
+    }
+    draw()
+})()
+
+/*===== HERO MOUSE-FOLLOW GLOW =====*/
+;(function () {
+    const hero = document.querySelector('.hero')
+    const glow = document.querySelector('.hero__mouse-glow')
+    if (!hero || !glow) return
+    hero.addEventListener('mousemove', e => {
+        const rect = hero.getBoundingClientRect()
+        glow.style.left = (e.clientX - rect.left) + 'px'
+        glow.style.top  = (e.clientY - rect.top)  + 'px'
+        hero.classList.add('hero--mouse-active')
+    })
+    hero.addEventListener('mouseleave', () => hero.classList.remove('hero--mouse-active'))
+})()
+
+/*===== TYPEWRITER =====*/
+;(function () {
+    const el = document.getElementById('typewriter-text')
+    if (!el) return
+    const roles = [
+        'PhD in Mechanical Engineering',
+        'Topological Metamaterials',
+        'Nonlinear Dynamics',
+        'Quantum Analogous Computing'
+    ]
+    let ri = 0, ci = 0, del = false
+    function tick() {
+        const word = roles[ri]
+        el.textContent = del ? word.slice(0, --ci) : word.slice(0, ++ci)
+        if (!del && ci === word.length) { del = true; setTimeout(tick, 1600); return }
+        if ( del && ci === 0)           { del = false; ri = (ri + 1) % roles.length }
+        setTimeout(tick, del ? 45 : 75)
+    }
+    tick()
+})()
+
+/*===== ANIMATED COUNTERS =====*/
+function animateCounter(el, target) {
+    let cur = 0
+    const step = Math.max(1, Math.ceil(target / 50))
+    clearInterval(el._countTimer)
+    el._countTimer = setInterval(() => {
+        cur = Math.min(cur + step, target)
+        el.textContent = cur
+        if (cur >= target) clearInterval(el._countTimer)
+    }, 30)
+}
+
+;(function () {
+    const pubEl  = document.getElementById('stat-publications')
+    const confEl = document.getElementById('stat-conferences')
+    if (pubEl)  pubEl.dataset.count  = document.querySelectorAll('.pub__item:not(.pub__item--more)').length
+    if (confEl) confEl.dataset.count = document.querySelectorAll('.conf__item').length
+
+    const statsBox = document.querySelector('.about__stats')
+    if (!statsBox) return
+    let fired = false
+    const obs = new IntersectionObserver(entries => {
+        if (!entries[0].isIntersecting || fired) return
+        fired = true
+        ;[pubEl, confEl].forEach(el => { if (el) animateCounter(el, +el.dataset.count) })
+        const citEl = document.getElementById('stat-citations')
+        if (citEl && citEl.dataset.count) animateCounter(citEl, +citEl.dataset.count)
+        obs.disconnect()
+    }, { threshold: 0.4 })
+    obs.observe(statsBox)
+})()
+
+/*===== BUTTON RIPPLE =====*/
+document.querySelectorAll('.btn').forEach(btn => {
+    btn.addEventListener('click', function (e) {
+        const r = document.createElement('span')
+        r.className = 'btn__ripple'
+        r.style.left = e.offsetX + 'px'
+        r.style.top  = e.offsetY + 'px'
+        this.appendChild(r)
+        r.addEventListener('animationend', () => r.remove())
+    })
+})
+
+/*===== TIMELINE DOT PULSE =====*/
+document.querySelectorAll('.timeline').forEach(tl => {
+    const firstDot = tl.querySelector('.timeline__dot')
+    if (firstDot) firstDot.classList.add('timeline__dot--pulse')
+})
+
+/*===== CUSTOM CURSOR =====*/
+;(function () {
+    const dot  = document.getElementById('cursor-dot')
+    const ring = document.getElementById('cursor-ring')
+    if (!dot || !ring) return
+    let mx = -100, my = -100, rx = -100, ry = -100
+
+    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY })
+    document.addEventListener('mouseleave', () => { mx = -100; my = -100 })
+
+    function loop() {
+        rx += (mx - rx) * 0.13
+        ry += (my - ry) * 0.13
+        dot.style.left  = mx + 'px';  dot.style.top  = my + 'px'
+        ring.style.left = rx + 'px';  ring.style.top = ry + 'px'
+        requestAnimationFrame(loop)
+    }
+    loop()
+
+    const targets = 'a, button, [role="button"], input, textarea, select, label, .pub__item, .project__card-toggle, .poster-gallery__item'
+    document.querySelectorAll(targets).forEach(el => {
+        el.addEventListener('mouseenter', () => { dot.classList.add('cursor--hover');  ring.classList.add('cursor--hover') })
+        el.addEventListener('mouseleave', () => { dot.classList.remove('cursor--hover'); ring.classList.remove('cursor--hover') })
+    })
+})()
+
+/*===== SECTION TITLE UNDERLINE GROW =====*/
+;(function () {
+    const titles = document.querySelectorAll('.section__title')
+    if (!titles.length) return
+    const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                e.target.classList.add('title--in')
+                obs.unobserve(e.target)
+            }
+        })
+    }, { threshold: 0.6 })
+    titles.forEach(t => obs.observe(t))
+})()
+
+/*===== SECTION TRACKER =====*/
+;(function () {
+    const numEl  = document.getElementById('tracker-num')
+    const nameEl = document.getElementById('tracker-name')
+    const tracker = document.getElementById('section-tracker')
+    if (!tracker || !numEl || !nameEl) return
+
+    const sections = [
+        { id: 'home',         label: 'Home',         num: '01' },
+        { id: 'about',        label: 'About',        num: '02' },
+        { id: 'education',    label: 'Education',    num: '03' },
+        { id: 'skills',       label: 'Skills',       num: '04' },
+        { id: 'research',     label: 'Research',     num: '05' },
+        { id: 'projects',     label: 'Projects',     num: '06' },
+        { id: 'publications', label: 'Publications', num: '07' },
+        { id: 'conferences',  label: 'Conferences',  num: '08' },
+        { id: 'posters',      label: 'Posters',      num: '09' },
+        { id: 'teaching',     label: 'Teaching',     num: '10' },
+        { id: 'experience',   label: 'Experience',   num: '11' },
+        { id: 'blogs',        label: 'Blogs',        num: '12' },
+        { id: 'awards',       label: 'Awards',       num: '13' },
+        { id: 'contact',      label: 'Contact',      num: '14' },
+    ]
+
+    function update(id) {
+        if (id === 'home') { tracker.classList.remove('tracker--visible'); return }
+        const s = sections.find(x => x.id === id)
+        if (!s) return
+        numEl.textContent  = s.num
+        nameEl.textContent = s.label
+        tracker.classList.add('tracker--visible')
+    }
+
+    const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) update(e.target.id) })
+    }, { threshold: 0.3 })
+
+    sections.forEach(s => {
+        const el = document.getElementById(s.id)
+        if (el) obs.observe(el)
+    })
+})()
+
+/*===== SCHOLAR CITATION COUNT =====*/
+;(async function () {
+    try {
+        const res = await fetch(
+            'https://api.semanticscholar.org/graph/v1/author/2198945293?fields=citationCount,hIndex',
+            { headers: { 'Accept': 'application/json' } }
+        )
+        if (!res.ok) return
+        const author = await res.json()
+        const citEl     = document.getElementById('scholar-citations')
+        const hiEl      = document.getElementById('scholar-hindex')
+        const statCitEl = document.getElementById('stat-citations')
+        if (citEl && author.citationCount != null) citEl.textContent = author.citationCount
+        if (hiEl  && author.hIndex        != null) hiEl.textContent  = author.hIndex
+        if (statCitEl && author.citationCount != null) {
+            statCitEl.dataset.count = author.citationCount
+            animateCounter(statCitEl, author.citationCount)
+        }
+    } catch (_) {}
+})()
