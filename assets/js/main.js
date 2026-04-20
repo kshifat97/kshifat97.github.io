@@ -24,6 +24,7 @@ if (mainContent) {
         'education',
         'publications',
         'conferences',
+        'posters',
         'research',
         'teaching',
         'experience',
@@ -69,6 +70,7 @@ function toggleHeaderBg() {
 }
 window.addEventListener('scroll', toggleHeaderBg)
 window.addEventListener('load', toggleHeaderBg)
+
 
 /*===== PROJECT CARD EXPANSION =====*/
 const projectCards = document.querySelectorAll('[data-project-card]')
@@ -508,4 +510,25 @@ document.querySelectorAll('.btn--primary, .btn--outline, .btn--outline-navy').fo
         btn.style.transition = 'transform 0.45s cubic-bezier(0.23, 1, 0.32, 1)'
         btn.style.transform  = ''
     })
+})
+
+/*===== POSTER LIGHTBOX =====*/
+function openPosterModal(src) {
+    const modal = document.getElementById('posterModal')
+    const img   = document.getElementById('posterModalImg')
+    img.src = src
+    modal.classList.add('active')
+    requestAnimationFrame(() => requestAnimationFrame(() => modal.classList.add('anim-in')))
+    document.body.classList.add('modal-open')
+}
+
+function closePosterModal() {
+    const modal = document.getElementById('posterModal')
+    modal.classList.remove('anim-in')
+    document.body.classList.remove('modal-open')
+    modal.addEventListener('transitionend', () => modal.classList.remove('active'), { once: true })
+}
+
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closePosterModal()
 })
