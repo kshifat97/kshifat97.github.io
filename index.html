@@ -143,6 +143,11 @@
                                     <path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 01-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.025-5.325 5.025h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 4.022-2.484 4.022-3.722 0-1.253-.75-3.722-4.022-3.722H11.653z"/>
                                 </svg>
                             </a>
+                            <a href="https://www.youtube.com/@kazitahsinmahmood8869" target="_blank" rel="noopener" class="profile__link profile__link--youtube" aria-label="YouTube Channel">
+                                <svg class="profile__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                    <path d="M23.498 6.186a2.997 2.997 0 00-2.11-2.12C19.504 3.56 12 3.56 12 3.56s-7.504 0-9.388.506a2.997 2.997 0 00-2.11 2.12A31.212 31.212 0 000 12a31.212 31.212 0 00.502 5.814 2.997 2.997 0 002.11 2.12c1.884.506 9.388.506 9.388.506s7.504 0 9.388-.506a2.997 2.997 0 002.11-2.12A31.212 31.212 0 0024 12a31.212 31.212 0 00-.502-5.814zM9.6 15.568V8.432L15.84 12 9.6 15.568z"/>
+                                </svg>
+                            </a>
                         </div>
                         <a href="assets/pdf/Kazi_Tahsin_Mahmood.pdf" target="_blank" rel="noopener" class="profile__cv" download>
                             <svg class="profile__icon profile__icon--cv" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -179,14 +184,16 @@
                                 <span class="timeline__date">Jan 2022 &ndash; Dec 2025</span>
                             </div>
                             <p class="timeline__detail">
-                                <strong>Dissertation:</strong>
-                                <em>Classical Realization of Quantum and Topological States through Nonlinear Elastic Networks</em>
-                            </p>
-                            <p class="timeline__detail">
                                 <strong>Committee:</strong>
                                 Dr. M. Arif Hasan (Chair) &middot; Dr. Sean Wu &middot; Dr. Chin-An Tan &middot;
                                 Dr. Mohammad Bukhari &middot; Dr. Pierre Deymier
                             </p>
+                            <div class="timeline__thesis-block">
+                                <span class="timeline__thesis-label">Dissertation</span>
+                                <a href="assets/pdf/Dissertation_PhD.pdf" target="_blank" rel="noopener" class="timeline__thesis-link">
+                                    <em>Classical Realization of Quantum and Topological States through Nonlinear Elastic Networks</em>
+                                </a>
+                            </div>
                         </div>
                     </div>
 
@@ -201,12 +208,14 @@
                                 <span class="timeline__date">Jan 2022 &ndash; May 2025</span>
                             </div>
                             <p class="timeline__detail">
-                                <strong>Thesis:</strong>
-                                <em>Nonlinear Dynamics Driven Quantum Analogous in Classical Granular Metamaterial</em>
-                            </p>
-                            <p class="timeline__detail">
                                 <strong>Advisor:</strong> Dr. M. Arif Hasan
                             </p>
+                            <div class="timeline__thesis-block">
+                                <span class="timeline__thesis-label">Thesis</span>
+                                <a href="assets/pdf/Dissertation_MSc.pdf" target="_blank" rel="noopener" class="timeline__thesis-link">
+                                    <em>Nonlinear Dynamics Driven Quantum Analogous in Classical Granular Metamaterial</em>
+                                </a>
+                            </div>
                         </div>
                     </div>
 
@@ -221,12 +230,14 @@
                                 <span class="timeline__date">Feb 2016 &ndash; Mar 2021</span>
                             </div>
                             <p class="timeline__detail">
-                                <strong>Thesis:</strong>
-                                <em>Electro-Thermo-Mechanical Response of a Thin Conductive Layer of Metal Matrix Composite Reinforced by Graphite Fibers</em>
-                            </p>
-                            <p class="timeline__detail">
                                 <strong>Advisor:</strong> Dr. Shaikh Reaz Ahmed
                             </p>
+                            <div class="timeline__thesis-block">
+                                <span class="timeline__thesis-label">Thesis</span>
+                                <a href="assets/pdf/Dissertation_BSc.pdf" target="_blank" rel="noopener" class="timeline__thesis-link">
+                                    <em>Electro-Thermo-Mechanical Response of a Thin Conductive Layer of Metal Matrix Composite Reinforced by Graphite Fibers</em>
+                                </a>
+                            </div>
                         </div>
                     </div>
 
@@ -547,7 +558,7 @@
                         <div class="project__card-detail">
                             <div class="project__card-detail-inner">
                             <div class="project__media">
-                                <img src="assets/img/Stress Distribution_20.jpg" alt="Stress distribution visualization for sensing and mechanics work" class="project__image">
+                                <img src="assets/img/Mass_Sensor.png" alt="Mass sensor visualization for topological sensing work" class="project__image">
                             </div>
                             <div class="project__content">
                                 <div class="project__meta">
@@ -668,10 +679,12 @@
                             </div>
                             <div class="pub__abstract">
                                 <p>Mechanical lattices support topological wave phenomena governed by geometric phases. We develop a compact Hilbert-space description for one-dimensional elastic chains, expressing intracell motion as a normalized superposition of orthogonal eigenstates and tracking complex amplitudes as trajectories on a Bloch sphere. For diatomic lattices, this construction makes inversion symmetry protection explicit: the relative phase between in-phase and out-of-phase modes is piecewise locked, and the Zak phase is quantized with band-dependent jumps at symmetry points. Extending the framework to triatomic lattices shows that restoring inversion retains quantization, whereas breaking it dequantizes the geometric phase while leaving the spectrum origin invariant. Viewing norm-preserving transformations of the modal coefficient pair as Bloch-sphere rotations, we demonstrate classical analogs of single-qubit logic gates: a &pi; phase rotation about a transverse axis swaps the modal poles, and a longitudinal-axis phase flip maps balanced superpositions to their conjugates. These gate-like operations are realized by controlled evolution across wavenumber space and can be driven or reprogramed through spatiotemporal stiffness modulation. Introducing space-time modulation hybridizes carrier and sideband harmonics, producing continuous phase winding and open-path geometric phases accumulated along the Floquet trajectory. Across static and modulated regimes, the framework unifies algebraic and geometric viewpoints, is robust to gauge and basis choices, and operates directly on amplitude-phase data. Results clarify how symmetry, modulation, and topology jointly govern dispersion, modal mixing, and phase accumulation, providing tools to analyze and design vibration and acoustic functionalities in engineered structures.</p>
-                                <p class="pub__contribution"><strong>Your contribution:</strong> Developed the mechanics-driven interpretation that connects elastic state evolution to topological vibration signatures.</p>
                                 <div class="pub__figures">
                                     <figure class="pub__figure">
-                                        <img src="assets/img/Topological_Vibration.png" alt="Representative figure for topological vibration analysis">
+                                        <video class="pub__figure-video" controls autoplay loop muted playsinline preload="metadata">
+                                            <source src="assets/img/Topological_Vibration.mp4" type="video/mp4">
+                                            Your browser does not support the video tag.
+                                        </video>
                                     </figure>
                                 </div>
                             </div>
@@ -693,7 +706,6 @@
                             </div>
                             <div class="pub__abstract">
                                 <p>Vibration responses from nonlinear mechanical systems exhibit rich dynamical structure that can be utilized for information encoding and processing. We demonstrate that such structures can be used to encode and manipulate information in a manner analogous to multi-qubit systems. Using a coupled mass and conical spring oscillator, we reveal that distinct harmonic segments of the nonlinear response can be projected onto modal eigenstates to form two-level elastic bit subsystems, which are analogous to qubits. These bits arise from measurable amplitudes and phase relationships across the Fourier spectrum and evolve deterministically under steady-state excitation. By combining multiple spectral segments within a single oscillator, we achieve two-bit and three-bit states that occupy four- and eight-dimensional Hilbert spaces, respectively. The time dependence of the complex modal coefficients yields intrinsic transformations that act as phase and rotation type gates. The temporal evolution of the complex modal coefficients results in phase accumulation and a rotation-like evolution within this state space. To characterize how the system moves between experimentally observed logical states at different times, we derive a Householder reflection that yields the exact Hermitian and unitary operator connecting these states. This unitary transformation is subsequently decomposed into sequences of analogous quantum gates, providing a representation of the observed modal evolution in terms of familiar multi-qubit logic primitives. This spectral encoding approach enables scalable state construction within a single mechanical platform, establishing a pathway toward room-temperature mechanical computation based on deterministic nonlinear dynamics.</p>
-                                <p class="pub__contribution"><strong>Your contribution:</strong> Contributed to the system design and interpretation pipeline linking nonlinear mechanical response to multi-bit state operations.</p>
                                 <div class="pub__figures">
                                     <figure class="pub__figure">
                                         <img src="assets/img/Multi_Bit.png" alt="Multi-bit quantum-inspired dynamics figure">
@@ -718,7 +730,6 @@
                             </div>
                             <div class="pub__abstract">
                                 <p>Nonlinear mechanical oscillators can emulate qubit analogue algebra by leveraging multiple harmonics of large-amplitude vibrations. We realize a logical elastic bit, a room temperature mechanical analogue of a qubit, in a two-mass oscillator joined by a conical spring whose graded stiffness generates a robust sequence of phase-coherent harmonics. From time-series velocity measurements, a Fourier-projection maps the response onto the complete space of in-phase and out-of-phase eigenvectors. The resulting complex coefficients define a Bloch-sphere representation in which classical superpositions are directly controllable. Moreover, we gain more control over the coefficients by pairing the Fourier harmonics in different orders. When the paired Fourier components share a frequency, the coefficients are independent of time, producing tunable states that can serve as phase-defined memory. Pairing distinct harmonics introduces a beat frequency that drives deterministic precession of the Bloch vector, realizing single-bit rotations (e.g., Pauli-X and Hadamard analogues) without the need of additional external input, with time as the gate clock. By splitting the spectrum into blocks, a single resonator can host several elastic bits at once. The Hilbert space grows with the number of blocks while the hardware stays the same, allowing scalable architectures that show classical non-separable correlations. A linear mass-spring model yields closed-form eigenfrequencies and Bloch-angle formulas that overlay measured trajectories across resonance and provide design rules for state initialization and gate timing. All operations occur at ambient conditions and require no feedback or cryogenics, establishing a simple, reproducible route to quantum-inspired logic in macroscopic mechanics.</p>
-                                <p class="pub__contribution"><strong>Your contribution:</strong> Helped connect theory, nonlinear dynamics, and experimental interpretation into a publishable mechanical computing narrative.</p>
                                 <div class="pub__figures">
                                     <figure class="pub__figure">
                                         <img src="assets/img/Logical_Elastic_Bit.png" alt="Experimental setup image for logical elastic bit research">
@@ -743,10 +754,12 @@
                             </div>
                             <div class="pub__abstract">
                                 <p>The exploration of the Berry phase in classical mechanics has opened new frontiers in understanding the dynamics of physical systems, analogous to quantum mechanics. Here, we show controlled accumulation of the Berry phase in a two-level elastic bit, which is a classical counterpart to qubits, achieved by manipulating coupled granules with external drivers. Employing the Bloch sphere representation, the paper demonstrates the manipulation of elastic bit states and the realization of quantum-analog logic gates. A key achievement is the calculation of the Berry phase for various system states, revealing insights into the system's topological nature. Unique to this study is the use of external parameters to explore topological transitions, contrasting with traditional approaches focusing on internal system modifications. By linking the classical and quantum worlds through the Berry phase of an elastic bit, this work extends the potential applications of topological concepts in designing new materials and computational models.</p>
-                                <p class="pub__contribution"><strong>Your contribution:</strong> Led the interpretation of how state-space trajectories reveal mechanically observable topological phenomena.</p>
                                 <div class="pub__figures">
                                     <figure class="pub__figure">
-                                        <img src="assets/img/Topological_Insights.png" alt="Representative mechanics figure for topological state manipulation">
+                                        <video class="pub__figure-video" controls autoplay loop muted playsinline preload="metadata">
+                                            <source src="assets/img/topological_insights.mp4" type="video/mp4">
+                                            Your browser does not support the video tag.
+                                        </video>
                                     </figure>
                                 </div>
                             </div>
@@ -769,7 +782,6 @@
                             </div>
                             <div class="pub__abstract">
                                 <p>One of the quantum theory concepts on which quantum information processing stands is superposition. Here we provide experimental evidence for the existence of classical analogues to the coherent superposition of energy states, which is made possible by the Hertz-type nonlinearity of the granules together with the external driving field. The granules' nonlinear vibrations are projected into the linear modes of vibration, which depend on one another through the phase and form a coherent superposition. We show that the amplitudes of the coherent states form the components of a state vector that spans a two-dimensional Hilbert space, and time enables the system to span its Hilbert space parametrically. Thus, the superposition of states can be exploited in two-state quantum-like computations without decoherence and wave function collapse. Finally, we demonstrate the experimental realization of applying a reversible Hadamard gate to a pure base state that brings the state into a superposition.</p>
-                                <p class="pub__contribution"><strong>Your contribution:</strong> Established one of the early experimental demonstrations that made the later logical and multi-bit extensions possible.</p>
                                 <div class="pub__figures">
                                     <figure class="pub__figure">
                                         <img src="assets/img/Experimental_Demnstration_of_Classical.png" alt="Placeholder research figure for time-dependent superposition paper">
@@ -1082,7 +1094,10 @@
                             <i class="uil uil-times"></i>
                         </button>
                         <div class="blog__feature-media">
-                            <img src="assets/img/Logical_Elastic_Bit.png" alt="Logical elastic bit preview image" class="blog__feature-image">
+                            <video class="blog__feature-video" controls autoplay loop muted playsinline preload="metadata" data-playback-rate="0.5">
+                                <source src="assets/img/Blog2.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
                         </div>
                         <div class="blog__feature-content">
                             <span class="blog__feature-kicker">Explainer</span>

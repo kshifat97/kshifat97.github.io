@@ -192,6 +192,21 @@ window.addEventListener('keydown', event => {
     }
 })
 
+/*===== CUSTOM VIDEO PLAYBACK RATES =====*/
+document.querySelectorAll('video[data-playback-rate]').forEach(video => {
+    const rate = Number(video.dataset.playbackRate)
+    if (!Number.isFinite(rate) || rate <= 0) return
+
+    const applyRate = () => {
+        video.playbackRate = rate
+        video.defaultPlaybackRate = rate
+    }
+
+    if (video.readyState >= 1) applyRate()
+    video.addEventListener('loadedmetadata', applyRate)
+    video.addEventListener('play', applyRate)
+})
+
 /*===== PUBLICATION ACCORDION =====*/
 document.querySelectorAll('.pub__item:not(.pub__item--more)').forEach(item => {
     const abstract = item.querySelector('.pub__abstract')
