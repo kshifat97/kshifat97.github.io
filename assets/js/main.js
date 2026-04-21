@@ -386,9 +386,13 @@ window.addEventListener('scroll', heroParallax, { passive: true })
 
 
 /*===== DOT NAV =====*/
+const dotNavEl   = document.getElementById('dot-nav')
 const dotNavDots = document.querySelectorAll('.dot-nav__dot')
 function updateDotNav() {
-    const scrollY = window.scrollY
+    const scrollY   = window.scrollY
+    const aboutEl   = document.getElementById('about')
+    const threshold = aboutEl ? aboutEl.offsetTop - 120 : window.innerHeight * 0.6
+    dotNavEl && dotNavEl.classList.toggle('dot-nav--hidden', scrollY < threshold)
     let activeId = null
     document.querySelectorAll('section[id]').forEach(section => {
         if (scrollY >= section.offsetTop - 120) activeId = section.id
@@ -401,19 +405,24 @@ window.addEventListener('scroll', updateDotNav, { passive: true })
 window.addEventListener('load', updateDotNav)
 
 /*===== 3D CARD TILT =====*/
-document.querySelectorAll('.timeline__card').forEach(card => {
-    card.addEventListener('mousemove', e => {
-        const r = card.getBoundingClientRect()
-        const x = (e.clientY - r.top  - r.height / 2) / (r.height / 2)
-        const y = (e.clientX - r.left - r.width  / 2) / (r.width  / 2)
-        card.style.transition = 'transform 0.08s ease, box-shadow 0.08s ease'
-        card.style.transform  = `perspective(900px) rotateX(${-x * 4}deg) rotateY(${y * 4}deg) translateY(-4px) scale(1.01)`
+function attachTiltEffect(cards) {
+    cards.forEach(card => {
+        card.addEventListener('mousemove', e => {
+            const r = card.getBoundingClientRect()
+            const x = (e.clientY - r.top  - r.height / 2) / (r.height / 2)
+            const y = (e.clientX - r.left - r.width  / 2) / (r.width  / 2)
+            card.style.transition = 'transform 0.08s ease, box-shadow 0.08s ease'
+            card.style.transform  = `perspective(900px) rotateX(${-x * 4}deg) rotateY(${y * 4}deg) translateY(-4px) scale(1.01)`
+        })
+        card.addEventListener('mouseleave', () => {
+            card.style.transition = 'transform 0.55s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.55s ease'
+            card.style.transform  = ''
+        })
     })
-    card.addEventListener('mouseleave', () => {
-        card.style.transition = 'transform 0.55s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.55s ease'
-        card.style.transform  = ''
-    })
-})
+}
+
+attachTiltEffect(document.querySelectorAll('.timeline__card'))
+attachTiltEffect(document.querySelectorAll('.awards__col'))
 
 /*===== TIMELINE FILL LINE =====*/
 document.querySelectorAll('.timeline').forEach(tl => {
@@ -436,7 +445,7 @@ window.addEventListener('load',   updateTimelineFills)
 const awardsCols = document.querySelectorAll('.awards__col')
 if (awardsCols.length) {
     awardsCols.forEach((col, i) => {
-        col.classList.add(i === 0 ? 'anim-from-left' : i === 2 ? 'anim-from-right' : 'anim-ready')
+        col.classList.add('anim-ready')
         col.style.transitionDelay = `${i * 0.13}s`
     })
     const awardsObs = new IntersectionObserver(entries => {
