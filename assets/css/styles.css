@@ -2678,6 +2678,10 @@ strong {
         cursor: pointer;
     }
 
+    .nav__logo {
+        margin-left: 0;
+    }
+
     .nav__toggle {
         display: block;
     }
