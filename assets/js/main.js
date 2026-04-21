@@ -323,7 +323,7 @@ const blockRevealObs = new IntersectionObserver(entries => {
     '.about__text', '.about__profile', '.about__stats',
     '.pub__hint', '.pub__list', '.pub__scholar-btn',
     '.skills__group',
-    '.contact__info', '.contact__form',
+    '.contact__info', '.contact__card',
     '.poster-gallery', '.conf__list', '.projects__cards',
     '.section__subtitle',
 ].forEach(sel => {
@@ -454,68 +454,6 @@ if (awardsCols.length) {
         })
     }, { threshold: 0.15 })
     awardsCols.forEach(col => awardsObs.observe(col))
-}
-
-/*===== EMAILJS CONTACT FORM =====*/
-// ─────────────────────────────────────────────────────────────
-// SETUP (one-time, ~3 minutes):
-//  1. Go to https://emailjs.com  →  create a free account
-//  2. Add Service: Email Services → Add New Service → Gmail
-//     Copy the Service ID  (e.g. "service_abc123")
-//  3. Add Template: Email Templates → Create New Template
-//     Use these variables in the template body:
-//       From: {{user_name}}  <{{user_email}}>
-//       Subject: {{subject}}
-//       Message: {{message}}
-//     Set "To email" to kazi.mahmood@wayne.edu
-//     Copy the Template ID  (e.g. "template_xyz789")
-//  4. Account → General → Public Key  (e.g. "AbCdEfGhIj...")
-//  5. Paste the three values below and save the file.
-// ─────────────────────────────────────────────────────────────
-const EMAILJS_SERVICE_ID  = 'service_ap8isfe'
-const EMAILJS_TEMPLATE_ID = 'template_h2216lq'
-const EMAILJS_PUBLIC_KEY  = '92Tdxm5T9uCiG0XYJ'
-
-if (typeof emailjs !== 'undefined') {
-    emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY })
-
-    const contactForm = document.getElementById('contact-form')
-    const contactBtn  = document.getElementById('contact-btn')
-    const formStatus  = document.getElementById('form-status')
-
-    if (contactForm) {
-        contactForm.addEventListener('submit', function (e) {
-            e.preventDefault()
-
-            if (!contactForm.checkValidity()) {
-                contactForm.reportValidity()
-                return
-            }
-
-            contactBtn.disabled    = true
-            contactBtn.innerHTML   = 'Sending… <i class="uil uil-spinner-alt spin"></i>'
-            formStatus.textContent = ''
-            formStatus.className   = 'form__status'
-
-            emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, contactForm)
-                .then(() => {
-                    contactBtn.innerHTML = 'Sent! <i class="uil uil-check-circle"></i>'
-                    formStatus.textContent = 'Message sent — I\'ll get back to you soon!'
-                    formStatus.className   = 'form__status form__status--ok'
-                    contactForm.reset()
-                    setTimeout(() => {
-                        contactBtn.disabled  = false
-                        contactBtn.innerHTML = 'Send Message <i class="uil uil-message"></i>'
-                    }, 4000)
-                })
-                .catch(() => {
-                    contactBtn.disabled  = false
-                    contactBtn.innerHTML = 'Send Message <i class="uil uil-message"></i>'
-                    formStatus.textContent = 'Could not send — please email kazi.mahmood@wayne.edu directly.'
-                    formStatus.className   = 'form__status form__status--err'
-                })
-        })
-    }
 }
 
 /*===== MAGNETIC BUTTONS =====*/

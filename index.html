@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="icon" href="assets/img/logo_ico.ico">
     <title>kazitmahmood.github.io</title>
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 <body>
 
@@ -1385,28 +1384,20 @@
                         </div>
                     </div>
 
-                    <form id="contact-form" class="contact__form" novalidate>
-                        <div class="form__group">
-                            <label for="Name">Name</label>
-                            <input name="user_name" type="text" id="Name" placeholder="Your name" required>
-                        </div>
-                        <div class="form__group">
-                            <label for="Email">Email</label>
-                            <input name="user_email" type="email" id="Email" placeholder="your@email.com" required>
-                        </div>
-                        <div class="form__group">
-                            <label for="Subject">Subject</label>
-                            <input name="subject" type="text" id="Subject" placeholder="Subject">
-                        </div>
-                        <div class="form__group">
-                            <label for="Message">Message</label>
-                            <textarea name="message" id="Message" rows="6" placeholder="Your message..."></textarea>
-                        </div>
-                        <button type="submit" class="btn btn--primary" id="contact-btn">
-                            Send Message <i class="uil uil-message"></i>
-                        </button>
-                        <p class="form__status" id="form-status"></p>
-                    </form>
+                    <div class="contact__card">
+                        <span class="contact__card-kicker">Direct Contact</span>
+                        <h3>For research collaborations, academic inquiries, or professional opportunities, please get in touch by email.</h3>
+                        <p>
+                            Click below to open an email draft and send me a message.
+                        </p>
+                        <a href="mailto:kazi.mahmood@wayne.edu?subject=Inquiry%20from%20your%20website" class="btn btn--primary contact__cta">
+                            Contact by Email <i class="uil uil-message"></i>
+                        </a>
+                        <p class="contact__note">
+                            If your email application does not open automatically, you may contact me directly at
+                            <a href="mailto:kazi.mahmood@wayne.edu">kazi.mahmood@wayne.edu</a>.
+                        </p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -1474,91 +1465,6 @@
         <span id="tracker-name">Home</span>
     </div>
 
-    <script>
-        (function () {
-            const contactForm = document.getElementById('contact-form');
-            const contactBtn = document.getElementById('contact-btn');
-            const formStatus = document.getElementById('form-status');
-            const recipientEmail = 'kazi.mahmood@wayne.edu';
-            const serviceId = 'service_ap8isfe';
-            const templateId = 'template_h2216lq';
-
-            if (!contactForm) return;
-
-            function resetButton() {
-                if (!contactBtn) return;
-                contactBtn.disabled = false;
-                contactBtn.innerHTML = 'Send Message <i class="uil uil-message"></i>';
-            }
-
-            function buildMailtoLink() {
-                const name = contactForm.elements.user_name?.value.trim() || '';
-                const email = contactForm.elements.user_email?.value.trim() || '';
-                const subject = contactForm.elements.subject?.value.trim() || 'Website contact form';
-                const message = contactForm.elements.message?.value.trim() || '';
-                const body = [
-                    'Name: ' + name,
-                    'Email: ' + email,
-                    '',
-                    message
-                ].join('\n');
-
-                return 'mailto:' + recipientEmail
-                    + '?subject=' + encodeURIComponent(subject)
-                    + '&body=' + encodeURIComponent(body);
-            }
-
-            function openMailClientWithMessage() {
-                if (formStatus) {
-                    formStatus.textContent = 'Your email app is opening because the website form could not send directly.';
-                    formStatus.className = 'form__status form__status--err';
-                }
-                window.location.href = buildMailtoLink();
-            }
-
-            contactForm.addEventListener('submit', function (event) {
-                event.preventDefault();
-                event.stopImmediatePropagation();
-
-                if (!contactForm.checkValidity()) {
-                    contactForm.reportValidity();
-                    return;
-                }
-
-                if (contactBtn) {
-                    contactBtn.disabled = true;
-                    contactBtn.innerHTML = 'Sending... <i class="uil uil-spinner-alt spin"></i>';
-                }
-                if (formStatus) {
-                    formStatus.textContent = '';
-                    formStatus.className = 'form__status';
-                }
-
-                if (typeof emailjs === 'undefined' || typeof emailjs.sendForm !== 'function') {
-                    resetButton();
-                    openMailClientWithMessage();
-                    return;
-                }
-
-                emailjs.sendForm(serviceId, templateId, contactForm)
-                    .then(function () {
-                        if (contactBtn) {
-                            contactBtn.innerHTML = 'Sent! <i class="uil uil-check-circle"></i>';
-                        }
-                        if (formStatus) {
-                            formStatus.textContent = 'Message sent. I will get back to you soon.';
-                            formStatus.className = 'form__status form__status--ok';
-                        }
-                        contactForm.reset();
-                        window.setTimeout(resetButton, 4000);
-                    })
-                    .catch(function () {
-                        resetButton();
-                        openMailClientWithMessage();
-                    });
-            }, true);
-        })();
-    </script>
     <script src="assets/js/main.js"></script>
 </body>
 </html>
