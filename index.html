@@ -1474,6 +1474,91 @@
         <span id="tracker-name">Home</span>
     </div>
 
+    <script>
+        (function () {
+            const contactForm = document.getElementById('contact-form');
+            const contactBtn = document.getElementById('contact-btn');
+            const formStatus = document.getElementById('form-status');
+            const recipientEmail = 'kazi.mahmood@wayne.edu';
+            const serviceId = 'service_ap8isfe';
+            const templateId = 'template_h2216lq';
+
+            if (!contactForm) return;
+
+            function resetButton() {
+                if (!contactBtn) return;
+                contactBtn.disabled = false;
+                contactBtn.innerHTML = 'Send Message <i class="uil uil-message"></i>';
+            }
+
+            function buildMailtoLink() {
+                const name = contactForm.elements.user_name?.value.trim() || '';
+                const email = contactForm.elements.user_email?.value.trim() || '';
+                const subject = contactForm.elements.subject?.value.trim() || 'Website contact form';
+                const message = contactForm.elements.message?.value.trim() || '';
+                const body = [
+                    'Name: ' + name,
+                    'Email: ' + email,
+                    '',
+                    message
+                ].join('\n');
+
+                return 'mailto:' + recipientEmail
+                    + '?subject=' + encodeURIComponent(subject)
+                    + '&body=' + encodeURIComponent(body);
+            }
+
+            function openMailClientWithMessage() {
+                if (formStatus) {
+                    formStatus.textContent = 'Your email app is opening because the website form could not send directly.';
+                    formStatus.className = 'form__status form__status--err';
+                }
+                window.location.href = buildMailtoLink();
+            }
+
+            contactForm.addEventListener('submit', function (event) {
+                event.preventDefault();
+                event.stopImmediatePropagation();
+
+                if (!contactForm.checkValidity()) {
+                    contactForm.reportValidity();
+                    return;
+                }
+
+                if (contactBtn) {
+                    contactBtn.disabled = true;
+                    contactBtn.innerHTML = 'Sending... <i class="uil uil-spinner-alt spin"></i>';
+                }
+                if (formStatus) {
+                    formStatus.textContent = '';
+                    formStatus.className = 'form__status';
+                }
+
+                if (typeof emailjs === 'undefined' || typeof emailjs.sendForm !== 'function') {
+                    resetButton();
+                    openMailClientWithMessage();
+                    return;
+                }
+
+                emailjs.sendForm(serviceId, templateId, contactForm)
+                    .then(function () {
+                        if (contactBtn) {
+                            contactBtn.innerHTML = 'Sent! <i class="uil uil-check-circle"></i>';
+                        }
+                        if (formStatus) {
+                            formStatus.textContent = 'Message sent. I will get back to you soon.';
+                            formStatus.className = 'form__status form__status--ok';
+                        }
+                        contactForm.reset();
+                        window.setTimeout(resetButton, 4000);
+                    })
+                    .catch(function () {
+                        resetButton();
+                        openMailClientWithMessage();
+                    });
+            }, true);
+        })();
+    </script>
     <script src="assets/js/main.js"></script>
 </body>
 </html>
