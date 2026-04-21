@@ -45,6 +45,7 @@ body {
     color: var(--text);
     background-color: var(--bg);
     line-height: 1.7;
+    overflow-x: hidden;
 }
 
 body.modal-open {
@@ -708,7 +709,7 @@ strong {
 
 .hero__name-row {
     font-family: var(--font-body);
-    font-size: clamp(3.8rem, 12vw, 8.8rem);
+    font-size: clamp(2rem, 10vw, 8.8rem);
     line-height: 0.88;
     font-weight: 800;
     letter-spacing: 0.06em;
@@ -762,7 +763,7 @@ strong {
     position: relative;
     z-index: 1;
     font-family: var(--font-body);
-    font-size: clamp(2.3rem, 8vw, 5.3rem);
+    font-size: clamp(1.5rem, 7vw, 5.3rem);
     line-height: 1;
     font-weight: 800;
     letter-spacing: 0.14em;
@@ -2760,7 +2761,7 @@ strong {
     }
 
     .hero__name-pill {
-        min-width: min(420px, 88vw);
+        min-width: min(420px, 80vw);
     }
 
     .awards__grid {
