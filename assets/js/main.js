@@ -20,8 +20,7 @@ if (introLoader) {
             '.intro-loader__bar-wrap, .intro-loader__field, .intro-loader__grid, .intro-loader__scan'
         ).forEach(el => { el.style.cssText = 'transition:opacity 0.2s ease;opacity:0' })
 
-        // Make KTM letters solid gold so the zoom is visible
-        if (mark) mark.style.cssText = 'color:rgba(240,192,64,1);animation:none'
+        if (mark) mark.style.animation = 'none'
 
         // Freeze each letter in its current visible state
         introLoader.querySelectorAll('.intro-loader__mark span').forEach(s => {
