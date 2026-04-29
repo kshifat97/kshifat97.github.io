@@ -1,17 +1,129 @@
 /*===== NAV MENU TOGGLE =====*/
+const introLoader = document.getElementById('intro-loader')
+
+if (introLoader) {
+    let introFinished = false
+    document.documentElement.classList.add('intro-is-running')
+
+    const finishIntro = () => {
+        if (introFinished) return
+        introFinished = true
+
+        const ktmGroup = introLoader.querySelector('.intro-loader__ktm-group')
+        const mark     = introLoader.querySelector('.intro-loader__mark')
+
+        // Fade bar, rings, grid immediately
+        introLoader.querySelectorAll(
+            '.intro-loader__bar-wrap, .intro-loader__field, .intro-loader__grid, .intro-loader__scan'
+        ).forEach(el => { el.style.cssText = 'transition:opacity 0.2s ease;opacity:0' })
+
+        // Make KTM letters solid gold so the zoom is visible
+        if (mark) mark.style.cssText = 'color:rgba(240,192,64,1);animation:none'
+
+        // Freeze each letter in its current visible state
+        introLoader.querySelectorAll('.intro-loader__mark span').forEach(s => {
+            s.style.cssText = 'animation:none;opacity:1;transform:translateY(0)'
+        })
+
+        if (ktmGroup) {
+            // Set overflow visible so zoomed KTM isn't clipped
+            introLoader.style.overflow = 'visible'
+            ktmGroup.style.transformOrigin = 'center center'
+
+            // Force reflow so transition picks up the initial state
+            void ktmGroup.offsetWidth
+
+            ktmGroup.style.transition = 'transform 3.5s cubic-bezier(0.2,0,0.8,1), opacity 1.2s ease 2.5s'
+            ktmGroup.style.transform  = 'scale(22)'
+            ktmGroup.style.opacity    = '0'
+        }
+
+        // Fade the dark background out after KTM has grown large
+        introLoader.style.transition = 'background-color 1.4s ease 2.2s'
+        introLoader.style.backgroundColor = 'transparent'
+
+        document.documentElement.classList.remove('intro-is-running')
+        document.documentElement.classList.add('intro-complete')
+        window.setTimeout(() => introLoader.remove(), 4200)
+    }
+
+    const pctEl = document.getElementById('intro-loader-pct')
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        if (pctEl) pctEl.textContent = '100%'
+        window.setTimeout(finishIntro, 200)
+    } else {
+        if (pctEl) {
+            const barDelay = 600
+            const barDuration = 2200
+            let startTs = null
+            function tickPct(ts) {
+                if (!startTs) startTs = ts
+                const elapsed = ts - startTs
+                if (elapsed < barDelay) { requestAnimationFrame(tickPct); return }
+                const pct = Math.min(Math.round((elapsed - barDelay) / barDuration * 100), 100)
+                pctEl.textContent = pct + '%'
+                if (pct < 100) requestAnimationFrame(tickPct)
+            }
+            requestAnimationFrame(tickPct)
+        }
+        window.addEventListener('load', () => {
+            // Bar finishes at 2800ms from nav start (delay 600 + duration 2200).
+            // Wait until at least 3200ms so 100% is visible for ~400ms before exit.
+            const minWait = Math.max(600, 3200 - Math.round(performance.now()))
+            window.setTimeout(finishIntro, minWait)
+        }, { once: true })
+        window.setTimeout(finishIntro, 4800)
+    }
+}
+
 const navMenu   = document.getElementById('nav-menu'),
       navToggle = document.getElementById('nav-toggle'),
-      navClose  = document.getElementById('nav-close')
+      navClose  = document.getElementById('nav-close'),
+      navMoreItem = document.querySelector('.nav__item--more'),
+      navMoreToggle = document.querySelector('.nav__more-toggle')
+
+function setNavMoreOpen(isOpen) {
+    if (!navMoreItem || !navMoreToggle) return
+    navMoreItem.classList.toggle('nav__item--open', isOpen)
+    navMoreToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false')
+}
+
+function closeNavMore() {
+    const hadFocus = navMoreItem?.contains(document.activeElement)
+    setNavMoreOpen(false)
+    if (hadFocus) document.activeElement.blur()
+}
 
 if (navToggle) {
     navToggle.addEventListener('click', () => navMenu.classList.add('show-menu'))
 }
 if (navClose) {
-    navClose.addEventListener('click', () => navMenu.classList.remove('show-menu'))
+    navClose.addEventListener('click', () => {
+        navMenu.classList.remove('show-menu')
+        closeNavMore()
+    })
+}
+if (navMoreToggle) {
+    navMoreToggle.addEventListener('click', event => {
+        event.stopPropagation()
+        setNavMoreOpen(!navMoreItem?.classList.contains('nav__item--open'))
+    })
 }
 
 document.querySelectorAll('.nav__link').forEach(link => {
-    link.addEventListener('click', () => navMenu.classList.remove('show-menu'))
+    link.addEventListener('click', () => {
+        navMenu.classList.remove('show-menu')
+        closeNavMore()
+    })
+})
+
+document.addEventListener('click', event => {
+    if (navMoreItem && !navMoreItem.contains(event.target)) closeNavMore()
+})
+
+window.addEventListener('keydown', event => {
+    if (event.key === 'Escape') closeNavMore()
 })
 
 /*===== SECTION ORDER =====*/
@@ -31,8 +143,8 @@ if (mainContent) {
         'skills',
         'projects',
         'blogs',
-        'journeys',
         'awards',
+        'journeys',
         'contact'
     ]
 
@@ -47,18 +159,22 @@ const sections = document.querySelectorAll('section[id]')
 
 function updateActiveLink() {
     const scrollY = window.pageYOffset
+    let hasActiveDropdownLink = false
+
     sections.forEach(section => {
         const top    = section.offsetTop - 90
         const height = section.offsetHeight
         const id     = section.getAttribute('id')
         const link   = document.querySelector(`.nav__link[href="#${id}"]`)
         if (!link) return
-        if (scrollY >= top && scrollY < top + height) {
-            link.classList.add('active-link')
-        } else {
-            link.classList.remove('active-link')
-        }
+        const isActive = scrollY >= top && scrollY < top + height
+        link.classList.toggle('active-link', isActive)
+        if (isActive && link.closest('.nav__dropdown')) hasActiveDropdownLink = true
     })
+
+    if (navMoreToggle) {
+        navMoreToggle.classList.toggle('active-link', hasActiveDropdownLink)
+    }
 }
 window.addEventListener('scroll', updateActiveLink)
 window.addEventListener('load', updateActiveLink)
@@ -735,17 +851,17 @@ document.querySelectorAll('.timeline').forEach(tl => {
         { id: 'home',         label: 'Home',         num: '01' },
         { id: 'about',        label: 'About',        num: '02' },
         { id: 'education',    label: 'Education',    num: '03' },
-        { id: 'skills',       label: 'Skills',       num: '04' },
-        { id: 'research',     label: 'Research',     num: '05' },
-        { id: 'projects',     label: 'Projects',     num: '06' },
-        { id: 'publications', label: 'Publications', num: '07' },
-        { id: 'conferences',  label: 'Conferences',  num: '08' },
-        { id: 'posters',      label: 'Posters',      num: '09' },
-        { id: 'teaching',     label: 'Teaching',     num: '10' },
-        { id: 'experience',   label: 'Experience',   num: '11' },
+        { id: 'publications', label: 'Publications', num: '04' },
+        { id: 'conferences',  label: 'Conferences',  num: '05' },
+        { id: 'posters',      label: 'Posters',      num: '06' },
+        { id: 'research',     label: 'Research',     num: '07' },
+        { id: 'teaching',     label: 'Teaching',     num: '08' },
+        { id: 'experience',   label: 'Experience',   num: '09' },
+        { id: 'skills',       label: 'Skills',       num: '10' },
+        { id: 'projects',     label: 'Projects',     num: '11' },
         { id: 'blogs',        label: 'Blogs',        num: '12' },
-        { id: 'journeys',     label: 'Journeys',     num: '13' },
-        { id: 'awards',       label: 'Awards',       num: '14' },
+        { id: 'awards',       label: 'Awards',       num: '13' },
+        { id: 'journeys',     label: 'Journeys',     num: '14' },
         { id: 'contact',      label: 'Contact',      num: '15' },
     ]
 
