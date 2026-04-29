@@ -4524,8 +4524,21 @@ html.intro-complete .hero__poster {
 
 @media (max-width: 480px) {
     .poster-gallery {
-        grid-template-columns: 1fr;
-        gap: 1.25rem;
+        display: flex;
+        flex-direction: row;
+        overflow-x: scroll;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        gap: 1rem;
+        padding-bottom: 0.5rem;
+        scrollbar-width: none;
+    }
+    .poster-gallery::-webkit-scrollbar {
+        display: none;
+    }
+    .poster-gallery__item {
+        flex: 0 0 85%;
+        scroll-snap-align: center;
     }
 }
 
