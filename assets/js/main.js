@@ -31,6 +31,7 @@ if (mainContent) {
         'skills',
         'projects',
         'blogs',
+        'journeys',
         'awards',
         'contact'
     ]
@@ -671,18 +672,35 @@ document.querySelectorAll('.timeline').forEach(tl => {
     const ring = document.getElementById('cursor-ring')
     if (!dot || !ring) return
     let mx = -100, my = -100, rx = -100, ry = -100
+    let rafId = 0
 
-    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY })
-    document.addEventListener('mouseleave', () => { mx = -100; my = -100 })
-
-    function loop() {
+    function render() {
+        rafId = 0
         rx += (mx - rx) * 0.13
         ry += (my - ry) * 0.13
-        dot.style.left  = mx + 'px';  dot.style.top  = my + 'px'
-        ring.style.left = rx + 'px';  ring.style.top = ry + 'px'
-        requestAnimationFrame(loop)
+        dot.style.transform = `translate3d(${mx}px, ${my}px, 0) translate(-50%, -50%)`
+        ring.style.transform = `translate3d(${rx}px, ${ry}px, 0) translate(-50%, -50%)`
+
+        if (Math.abs(mx - rx) > 0.2 || Math.abs(my - ry) > 0.2) {
+            rafId = requestAnimationFrame(render)
+        }
     }
-    loop()
+
+    function requestRender() {
+        if (!rafId) rafId = requestAnimationFrame(render)
+    }
+
+    document.addEventListener('mousemove', e => {
+        mx = e.clientX
+        my = e.clientY
+        requestRender()
+    }, { passive: true })
+
+    document.addEventListener('mouseleave', () => {
+        mx = -100
+        my = -100
+        requestRender()
+    })
 
     const targets = 'a, button, [role="button"], input, textarea, select, label, .pub__item, .project__card-toggle, .poster-gallery__item'
     document.querySelectorAll(targets).forEach(el => {
@@ -726,8 +744,9 @@ document.querySelectorAll('.timeline').forEach(tl => {
         { id: 'teaching',     label: 'Teaching',     num: '10' },
         { id: 'experience',   label: 'Experience',   num: '11' },
         { id: 'blogs',        label: 'Blogs',        num: '12' },
-        { id: 'awards',       label: 'Awards',       num: '13' },
-        { id: 'contact',      label: 'Contact',      num: '14' },
+        { id: 'journeys',     label: 'Journeys',     num: '13' },
+        { id: 'awards',       label: 'Awards',       num: '14' },
+        { id: 'contact',      label: 'Contact',      num: '15' },
     ]
 
     function update(id) {
@@ -768,4 +787,261 @@ document.querySelectorAll('.timeline').forEach(tl => {
             animateCounter(statCitEl, author.citationCount)
         }
     } catch (_) {}
+})()
+
+/*===== JOURNEY ALBUM VIEWER =====*/
+;(function () {
+    const albums = Array.isArray(window.JOURNEY_ALBUMS)
+        ? window.JOURNEY_ALBUMS.filter(album => Array.isArray(album.photos) && album.photos.length)
+        : []
+    const placesContainer = document.querySelector('.journeys__places')
+    const journeysViewer = document.getElementById('journeys-viewer')
+    let journeyPlaces = []
+    let journeyPanels = []
+    let lastJourneyTrigger = null
+
+    if (!placesContainer || !journeysViewer || !albums.length) return
+
+    function createEl(tag, className, text) {
+        const el = document.createElement(tag)
+        if (className) el.className = className
+        if (text != null) el.textContent = text
+        return el
+    }
+
+    function photoCountLabel(count) {
+        return `${count} ${count === 1 ? 'Photo' : 'Photos'}`
+    }
+
+    function buildPlaceCard(album, index) {
+        const button = document.createElement('button')
+        const targetId = `journey-${album.id}`
+        button.className = `journey__place${index === 0 ? ' journey__place--large' : ''}`
+        button.type = 'button'
+        button.dataset.journeyTarget = targetId
+        button.setAttribute('aria-haspopup', 'dialog')
+        button.setAttribute('aria-controls', targetId)
+        button.setAttribute('aria-expanded', 'false')
+
+        const media = createEl('span', 'journey__place-media')
+        const firstImg = document.createElement('img')
+        firstImg.className = 'journey__place-img journey__place-img--active'
+        firstImg.src = album.cover || album.photos[0]
+        firstImg.alt = `${album.title} album preview`
+        firstImg.loading = 'lazy'
+        firstImg.decoding = 'async'
+        media.appendChild(firstImg)
+
+        const content = createEl('span', 'journey__place-content')
+        content.append(
+            createEl('span', 'journey__place-kicker', photoCountLabel(album.photos.length)),
+            createEl('span', 'journey__place-title', album.title),
+            createEl('span', 'journey__place-copy', 'A rotating window into this album.')
+        )
+
+        button.append(media, content)
+        button.addEventListener('click', () => openJourneyAlbum(targetId))
+        return button
+    }
+
+    function buildAlbumPanel(album) {
+        const article = createEl('article', 'journey__album')
+        const titleId = `journey-${album.id}-title`
+        article.id = `journey-${album.id}`
+        article.dataset.journeyPanel = ''
+        article.role = 'dialog'
+        article.setAttribute('aria-modal', 'true')
+        article.setAttribute('aria-labelledby', titleId)
+        article.hidden = true
+
+        const header = createEl('header', 'journey__album-header')
+        const titleWrap = document.createElement('div')
+        titleWrap.append(
+            createEl('span', 'journey__album-kicker', 'Journey Album'),
+            createEl('h3', 'journey__album-title', album.title),
+            createEl('p', 'journey__album-copy', photoCountLabel(album.photos.length))
+        )
+        titleWrap.querySelector('.journey__album-title').id = titleId
+
+        const closeButton = createEl('button', 'journey__close')
+        closeButton.type = 'button'
+        closeButton.dataset.journeyClose = ''
+        closeButton.setAttribute('aria-label', `Close ${album.title} album`)
+        closeButton.innerHTML = '<i class="uil uil-times"></i>'
+        closeButton.addEventListener('click', closeJourneyAlbum)
+        header.append(titleWrap, closeButton)
+
+        const controls = createEl('div', `journey__slider-controls${album.photos.length < 2 ? ' journey__slider-controls--single' : ''}`)
+        controls.innerHTML = `
+            <button class="journey__slider-button" type="button" data-journey-prev aria-label="Previous photo">
+                <i class="uil uil-angle-left-b"></i>
+            </button>
+            <button class="journey__slider-button" type="button" data-journey-next aria-label="Next photo">
+                <i class="uil uil-angle-right-b"></i>
+            </button>
+        `
+        controls.querySelector('[data-journey-prev]')?.addEventListener('click', () => moveJourneySlide(article, -1))
+        controls.querySelector('[data-journey-next]')?.addEventListener('click', () => moveJourneySlide(article, 1))
+
+        const photos = createEl('div', 'journey__photos')
+        photos.setAttribute('aria-label', `${album.title} photos`)
+        album.photos.forEach((src, photoIndex) => {
+            const figure = createEl('figure', 'journey__photo')
+            const img = document.createElement('img')
+            img.dataset.src = src
+            img.alt = `${album.title} journey photo ${photoIndex + 1}`
+            img.loading = 'lazy'
+            img.decoding = 'async'
+            figure.appendChild(img)
+            figure.addEventListener('click', event => {
+                event.stopPropagation()
+                if (figure.classList.contains('journey__photo--prev')) {
+                    moveJourneySlide(article, -1)
+                } else {
+                    moveJourneySlide(article, 1)
+                }
+            })
+            photos.appendChild(figure)
+        })
+
+        article.append(header, controls, photos)
+        return article
+    }
+
+    function getJourneyPhotos(panel) {
+        return Array.from(panel?.querySelectorAll('.journey__photo') || [])
+    }
+
+    function loadJourneyPhoto(photo) {
+        const img = photo?.querySelector('img[data-src]')
+        if (img && !img.getAttribute('src')) {
+            img.src = img.dataset.src
+        }
+    }
+
+    function setJourneySlide(panel, index) {
+        const photos = getJourneyPhotos(panel)
+        if (!photos.length) return
+
+        const count = photos.length
+        const activeIndex = ((index % count) + count) % count
+        const prevIndex = (activeIndex - 1 + count) % count
+        const nextIndex = (activeIndex + 1) % count
+        panel.dataset.activeSlide = String(activeIndex)
+
+        photos.forEach((photo, photoIndex) => {
+            if (
+                photoIndex === activeIndex ||
+                photoIndex === prevIndex ||
+                photoIndex === nextIndex
+            ) {
+                loadJourneyPhoto(photo)
+            }
+
+            photo.classList.remove(
+                'journey__photo--current',
+                'journey__photo--prev',
+                'journey__photo--next',
+                'journey__photo--far'
+            )
+
+            if (photoIndex === activeIndex) {
+                photo.classList.add('journey__photo--current')
+            } else if (count > 2 && photoIndex === prevIndex) {
+                photo.classList.add('journey__photo--prev')
+            } else if (count > 1 && photoIndex === nextIndex) {
+                photo.classList.add('journey__photo--next')
+            } else {
+                photo.classList.add('journey__photo--far')
+            }
+        })
+    }
+
+    function moveJourneySlide(panel, direction) {
+        const activeIndex = Number(panel?.dataset.activeSlide || 0)
+        setJourneySlide(panel, activeIndex + direction)
+    }
+
+    function openJourneyAlbum(targetId) {
+        lastJourneyTrigger = document.activeElement
+
+        journeyPlaces.forEach(place => {
+            const isMatch = place.dataset.journeyTarget === targetId
+            place.classList.toggle('journey__place--active', isMatch)
+            place.setAttribute('aria-expanded', isMatch ? 'true' : 'false')
+        })
+
+        journeyPanels.forEach(panel => {
+            const isMatch = panel.id === targetId
+            panel.classList.remove('journey__album--active')
+            panel.hidden = !isMatch
+        })
+
+        journeysViewer.classList.add('journeys__viewer--open')
+        journeysViewer.setAttribute('aria-hidden', 'false')
+        document.body.classList.add('modal-open')
+
+        const activePanel = document.getElementById(targetId)
+        if (activePanel) {
+            setJourneySlide(activePanel, 0)
+            void activePanel.offsetWidth
+            window.requestAnimationFrame(() => {
+                activePanel.classList.add('journey__album--active')
+                activePanel.querySelector('[data-journey-close]')?.focus()
+            })
+        }
+    }
+
+    function closeJourneyAlbum() {
+        journeysViewer.classList.remove('journeys__viewer--open')
+        journeysViewer.setAttribute('aria-hidden', 'true')
+        document.body.classList.remove('modal-open')
+        journeyPlaces.forEach(place => {
+            place.classList.remove('journey__place--active')
+            place.setAttribute('aria-expanded', 'false')
+        })
+        journeyPanels.forEach(panel => panel.classList.remove('journey__album--active'))
+        lastJourneyTrigger?.focus?.()
+        lastJourneyTrigger = null
+    }
+
+    placesContainer.replaceChildren(...albums.map(buildPlaceCard))
+    journeysViewer.replaceChildren(...albums.map(buildAlbumPanel))
+    journeyPlaces = Array.from(placesContainer.querySelectorAll('[data-journey-target]'))
+    journeyPanels = Array.from(journeysViewer.querySelectorAll('[data-journey-panel]'))
+
+    if (journeysViewer.parentElement !== document.body) {
+        document.body.appendChild(journeysViewer)
+    }
+
+    journeysViewer.addEventListener('click', event => {
+        if (event.target === journeysViewer) closeJourneyAlbum()
+    })
+
+    window.addEventListener('keydown', event => {
+        if (!journeysViewer.classList.contains('journeys__viewer--open')) return
+
+        if (event.key === 'Escape') {
+            closeJourneyAlbum()
+            return
+        }
+
+        if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+            const activePanel = document.querySelector('.journey__album--active')
+            if (!activePanel) return
+            event.preventDefault()
+            moveJourneySlide(activePanel, event.key === 'ArrowRight' ? 1 : -1)
+        }
+    })
+})()
+
+/*===== PHOTO FAN =====*/
+;(function () {
+    const fan = document.getElementById('photoFan')
+    if (!fan) return
+    fan.addEventListener('click', e => {
+        e.stopPropagation()
+        fan.classList.toggle('is-open')
+    })
+    document.addEventListener('click', () => fan.classList.remove('is-open'))
 })()

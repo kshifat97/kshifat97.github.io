@@ -27,6 +27,7 @@
                     <li><a href="#skills"      class="nav__link">Skills</a></li>
                     <li><a href="#projects"     class="nav__link">Projects</a></li>
                     <li><a href="#blogs"        class="nav__link">Blogs</a></li>
+                    <li><a href="#journeys"     class="nav__link">Journeys</a></li>
                     <li><a href="#contact"      class="nav__link">Contact</a></li>
                 </ul>
                 <i class="uil uil-times nav__close" id="nav-close"></i>
@@ -133,7 +134,17 @@
 
                     <div class="about__profile">
                         <div class="about__photo">
-                            <img src="assets/img/Jakkas.jpg" alt="Kazi Tahsin Mahmood">
+                            <div class="photo-fan" id="photoFan" title="Click to expand">
+                                <div class="photo-fan__card photo-fan__card--right">
+                                    <img src="assets/img/Jakkas3.jpg" alt="Kazi Tahsin Mahmood">
+                                </div>
+                                <div class="photo-fan__card photo-fan__card--left">
+                                    <img src="assets/img/Jakkas2.jpg" alt="Kazi Tahsin Mahmood">
+                                </div>
+                                <div class="photo-fan__card photo-fan__card--center">
+                                    <img src="assets/img/Jakkas.jpg" alt="Kazi Tahsin Mahmood">
+                                </div>
+                            </div>
                         </div>
                         <div class="about__links" aria-label="Profile links">
                             <a href="https://www.linkedin.com/in/kazitahsin/" target="_blank" rel="noopener" class="profile__link profile__link--linkedin" aria-label="LinkedIn">
@@ -1313,6 +1324,237 @@
             </div>
         </section>
 
+        <!--==================== JOURNEYS ====================-->
+        <section class="journeys section" id="journeys">
+            <div class="section__bg-icons" aria-hidden="true">
+                <i class="uil uil-map-marker section__bg-icon section__bg-icon--tl"></i>
+                <i class="uil uil-camera section__bg-icon section__bg-icon--tr"></i>
+                <i class="uil uil-compass section__bg-icon section__bg-icon--br"></i>
+            </div>
+            <div class="container">
+                <h2 class="section__title">Journeys</h2>
+                <span class="section__subtitle">Places, People &amp; Small Discoveries</span>
+
+                <div class="journeys__intro">
+                    <p>
+                        A visual notebook from the places I have crossed through: conference cities, quiet walks,
+                        mountain air, waterfront evenings, and the small pauses that make travel memorable.
+                    </p>
+                </div>
+
+                <div class="journeys__places" aria-label="Journey places">
+                    <button class="journey__place journey__place--large" type="button" data-journey-target="journey-upper-peninsula" aria-haspopup="dialog" aria-controls="journey-upper-peninsula" aria-expanded="false">
+                        <img src="assets/img/journeys/upper-peninsula/IMG_0134.jpeg" alt="Upper Peninsula album preview" loading="lazy" decoding="async">
+                        <span class="journey__place-content">
+                            <span class="journey__place-kicker">7 Photos</span>
+                            <span class="journey__place-title">Upper Peninsula</span>
+                            <span class="journey__place-copy">Lake air, northern roads, and quiet edges of Michigan.</span>
+                        </span>
+                    </button>
+
+                    <button class="journey__place" type="button" data-journey-target="journey-utah" aria-haspopup="dialog" aria-controls="journey-utah" aria-expanded="false">
+                        <img src="assets/img/Jakkas.jpg" alt="Utah album preview" loading="lazy" decoding="async">
+                        <span class="journey__place-content">
+                            <span class="journey__place-kicker">Album</span>
+                            <span class="journey__place-title">Utah</span>
+                            <span class="journey__place-copy">Red-rock scale, desert light, and long horizons.</span>
+                        </span>
+                    </button>
+
+                    <button class="journey__place" type="button" data-journey-target="journey-arizona" aria-haspopup="dialog" aria-controls="journey-arizona" aria-expanded="false">
+                        <img src="assets/img/Jakkas2.jpg" alt="Arizona album preview" loading="lazy" decoding="async">
+                        <span class="journey__place-content">
+                            <span class="journey__place-kicker">Album</span>
+                            <span class="journey__place-title">Arizona</span>
+                            <span class="journey__place-copy">Canyon colors, dry heat, and big southwestern skies.</span>
+                        </span>
+                    </button>
+
+                    <button class="journey__place" type="button" data-journey-target="journey-yellowstone" aria-haspopup="dialog" aria-controls="journey-yellowstone" aria-expanded="false">
+                        <img src="assets/img/Jakkas3.jpg" alt="Yellowstone album preview" loading="lazy" decoding="async">
+                        <span class="journey__place-content">
+                            <span class="journey__place-kicker">Album</span>
+                            <span class="journey__place-title">Yellowstone</span>
+                            <span class="journey__place-copy">Thermal basins, wild landscapes, and changing weather.</span>
+                        </span>
+                    </button>
+
+                    <button class="journey__place" type="button" data-journey-target="journey-washington-dc" aria-haspopup="dialog" aria-controls="journey-washington-dc" aria-expanded="false">
+                        <img src="assets/img/69002370_2344194425694267_9156056228445552640_n.jpg" alt="Washington DC album preview" loading="lazy" decoding="async">
+                        <span class="journey__place-content">
+                            <span class="journey__place-kicker">Album</span>
+                            <span class="journey__place-title">Washington DC</span>
+                            <span class="journey__place-copy">Monuments, museums, and walks through history.</span>
+                        </span>
+                    </button>
+
+                    <button class="journey__place" type="button" data-journey-target="journey-oregon" aria-haspopup="dialog" aria-controls="journey-oregon" aria-expanded="false">
+                        <img src="assets/img/Jakkas2.jpg" alt="Oregon album preview" loading="lazy" decoding="async">
+                        <span class="journey__place-content">
+                            <span class="journey__place-kicker">Album</span>
+                            <span class="journey__place-title">Oregon</span>
+                            <span class="journey__place-copy">Evergreen roads, coastlines, and Pacific Northwest light.</span>
+                        </span>
+                    </button>
+
+                    <button class="journey__place" type="button" data-journey-target="journey-midwest" aria-haspopup="dialog" aria-controls="journey-midwest" aria-expanded="false">
+                        <img src="assets/img/about.jpg" alt="Midwest album preview" loading="lazy" decoding="async">
+                        <span class="journey__place-content">
+                            <span class="journey__place-kicker">Album</span>
+                            <span class="journey__place-title">Midwest</span>
+                            <span class="journey__place-copy">Campus towns, lakeside evenings, and road-trip fragments.</span>
+                        </span>
+                    </button>
+                </div>
+
+                <div class="journeys__viewer" id="journeys-viewer" aria-hidden="true">
+                    <article class="journey__album" id="journey-upper-peninsula" data-journey-panel role="dialog" aria-modal="true" aria-labelledby="journey-upper-peninsula-title" hidden>
+                        <header class="journey__album-header">
+                            <div>
+                                <span class="journey__album-kicker">Journey Album</span>
+                                <h3 class="journey__album-title" id="journey-upper-peninsula-title">Upper Peninsula</h3>
+                                <p class="journey__album-copy">Lake air, northern roads, and quiet edges of Michigan.</p>
+                            </div>
+                            <button class="journey__close" type="button" data-journey-close aria-label="Close Upper Peninsula album">
+                                <i class="uil uil-times"></i>
+                            </button>
+                        </header>
+                        <div class="journey__photos" aria-label="Upper Peninsula photos">
+                            <figure class="journey__photo">
+                                <img src="assets/img/journeys/upper-peninsula/IMG_0134.jpeg" alt="Upper Peninsula journey photo 1" loading="lazy" decoding="async">
+                            </figure>
+                            <figure class="journey__photo">
+                                <img src="assets/img/journeys/upper-peninsula/IMG_0140.jpeg" alt="Upper Peninsula journey photo 2" loading="lazy" decoding="async">
+                            </figure>
+                            <figure class="journey__photo">
+                                <img src="assets/img/journeys/upper-peninsula/IMG_0262.jpeg" alt="Upper Peninsula journey photo 3" loading="lazy" decoding="async">
+                            </figure>
+                            <figure class="journey__photo">
+                                <img src="assets/img/journeys/upper-peninsula/IMG_0288.jpeg" alt="Upper Peninsula journey photo 4" loading="lazy" decoding="async">
+                            </figure>
+                            <figure class="journey__photo">
+                                <img src="assets/img/journeys/upper-peninsula/IMG_0630.jpeg" alt="Upper Peninsula journey photo 5" loading="lazy" decoding="async">
+                            </figure>
+                            <figure class="journey__photo">
+                                <img src="assets/img/journeys/upper-peninsula/IMG_0646.jpeg" alt="Upper Peninsula journey photo 6" loading="lazy" decoding="async">
+                            </figure>
+                            <figure class="journey__photo">
+                                <img src="assets/img/journeys/upper-peninsula/IMG_0711.jpeg" alt="Upper Peninsula journey photo 7" loading="lazy" decoding="async">
+                            </figure>
+                        </div>
+                    </article>
+
+                    <article class="journey__album" id="journey-utah" data-journey-panel role="dialog" aria-modal="true" aria-labelledby="journey-utah-title" hidden>
+                        <header class="journey__album-header">
+                            <div>
+                                <span class="journey__album-kicker">Journey Album</span>
+                                <h3 class="journey__album-title" id="journey-utah-title">Utah</h3>
+                                <p class="journey__album-copy">Red-rock scale, desert light, and long horizons.</p>
+                            </div>
+                            <button class="journey__close" type="button" data-journey-close aria-label="Close Utah album">
+                                <i class="uil uil-times"></i>
+                            </button>
+                        </header>
+                        <div class="journey__photos" aria-label="Utah photos">
+                            <figure class="journey__photo journey__photo--wide">
+                                <img src="assets/img/Jakkas.jpg" alt="Utah journey photo placeholder" loading="lazy" decoding="async">
+                            </figure>
+                        </div>
+                    </article>
+
+                    <article class="journey__album" id="journey-arizona" data-journey-panel role="dialog" aria-modal="true" aria-labelledby="journey-arizona-title" hidden>
+                        <header class="journey__album-header">
+                            <div>
+                                <span class="journey__album-kicker">Journey Album</span>
+                                <h3 class="journey__album-title" id="journey-arizona-title">Arizona</h3>
+                                <p class="journey__album-copy">Canyon colors, dry heat, and big southwestern skies.</p>
+                            </div>
+                            <button class="journey__close" type="button" data-journey-close aria-label="Close Arizona album">
+                                <i class="uil uil-times"></i>
+                            </button>
+                        </header>
+                        <div class="journey__photos" aria-label="Arizona photos">
+                            <figure class="journey__photo journey__photo--wide">
+                                <img src="assets/img/Jakkas2.jpg" alt="Arizona journey photo placeholder" loading="lazy" decoding="async">
+                            </figure>
+                        </div>
+                    </article>
+
+                    <article class="journey__album" id="journey-yellowstone" data-journey-panel role="dialog" aria-modal="true" aria-labelledby="journey-yellowstone-title" hidden>
+                        <header class="journey__album-header">
+                            <div>
+                                <span class="journey__album-kicker">Journey Album</span>
+                                <h3 class="journey__album-title" id="journey-yellowstone-title">Yellowstone</h3>
+                                <p class="journey__album-copy">Thermal basins, wild landscapes, and changing weather.</p>
+                            </div>
+                            <button class="journey__close" type="button" data-journey-close aria-label="Close Yellowstone album">
+                                <i class="uil uil-times"></i>
+                            </button>
+                        </header>
+                        <div class="journey__photos" aria-label="Yellowstone photos">
+                            <figure class="journey__photo journey__photo--wide">
+                                <img src="assets/img/Jakkas3.jpg" alt="Yellowstone journey photo placeholder" loading="lazy" decoding="async">
+                            </figure>
+                        </div>
+                    </article>
+
+                    <article class="journey__album" id="journey-washington-dc" data-journey-panel role="dialog" aria-modal="true" aria-labelledby="journey-washington-dc-title" hidden>
+                        <header class="journey__album-header">
+                            <div>
+                                <span class="journey__album-kicker">Journey Album</span>
+                                <h3 class="journey__album-title" id="journey-washington-dc-title">Washington DC</h3>
+                                <p class="journey__album-copy">Monuments, museums, and walks through history.</p>
+                            </div>
+                            <button class="journey__close" type="button" data-journey-close aria-label="Close Washington DC album">
+                                <i class="uil uil-times"></i>
+                            </button>
+                        </header>
+                        <div class="journey__photos" aria-label="Washington DC photos">
+                            <figure class="journey__photo journey__photo--wide">
+                                <img src="assets/img/69002370_2344194425694267_9156056228445552640_n.jpg" alt="Washington DC journey photo placeholder" loading="lazy" decoding="async">
+                            </figure>
+                        </div>
+                    </article>
+
+                    <article class="journey__album" id="journey-oregon" data-journey-panel role="dialog" aria-modal="true" aria-labelledby="journey-oregon-title" hidden>
+                        <header class="journey__album-header">
+                            <div>
+                                <span class="journey__album-kicker">Journey Album</span>
+                                <h3 class="journey__album-title" id="journey-oregon-title">Oregon</h3>
+                                <p class="journey__album-copy">Evergreen roads, coastlines, and Pacific Northwest light.</p>
+                            </div>
+                            <button class="journey__close" type="button" data-journey-close aria-label="Close Oregon album">
+                                <i class="uil uil-times"></i>
+                            </button>
+                        </header>
+                        <div class="journey__photos" aria-label="Oregon photos">
+                            <figure class="journey__photo journey__photo--wide">
+                                <img src="assets/img/Jakkas2.jpg" alt="Oregon journey photo placeholder" loading="lazy" decoding="async">
+                            </figure>
+                        </div>
+                    </article>
+
+                    <article class="journey__album" id="journey-midwest" data-journey-panel role="dialog" aria-modal="true" aria-labelledby="journey-midwest-title" hidden>
+                        <header class="journey__album-header">
+                            <div>
+                                <span class="journey__album-kicker">Journey Album</span>
+                                <h3 class="journey__album-title" id="journey-midwest-title">Midwest</h3>
+                                <p class="journey__album-copy">Campus towns, lakeside evenings, and road-trip fragments.</p>
+                            </div>
+                            <button class="journey__close" type="button" data-journey-close aria-label="Close Midwest album">
+                                <i class="uil uil-times"></i>
+                            </button>
+                        </header>
+                        <div class="journey__photos" aria-label="Midwest photos">
+                            <figure class="journey__photo journey__photo--wide">
+                                <img src="assets/img/about.jpg" alt="Midwest journey photo placeholder" loading="lazy" decoding="async">
+                            </figure>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
         <!--==================== AWARDS & SERVICES ====================-->
         <section class="awards section" id="awards">
             <div class="section__bg-icons" aria-hidden="true">
@@ -1491,6 +1733,7 @@
         <a class="dot-nav__dot" href="#skills"      data-label="Skills"      title="Skills"></a>
         <a class="dot-nav__dot" href="#projects"     data-label="Projects"      title="Projects"></a>
         <a class="dot-nav__dot" href="#blogs"        data-label="Blogs"         title="Blogs"></a>
+        <a class="dot-nav__dot" href="#journeys"     data-label="Journeys"      title="Journeys"></a>
         <a class="dot-nav__dot" href="#awards"       data-label="Awards"        title="Awards"></a>
         <a class="dot-nav__dot" href="#contact"      data-label="Contact"       title="Contact"></a>
     </nav>
@@ -1507,6 +1750,7 @@
         <span id="tracker-name">Home</span>
     </div>
 
+    <script src="assets/js/journeys-data.js"></script>
     <script src="assets/js/main.js"></script>
 </body>
 </html>
