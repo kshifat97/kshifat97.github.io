@@ -3744,6 +3744,10 @@ html.intro-complete .hero__scroll {
         margin: 0 auto;
     }
 
+    .about__photo {
+        width: 100%;
+    }
+
     .research__overview,
     .projects__cards,
     .project__grid,
