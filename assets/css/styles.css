@@ -3859,12 +3859,22 @@ html.intro-complete .hero__scroll {
         height: 100%;
     }
 
+    .photo-fan__card {
+        transform-origin: bottom center;
+    }
+
     .photo-fan.is-open .photo-fan__card--right {
-        transform: translateX(90px) rotate(8deg);
+        z-index: 4;
+        transform: rotate(22deg);
     }
 
     .photo-fan.is-open .photo-fan__card--left {
-        transform: translateX(-90px) rotate(-8deg);
+        z-index: 5;
+        transform: rotate(-22deg);
+    }
+
+    .photo-fan.is-open .photo-fan__card--center {
+        transform: translateY(-10px);
     }
 
     .photo-fan__card img {

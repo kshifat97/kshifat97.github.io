@@ -1,3 +1,6 @@
+history.scrollRestoration = 'manual'
+window.scrollTo(0, 0)
+
 /*===== NAV MENU TOGGLE =====*/
 const introLoader = document.getElementById('intro-loader')
 
