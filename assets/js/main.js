@@ -6,6 +6,7 @@ const introLoader = document.getElementById('intro-loader')
 
 if (introLoader) {
     let introFinished = false
+    const progressWrapper = introLoader.querySelector('.intro-loader__bar-wrap')
     document.documentElement.classList.add('intro-is-running')
 
     const finishIntro = () => {
@@ -53,6 +54,7 @@ if (introLoader) {
 
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         if (pctEl) pctEl.textContent = '100%'
+        progressWrapper?.classList.add('progress-hidden')
         window.setTimeout(finishIntro, 200)
     } else {
         if (pctEl) {
@@ -66,6 +68,7 @@ if (introLoader) {
                 const pct = Math.min(Math.round((elapsed - barDelay) / barDuration * 100), 100)
                 pctEl.textContent = pct + '%'
                 if (pct < 100) requestAnimationFrame(tickPct)
+                else progressWrapper?.classList.add('progress-hidden')
             }
             requestAnimationFrame(tickPct)
         }
