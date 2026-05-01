@@ -139,10 +139,11 @@ if (mainContent) {
         'home',
         'about',
         'education',
+        'research',
+        'research-experience',
         'publications',
         'conferences',
         'posters',
-        'research',
         'teaching',
         'experience',
         'skills',
@@ -823,7 +824,7 @@ document.querySelectorAll('.timeline').forEach(tl => {
         requestRender()
     })
 
-    const targets = 'a, button, [role="button"], input, textarea, select, label, .pub__item, .project__card-toggle, .poster-gallery__item'
+    const targets = 'a, button, [role="button"], input, textarea, select, label, .pub__item, .project__card-toggle, .research__card-toggle, .poster-gallery__item'
     document.querySelectorAll(targets).forEach(el => {
         el.addEventListener('mouseenter', () => { dot.classList.add('cursor--hover');  ring.classList.add('cursor--hover') })
         el.addEventListener('mouseleave', () => { dot.classList.remove('cursor--hover'); ring.classList.remove('cursor--hover') })
@@ -845,6 +846,48 @@ document.querySelectorAll('.timeline').forEach(tl => {
     titles.forEach(t => obs.observe(t))
 })()
 
+/*===== RESEARCH CARD EXPAND/COLLAPSE =====*/
+;(function () {
+    const researchCards = document.querySelectorAll('[data-research-card]')
+    if (!researchCards.length) return
+
+    researchCards.forEach(card => {
+        const toggle = card.querySelector('.research__card-toggle')
+        const body = card.querySelector('.research__card-body')
+        if (!toggle || !body) return
+
+        function updateMaxHeight() {
+            if (card.hasAttribute('data-expanded')) {
+                body.style.maxHeight = body.scrollHeight + 'px'
+            } else {
+                body.style.maxHeight = '0'
+            }
+        }
+
+        toggle.addEventListener('click', event => {
+            event.preventDefault()
+            const isExpanded = card.hasAttribute('data-expanded')
+            
+            if (isExpanded) {
+                card.removeAttribute('data-expanded')
+                toggle.setAttribute('aria-expanded', 'false')
+                toggle.querySelector('.research__card-toggle-text').textContent = 'See More'
+                body.hidden = true
+                body.style.maxHeight = '0'
+            } else {
+                card.setAttribute('data-expanded', '')
+                toggle.setAttribute('aria-expanded', 'true')
+                toggle.querySelector('.research__card-toggle-text').textContent = 'See Less'
+                body.hidden = false
+                updateMaxHeight()
+            }
+        })
+
+        // Handle window resize to adjust max-height
+        window.addEventListener('resize', updateMaxHeight)
+    })
+})()
+
 /*===== SECTION TRACKER =====*/
 ;(function () {
     const numEl  = document.getElementById('tracker-num')
@@ -856,18 +899,19 @@ document.querySelectorAll('.timeline').forEach(tl => {
         { id: 'home',         label: 'Home',         num: '01' },
         { id: 'about',        label: 'About',        num: '02' },
         { id: 'education',    label: 'Education',    num: '03' },
-        { id: 'publications', label: 'Publications', num: '04' },
-        { id: 'conferences',  label: 'Conferences',  num: '05' },
-        { id: 'posters',      label: 'Posters',      num: '06' },
-        { id: 'research',     label: 'Research',     num: '07' },
-        { id: 'teaching',     label: 'Teaching',     num: '08' },
-        { id: 'experience',   label: 'Experience',   num: '09' },
-        { id: 'skills',       label: 'Skills',       num: '10' },
-        { id: 'projects',     label: 'Projects',     num: '11' },
-        { id: 'blogs',        label: 'Blogs',        num: '12' },
-        { id: 'awards',       label: 'Awards',       num: '13' },
-        { id: 'journeys',     label: 'Journeys',     num: '14' },
-        { id: 'contact',      label: 'Contact',      num: '15' },
+        { id: 'research',     label: 'Research',     num: '04' },
+        { id: 'research-experience', label: 'Research Experience', num: '05' },
+        { id: 'publications', label: 'Publications', num: '06' },
+        { id: 'conferences',  label: 'Conferences',  num: '07' },
+        { id: 'posters',      label: 'Posters',      num: '08' },
+        { id: 'teaching',     label: 'Teaching',     num: '09' },
+        { id: 'experience',   label: 'Experience',   num: '10' },
+        { id: 'skills',       label: 'Skills',       num: '11' },
+        { id: 'projects',     label: 'Projects',     num: '12' },
+        { id: 'blogs',        label: 'Blogs',        num: '13' },
+        { id: 'awards',       label: 'Awards',       num: '14' },
+        { id: 'journeys',     label: 'Journeys',     num: '15' },
+        { id: 'contact',      label: 'Contact',      num: '16' },
     ]
 
     function update(id) {
@@ -915,9 +959,11 @@ document.querySelectorAll('.timeline').forEach(tl => {
     const albums = Array.isArray(window.JOURNEY_ALBUMS)
         ? window.JOURNEY_ALBUMS.filter(album => Array.isArray(album.photos) && album.photos.length)
         : []
+    const mapContainer = document.querySelector('.journeys__map')
     const placesContainer = document.querySelector('.journeys__places')
     const journeysViewer = document.getElementById('journeys-viewer')
     let journeyPlaces = []
+    let journeyMapPins = []
     let journeyPanels = []
     let lastJourneyTrigger = null
 
@@ -934,6 +980,348 @@ document.querySelectorAll('.timeline').forEach(tl => {
         return `${count} ${count === 1 ? 'Photo' : 'Photos'}`
     }
 
+    function photoSrc(photo) {
+        return typeof photo === 'string' ? photo : photo?.src
+    }
+
+    function isVideoMedia(photo) {
+        const src = photoSrc(photo) || ''
+        return photo?.type === 'video' || /\.(mov|mp4|m4v|webm)$/i.test(src)
+    }
+
+    function mediaCountLabel(items) {
+        if (!Array.isArray(items)) return photoCountLabel(items)
+        const count = items.length
+        const mediaItems = items.map(item => item.photo || item)
+        const videoCount = mediaItems.filter(isVideoMedia).length
+        if (videoCount === count) return `${count} ${count === 1 ? 'Video' : 'Videos'}`
+        if (videoCount > 0) return `${count} Items`
+        return photoCountLabel(count)
+    }
+
+    function hasPhotoPoint(photo) {
+        return Number.isFinite(photo?.lat) && Number.isFinite(photo?.lng)
+    }
+
+    function isUsJourneyPoint(point) {
+        return point.lat >= 24 && point.lat <= 50 && point.lng >= -125 && point.lng <= -66
+    }
+
+    function hasMapPoint(album) {
+        return Number.isFinite(album?.map?.lat) && Number.isFinite(album?.map?.lng)
+    }
+
+    function hasStaticMapPoint(album) {
+        return Number.isFinite(album?.map?.x) && Number.isFinite(album?.map?.y)
+    }
+
+    function mapPinMatchesTarget(pin, targetId) {
+        if (pin.dataset.journeyTarget === targetId) return true
+        return (pin.dataset.journeyTargets || '')
+            .split(',')
+            .filter(Boolean)
+            .includes(targetId)
+    }
+
+    function currentJourneyMapPins() {
+        return Array.from(mapContainer?.querySelectorAll('[data-journey-target]') || journeyMapPins)
+    }
+
+    function syncJourneyHover(targetId, isHovered) {
+        journeyPlaces.forEach(place => {
+            if (place.dataset.journeyTarget === targetId) {
+                place.classList.toggle('journey__place--map-hover', isHovered)
+            }
+        })
+
+        currentJourneyMapPins().forEach(pin => {
+            if (mapPinMatchesTarget(pin, targetId)) {
+                pin.classList.toggle('journey-map__pin--hover', isHovered)
+            }
+        })
+    }
+
+    function getJourneyMapPoints(album) {
+        const points = []
+        album.photos.forEach((photo, photoIndex) => {
+            if (!hasPhotoPoint(photo)) return
+            points.push({
+                album,
+                photo,
+                photoIndex,
+                lat: photo.lat,
+                lng: photo.lng,
+                label: photo.place || album.title
+            })
+        })
+
+        if (!points.length && hasMapPoint(album)) {
+            points.push({
+                album,
+                photoIndex: 0,
+                lat: album.map.lat,
+                lng: album.map.lng,
+                label: album.map.label || album.title
+            })
+        }
+
+        return points
+    }
+
+    function distanceKm(a, b) {
+        const earthRadiusKm = 6371
+        const toRad = degrees => degrees * Math.PI / 180
+        const dLat = toRad(b.lat - a.lat)
+        const dLng = toRad(b.lng - a.lng)
+        const lat1 = toRad(a.lat)
+        const lat2 = toRad(b.lat)
+        const h = Math.sin(dLat / 2) ** 2 +
+            Math.cos(lat1) * Math.cos(lat2) * Math.sin(dLng / 2) ** 2
+        return 2 * earthRadiusKm * Math.asin(Math.sqrt(h))
+    }
+
+    function labelForGroup(points) {
+        const labels = [...new Set(points.map(point => point.label).filter(Boolean))]
+        if (labels.length === 1) return labels[0]
+        if (labels.length === 2) return labels.join(' / ')
+        return 'Nearby Photos'
+    }
+
+    function groupJourneyMapPoints(points) {
+        const groups = []
+        const sortedPoints = [...points].sort((a, b) => {
+            if (a.label !== b.label) return a.label.localeCompare(b.label)
+            if (a.lat !== b.lat) return a.lat - b.lat
+            return a.lng - b.lng
+        })
+        const maxDistanceKm = 32.1869
+
+        sortedPoints.forEach(point => {
+            const group = groups.find(candidate => distanceKm(candidate, point) <= maxDistanceKm)
+            if (group) {
+                group.points.push(point)
+                group.lat = group.points.reduce((sum, item) => sum + item.lat, 0) / group.points.length
+                group.lng = group.points.reduce((sum, item) => sum + item.lng, 0) / group.points.length
+                group.label = labelForGroup(group.points)
+            } else {
+                groups.push({
+                    lat: point.lat,
+                    lng: point.lng,
+                    label: point.label,
+                    points: [point]
+                })
+            }
+        })
+
+        return groups
+    }
+
+    function buildJourneyPopup(group) {
+        const popup = createEl('div', 'journey-map-popup')
+        popup.append(
+            createEl('strong', 'journey-map-popup__title', group.label),
+            createEl('span', 'journey-map-popup__meta', mediaCountLabel(group.points))
+        )
+
+        const grid = createEl('div', 'journey-map-popup__photos')
+        group.points.forEach(point => {
+            const button = createEl('button', 'journey-map-popup__photo')
+            button.type = 'button'
+            button.dataset.journeyOpen = `journey-${point.album.id}`
+            button.dataset.journeySlide = String(point.photoIndex)
+            button.setAttribute('aria-label', `Open ${point.label} ${isVideoMedia(point.photo) ? 'video' : 'photo'} ${point.photoIndex + 1}`)
+
+            let media
+            if (isVideoMedia(point.photo)) {
+                media = document.createElement('video')
+                media.src = photoSrc(point.photo)
+                media.muted = true
+                media.playsInline = true
+                media.preload = 'metadata'
+                media.setAttribute('aria-label', `${point.label} video ${point.photoIndex + 1}`)
+            } else {
+                media = document.createElement('img')
+                media.src = photoSrc(point.photo)
+                media.alt = `${point.label} photo ${point.photoIndex + 1}`
+                media.loading = 'lazy'
+                media.decoding = 'async'
+            }
+
+            const caption = createEl('span', 'journey-map-popup__caption', point.label)
+            button.append(media, caption)
+            grid.appendChild(button)
+        })
+
+        popup.appendChild(grid)
+        return popup
+    }
+
+    function buildJourneyMap() {
+        if (!mapContainer) return
+
+        const mapPoints = albums.flatMap(getJourneyMapPoints)
+        if (mapPoints.length && window.L) {
+            buildLeafletJourneyMap(mapPoints)
+            return
+        }
+
+        const staticAlbums = albums.filter(hasStaticMapPoint)
+        if (!staticAlbums.length) {
+            mapContainer.hidden = true
+            return
+        }
+
+        buildStaticJourneyMap(staticAlbums)
+    }
+
+    function buildLeafletJourneyMap(mapPoints) {
+        const map = createEl('div', 'journey-map journey-map--leaflet')
+        map.setAttribute('role', 'group')
+        map.setAttribute('aria-label', 'Interactive journey map')
+
+        const leafletEl = createEl('div', 'journey-map__leaflet')
+        map.appendChild(leafletEl)
+        mapContainer.replaceChildren(map)
+
+        const journeyMap = window.L.map(leafletEl, {
+            attributionControl: true,
+            scrollWheelZoom: false,
+            zoomControl: true
+        })
+
+        window.L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 18,
+            attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(journeyMap)
+
+        const markerLayer = window.L.markerClusterGroup
+            ? window.L.markerClusterGroup({
+                showCoverageOnHover: false,
+                maxClusterRadius: 42,
+                iconCreateFunction(cluster) {
+                    return window.L.divIcon({
+                        html: `<span>${cluster.getChildCount()}</span>`,
+                        className: 'journey-map__cluster',
+                        iconSize: [38, 38]
+                    })
+                }
+            })
+            : window.L.layerGroup()
+        markerLayer.addTo(journeyMap)
+
+        const focusPoints = mapPoints.filter(isUsJourneyPoint)
+        const boundsPoints = focusPoints.length ? focusPoints : mapPoints
+        const bounds = window.L.latLngBounds(boundsPoints.map(point => [point.lat, point.lng]))
+        journeyMap.fitBounds(bounds.pad(0.22), {
+            animate: false,
+            maxZoom: 5
+        })
+
+        const locationGroups = groupJourneyMapPoints(mapPoints)
+        locationGroups.forEach(group => {
+            const targetIds = [...new Set(group.points.map(point => `journey-${point.album.id}`))]
+            const setMarkerAttrs = markerElement => {
+                if (!markerElement) return
+                markerElement.dataset.journeyTarget = targetIds[0]
+                markerElement.dataset.journeyTargets = targetIds.join(',')
+                markerElement.setAttribute('aria-label', `${group.label}: ${mediaCountLabel(group.points)}`)
+                markerElement.setAttribute('aria-haspopup', 'dialog')
+                markerElement.setAttribute('aria-controls', targetIds[0])
+                markerElement.setAttribute('aria-expanded', 'false')
+            }
+            const marker = window.L.marker([group.lat, group.lng], {
+                icon: window.L.divIcon({
+                    className: `journey-leaflet-marker${group.points.length > 1 ? ' journey-leaflet-marker--group' : ''}`,
+                    html: group.points.length > 1
+                        ? `<span class="journey-leaflet-marker__dot"><span class="journey-leaflet-marker__count">${group.points.length}</span></span>`
+                        : '<span class="journey-leaflet-marker__dot"></span>',
+                    iconSize: group.points.length > 1 ? [28, 28] : [22, 22],
+                    iconAnchor: group.points.length > 1 ? [14, 14] : [11, 11]
+                }),
+                keyboard: true,
+                title: group.label
+            })
+
+            marker.bindTooltip(`${group.label} - ${mediaCountLabel(group.points)}`, {
+                className: 'journey-map__tooltip',
+                direction: 'top',
+                offset: [0, -12]
+            })
+            marker.bindPopup(buildJourneyPopup(group), {
+                className: 'journey-map-popup-wrap',
+                maxWidth: 310,
+                minWidth: Math.min(292, Math.max(190, group.points.length * 86))
+            })
+
+            marker.on('mouseover', () => targetIds.forEach(targetId => syncJourneyHover(targetId, true)))
+            marker.on('mouseout', () => targetIds.forEach(targetId => syncJourneyHover(targetId, false)))
+            marker.on('add', () => setMarkerAttrs(marker.getElement()))
+
+            markerLayer.addLayer(marker)
+            setMarkerAttrs(marker.getElement())
+        })
+
+        if (!mapContainer.dataset.journeyPopupBound) {
+            mapContainer.addEventListener('click', event => {
+                const trigger = event.target.closest('[data-journey-open]')
+                if (!trigger) return
+                event.preventDefault()
+                openJourneyAlbum(trigger.dataset.journeyOpen, Number(trigger.dataset.journeySlide || 0))
+            })
+            mapContainer.dataset.journeyPopupBound = 'true'
+        }
+
+        window.requestAnimationFrame(() => journeyMap.invalidateSize())
+    }
+
+    function buildStaticJourneyMap(mapAlbums) {
+        const map = createEl('div', 'journey-map journey-map--static')
+        map.setAttribute('role', 'group')
+        map.setAttribute('aria-label', 'Static USA journey map')
+
+        const image = document.createElement('img')
+        image.className = 'journey-map__image'
+        image.src = 'https://upload.wikimedia.org/wikipedia/commons/1/1a/Blank_US_Map_%28states_only%29.svg'
+        image.alt = ''
+        image.loading = 'lazy'
+        image.decoding = 'async'
+        image.setAttribute('aria-hidden', 'true')
+
+        const colorLayer = createEl('div', 'journey-map__color')
+        colorLayer.setAttribute('aria-hidden', 'true')
+
+        const pins = createEl('div', 'journey-map__pins')
+        mapAlbums.forEach(album => {
+            const targetId = `journey-${album.id}`
+            const button = createEl('button', 'journey-map__pin')
+            button.type = 'button'
+            if (album.map.x > 78) {
+                button.classList.add('journey-map__pin--label-left')
+            }
+            button.dataset.journeyTarget = targetId
+            button.style.setProperty('--x', `${album.map.x}%`)
+            button.style.setProperty('--y', `${album.map.y}%`)
+            button.setAttribute('aria-label', `${album.map.label || album.title}: ${mediaCountLabel(album.photos)}`)
+            button.setAttribute('aria-haspopup', 'dialog')
+            button.setAttribute('aria-controls', targetId)
+            button.setAttribute('aria-expanded', 'false')
+
+            button.append(
+                createEl('span', 'journey-map__pin-dot'),
+                createEl('span', 'journey-map__pin-label', album.map.label || album.title)
+            )
+            button.addEventListener('click', () => openJourneyAlbum(targetId))
+            button.addEventListener('mouseenter', () => syncJourneyHover(targetId, true))
+            button.addEventListener('mouseleave', () => syncJourneyHover(targetId, false))
+            button.addEventListener('focus', () => syncJourneyHover(targetId, true))
+            button.addEventListener('blur', () => syncJourneyHover(targetId, false))
+            pins.appendChild(button)
+        })
+
+        map.append(image, colorLayer, pins)
+        mapContainer.replaceChildren(map)
+    }
+
     function buildPlaceCard(album, index) {
         const button = document.createElement('button')
         const targetId = `journey-${album.id}`
@@ -947,7 +1335,7 @@ document.querySelectorAll('.timeline').forEach(tl => {
         const media = createEl('span', 'journey__place-media')
         const firstImg = document.createElement('img')
         firstImg.className = 'journey__place-img journey__place-img--active'
-        firstImg.src = album.cover || album.photos[0]
+        firstImg.src = album.cover || photoSrc(album.photos[0])
         firstImg.alt = `${album.title} album preview`
         firstImg.loading = 'lazy'
         firstImg.decoding = 'async'
@@ -955,13 +1343,17 @@ document.querySelectorAll('.timeline').forEach(tl => {
 
         const content = createEl('span', 'journey__place-content')
         content.append(
-            createEl('span', 'journey__place-kicker', photoCountLabel(album.photos.length)),
+            createEl('span', 'journey__place-kicker', mediaCountLabel(album.photos)),
             createEl('span', 'journey__place-title', album.title),
             createEl('span', 'journey__place-copy', 'A rotating window into this album.')
         )
 
         button.append(media, content)
         button.addEventListener('click', () => openJourneyAlbum(targetId))
+        button.addEventListener('mouseenter', () => syncJourneyHover(targetId, true))
+        button.addEventListener('mouseleave', () => syncJourneyHover(targetId, false))
+        button.addEventListener('focus', () => syncJourneyHover(targetId, true))
+        button.addEventListener('blur', () => syncJourneyHover(targetId, false))
         return button
     }
 
@@ -980,7 +1372,7 @@ document.querySelectorAll('.timeline').forEach(tl => {
         titleWrap.append(
             createEl('span', 'journey__album-kicker', 'Journey Album'),
             createEl('h3', 'journey__album-title', album.title),
-            createEl('p', 'journey__album-copy', photoCountLabel(album.photos.length))
+            createEl('p', 'journey__album-copy', mediaCountLabel(album.photos))
         )
         titleWrap.querySelector('.journey__album-title').id = titleId
 
@@ -1006,22 +1398,32 @@ document.querySelectorAll('.timeline').forEach(tl => {
 
         const photos = createEl('div', 'journey__photos')
         photos.setAttribute('aria-label', `${album.title} photos`)
-        album.photos.forEach((src, photoIndex) => {
-            const figure = createEl('figure', 'journey__photo')
-            const img = document.createElement('img')
-            img.dataset.src = src
-            img.alt = `${album.title} journey photo ${photoIndex + 1}`
-            img.loading = 'lazy'
-            img.decoding = 'async'
-            figure.appendChild(img)
-            figure.addEventListener('click', event => {
-                event.stopPropagation()
-                if (figure.classList.contains('journey__photo--prev')) {
-                    moveJourneySlide(article, -1)
-                } else {
-                    moveJourneySlide(article, 1)
-                }
-            })
+        album.photos.forEach((photo, photoIndex) => {
+            const figure = createEl('figure', `journey__photo${isVideoMedia(photo) ? ' journey__photo--video' : ''}`)
+            if (isVideoMedia(photo)) {
+                const video = document.createElement('video')
+                video.dataset.src = photoSrc(photo)
+                video.controls = true
+                video.playsInline = true
+                video.preload = 'metadata'
+                video.setAttribute('aria-label', `${album.title} journey video ${photoIndex + 1}`)
+                figure.appendChild(video)
+            } else {
+                const img = document.createElement('img')
+                img.dataset.src = photoSrc(photo)
+                img.alt = `${album.title} journey photo ${photoIndex + 1}`
+                img.loading = 'lazy'
+                img.decoding = 'async'
+                figure.appendChild(img)
+                figure.addEventListener('click', event => {
+                    event.stopPropagation()
+                    if (figure.classList.contains('journey__photo--prev')) {
+                        moveJourneySlide(article, -1)
+                    } else {
+                        moveJourneySlide(article, 1)
+                    }
+                })
+            }
             photos.appendChild(figure)
         })
 
@@ -1034,9 +1436,10 @@ document.querySelectorAll('.timeline').forEach(tl => {
     }
 
     function loadJourneyPhoto(photo) {
-        const img = photo?.querySelector('img[data-src]')
-        if (img && !img.getAttribute('src')) {
-            img.src = img.dataset.src
+        const media = photo?.querySelector('img[data-src], video[data-src]')
+        if (media && !media.getAttribute('src')) {
+            media.src = media.dataset.src
+            media.load?.()
         }
     }
 
@@ -1078,18 +1481,40 @@ document.querySelectorAll('.timeline').forEach(tl => {
         })
     }
 
+    function setJourneyAlbumHeading(panel, album, index) {
+        const activePhoto = album?.photos?.[index]
+        const heading = panel?.querySelector('.journey__album-title')
+        const copy = panel?.querySelector('.journey__album-copy')
+        const place = typeof activePhoto === 'string' ? '' : activePhoto?.place
+        if (heading) heading.textContent = place || album.title
+        if (copy) {
+            copy.textContent = place && place !== album.title
+                ? `${album.title} album - ${mediaCountLabel(album.photos)}`
+                : mediaCountLabel(album.photos)
+        }
+    }
+
     function moveJourneySlide(panel, direction) {
         const activeIndex = Number(panel?.dataset.activeSlide || 0)
         setJourneySlide(panel, activeIndex + direction)
+        const album = albums.find(item => `journey-${item.id}` === panel?.id)
+        const nextIndex = Number(panel?.dataset.activeSlide || 0)
+        setJourneyAlbumHeading(panel, album, nextIndex)
     }
 
-    function openJourneyAlbum(targetId) {
+    function openJourneyAlbum(targetId, slideIndex = 0) {
         lastJourneyTrigger = document.activeElement
 
         journeyPlaces.forEach(place => {
             const isMatch = place.dataset.journeyTarget === targetId
             place.classList.toggle('journey__place--active', isMatch)
             place.setAttribute('aria-expanded', isMatch ? 'true' : 'false')
+        })
+
+        currentJourneyMapPins().forEach(pin => {
+            const isMatch = mapPinMatchesTarget(pin, targetId)
+            pin.classList.toggle('journey-map__pin--active', isMatch)
+            pin.setAttribute('aria-expanded', isMatch ? 'true' : 'false')
         })
 
         journeyPanels.forEach(panel => {
@@ -1104,7 +1529,9 @@ document.querySelectorAll('.timeline').forEach(tl => {
 
         const activePanel = document.getElementById(targetId)
         if (activePanel) {
-            setJourneySlide(activePanel, 0)
+            setJourneySlide(activePanel, slideIndex)
+            const activeAlbum = albums.find(album => `journey-${album.id}` === targetId)
+            setJourneyAlbumHeading(activePanel, activeAlbum, Number(activePanel.dataset.activeSlide || slideIndex))
             void activePanel.offsetWidth
             window.requestAnimationFrame(() => {
                 activePanel.classList.add('journey__album--active')
@@ -1121,14 +1548,24 @@ document.querySelectorAll('.timeline').forEach(tl => {
             place.classList.remove('journey__place--active')
             place.setAttribute('aria-expanded', 'false')
         })
+        currentJourneyMapPins().forEach(pin => {
+            pin.classList.remove('journey-map__pin--active')
+            pin.setAttribute('aria-expanded', 'false')
+        })
         journeyPanels.forEach(panel => panel.classList.remove('journey__album--active'))
         lastJourneyTrigger?.focus?.()
         lastJourneyTrigger = null
     }
 
-    placesContainer.replaceChildren(...albums.map(buildPlaceCard))
+    if (placesContainer.hidden) {
+        placesContainer.replaceChildren()
+    } else {
+        placesContainer.replaceChildren(...albums.map(buildPlaceCard))
+    }
+    buildJourneyMap()
     journeysViewer.replaceChildren(...albums.map(buildAlbumPanel))
     journeyPlaces = Array.from(placesContainer.querySelectorAll('[data-journey-target]'))
+    journeyMapPins = Array.from(mapContainer?.querySelectorAll('[data-journey-target]') || [])
     journeyPanels = Array.from(journeysViewer.querySelectorAll('[data-journey-panel]'))
 
     if (journeysViewer.parentElement !== document.body) {

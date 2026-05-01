@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css">
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="icon" href="assets/img/logo_ico.ico">
     <title>Kazi Tahsin Mahmood</title>
@@ -297,7 +299,7 @@
                                 <div>
                                     <h3 class="timeline__title">B.Sc. (Engg.) in Mechanical Engineering</h3>
                                     <span class="timeline__org">Bangladesh University of Engineering &amp; Technology (BUET)</span>
-                                    <span class="timeline__location">Dhaka, Bangladesh</span>
+                                    <span class="timeline__location">Dhaka,&nbsp;Bangladesh</span>
                                 </div>
                                 <span class="timeline__date">Feb 2016 &ndash; Mar 2021</span>
                             </div>
@@ -310,6 +312,199 @@
                                     <em>Electro-Thermo-Mechanical Response of a Thin Conductive Layer of Metal Matrix Composite Reinforced by Graphite Fibers</em>
                                 </a>
                             </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!--==================== RESEARCH ====================-->
+        <section class="research research-focus section" id="research">
+            <div class="section__bg-icons" aria-hidden="true">
+                <i class="uil uil-flask section__bg-icon section__bg-icon--tl"></i>
+                <i class="uil uil-atom section__bg-icon section__bg-icon--tr"></i>
+                <i class="uil uil-microscope section__bg-icon section__bg-icon--br"></i>
+            </div>
+            <div class="container">
+                <h2 class="section__title">Research</h2>
+                <span class="section__subtitle">Current Focus</span>
+
+                <p class="research__intro">
+                    My research focuses on nonlinear dynamics, elastic-bit formation, topological mechanics, and geometric phase in classical mechanical systems. I study how driven elastic structures can produce state-like behavior through modal amplitudes, relative phase, nonlinear response, and spectral evolution.
+                </p>
+
+                <div class="research__grid">
+                    <div class="research__card" data-research-card>
+                        <div class="research__card-header">
+                            <div class="research__card-title-wrap">
+                                <span class="research__card-title">Nonlinear Dynamics and Elastic Bits</span>
+                            </div>
+                        </div>
+                        <div class="research__card-preview">
+                            <p>
+                                A major part of my research investigates how elastic bits arise in nonlinear mechanical oscillators and why they are important for studying information-inspired mechanical dynamics. In these systems, a mechanical structure is driven periodically, and its vibration response is measured in both amplitude and phase.
+                            </p>
+                        </div>
+                        <button class="research__card-toggle" type="button" aria-expanded="false">
+                            <span class="research__card-toggle-text">See More</span>
+                            <i class="uil uil-chevron-down" aria-hidden="true"></i>
+                        </button>
+                        <div class="research__card-body" hidden>
+                            <p>
+                                Because the system is nonlinear, the response is not limited to a single frequency component. Instead, the oscillator can generate multiple spectral components, each carrying information about the motion of the masses.
+                            </p>
+                            <p>
+                                An elastic bit emerges when the measured response is projected onto two fundamental modal patterns of the system: an in-phase mode and an out-of-phase mode. These two modes act as a natural mechanical basis. If the vibration response contains a combination of these two modal contributions, the system can be represented as a two-state elastic configuration. The relative strength of the two modal components determines the modal weighting, while their phase difference determines how the elastic state evolves.
+                            </p>
+                            <p>
+                                This is important because it provides a way to describe mechanical vibration beyond conventional amplitude-only measurements. In many mechanical systems, small changes in forcing, defects, mass distribution, or nonlinear interaction may not produce a large change in amplitude, but they can strongly affect phase evolution and modal state trajectories. Elastic-bit analysis captures these changes in a compact state-space form, making it possible to track how mechanical information is stored, transferred, and transformed inside an elastic structure.
+                            </p>
+                            <p>
+                                In my work, this state is reconstructed directly from experimental vibration data. The displacement or velocity response is processed using Fourier analysis, and the complex coefficients at selected frequency components are used to calculate the modal amplitudes and phases. This makes it possible to track how the elastic bit forms, evolves, and changes under different driving conditions, nonlinear interactions, and localized perturbations.
+                            </p>
+                            <p>
+                                This research shows that elastic bits are not imposed artificially on the system. They arise from the measured dynamics of the oscillator itself: the modal structure provides the basis, the nonlinear response supplies rich spectral content, and the phase relationship between modal components defines the state evolution. The broader significance is that elastic bits offer a room-temperature, experimentally accessible mechanical framework for studying controllable state formation, phase accumulation, and multi-bit behavior using classical elastic systems.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="research__card" data-research-card>
+                        <div class="research__card-header">
+                            <div class="research__card-title-wrap">
+                                <span class="research__card-title">Topological and Geometric Mechanics</span>
+                            </div>
+                        </div>
+                        <div class="research__card-preview">
+                            <p>
+                                Another major direction of my research focuses on topological and geometric mechanics in elastic and acoustic systems, and why these ideas are useful for understanding vibration beyond conventional resonance analysis. In many mechanical systems, the most important changes are not always visible from amplitude response alone.
+                            </p>
+                        </div>
+                        <button class="research__card-toggle" type="button" aria-expanded="false">
+                            <span class="research__card-toggle-text">See More</span>
+                            <i class="uil uil-chevron-down" aria-hidden="true"></i>
+                        </button>
+                        <div class="research__card-body" hidden>
+                            <p>
+                                A system may show only a small shift in resonance frequency or modal amplitude, while its phase evolution, trajectory shape, or localization behavior changes much more clearly.
+                            </p>
+                            <p>
+                                This research studies how mechanical states evolve in reduced geometric spaces, such as Bloch-sphere-like representations constructed from modal amplitudes and relative phases. In this view, the vibration response is not treated only as a time signal or frequency-response curve. Instead, it is interpreted as a trajectory whose shape, accumulated phase, and orientation reveal how the system changes under variations in frequency, defects, coupling, or structural parameters.
+                            </p>
+                            <p>
+                                This is important because topological and geometric descriptions can identify robust features of mechanical systems that are difficult to capture using amplitude-based measurements alone. For example, phase evolution can reveal symmetry changes, mode transitions, defect sensitivity, and localization behavior. Geometric phase can also provide a compact way to quantify how the system evolves over a cycle, making it useful for detecting subtle changes in dynamic behavior.
+                            </p>
+                            <p>
+                                In my work, these ideas are applied to both elastic lattices and nonlinear oscillator systems. In topological elastic systems, I study how phase structure and modal evolution relate to band behavior, topological transitions, and edge localization. In nonlinear oscillator systems, I use geometric phase and state-space trajectories to understand how localized perturbations modify the reduced mechanical state, even when the modal amplitudes remain nearly unchanged.
+                            </p>
+                            <p>
+                                The broader significance of this research is that it provides a phase-based and geometry-based framework for mechanical analysis. Instead of relying only on resonance shifts, amplitude peaks, or mode shapes, this approach uses the full modal state evolution to reveal hidden changes in elastic systems. This can support future designs of mechanical structures with controllable vibration response, robust energy localization, and enhanced sensitivity to small perturbations.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--==================== PROFESSIONAL RESEARCH EXPERIENCE ====================-->
+        <section class="research research-experience section" id="research-experience">
+            <div class="section__bg-icons" aria-hidden="true">
+                <i class="uil uil-flask section__bg-icon section__bg-icon--tl"></i>
+                <i class="uil uil-atom section__bg-icon section__bg-icon--tr"></i>
+                <i class="uil uil-microscope section__bg-icon section__bg-icon--br"></i>
+            </div>
+            <div class="container">
+                <h2 class="section__title">Professional Research Experience</h2>
+                <span class="section__subtitle">Academic &amp; Collaborative Projects</span>
+
+                <div class="research__overview">
+                    <article class="research__pill">
+                        <span class="research__pill-label">Current Direction</span>
+                        <p>Quantum-inspired state control in nonlinear elastic and acoustic networks.</p>
+                    </article>
+                    <article class="research__pill">
+                        <span class="research__pill-label">Core Methods</span>
+                        <p>Asymptotic perturbation, molecular dynamics, Bloch-sphere mapping, and experiment-driven modeling.</p>
+                    </article>
+                    <article class="research__pill">
+                        <span class="research__pill-label">Applications</span>
+                        <p>Wave-based information processing, topological sensing, and scalable classical analogues of qubits.</p>
+                    </article>
+                </div>
+
+                <div class="timeline">
+
+                    <div class="timeline__item">
+                        <div class="timeline__dot"></div>
+                        <div class="timeline__card">
+                            <div class="timeline__header">
+                                <div>
+                                    <h3 class="timeline__title">Graduate Research Assistant</h3>
+                                    <span class="timeline__org">Acoustic Pseudospin and Topological Metamaterials Laboratory<br>Department of Mechanical Engineering<br>Wayne State University, Detroit, MI</span>
+                                </div>
+                                <span class="timeline__date">May 2024 &ndash; Present</span>
+                            </div>
+                            <ul class="timeline__list">
+                                <li>
+                                    <strong>Elastic Bit:</strong> Developed a classical two-state elastic-bit framework in a nonlinear mechanical oscillator, where experimentally measured harmonic amplitudes and relative phases were used to build a Bloch-sphere-inspired state representation. Combined analytical modeling with experimental validation to demonstrate controllable state evolution, modal superposition-based behavior, and stable room-temperature operation.
+                                    <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2204382&amp;HistoricalAwards=false" target="_blank" rel="noopener noreferrer" class="tag tag--sm tag--nsf" title="View the NSF award abstract for Grant 2204382">NSF Grant 2204382</a>
+                                </li>
+                                <li>
+                                    <strong>Berry Phase:</strong> Developed a theoretical and computational framework to show that classical state representations in both linear and nonlinear mechanical systems can accumulate Berry phase during closed trajectories in parameter space. By tracking Bloch-sphere-inspired state evolution, this work demonstrated how geometric phase emerges from controlled cyclic motion and how it can be linked to state switching, phase manipulation, and the underlying topological structure of the system.
+                                    <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2242925&amp;HistoricalAwards=false" target="_blank" rel="noopener noreferrer" class="tag tag--sm tag--nsf" title="View the NSF award abstract for Grant 2242925">NSF Grant 2242925</a>
+                                </li>
+                                <li>
+                                    <strong>Multi-Bit Elastic States:</strong> Extended the elastic-bit concept to a nonlinear two-mass conical-spring oscillator, where distinct harmonic spectral blocks within a single resonator were used to construct multiple elastic bits. Developed an analytical and computational framework for state initialization, controlled evolution, and mode-based state representation, showing how higher-dimensional elastic states can be generated and scaled from the rich harmonic structure of one mechanical system.
+                                </li>
+                                <li>
+                                    <strong>Topological Transitions:</strong> Investigated symmetry-driven topological transitions in granular and elastic lattice systems using molecular dynamics simulations and band-structure analysis. Examined how changes in lattice symmetry, particularly inversion symmetry, govern Zak-phase evolution and the emergence of topological phase transitions, and showed how these transitions can be used to control edge-state localization and wave behavior in mechanical networks.
+                                </li>
+                                <li>
+                                    <strong>Topological Mass Sensor:</strong> Developed a phase-based mechanical sensing framework by translating elastic-bit state evolution into a mass detection platform. By tracking defect- or mass-induced changes in geometric phase and Bloch-sphere-inspired state trajectories, this work showed how small perturbations can be identified through state-sensitive phase evolution rather than amplitude alone, providing a more robust and physically informative sensing strategy.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="timeline__item">
+                        <div class="timeline__dot"></div>
+                        <div class="timeline__card">
+                            <div class="timeline__header">
+                                <div>
+                                    <h3 class="timeline__title">Research Collaborator</h3>
+                                    <span class="timeline__org">New Frontiers of Sound (NewFoS)<br>The University of Arizona, Tucson, AZ</span>
+                                </div>
+                                <span class="timeline__date">Sep 2023 &ndash; Present</span>
+                            </div>
+                            <ul class="timeline__list">
+                                <li>
+                                    <strong>Primary Investigator:</strong> Led a collaborative research effort on multi-state and multi-bit elastic-state analogues in a nonlinear mass-conical spring oscillator, where distinct harmonic spectral blocks within a single mechanical system were used to construct two-bit and three-bit elastic states. Developed the analytical framework for state generation, controlled evolution, and gate-like transformations, including Householder-based state transitions, to demonstrate a scalable room-temperature platform for mechanically realized logic and state manipulation.
+                                </li>
+                                <li>
+                                    <strong>Co-Investigator:</strong> Contributed to the development of the Phi-Bit, a classical acoustic qubit analogue realized in a three-waveguide coupled system. Developed modeling and analysis methods to identify stable and controllable phase-defined states, and helped extend elastic-bit-inspired state concepts from discrete mechanical oscillators to continuous acoustic platforms.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="timeline__item">
+                        <div class="timeline__dot"></div>
+                        <div class="timeline__card">
+                            <div class="timeline__header">
+                                <div>
+                                    <h3 class="timeline__title">Undergraduate Research Assistant</h3>
+                                    <span class="timeline__org">Department of Mechanical Engineering<br>Bangladesh University of Engineering &amp; Technology (BUET), Dhaka,&nbsp;Bangladesh</span>
+                                </div>
+                                <span class="timeline__date">Nov 2019 &ndash; Feb 2021</span>
+                            </div>
+                            <ul class="timeline__list">
+                                <li>
+                                    <strong>Electro-Thermo-Mechanical Analysis of MMC:</strong> Studied Joule-heating-driven thermal stress in graphite-reinforced metal matrix composites under electrical loading. Combined finite element modeling with tensile and compression testing to identify stress limits and failure-prone regimes.
+                                </li>
+                                <li>
+                                    <strong>Heat Pipe Heat Exchanger Modeling:</strong> Developed analytical and numerical models of a heat-pipe heat exchanger for induction-motor cooling. Evaluated geometry, working fluid, and fin design to reduce thermal resistance and improve passive heat removal.
+                                </li>
+                            </ul>
                         </div>
                     </div>
 
@@ -394,112 +589,6 @@
                         <div class="tags">
                             <span class="tag">LaTeX</span>
                             <span class="tag">Microsoft Office</span>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <!--==================== RESEARCH ====================-->
-        <section class="research section" id="research">
-            <div class="section__bg-icons" aria-hidden="true">
-                <i class="uil uil-flask section__bg-icon section__bg-icon--tl"></i>
-                <i class="uil uil-atom section__bg-icon section__bg-icon--tr"></i>
-                <i class="uil uil-microscope section__bg-icon section__bg-icon--br"></i>
-            </div>
-            <div class="container">
-                <h2 class="section__title">Research Experience</h2>
-                <span class="section__subtitle">Academic &amp; Collaborative Projects</span>
-
-                <div class="research__overview">
-                    <article class="research__pill">
-                        <span class="research__pill-label">Current Direction</span>
-                        <p>Quantum-inspired state control in nonlinear elastic and acoustic networks.</p>
-                    </article>
-                    <article class="research__pill">
-                        <span class="research__pill-label">Core Methods</span>
-                        <p>Asymptotic perturbation, molecular dynamics, Bloch-sphere mapping, and experiment-driven modeling.</p>
-                    </article>
-                    <article class="research__pill">
-                        <span class="research__pill-label">Applications</span>
-                        <p>Wave-based information processing, topological sensing, and scalable classical analogues of qubits.</p>
-                    </article>
-                </div>
-
-                <div class="timeline">
-
-                    <div class="timeline__item">
-                        <div class="timeline__dot"></div>
-                        <div class="timeline__card">
-                            <div class="timeline__header">
-                                <div>
-                                    <h3 class="timeline__title">Graduate Research Assistant</h3>
-                                    <span class="timeline__org">Wayne State University &mdash; Department of Mechanical Engineering, Detroit, MI</span>
-                                </div>
-                                <span class="timeline__date">May 2024 &ndash; Present</span>
-                            </div>
-                            <ul class="timeline__list">
-                                <li>
-                                    <strong>Elastic Bit:</strong> Developed a classical two-state elastic-bit framework in a nonlinear mechanical oscillator, where experimentally measured harmonic amplitudes and relative phases were used to build a Bloch-sphere-inspired state representation. Combined analytical modeling with experimental validation to demonstrate controllable state evolution, modal superposition-based behavior, and stable room-temperature operation.
-                                    <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2204382&amp;HistoricalAwards=false" target="_blank" rel="noopener noreferrer" class="tag tag--sm tag--nsf" title="View the NSF award abstract for Grant 2204382">NSF Grant 2204382</a>
-                                </li>
-                                <li>
-                                    <strong>Berry Phase:</strong> Developed a theoretical and computational framework to show that classical state representations in both linear and nonlinear mechanical systems can accumulate Berry phase during closed trajectories in parameter space. By tracking Bloch-sphere-inspired state evolution, this work demonstrated how geometric phase emerges from controlled cyclic motion and how it can be linked to state switching, phase manipulation, and the underlying topological structure of the system.
-                                    <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2242925&amp;HistoricalAwards=false" target="_blank" rel="noopener noreferrer" class="tag tag--sm tag--nsf" title="View the NSF award abstract for Grant 2242925">NSF Grant 2242925</a>
-                                </li>
-                                <li>
-                                    <strong>Logical Elastic Bit:</strong> Extended the elastic-bit concept to a nonlinear two-mass conical-spring oscillator, where distinct harmonic spectral blocks within a single resonator were used to construct multiple logical elastic bits. Developed an analytical and computational framework for state initialization, controlled evolution, and mode-based state representation, showing how higher-dimensional logical states can be generated and scaled from the rich harmonic structure of one mechanical system.
-                                </li>
-                                <li>
-                                    <strong>Topological Transitions:</strong> Investigated symmetry-driven topological transitions in granular and elastic lattice systems using molecular dynamics simulations and band-structure analysis. Examined how changes in lattice symmetry, particularly inversion symmetry, govern Zak-phase evolution and the emergence of topological phase transitions, and showed how these transitions can be used to control edge-state localization and wave behavior in mechanical networks.
-                                </li>
-                                <li>
-                                    <strong>Topological Mass Sensor:</strong> Developed a phase-based mechanical sensing framework by translating elastic-bit state evolution into a mass detection platform. By tracking defect- or mass-induced changes in geometric phase and Bloch-sphere-inspired state trajectories, this work showed how small perturbations can be identified through state-sensitive phase evolution rather than amplitude alone, providing a more robust and physically informative sensing strategy.
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="timeline__item">
-                        <div class="timeline__dot"></div>
-                        <div class="timeline__card">
-                            <div class="timeline__header">
-                                <div>
-                                    <h3 class="timeline__title">Research Collaborator</h3>
-                                    <span class="timeline__org">New Frontiers of Sound (NewFoS) &mdash; The University of Arizona, Tucson, AZ</span>
-                                </div>
-                                <span class="timeline__date">Sep 2023 &ndash; Present</span>
-                            </div>
-                            <ul class="timeline__list">
-                                <li>
-                                    <strong>Primary Investigator:</strong> Led a collaborative research effort on multi-state and multi-bit elastic-state analogues in a nonlinear mass-conical spring oscillator, where distinct harmonic spectral blocks within a single mechanical system were used to construct two-bit and three-bit elastic states. Developed the analytical framework for state generation, controlled evolution, and gate-like transformations, including Householder-based state transitions, to demonstrate a scalable room-temperature platform for mechanically realized logic and state manipulation.
-                                </li>
-                                <li>
-                                    <strong>Co-Investigator:</strong> Contributed to the development of the Phi-Bit, a classical acoustic qubit analogue realized in a three-waveguide coupled system. Developed modeling and analysis methods to identify stable and controllable phase-defined states, and helped extend elastic-bit-inspired state concepts from discrete mechanical oscillators to continuous acoustic platforms.
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="timeline__item">
-                        <div class="timeline__dot"></div>
-                        <div class="timeline__card">
-                            <div class="timeline__header">
-                                <div>
-                                    <h3 class="timeline__title">Undergraduate Research Assistant</h3>
-                                    <span class="timeline__org">Bangladesh University of Engineering &amp; Technology (BUET) &mdash; Dhaka, Bangladesh</span>
-                                </div>
-                                <span class="timeline__date">Nov 2019 &ndash; Feb 2021</span>
-                            </div>
-                            <ul class="timeline__list">
-                                <li>
-                                    <strong>Electro-Thermo-Mechanical Analysis of MMC:</strong> Studied Joule-heating-driven thermal stress in graphite-reinforced metal matrix composites under electrical loading. Combined finite element modeling with tensile and compression testing to identify stress limits and failure-prone regimes.
-                                </li>
-                                <li>
-                                    <strong>Heat Pipe Heat Exchanger Modeling:</strong> Developed analytical and numerical models of a heat-pipe heat exchanger for induction-motor cooling. Evaluated geometry, working fluid, and fin design to reduce thermal resistance and improve passive heat removal.
-                                </li>
-                            </ul>
                         </div>
                     </div>
 
@@ -1153,7 +1242,7 @@
                             <div class="timeline__header">
                                 <div>
                                     <h3 class="timeline__title">Graduate Teaching Assistant</h3>
-                                    <span class="timeline__org">Wayne State University &mdash; Detroit, MI</span>
+                                    <span class="timeline__org">Department of Mechanical Engineering<br>Wayne State University, Detroit, MI</span>
                                 </div>
                                 <span class="timeline__date">Jan 2022 &ndash; May 2024</span>
                             </div>
@@ -1174,7 +1263,7 @@
                             <div class="timeline__header">
                                 <div>
                                     <h3 class="timeline__title">Research Experience Mentor - NSF NewFoS REM Program</h3>
-                                    <span class="timeline__org">New Frontiers of Sound (NewFoS) &mdash; NSF Project</span>
+                                    <span class="timeline__org">New Frontiers of Sound (NewFoS)<br>NSF Project</span>
                                 </div>
                                 <span class="timeline__date">Jan 2023 &ndash; May 2025</span>
                             </div>
@@ -1209,7 +1298,7 @@
                             <div class="timeline__header">
                                 <div>
                                     <h3 class="timeline__title">Engineer Trainee (Intern)</h3>
-                                    <span class="timeline__org">BSRM Steel Limited &mdash; Chattogram, Bangladesh</span>
+                                    <span class="timeline__org">BSRM Steel Limited<br>Chattogram,&nbsp;Bangladesh</span>
                                 </div>
                                 <span class="timeline__date">Jan 2020 &ndash; Feb 2020</span>
                             </div>
@@ -1380,70 +1469,9 @@
                     </p>
                 </div>
 
-                <div class="journeys__places" aria-label="Journey places">
-                    <button class="journey__place journey__place--large" type="button" data-journey-target="journey-upper-peninsula" aria-haspopup="dialog" aria-controls="journey-upper-peninsula" aria-expanded="false">
-                        <img src="assets/img/journeys/upper-peninsula/IMG_0134.jpeg" alt="Upper Peninsula album preview" loading="lazy" decoding="async">
-                        <span class="journey__place-content">
-                            <span class="journey__place-kicker">7 Photos</span>
-                            <span class="journey__place-title">Upper Peninsula</span>
-                            <span class="journey__place-copy">Lake air, northern roads, and quiet edges of Michigan.</span>
-                        </span>
-                    </button>
+                <div class="journeys__map" aria-label="USA journey map"></div>
 
-                    <button class="journey__place" type="button" data-journey-target="journey-utah" aria-haspopup="dialog" aria-controls="journey-utah" aria-expanded="false">
-                        <img src="assets/img/Jakkas.jpg" alt="Utah album preview" loading="lazy" decoding="async">
-                        <span class="journey__place-content">
-                            <span class="journey__place-kicker">Album</span>
-                            <span class="journey__place-title">Utah</span>
-                            <span class="journey__place-copy">Red-rock scale, desert light, and long horizons.</span>
-                        </span>
-                    </button>
-
-                    <button class="journey__place" type="button" data-journey-target="journey-arizona" aria-haspopup="dialog" aria-controls="journey-arizona" aria-expanded="false">
-                        <img src="assets/img/Jakkas2.jpg" alt="Arizona album preview" loading="lazy" decoding="async">
-                        <span class="journey__place-content">
-                            <span class="journey__place-kicker">Album</span>
-                            <span class="journey__place-title">Arizona</span>
-                            <span class="journey__place-copy">Canyon colors, dry heat, and big southwestern skies.</span>
-                        </span>
-                    </button>
-
-                    <button class="journey__place" type="button" data-journey-target="journey-yellowstone" aria-haspopup="dialog" aria-controls="journey-yellowstone" aria-expanded="false">
-                        <img src="assets/img/Jakkas3.jpg" alt="Yellowstone album preview" loading="lazy" decoding="async">
-                        <span class="journey__place-content">
-                            <span class="journey__place-kicker">Album</span>
-                            <span class="journey__place-title">Yellowstone</span>
-                            <span class="journey__place-copy">Thermal basins, wild landscapes, and changing weather.</span>
-                        </span>
-                    </button>
-
-                    <button class="journey__place" type="button" data-journey-target="journey-washington-dc" aria-haspopup="dialog" aria-controls="journey-washington-dc" aria-expanded="false">
-                        <img src="assets/img/69002370_2344194425694267_9156056228445552640_n.jpg" alt="Washington DC album preview" loading="lazy" decoding="async">
-                        <span class="journey__place-content">
-                            <span class="journey__place-kicker">Album</span>
-                            <span class="journey__place-title">Washington DC</span>
-                            <span class="journey__place-copy">Monuments, museums, and walks through history.</span>
-                        </span>
-                    </button>
-
-                    <button class="journey__place" type="button" data-journey-target="journey-oregon" aria-haspopup="dialog" aria-controls="journey-oregon" aria-expanded="false">
-                        <img src="assets/img/Jakkas2.jpg" alt="Oregon album preview" loading="lazy" decoding="async">
-                        <span class="journey__place-content">
-                            <span class="journey__place-kicker">Album</span>
-                            <span class="journey__place-title">Oregon</span>
-                            <span class="journey__place-copy">Evergreen roads, coastlines, and Pacific Northwest light.</span>
-                        </span>
-                    </button>
-
-                    <button class="journey__place" type="button" data-journey-target="journey-midwest" aria-haspopup="dialog" aria-controls="journey-midwest" aria-expanded="false">
-                        <img src="assets/img/about.jpg" alt="Midwest album preview" loading="lazy" decoding="async">
-                        <span class="journey__place-content">
-                            <span class="journey__place-kicker">Album</span>
-                            <span class="journey__place-title">Midwest</span>
-                            <span class="journey__place-copy">Campus towns, lakeside evenings, and road-trip fragments.</span>
-                        </span>
-                    </button>
-                </div>
+                <div class="journeys__places" aria-label="Journey places" aria-hidden="true" hidden></div>
 
                 <div class="journeys__viewer" id="journeys-viewer" aria-hidden="true">
                     <article class="journey__album" id="journey-upper-peninsula" data-journey-panel role="dialog" aria-modal="true" aria-labelledby="journey-upper-peninsula-title" hidden>
@@ -1763,10 +1791,11 @@
     <nav class="dot-nav" aria-label="Page sections" id="dot-nav">
         <a class="dot-nav__dot" href="#about"        data-label="About"         title="About"></a>
         <a class="dot-nav__dot" href="#education"    data-label="Education"     title="Education"></a>
+        <a class="dot-nav__dot" href="#research"     data-label="Research"      title="Research"></a>
+        <a class="dot-nav__dot" href="#research-experience" data-label="Research Experience" title="Research Experience"></a>
         <a class="dot-nav__dot" href="#publications" data-label="Publications"  title="Publications"></a>
         <a class="dot-nav__dot" href="#conferences"  data-label="Conferences"   title="Conferences"></a>
         <a class="dot-nav__dot" href="#posters"      data-label="Posters"       title="Posters"></a>
-        <a class="dot-nav__dot" href="#research"     data-label="Research"      title="Research"></a>
         <a class="dot-nav__dot" href="#teaching"    data-label="Teaching"    title="Teaching"></a>
         <a class="dot-nav__dot" href="#experience" data-label="Experience"  title="Experience"></a>
         <a class="dot-nav__dot" href="#skills"      data-label="Skills"      title="Skills"></a>
@@ -1789,6 +1818,8 @@
         <span id="tracker-name">Home</span>
     </div>
 
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
     <script src="assets/js/journeys-data.js"></script>
     <script src="assets/js/main.js"></script>
 </body>

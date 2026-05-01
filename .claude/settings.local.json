@@ -3,7 +3,14 @@
     "allow": [
       "WebFetch(domain:api.semanticscholar.org)",
       "WebFetch(domain:api.openalex.org)",
-      "Bash(git -C \"g:/kazitmahmood.github.io\" status)"
+      "Bash(git -C \"g:/kazitmahmood.github.io\" status)",
+      "Bash(python -c ' *)",
+      "PowerShell(Get-Command exiftool -ErrorAction SilentlyContinue)",
+      "PowerShell(Get-Command python3 -ErrorAction SilentlyContinue)",
+      "PowerShell(Get-Command py -ErrorAction SilentlyContinue)",
+      "PowerShell(New-Item -ItemType Directory -Path \"g:\\\\kazitmahmood.github.io\\\\assets\\\\img\\\\journeys-web\\\\new-york\" -Force)",
+      "PowerShell(Move-Item \"g:\\\\kazitmahmood.github.io\\\\assets\\\\img\\\\journeys-web\\\\IMG_0939.jpeg\" \"g:\\\\kazitmahmood.github.io\\\\assets\\\\img\\\\journeys-web\\\\new-york\\\\001-img-0939.jpeg\")",
+      "PowerShell(Move-Item \"g:\\\\kazitmahmood.github.io\\\\assets\\\\img\\\\journeys-web\\\\IMG_0949.jpeg\" \"g:\\\\kazitmahmood.github.io\\\\assets\\\\img\\\\journeys-web\\\\new-york\\\\002-img-0949.jpeg\")"
     ]
   }
 }
