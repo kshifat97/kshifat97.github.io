@@ -851,40 +851,219 @@ document.querySelectorAll('.timeline').forEach(tl => {
     const researchCards = document.querySelectorAll('[data-research-card]')
     if (!researchCards.length) return
 
+    let activeCard = null
+    let activePage = null
+    let closeTimer = null
+
+    function getGrid(card) {
+        return card.closest('.research__grid')
+    }
+
+    function getCardsHeight(grid) {
+        const cards = Array.from(grid.querySelectorAll('[data-research-card]'))
+        return cards.reduce((height, card) => {
+            return Math.max(height, card.offsetTop + card.offsetHeight)
+        }, 0)
+    }
+
+    function setGridHeight(grid) {
+        if (!grid) return
+
+        if (window.matchMedia('(max-width: 900px)').matches || !activePage) {
+            grid.style.minHeight = ''
+            return
+        }
+
+        const cardHeight = getCardsHeight(grid)
+        const pageHeight = activePage.offsetTop + activePage.offsetHeight
+        grid.style.minHeight = `${Math.max(cardHeight, pageHeight)}px`
+    }
+
+    function collapseCard(card) {
+        const toggle = card.querySelector('.research__card-toggle')
+        if (!toggle) return
+
+        card.removeAttribute('data-expanded')
+        toggle.setAttribute('aria-expanded', 'false')
+        toggle.querySelector('.research__card-toggle-text').textContent = 'See More'
+        toggle.removeAttribute('aria-controls')
+    }
+
+    function finishExpandedClose(card, page, grid, restoreFocus = false) {
+        collapseCard(card)
+        if (page) page.remove()
+        if (grid) {
+            grid.removeAttribute('data-overlay-open')
+            grid.style.minHeight = ''
+        }
+
+        if (activePage === page) {
+            activeCard = null
+            activePage = null
+        }
+
+        closeTimer = null
+        if (restoreFocus) card.querySelector('.research__card-toggle')?.focus()
+    }
+
+    function closeExpandedPage(options = {}) {
+        if (!activeCard) return
+
+        const { immediate = false, restoreFocus = false } = options
+        const grid = getGrid(activeCard)
+        const card = activeCard
+        const page = activePage
+
+        if (closeTimer) {
+            clearTimeout(closeTimer)
+            closeTimer = null
+        }
+
+        if (!page || immediate || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            finishExpandedClose(card, page, grid, restoreFocus)
+            return
+        }
+
+        if (page.classList.contains('research__expanded-page--closing')) return
+
+        if (grid && !window.matchMedia('(max-width: 900px)').matches) {
+            grid.style.minHeight = `${grid.offsetHeight}px`
+            requestAnimationFrame(() => {
+                grid.style.minHeight = `${getCardsHeight(grid)}px`
+            })
+        }
+
+        page.classList.remove('research__expanded-page--open')
+        page.classList.add('research__expanded-page--closing')
+
+        closeTimer = window.setTimeout(() => {
+            finishExpandedClose(card, page, grid, restoreFocus)
+        }, 420)
+    }
+
+    function createExpandedPage(card, grid) {
+        const title = card.querySelector('.research__card-title')?.textContent?.trim() || 'Research Focus'
+        const preview = card.querySelector('.research__card-preview')
+        const body = card.querySelector('.research__card-body')
+        const cards = Array.from(grid.querySelectorAll('[data-research-card]'))
+        const isRightCard = cards.indexOf(card) % 2 === 1
+
+        const page = document.createElement('article')
+        page.className = `research__expanded-page${isRightCard ? ' research__expanded-page--from-right' : ''}`
+        page.id = `research-expanded-${cards.indexOf(card) + 1}`
+        page.setAttribute('role', 'region')
+        page.setAttribute('aria-label', `${title} expanded details`)
+        page.style.top = `${card.offsetTop}px`
+
+        const head = document.createElement('div')
+        head.className = 'research__expanded-head'
+
+        const headingWrap = document.createElement('div')
+        const kicker = document.createElement('span')
+        kicker.className = 'research__expanded-kicker'
+        kicker.textContent = 'Expanded research focus'
+
+        const heading = document.createElement('h3')
+        heading.className = 'research__expanded-title'
+        heading.textContent = title
+
+        headingWrap.append(kicker, heading)
+
+        const closeButton = document.createElement('button')
+        closeButton.className = 'research__expanded-close'
+        closeButton.type = 'button'
+        closeButton.setAttribute('aria-label', 'Close expanded research focus')
+
+        const closeIcon = document.createElement('i')
+        closeIcon.className = 'uil uil-times'
+        closeIcon.setAttribute('aria-hidden', 'true')
+        closeButton.append(closeIcon)
+
+        closeButton.addEventListener('click', event => {
+            event.stopPropagation()
+            closeExpandedPage({ restoreFocus: true })
+        })
+
+        head.append(headingWrap, closeButton)
+        page.append(head)
+
+        if (preview) {
+            const previewPanel = document.createElement('div')
+            previewPanel.className = 'research__expanded-preview'
+            Array.from(preview.children).forEach(child => {
+                previewPanel.append(child.cloneNode(true))
+            })
+            page.append(previewPanel)
+        }
+
+        if (body) {
+            const bodyPanel = document.createElement('div')
+            bodyPanel.className = 'research__expanded-body'
+            Array.from(body.children).forEach(child => {
+                bodyPanel.append(child.cloneNode(true))
+            })
+            page.append(bodyPanel)
+        }
+
+        return page
+    }
+
     researchCards.forEach(card => {
         const toggle = card.querySelector('.research__card-toggle')
         const body = card.querySelector('.research__card-body')
         if (!toggle || !body) return
-
-        function updateMaxHeight() {
-            if (card.hasAttribute('data-expanded')) {
-                body.style.maxHeight = body.scrollHeight + 'px'
-            } else {
-                body.style.maxHeight = '0'
-            }
-        }
+        body.hidden = true
 
         toggle.addEventListener('click', event => {
             event.preventDefault()
+            event.stopPropagation()
+
             const isExpanded = card.hasAttribute('data-expanded')
             
             if (isExpanded) {
-                card.removeAttribute('data-expanded')
-                toggle.setAttribute('aria-expanded', 'false')
-                toggle.querySelector('.research__card-toggle-text').textContent = 'See More'
-                body.hidden = true
-                body.style.maxHeight = '0'
-            } else {
-                card.setAttribute('data-expanded', '')
-                toggle.setAttribute('aria-expanded', 'true')
-                toggle.querySelector('.research__card-toggle-text').textContent = 'See Less'
-                body.hidden = false
-                updateMaxHeight()
+                closeExpandedPage()
+                return
             }
-        })
 
-        // Handle window resize to adjust max-height
-        window.addEventListener('resize', updateMaxHeight)
+            closeExpandedPage({ immediate: true })
+
+            const grid = getGrid(card)
+            if (!grid) return
+
+            const page = createExpandedPage(card, grid)
+            card.after(page)
+
+            activeCard = card
+            activePage = page
+            grid.setAttribute('data-overlay-open', '')
+            card.setAttribute('data-expanded', '')
+            toggle.setAttribute('aria-expanded', 'true')
+            toggle.setAttribute('aria-controls', page.id)
+            toggle.querySelector('.research__card-toggle-text').textContent = 'See Less'
+
+            requestAnimationFrame(() => {
+                page.classList.add('research__expanded-page--open')
+                setGridHeight(grid)
+                page.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
+            })
+        })
+    })
+
+    document.addEventListener('click', event => {
+        if (!event.target.closest('[data-research-card]') && !event.target.closest('.research__expanded-page')) {
+            closeExpandedPage()
+        }
+    })
+
+    document.addEventListener('keydown', event => {
+        if (event.key === 'Escape') closeExpandedPage()
+    })
+
+    window.addEventListener('resize', () => {
+        const grid = activeCard ? getGrid(activeCard) : null
+        if (!grid || !activePage) return
+        activePage.style.top = `${activeCard.offsetTop}px`
+        setGridHeight(grid)
     })
 })()
 
