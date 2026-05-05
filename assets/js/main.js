@@ -123,6 +123,14 @@ document.querySelectorAll('.nav__link').forEach(link => {
     })
 })
 
+const navLogo = document.querySelector('.nav__logo')
+if (navLogo) {
+    navLogo.addEventListener('click', event => {
+        event.preventDefault()
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+    })
+}
+
 document.addEventListener('click', event => {
     if (navMoreItem && !navMoreItem.contains(event.target)) closeNavMore()
 })
