@@ -354,7 +354,15 @@ function openPubItem(item) {
     item.classList.add('pub--open')
     item.setAttribute('aria-expanded', 'true')
     const abstract = item.querySelector('.pub__abstract')
-    if (abstract) abstract.style.maxHeight = abstract.scrollHeight + 'px'
+    if (abstract) {
+        const setHeight = () => { abstract.style.maxHeight = abstract.scrollHeight + 'px' }
+        setHeight()
+        requestAnimationFrame(setHeight)
+        abstract.querySelectorAll('img, video').forEach(media => {
+            media.addEventListener('load', setHeight, { once: true })
+            media.addEventListener('loadedmetadata', setHeight, { once: true })
+        })
+    }
 }
 
 pubAccordionItems.forEach(item => {
@@ -405,6 +413,7 @@ const pubItems = document.querySelectorAll('.pub__item[data-topic]')
 pubFilters.forEach(filter => {
     filter.addEventListener('click', () => {
         const topic = filter.dataset.filter
+        let visibleIndex = 0
 
         pubFilters.forEach(btn => btn.classList.remove('pub__filter--active'))
         filter.classList.add('pub__filter--active')
@@ -418,7 +427,16 @@ pubFilters.forEach(filter => {
                 item.setAttribute('aria-expanded', 'false')
                 const abstract = item.querySelector('.pub__abstract')
                 if (abstract) abstract.style.maxHeight = '0'
+                item.classList.remove('pub--filter-flash')
+                return
             }
+
+            item.style.setProperty('--motion-delay', `${Math.min(visibleIndex * 55, 360)}ms`)
+            visibleIndex += 1
+            item.classList.remove('pub--filter-flash')
+            void item.offsetWidth
+            item.classList.add('pub--filter-flash')
+            window.setTimeout(() => item.classList.remove('pub--filter-flash'), 620)
         })
     })
 })
@@ -436,7 +454,7 @@ window.addEventListener('load', toggleScrollUp)
 /*===== SECTION TITLE UNDERLINE GROW =====*/
 const titleRevealObs = new IntersectionObserver(entries => {
     entries.forEach(e => {
-        if (e.isIntersecting) { e.target.classList.add('title-revealed'); titleRevealObs.unobserve(e.target) }
+        e.target.classList.toggle('title-revealed', e.isIntersecting)
     })
 }, { threshold: 0.6 })
 document.querySelectorAll('.section__title').forEach(t => {
@@ -447,9 +465,9 @@ document.querySelectorAll('.section__title').forEach(t => {
 /*===== SCROLL REVEAL (generic blocks) =====*/
 const blockRevealObs = new IntersectionObserver(entries => {
     entries.forEach(e => {
-        if (e.isIntersecting) { e.target.classList.add('anim-in'); blockRevealObs.unobserve(e.target) }
+        e.target.classList.toggle('anim-in', e.isIntersecting)
     })
-}, { threshold: 0.08 })
+}, { threshold: 0.08, rootMargin: '0px 0px -4% 0px' })
 ;[
     '.about__text', '.about__profile', '.about__stats',
     '.pub__hint', '.pub__list', '.pub__scholar-btn',
@@ -464,14 +482,69 @@ const blockRevealObs = new IntersectionObserver(entries => {
     })
 })
 
+/*===== LIVELY SCROLL REVEAL =====*/
+const motionRevealMql = window.matchMedia('(prefers-reduced-motion: reduce)')
+const motionRevealObs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        const el = entry.target
+
+        if (!entry.isIntersecting) {
+            window.clearTimeout(el._motionSettleTimer)
+            el.classList.remove('motion-in', 'motion-settled')
+            return
+        }
+
+        el.classList.add('motion-in')
+        const delay = parseFloat(getComputedStyle(el).getPropertyValue('--motion-delay')) || 0
+        window.clearTimeout(el._motionSettleTimer)
+        el._motionSettleTimer = window.setTimeout(() => el.classList.add('motion-settled'), delay + 720)
+    })
+}, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' })
+
+function prepareMotionReveal(elements, options = {}) {
+    const {
+        motion = 'rise',
+        step = 70,
+        maxDelay = 420,
+        offset = 0
+    } = options
+
+    Array.from(elements || []).forEach((el, index) => {
+        if (!el || el.classList.contains('motion-ready')) return
+        el.classList.add('motion-ready')
+        el.dataset.motion = motion
+        el.style.setProperty('--motion-delay', `${Math.min((index + offset) * step, maxDelay)}ms`)
+
+        if (motionRevealMql.matches) {
+            el.classList.add('motion-in')
+            el.classList.add('motion-settled')
+        } else {
+            motionRevealObs.observe(el)
+        }
+    })
+}
+
+prepareMotionReveal(document.querySelectorAll('.research__intro, .research__pill'), { motion: 'from-left', step: 90 })
+prepareMotionReveal(document.querySelectorAll('.research__card'), { motion: 'zoom', step: 120 })
+prepareMotionReveal(document.querySelectorAll('.project__card'), { motion: 'rise', step: 95 })
+prepareMotionReveal(document.querySelectorAll('.pub__item[data-topic]'), { motion: 'from-right', step: 55, maxDelay: 300 })
+prepareMotionReveal(document.querySelectorAll('.skills__group'), { motion: 'rise', step: 85 })
+prepareMotionReveal(document.querySelectorAll('.journeys__intro, .journeys__map'), { motion: 'rise', step: 90 })
+
 /*===== TIMELINE STAGGER =====*/
 document.querySelectorAll('.timeline').forEach(tl => {
     tl.classList.add('timeline-anim')
     const items = tl.querySelectorAll('.timeline__item')
     const obs = new IntersectionObserver(([e]) => {
+        tl._timelineAnimTimers?.forEach(clearTimeout)
+        tl._timelineAnimTimers = []
+
         if (e.isIntersecting) {
-            items.forEach((item, i) => setTimeout(() => item.classList.add('anim-in'), i * 120))
-            obs.unobserve(tl)
+            items.forEach((item, i) => {
+                tl._timelineAnimTimers.push(setTimeout(() => item.classList.add('anim-in'), i * 120))
+            })
+        } else {
+            items.forEach(item => item.classList.remove('anim-in'))
         }
     }, { threshold: 0.05 })
     obs.observe(tl)
@@ -485,7 +558,8 @@ document.querySelectorAll('.tags').forEach(group => {
         if (e.isIntersecting) {
             tags.forEach((t, i) => { t.style.transitionDelay = `${i * 0.05}s` })
             group.classList.add('tags-in')
-            obs.unobserve(group)
+        } else {
+            group.classList.remove('tags-in')
         }
     }, { threshold: 0.15 })
     obs.observe(group)
@@ -496,9 +570,15 @@ document.querySelectorAll('.conf__list').forEach(list => {
     list.classList.add('conf-anim')
     const items = list.querySelectorAll('.conf__item')
     const obs = new IntersectionObserver(([e]) => {
+        list._confAnimTimers?.forEach(clearTimeout)
+        list._confAnimTimers = []
+
         if (e.isIntersecting) {
-            items.forEach((item, i) => setTimeout(() => item.classList.add('anim-in'), i * 65))
-            obs.unobserve(list)
+            items.forEach((item, i) => {
+                list._confAnimTimers.push(setTimeout(() => item.classList.add('anim-in'), i * 65))
+            })
+        } else {
+            items.forEach(item => item.classList.remove('anim-in'))
         }
     }, { threshold: 0.04 })
     obs.observe(list)
@@ -556,21 +636,205 @@ attachTiltEffect(document.querySelectorAll('.timeline__card'))
 attachTiltEffect(document.querySelectorAll('.awards__col'))
 
 /*===== TIMELINE FILL LINE =====*/
+const timelineControls = []
+
 document.querySelectorAll('.timeline').forEach(tl => {
     const fill = document.createElement('div')
     fill.className = 'timeline__fill'
     tl.appendChild(fill)
+
+    const runner = document.createElement('div')
+    runner.className = 'timeline__runner'
+    runner.setAttribute('aria-hidden', 'true')
+    runner.innerHTML = '<span class="timeline__runner-core"></span>'
+    tl.appendChild(runner)
+
+    timelineControls.push({
+        tl,
+        fill,
+        runner,
+        items: [],
+        centers: [],
+        targetY: 0,
+        currentY: 0,
+        targetFill: 0,
+        currentFill: 0,
+        active: false,
+        initialized: false,
+        needsMeasure: true
+    })
 })
-function updateTimelineFills() {
-    document.querySelectorAll('.timeline__fill').forEach(fill => {
-        const tl   = fill.closest('.timeline')
-        const rect = tl.getBoundingClientRect()
-        const p    = Math.max(0, Math.min(1, (window.innerHeight * 0.65 - rect.top) / rect.height))
-        fill.style.height = (p * 100) + '%'
+
+const timelineRunnerColors = [
+    { rgb: [196, 154, 10], glowAlpha: 0.34 },
+    { rgb: [27, 58, 107], glowAlpha: 0.30 },
+    { rgb: [47, 133, 90], glowAlpha: 0.30 },
+    { rgb: [40, 85, 160], glowAlpha: 0.30 }
+]
+
+const reduceTimelineMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+let timelineFrame = null
+
+function clampNumber(value, min, max) {
+    return Math.max(min, Math.min(max, value))
+}
+
+function mixNumber(a, b, amount) {
+    return a + (b - a) * amount
+}
+
+function runnerPhase(index) {
+    return timelineRunnerColors[((index % timelineRunnerColors.length) + timelineRunnerColors.length) % timelineRunnerColors.length]
+}
+
+function colorString(phase) {
+    return `rgb(${phase.rgb.map(Math.round).join(', ')})`
+}
+
+function glowString(phase) {
+    return `rgba(${phase.rgb.map(Math.round).join(', ')}, ${phase.glowAlpha.toFixed(2)})`
+}
+
+function mixedPhase(fromPhase, toPhase, amount) {
+    const t = clampNumber(amount, 0, 1)
+    return {
+        rgb: fromPhase.rgb.map((channel, i) => mixNumber(channel, toPhase.rgb[i], t)),
+        glowAlpha: mixNumber(fromPhase.glowAlpha, toPhase.glowAlpha, t)
+    }
+}
+
+function findTimelineSegment(centers, y) {
+    if (!centers.length || y <= centers[0]) {
+        return { from: 0, to: 0, amount: 0, current: 0 }
+    }
+
+    const lastIndex = centers.length - 1
+    if (y >= centers[lastIndex]) {
+        return { from: lastIndex, to: lastIndex, amount: 1, current: lastIndex }
+    }
+
+    for (let i = 0; i < lastIndex; i += 1) {
+        if (y >= centers[i] && y <= centers[i + 1]) {
+            const distance = Math.max(1, centers[i + 1] - centers[i])
+            const amount = (y - centers[i]) / distance
+            return { from: i, to: i + 1, amount, current: amount >= 1 ? i + 1 : i }
+        }
+    }
+
+    return { from: 0, to: 0, amount: 0, current: 0 }
+}
+
+function timelineDotCenter(item) {
+    const dot = item.querySelector('.timeline__dot')
+    if (!dot) return item.offsetTop + Math.min(item.offsetHeight * 0.52, 180)
+    return item.offsetTop + dot.offsetTop + dot.offsetHeight / 2
+}
+
+function prepareTimelineState(state) {
+    if (!state.needsMeasure && state.centers.length) return
+
+    state.items = Array.from(state.tl.querySelectorAll('.timeline__item'))
+    state.centers = state.items.map(timelineDotCenter)
+
+    state.items.forEach((item, index) => {
+        const phase = runnerPhase(index)
+        item.style.setProperty('--timeline-point-color', colorString(phase))
+        item.style.setProperty('--timeline-point-glow', glowString(phase))
+    })
+
+    state.needsMeasure = false
+}
+
+function paintTimelineState(state) {
+    const segment = findTimelineSegment(state.centers, state.currentY)
+    const phase = mixedPhase(runnerPhase(segment.from), runnerPhase(segment.to), segment.amount)
+    const color = colorString(phase)
+    const glow = glowString(phase)
+
+    state.fill.style.height = `${Math.max(0, state.currentFill)}px`
+    state.runner.style.transform = `translate3d(0, ${state.currentY}px, 0) translate(-50%, -50%)`
+    state.runner.classList.toggle('timeline__runner--active', state.active)
+    state.tl.style.setProperty('--timeline-runner-color', color)
+    state.tl.style.setProperty('--timeline-runner-glow', glow)
+    state.tl.style.setProperty('--timeline-fill-end', color)
+
+    state.items.forEach((item, index) => {
+        const isLit = state.currentY + 1 >= state.centers[index]
+        item.classList.toggle('timeline__item--lit', isLit)
+        item.classList.toggle('timeline__item--current', state.active && isLit && index === segment.current)
     })
 }
+
+function animateTimelineFills() {
+    let keepAnimating = false
+
+    timelineControls.forEach(state => {
+        const yDelta = state.targetY - state.currentY
+        const fillDelta = state.targetFill - state.currentFill
+
+        if (reduceTimelineMotion) {
+            state.currentY = state.targetY
+            state.currentFill = state.targetFill
+        } else {
+            state.currentY += yDelta * 0.18
+            state.currentFill += fillDelta * 0.18
+        }
+
+        if (Math.abs(yDelta) < 0.25) state.currentY = state.targetY
+        if (Math.abs(fillDelta) < 0.25) state.currentFill = state.targetFill
+
+        paintTimelineState(state)
+
+        if (Math.abs(state.targetY - state.currentY) > 0.25 || Math.abs(state.targetFill - state.currentFill) > 0.25) {
+            keepAnimating = true
+        }
+    })
+
+    timelineFrame = keepAnimating ? requestAnimationFrame(animateTimelineFills) : null
+}
+
+function requestTimelineFrame() {
+    if (timelineFrame === null) {
+        timelineFrame = requestAnimationFrame(animateTimelineFills)
+    }
+}
+
+function updateTimelineFills() {
+    timelineControls.forEach(state => {
+        prepareTimelineState(state)
+
+        const rect = state.tl.getBoundingClientRect()
+        const scrollGuide = window.innerHeight * 0.62
+        const progressEdge = scrollGuide - rect.top
+        const firstCenter = state.centers[0] ?? 8
+        const lastCenter = state.centers[state.centers.length - 1] ?? Math.max(8, rect.height - 8)
+        const maxFill = Math.max(0, lastCenter)
+
+        state.targetY = clampNumber(progressEdge, firstCenter, lastCenter)
+        state.targetFill = clampNumber(progressEdge, 0, maxFill)
+        state.active = rect.top < window.innerHeight * 0.82 && rect.bottom > window.innerHeight * 0.18
+
+        if (!state.initialized || reduceTimelineMotion) {
+            state.currentY = state.targetY
+            state.currentFill = state.targetFill
+            state.initialized = true
+        }
+    })
+
+    requestTimelineFrame()
+}
+
+function refreshTimelineMeasurements() {
+    timelineControls.forEach(state => {
+        state.needsMeasure = true
+    })
+    updateTimelineFills()
+}
+
 window.addEventListener('scroll', updateTimelineFills, { passive: true })
-window.addEventListener('load',   updateTimelineFills)
+window.addEventListener('load', refreshTimelineMeasurements)
+window.addEventListener('resize', refreshTimelineMeasurements)
+updateTimelineFills()
 
 /*===== AWARDS DIRECTIONAL ENTRANCE =====*/
 const awardsCols = document.querySelectorAll('.awards__col')
@@ -581,7 +845,7 @@ if (awardsCols.length) {
     })
     const awardsObs = new IntersectionObserver(entries => {
         entries.forEach(e => {
-            if (e.isIntersecting) { e.target.classList.add('anim-in'); awardsObs.unobserve(e.target) }
+            e.target.classList.toggle('anim-in', e.isIntersecting)
         })
     }, { threshold: 0.15 })
     awardsCols.forEach(col => awardsObs.observe(col))
@@ -845,10 +1109,7 @@ document.querySelectorAll('.timeline').forEach(tl => {
     if (!titles.length) return
     const obs = new IntersectionObserver(entries => {
         entries.forEach(e => {
-            if (e.isIntersecting) {
-                e.target.classList.add('title--in')
-                obs.unobserve(e.target)
-            }
+            e.target.classList.toggle('title--in', e.isIntersecting)
         })
     }, { threshold: 0.6 })
     titles.forEach(t => obs.observe(t))
@@ -1405,7 +1666,7 @@ document.querySelectorAll('.timeline').forEach(tl => {
         })
 
         const locationGroups = groupJourneyMapPoints(mapPoints)
-        locationGroups.forEach(group => {
+        locationGroups.forEach((group, groupIndex) => {
             const targetIds = [...new Set(group.points.map(point => `journey-${point.album.id}`))]
             const setMarkerAttrs = markerElement => {
                 if (!markerElement) return
@@ -1415,6 +1676,7 @@ document.querySelectorAll('.timeline').forEach(tl => {
                 markerElement.setAttribute('aria-haspopup', 'dialog')
                 markerElement.setAttribute('aria-controls', targetIds[0])
                 markerElement.setAttribute('aria-expanded', 'false')
+                markerElement.style.setProperty('--pin-delay', `${groupIndex * 120}ms`)
             }
             const marker = window.L.marker([group.lat, group.lng], {
                 icon: window.L.divIcon({
@@ -1478,7 +1740,8 @@ document.querySelectorAll('.timeline').forEach(tl => {
         colorLayer.setAttribute('aria-hidden', 'true')
 
         const pins = createEl('div', 'journey-map__pins')
-        mapAlbums.forEach(album => {
+
+        mapAlbums.forEach((album, albumIndex) => {
             const targetId = `journey-${album.id}`
             const button = createEl('button', 'journey-map__pin')
             button.type = 'button'
@@ -1488,6 +1751,7 @@ document.querySelectorAll('.timeline').forEach(tl => {
             button.dataset.journeyTarget = targetId
             button.style.setProperty('--x', `${album.map.x}%`)
             button.style.setProperty('--y', `${album.map.y}%`)
+            button.style.setProperty('--pin-delay', `${albumIndex * 120}ms`)
             button.setAttribute('aria-label', `${album.map.label || album.title}: ${mediaCountLabel(album.photos)}`)
             button.setAttribute('aria-haspopup', 'dialog')
             button.setAttribute('aria-controls', targetId)
@@ -1754,6 +2018,8 @@ document.querySelectorAll('.timeline').forEach(tl => {
     journeyPlaces = Array.from(placesContainer.querySelectorAll('[data-journey-target]'))
     journeyMapPins = Array.from(mapContainer?.querySelectorAll('[data-journey-target]') || [])
     journeyPanels = Array.from(journeysViewer.querySelectorAll('[data-journey-panel]'))
+    prepareMotionReveal(mapContainer?.querySelectorAll('.journey-map') || [], { motion: 'zoom', step: 80 })
+    prepareMotionReveal(journeyPlaces, { motion: 'rise', step: 70 })
 
     if (journeysViewer.parentElement !== document.body) {
         document.body.appendChild(journeysViewer)
