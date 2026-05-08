@@ -1634,7 +1634,9 @@ document.querySelectorAll('.timeline').forEach(tl => {
         const journeyMap = window.L.map(leafletEl, {
             attributionControl: true,
             scrollWheelZoom: false,
-            zoomControl: true
+            zoomControl: true,
+            zoomDelta: 0.5,
+            zoomSnap: 0.25
         })
 
         window.L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -1660,10 +1662,63 @@ document.querySelectorAll('.timeline').forEach(tl => {
         const focusPoints = mapPoints.filter(isUsJourneyPoint)
         const boundsPoints = focusPoints.length ? focusPoints : mapPoints
         const bounds = window.L.latLngBounds(boundsPoints.map(point => [point.lat, point.lng]))
-        journeyMap.fitBounds(bounds.pad(0.22), {
-            animate: false,
-            maxZoom: 5
-        })
+        const journeyMapFinalBounds = bounds.pad(0.22)
+        const journeyMapWorldZoom = window.innerWidth < 700 ? 1.25 : 2
+        const prefersReducedJourneyMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+        let journeyMapIntroPlayed = false
+        let journeyMapIntroObserver = null
+
+        journeyMap.setView([20, 0], journeyMapWorldZoom, { animate: false })
+
+        function finishJourneyMapIntro(animate = true) {
+            if (journeyMapIntroPlayed) return
+            journeyMapIntroPlayed = true
+            journeyMapIntroObserver?.disconnect()
+
+            journeyMap.invalidateSize()
+            map.classList.add('journey-map--zooming')
+
+            if (!animate || prefersReducedJourneyMotion) {
+                journeyMap.fitBounds(journeyMapFinalBounds, {
+                    animate: false,
+                    maxZoom: 5,
+                    padding: [26, 26]
+                })
+                map.classList.add('journey-map--zoomed')
+                map.classList.remove('journey-map--zooming')
+                return
+            }
+
+            journeyMap.flyToBounds(journeyMapFinalBounds, {
+                duration: 3.1,
+                easeLinearity: 0.16,
+                maxZoom: 5,
+                padding: [26, 26]
+            })
+
+            journeyMap.once('moveend', () => {
+                map.classList.add('journey-map--zoomed')
+                map.classList.remove('journey-map--zooming')
+            })
+        }
+
+        function startJourneyMapIntroOnScroll() {
+            if (prefersReducedJourneyMotion || !('IntersectionObserver' in window)) {
+                finishJourneyMapIntro(false)
+                return
+            }
+
+            journeyMapIntroObserver = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) finishJourneyMapIntro(true)
+                })
+            }, {
+                threshold: 0.34,
+                rootMargin: '0px 0px -12% 0px'
+            })
+
+            journeyMapIntroObserver.observe(map)
+        }
 
         const locationGroups = groupJourneyMapPoints(mapPoints)
         locationGroups.forEach((group, groupIndex) => {
@@ -1720,7 +1775,10 @@ document.querySelectorAll('.timeline').forEach(tl => {
             mapContainer.dataset.journeyPopupBound = 'true'
         }
 
-        window.requestAnimationFrame(() => journeyMap.invalidateSize())
+        window.requestAnimationFrame(() => {
+            journeyMap.invalidateSize()
+            startJourneyMapIntroOnScroll()
+        })
     }
 
     function buildStaticJourneyMap(mapAlbums) {

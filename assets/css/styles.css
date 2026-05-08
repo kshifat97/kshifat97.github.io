@@ -122,8 +122,7 @@ strong {
     overflow: hidden;
 }
 
-.section__bg-icons::before,
-.section__bg-icons::after {
+.section__bg-icons::before {
     content: '';
     position: absolute;
     pointer-events: none;
@@ -142,17 +141,6 @@ strong {
     opacity: 0.58;
     mask-image: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.95) 10%, rgba(0, 0, 0, 0.95) 90%, transparent);
     animation: sectionPatternSlide 24s linear infinite;
-}
-
-.section__bg-icons::after {
-    right: 7%;
-    bottom: 12%;
-    width: 180px;
-    height: 180px;
-    border-radius: 50%;
-    border: 1px dashed rgba(27, 58, 107, 0.08);
-    box-shadow: 0 0 0 18px rgba(255, 255, 255, 0.14);
-    animation: sectionBackplateDrift 14s ease-in-out infinite;
 }
 
 .section__bg-icon {
@@ -232,17 +220,6 @@ strong {
     to { background-position: 168px 84px, 210px 84px; }
 }
 
-@keyframes sectionBackplateDrift {
-    0%, 100% {
-        translate: 0 0;
-        opacity: 0.42;
-    }
-    50% {
-        translate: -18px 12px;
-        opacity: 0.62;
-    }
-}
-
 .about::before,
 .education::before,
 .skills::before,
@@ -271,7 +248,6 @@ strong {
 .about::after,
 .education::after,
 .skills::after,
-.research::after,
 .projects::after,
 .publications::after,
 .conferences::after,
@@ -1899,14 +1875,6 @@ html.intro-complete .hero__scroll {
         radial-gradient(circle at 16% 24%, rgba(196, 154, 10, 0.12), transparent 24%),
         radial-gradient(circle at 82% 76%, rgba(27, 58, 107, 0.1), transparent 28%),
         linear-gradient(180deg, rgba(244, 247, 251, 0.98), rgba(255, 255, 255, 0.96));
-}
-
-.research::after {
-    inset: auto 3rem 2rem auto;
-    width: 220px;
-    height: 220px;
-    border-radius: 50%;
-    border: 1px dashed rgba(27, 58, 107, 0.14);
 }
 
 .research .timeline__card {
@@ -5033,7 +5001,6 @@ html.intro-complete .hero__poster {
     .about::after,
     .education::after,
     .skills::after,
-    .research::after,
     .projects::after,
     .publications::after,
     .conferences::after,
@@ -5057,7 +5024,6 @@ html.intro-complete .hero__poster {
     .about::after,
     .education::after,
     .skills::after,
-    .research::after,
     .projects::after,
     .publications::after,
     .conferences::after,
@@ -5367,46 +5333,10 @@ html.intro-complete .hero__poster {
     z-index: 1;
 }
 
-.research-focus .container::before {
-    content: "";
-    position: absolute;
-    right: clamp(1rem, 4vw, 3rem);
-    top: clamp(5rem, 9vw, 8rem);
-    width: min(34vw, 320px);
-    aspect-ratio: 1;
-    border: 1px solid rgba(27, 58, 107, 0.08);
-    border-radius: 50%;
-    background:
-        radial-gradient(circle at 50% 50%, rgba(240, 192, 64, 0.18) 0 3px, transparent 4px),
-        conic-gradient(from 0deg, transparent, rgba(40, 85, 160, 0.16), transparent 32%, rgba(196, 154, 10, 0.16), transparent 68%);
-    opacity: 0.5;
-    pointer-events: none;
-    transform: translate3d(0, 0, 0);
-    animation: researchPhaseOrbit 18s linear infinite;
-    z-index: 0;
-}
-
 .research__pill,
 .research__card {
     position: relative;
     overflow: hidden;
-}
-
-.research__pill::before {
-    content: "";
-    position: absolute;
-    right: -2.4rem;
-    top: -2.4rem;
-    width: 6rem;
-    height: 6rem;
-    border: 1px solid rgba(40, 85, 160, 0.14);
-    border-radius: 50%;
-    background:
-        radial-gradient(circle at center, rgba(196, 154, 10, 0.18) 0 4px, transparent 5px),
-        conic-gradient(from 90deg, transparent, rgba(86, 160, 128, 0.2), transparent 58%);
-    opacity: 0.42;
-    pointer-events: none;
-    animation: researchPhaseOrbit 14s linear infinite reverse;
 }
 
 .research__card::before {
@@ -5468,10 +5398,6 @@ html.intro-complete .hero__poster {
         background-position: 34px 18px, -28px 24px, 20px -18px, center;
         transform: scale(1.02);
     }
-}
-
-@keyframes researchPhaseOrbit {
-    to { transform: rotate(360deg); }
 }
 
 @keyframes researchButtonSweep {
@@ -5806,13 +5732,6 @@ html.intro-complete .hero__poster {
     to { opacity: 1; transform: none; }
 }
 
-@media (max-width: 700px) {
-    .research-focus .container::before {
-        width: min(58vw, 240px);
-        opacity: 0.26;
-    }
-}
-
 @media (prefers-reduced-motion: reduce) {
     .motion-ready,
     .motion-ready[data-motion],
@@ -5844,7 +5763,6 @@ html.intro-complete .hero__poster {
     }
 
     .section__bg-icons::before,
-    .section__bg-icons::after,
     .about::before,
     .education::before,
     .skills::before,
@@ -5859,8 +5777,6 @@ html.intro-complete .hero__poster {
     .journeys::before,
     .awards::before,
     .contact::before,
-    .research-focus .container::before,
-    .research__pill::before,
     .research__card::after,
     .skills__group::after {
         animation: none !important;
