@@ -3945,23 +3945,16 @@ html.intro-complete .hero__scroll {
     background-color: var(--bg);
 }
 
+.posters .section__bg-icons {
+    display: none;
+}
+
 .posters::before {
-    background:
-        radial-gradient(ellipse at 15% 80%, rgba(196, 154, 10, 0.13), transparent 32%),
-        radial-gradient(ellipse at 88% 12%, rgba(27, 58, 107, 0.08), transparent 28%),
-        linear-gradient(170deg, rgba(255, 255, 255, 0.98), rgba(253, 246, 220, 0.55) 60%, rgba(244, 247, 251, 0.92)),
-        repeating-linear-gradient(135deg, rgba(27, 58, 107, 0.025) 0 1px, transparent 1px 22px);
+    content: none;
 }
 
 .posters::after {
-    right: 3.5rem;
-    bottom: 2.5rem;
-    width: 160px;
-    height: 220px;
-    border-radius: 1.25rem;
-    background: linear-gradient(145deg, rgba(196, 154, 10, 0.09), rgba(27, 58, 107, 0.055));
-    border: 1px solid rgba(196, 154, 10, 0.15);
-    transform: rotate(7deg);
+    content: none;
 }
 
 .conf__list {
@@ -5871,19 +5864,44 @@ html.intro-complete .hero__poster {
 }
 
 .poster-gallery {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 1.75rem;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 1.25rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    scroll-snap-type: x proximity;
+    overscroll-behavior-inline: contain;
+    padding: 0.45rem 0.25rem 1rem;
+    margin-inline: -0.25rem;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(27, 58, 107, 0.32) transparent;
+}
+
+.poster-gallery::-webkit-scrollbar {
+    height: 0.45rem;
+}
+
+.poster-gallery::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.poster-gallery::-webkit-scrollbar-thumb {
+    background: rgba(27, 58, 107, 0.26);
+    border-radius: 999px;
 }
 
 .poster-gallery__item {
     position: relative;
-    border-radius: var(--radius-lg);
+    flex: 0 0 clamp(240px, 28vw, 360px);
+    border-radius: 0;
     cursor: pointer;
     box-shadow: var(--shadow);
     border: 2px solid var(--border);
-    aspect-ratio: 2 / 3;
+    aspect-ratio: 4 / 3;
+    background-color: var(--white);
     perspective: 900px;
+    scroll-snap-align: start;
     transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
 }
 
@@ -5953,13 +5971,14 @@ html.intro-complete .hero__poster {
 .poster-gallery__img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
+    background-color: var(--white);
     display: block;
     transition: transform 0.4s ease;
 }
 
 .poster-gallery__item:hover .poster-gallery__front .poster-gallery__img {
-    transform: scale(1.04);
+    transform: none;
 }
 
 .poster-gallery__overlay {
@@ -5990,25 +6009,24 @@ html.intro-complete .hero__poster {
 
 @media (max-width: 900px) {
     .poster-gallery {
-        grid-template-columns: repeat(3, 1fr);
         gap: 1rem;
+    }
+
+    .poster-gallery__item {
+        flex-basis: clamp(220px, 42vw, 320px);
     }
 }
 
 @media (max-width: 480px) {
     .poster-gallery {
-        display: flex;
-        flex-direction: row;
-        overflow-x: scroll;
-        scroll-snap-type: x mandatory;
         -webkit-overflow-scrolling: touch;
-        gap: 1rem;
-        padding-bottom: 0.5rem;
         scrollbar-width: none;
     }
+
     .poster-gallery::-webkit-scrollbar {
         display: none;
     }
+
     .poster-gallery__item {
         flex: 0 0 85%;
         scroll-snap-align: center;

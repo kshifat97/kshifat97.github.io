@@ -870,6 +870,7 @@ document.querySelectorAll('.btn--primary, .btn--outline, .btn--outline-navy').fo
 function openPosterModal(src) {
     const modal = document.getElementById('posterModal')
     const img   = document.getElementById('posterModalImg')
+    if (!modal || !img) return
     img.src = src
     modal.classList.add('active')
     requestAnimationFrame(() => requestAnimationFrame(() => modal.classList.add('anim-in')))
@@ -878,9 +879,17 @@ function openPosterModal(src) {
 
 function closePosterModal() {
     const modal = document.getElementById('posterModal')
+    const img   = document.getElementById('posterModalImg')
+    if (!modal || !modal.classList.contains('active')) return
     modal.classList.remove('anim-in')
     document.body.classList.remove('modal-open')
-    modal.addEventListener('transitionend', () => modal.classList.remove('active'), { once: true })
+    const handleTransitionEnd = event => {
+        if (event.target !== modal) return
+        modal.removeEventListener('transitionend', handleTransitionEnd)
+        modal.classList.remove('active')
+        if (img) img.removeAttribute('src')
+    }
+    modal.addEventListener('transitionend', handleTransitionEnd)
 }
 
 document.addEventListener('keydown', function(e) {
