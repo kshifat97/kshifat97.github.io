@@ -1,0 +1,162 @@
+{
+   "checksum": "f1aa5c0137d21f4efb2359149680af28",
+   "roots": {
+      "bookmark_bar": {
+         "children": [ {
+            "date_added": "13231336149559394",
+            "date_last_used": "13423077653655569",
+            "guid": "77db4c05-937c-4cd6-8e5f-a94dbc727fe9",
+            "id": "11",
+            "name": "Facebook ",
+            "show_icon": false,
+            "source": "sync",
+            "type": "url",
+            "url": "https://www.facebook.com/",
+            "visit_count": 2256
+         }, {
+            "date_added": "13231336165621620",
+            "date_last_used": "13423075431321446",
+            "guid": "15654caf-e59a-4f10-bd7a-1968e8c18c3a",
+            "id": "12",
+            "name": "YouTube",
+            "show_icon": false,
+            "source": "sync",
+            "type": "url",
+            "url": "https://www.youtube.com/",
+            "visit_count": 878
+         }, {
+            "date_added": "13278572186983124",
+            "date_last_used": "13423075289165341",
+            "guid": "72bda3b8-57ab-4d00-98ea-73a2b9922510",
+            "id": "13",
+            "name": "Gmail",
+            "show_icon": false,
+            "source": "sync",
+            "type": "url",
+            "url": "http://www.gmail.com/",
+            "visit_count": 467
+         }, {
+            "date_added": "13310341358337745",
+            "date_last_used": "13422155914899611",
+            "guid": "30191fb6-d8d2-4ed3-92ea-475d44b8798b",
+            "id": "14",
+            "name": "YouTube Music",
+            "show_icon": false,
+            "source": "sync",
+            "type": "url",
+            "url": "https://music.youtube.com/",
+            "visit_count": 163
+         }, {
+            "date_added": "13412022534259612",
+            "date_last_used": "13423074415540849",
+            "guid": "33cd23c1-e0ff-4175-8ca6-0e768c20dcd8",
+            "id": "15",
+            "name": "ChatGPT",
+            "show_icon": false,
+            "source": "sync",
+            "type": "url",
+            "url": "https://chatgpt.com/",
+            "visit_count": 98
+         }, {
+            "date_added": "13412399405230839",
+            "date_last_used": "13423106291867565",
+            "guid": "608250cd-7f8a-473c-ba11-c83fb4ef9c52",
+            "id": "16",
+            "name": "LinkedIn",
+            "show_icon": false,
+            "source": "sync",
+            "type": "url",
+            "url": "https://www.linkedin.com/feed/",
+            "visit_count": 204
+         } ],
+         "date_added": "13423106853721170",
+         "date_last_used": "0",
+         "date_modified": "13412399405230839",
+         "guid": "0bc5d13f-2cba-5d74-951f-3f233fe6c908",
+         "id": "1",
+         "name": "Favorites bar",
+         "source": "unknown",
+         "type": "folder"
+      },
+      "other": {
+         "children": [ {
+            "children": [  ],
+            "date_added": "13315114537108091",
+            "date_last_used": "0",
+            "date_modified": "13315114537108091",
+            "guid": "0008ec0f-69e7-4885-9a87-ab80427618c8",
+            "id": "7",
+            "name": "Other Bookmarks",
+            "source": "unknown",
+            "type": "folder"
+         }, {
+            "children": [ {
+               "date_added": "13316849067609963",
+               "date_last_used": "0",
+               "guid": "9bccda2d-b660-4eeb-9c88-d485f4f164da",
+               "id": "9",
+               "name": "Sensor Definition & Meaning - Merriam-Webster",
+               "show_icon": false,
+               "source": "sync",
+               "type": "url",
+               "url": "https://www.merriam-webster.com/dictionary/sensor",
+               "visit_count": 0
+            }, {
+               "date_added": "13388350973417314",
+               "date_last_used": "0",
+               "guid": "93e2ef55-0545-424b-be0e-671ae1ed72f5",
+               "id": "10",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "Paper 2.pdf",
+               "show_icon": false,
+               "source": "sync",
+               "type": "url",
+               "url": "file:///D:/Journals/Paper%202.pdf",
+               "visit_count": 1
+            } ],
+            "date_added": "13315114537108169",
+            "date_last_used": "0",
+            "date_modified": "13388350973417314",
+            "guid": "3fd02340-a8ef-44d5-972c-36d188d02f21",
+            "id": "8",
+            "name": "Synced Bookmarks",
+            "source": "unknown",
+            "type": "folder"
+         } ],
+         "date_added": "13423106853721170",
+         "date_last_used": "0",
+         "date_modified": "0",
+         "guid": "82b081ec-3dd3-529c-8475-ab6c344590dd",
+         "id": "2",
+         "name": "Other favorites",
+         "source": "unknown",
+         "type": "folder"
+      },
+      "synced": {
+         "children": [  ],
+         "date_added": "13423106853721170",
+         "date_last_used": "0",
+         "date_modified": "0",
+         "guid": "4cf2e351-0e85-532b-bb37-df045d8f8d0f",
+         "id": "3",
+         "name": "Mobile favorites",
+         "source": "unknown",
+         "type": "folder"
+      },
+      "workspaces_v2": {
+         "children": [  ],
+         "date_added": "13423106853721170",
+         "date_last_used": "0",
+         "date_modified": "0",
+         "guid": "75aa6670-344f-549d-b742-660f029506ab",
+         "id": "5",
+         "name": "Workspaces",
+         "source": "unknown",
+         "type": "folder"
+      }
+   },
+   "sync_metadata": "CjEKDgiIgQISCGV7xB6eAQAAEgAqGERpVWc5dHlyeHYwUE8va1ZpTE54WUE9PUgDoAYKEo4BCAUSiQEKHHdSQnJaTCs2UEE5YXZLZ2pOUDdKWERMY2Z2cz0SJGFjOTQwMGE2LTZjM2ItNTc5Ni04MjdjLWQzOWJjNDE5ZDQ1YRgAIAAoADCch6uypDM4w4mrsqQzQMOJq7KkM0ocbm14NjVzUUR2eEk4VGdFZXYrQStudHRvU240PVoAZQAAAADCPgJgABKOAQgDEokBChxuamdEdTg4ZUNydlhwODZwRDdmSEdjcUZwODg9EiQ3OTk1OTFmZi1kNTQ4LTU4NzQtOTczZi0xMTAwNGJhNDBmODMYACAAKAAwsp+bhrAwOKK7jvTnL0Ciu4705y9KHHl6TkIwMWNuNTRBN2NSVTB1VCsvUGdtVHRVbz1aAGUAAAAAwj4CYAASrQEIDxKoAQoccmFrRmhLbDVCMHhMVDAxWFVmUVBXLzhzTzk0PRIkMzNjZDIzYzEtZTBmZi00MTc1LThjYTYtMGU3NjhjMjBkY2Q4GAAgACgAML6++ObhMzi92/zQuDNAvdv80LgzShxyQmk2S0dWeWRPcW0wK2dHaFV5MXdpOXV1Qm89Wh8iHfs3TjM4UnVaYlVBM2MyT0x4b3ZaVFNtM1RHN1U9ZYal2MjCPgJgBRKtAQgIEqgBChxRWnRmMUdFZnRybllXb2UzV0V5aFBobFozVzg9EiQzZmQwMjM0MC1hOGVmLTQ0ZDUtOTcyYy0zNmQxODhkMDJmMjEYACAAKAAw0p7Nz88wOMufzc/PMEDLn83PzzBKHGVpOThnN3IvVFIrbTgxTm9mSENtRkkzSkc4RT1aHyIdumxjS3RUQ1FoUDdJZ3dOTEVvQmVOYSt0WCtEST1lAAAAAMI+AmAAEo4BCAESiQEKHHl4Si82ZnZrZWNyN2twNUVRekI0dFdMcGRiRT0SJDc1ZWE4YzExLTNjNDMtNWJiZC1iNDAwLWQyMTljMjdmZTlmMxgAIAAoADCyn5uGsDA4zLKO9OcvQMyyjvTnL0ocYVJDV0xnaEY5YjVJbnFLSUR2dUovanZRa0ZjPVoAZQAAAADCPgJgABKtAQgOEqgBChwwcHhKR1BkMFBXblR3ajJzSUgvWldFZkl1UzA9EiQzMDE5MWZiNi1kOGQyLTRlZDMtOTJlYS00NzVkNDRiODc5OGIYACAAKAAw8Yn8sN4zOJPcy+u9MECT3MvrvTBKHFk1VHEybnBTSzA1VDR6SisxMTM3Y255RDM2VT1aHyId9zEzLzBPaHVKalcwN1JXRzZpeW1PSlFtV2tuVT1lELgu08I+AmAFEo4BCAISiQEKHFljU1RvbnZFU1B3cUNzNEwyY3JWaHY2OEw5OD0SJDMyYTBmNjEzLWEwZTQtNTkzMi1hM2U5LTVmYjE0MTFiMGEyNRgAIAAoADCyn5uGsDA4x7SO9OcvQMe0jvTnL0ocb1BWa2h3QlJiVjY1S0NXUjIrSU9OSFdvT3U4PVoAZQAAAADCPgJgABKtAQgNEqgBChw3Y1lvb3cwdjhXT3FEaHRKeC9vclFrN3lKSU09EiQ3MmJkYTNiOC01N2FiLTRkMDAtOThlYS03M2EyYjk5MjI1MTAYACAAKAAwieOt5+EzOKn0lvTnL0Cp9Jb05y9KHHlydHpvbzFha3Q3MG9lQUpxeXcvdHhwSEhCND1aHyId7zFmUGdqWm5vZE1td1F5Vm0rRDJISFROMk9tND1lXjgoVMI+AmAFEq0BCAwSqAEKHGp3T2pVSFFjQ2QyWmlHMHM0YUw1RXlEa01zUT0SJDhjMTdlMzE1LWI3ODEtNDEwNC1iM2M2LWExN2I2OWU0ZDk3ZhgAIAAoADCezrbn4TM4xL2b9OcvQMS9m/TnL0ocalBtNUgxSWl2Q2FSeUJ0Sjk4RVVzcyt4czRVPVofIh28WW05aCtmclVtbUd6VmUyWFYxYUFDMjVLaGxBPWVQQsPSwj4CYAUSrQEIEBKoAQocWE1BaUVMK1FjNWJJdlpOcWc5dkJWYnIwS1d3PRIkNjA4MjUwY2QtN2Y4YS00NzNjLWJhMTEtYzgzZmI0ZWY5YzUyGAAgACgAMOT2kfbhMzii+NaEujNAovjWhLozShxXQk92R3YzM25qT1Q5RWN0SllMY2NsYlhvbnM9Wh8iHf1SNkVldjhGb3Q3a3FZUjBiYVhhc2NyTjBjakU9ZcrE4TLCPgJgBRKsAQgLEqcBChwvZ1RRZWRMQ201cjV1UUplN2lpUnB2eTFWZFE9EiRhYmE4MTlkNC1hZmM4LTRkZWEtOWM2NS1kMjlhNjQ4MWYzOGYYACAAKAAw4Ya+6OEzONKelfTnL0DSnpX05y9KHExFdFRSL24rUkx2a1VrMm4rTGZBazROdjlZOD1aHiIceWRUcDUyclNtSWJ1QUZDb1JVNEliMyt3NC9rPWX34AQpwj4CYAUSrAEICRKnAQocRk41anEzcWRPck5ZenpPQXE4NDJkZTUzdFk4PRIkOWJjY2RhMmQtYjY2MC00ZWViLTljODgtZDQ4NWY0ZjE2NGRhGAAgACgAMITz4YrWMDiR9OGK1jBAkfThitYwShxOaFdxTUFEQS9ia2dZU0RvbHZsTnZzK0JPTEk9Wh4iHGhTNlJpeU9qYzZUUDRRWExJcHF1SGVVdUpqOD1lGA/1QcI+AmAFEqwBCAcSpwEKHGhxYlczeXAyL2ZZTk1wVWJDSmpBQlpEd2xpcz0SJDAwMDhlYzBmLTY5ZTctNDg4NS05YTg3LWFiODA0Mjc2MThjOBgAIAAoADDUns3PzzA4maDNz88wQJmgzc/PMEoccFZLbTM2Smpac2lBS2VrbVlJbEgwSlo1QkpBPVoeIhx0dkhJUWpMQzRhODVUY0ZWQkpHWXk4TDRKdDg9ZQAAAADCPgJgABKtAQgKEqgBChxMcTl0YmErTTA2UnorN1g0V0ovM1VCdXg1S289EiQ5M2UyZWY1NS0wNTQ1LTQyNGItYmUwZS02NzFhZTFlZDcyZjUYACAAKAAw4KW3ueAyOKCot7ngMkCgqLe54DJKHHUwaGdVL0NiazFHeDVHemcyb01VYVdPQ21sWT1aHyIdtDhKKzY5eXNEV2EyaTVPUnRnOWQzRUIwVFZXYz1ld3Bso8I+AmAFMAA4AA==",
+   "version": 1
+}

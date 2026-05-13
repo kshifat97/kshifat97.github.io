@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="noindex">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desktop Preview</title>
+    <style>
+        :root {
+            --desktop-width: 1440px;
+            --preview-scale: 1;
+            --manual-zoom: 1;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            overflow: hidden;
+            background: #151922;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        }
+
+        .preview-bar {
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            background: #202633;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+            color: rgba(255, 255, 255, 0.88);
+            font-size: 12px;
+        }
+
+        .preview-bar button {
+            border: 1px solid rgba(255, 255, 255, 0.22);
+            border-radius: 4px;
+            padding: 3px 8px;
+            background: transparent;
+            color: inherit;
+            cursor: pointer;
+            font: inherit;
+        }
+
+        .preview-bar button:hover,
+        .preview-bar button:focus-visible {
+            background: rgba(255, 255, 255, 0.12);
+            outline: none;
+        }
+
+        .preview-shell {
+            width: 100vw;
+            height: calc(100vh - 38px);
+            overflow: auto;
+            padding: 16px;
+        }
+
+        .preview-frame-wrap {
+            width: var(--desktop-width);
+            height: calc((100vh - 70px) / (var(--preview-scale) * var(--manual-zoom)));
+            min-height: 900px;
+            transform: scale(calc(var(--preview-scale) * var(--manual-zoom)));
+            transform-origin: top left;
+            background: #fff;
+            box-shadow: 0 18px 48px rgba(0, 0, 0, 0.38);
+        }
+
+        iframe {
+            width: var(--desktop-width);
+            height: 100%;
+            display: block;
+            border: 0;
+            background: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="preview-bar">
+        <span>Desktop: <strong id="preview-width">1440</strong>px</span>
+        <span>Frame: <strong id="frame-width">loading</strong></span>
+        <button type="button" id="zoom-out">Zoom -</button>
+        <span>Zoom: <strong id="zoom-label">100%</strong></span>
+        <button type="button" id="zoom-in">Zoom +</button>
+        <button type="button" data-width="1280">1280</button>
+        <button type="button" data-width="1440">1440</button>
+        <button type="button" data-width="1920">1920</button>
+    </div>
+    <main class="preview-shell">
+        <div class="preview-frame-wrap">
+            <iframe id="preview-frame" src="index.html" width="1440" height="900" title="Website desktop preview"></iframe>
+        </div>
+    </main>
+
+    <script>
+        const root = document.documentElement
+        const widthLabel = document.getElementById('preview-width')
+        const frameWidthLabel = document.getElementById('frame-width')
+        const zoomLabel = document.getElementById('zoom-label')
+        const iframe = document.getElementById('preview-frame')
+        let desktopWidth = 1440
+        let manualZoom = 1
+
+        function updateFrameWidthLabel() {
+            try {
+                frameWidthLabel.textContent = `${iframe.contentWindow.innerWidth}px`
+            } catch (_) {
+                frameWidthLabel.textContent = 'unavailable'
+            }
+        }
+
+        function updatePreview() {
+            const availableWidth = Math.max(window.innerWidth - 32, 320)
+            const scale = Math.min(1, availableWidth / desktopWidth)
+            root.style.setProperty('--desktop-width', `${desktopWidth}px`)
+            root.style.setProperty('--preview-scale', String(scale))
+            root.style.setProperty('--manual-zoom', String(manualZoom))
+            iframe.setAttribute('width', String(desktopWidth))
+            widthLabel.textContent = String(desktopWidth)
+            zoomLabel.textContent = `${Math.round(manualZoom * 100)}%`
+            window.requestAnimationFrame(updateFrameWidthLabel)
+        }
+
+        document.getElementById('zoom-out').addEventListener('click', () => {
+            manualZoom = Math.max(0.35, manualZoom - 0.1)
+            updatePreview()
+        })
+
+        document.getElementById('zoom-in').addEventListener('click', () => {
+            manualZoom = Math.min(1.5, manualZoom + 0.1)
+            updatePreview()
+        })
+
+        document.querySelectorAll('[data-width]').forEach(button => {
+            button.addEventListener('click', () => {
+                desktopWidth = Number(button.dataset.width) || 1440
+                updatePreview()
+            })
+        })
+
+        iframe.addEventListener('load', updateFrameWidthLabel)
+        window.addEventListener('resize', updatePreview)
+        updatePreview()
+    </script>
+</body>
+</html>

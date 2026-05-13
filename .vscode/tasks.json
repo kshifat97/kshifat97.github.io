@@ -1,0 +1,26 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Start local website server",
+            "type": "shell",
+            "command": "npx",
+            "args": [
+                "--yes",
+                "http-server",
+                ".",
+                "-p",
+                "5500",
+                "-c-1"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "dedicated",
+                "clear": true
+            }
+        }
+    ]
+}

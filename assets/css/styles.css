@@ -3614,15 +3614,7 @@ html.intro-complete .hero__scroll {
 }
 
 .publications::after {
-    left: auto;
-    right: 2rem;
-    top: 2rem;
-    width: 180px;
-    height: 240px;
-    border-radius: 1.5rem;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.48), rgba(196, 154, 10, 0.06));
-    border: 1px solid rgba(27, 58, 107, 0.08);
-    transform: rotate(-8deg);
+    content: none;
 }
 
 .pub__topbar {
@@ -4027,13 +4019,7 @@ html.intro-complete .hero__scroll {
 }
 
 .teaching::after {
-    right: 3rem;
-    top: 2rem;
-    width: 150px;
-    height: 150px;
-    border-radius: 1.5rem;
-    background: rgba(240, 192, 64, 0.08);
-    transform: rotate(14deg);
+    content: none;
 }
 
 /*===== PROFESSIONAL EXPERIENCE =====*/
@@ -4049,13 +4035,7 @@ html.intro-complete .hero__scroll {
 }
 
 .experience::after {
-    left: auto;
-    right: 4rem;
-    bottom: 2rem;
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    border: 1px solid rgba(27, 58, 107, 0.1);
+    content: none;
 }
 
 /*===== PROJECTS =====*/
@@ -4072,13 +4052,7 @@ html.intro-complete .hero__scroll {
 }
 
 .projects::after {
-    left: 2rem;
-    top: 2rem;
-    width: 220px;
-    height: 220px;
-    border-radius: 2rem;
-    border: 1px solid rgba(196, 154, 10, 0.14);
-    transform: rotate(20deg);
+    content: none;
 }
 
 /*===== BLOGS =====*/
@@ -4096,14 +4070,7 @@ html.intro-complete .hero__scroll {
 }
 
 .blogs::after {
-    right: 2rem;
-    bottom: 2rem;
-    width: 200px;
-    height: 140px;
-    border-radius: 1.5rem;
-    background: rgba(255, 255, 255, 0.45);
-    border: 1px solid rgba(27, 58, 107, 0.08);
-    transform: rotate(-10deg);
+    content: none;
 }
 
 .journeys::before {
@@ -4113,16 +4080,7 @@ html.intro-complete .hero__scroll {
 }
 
 .journeys::after {
-    left: 2.5rem;
-    bottom: 2.25rem;
-    width: 230px;
-    height: 150px;
-    border-radius: var(--radius);
-    background:
-        linear-gradient(135deg, rgba(196, 154, 10, 0.08), rgba(40, 85, 160, 0.06)),
-        rgba(255, 255, 255, 0.5);
-    border: 1px solid rgba(27, 58, 107, 0.08);
-    transform: rotate(8deg);
+    content: none;
 }
 .experience .timeline__card {
     background-color: var(--bg);
@@ -4237,12 +4195,7 @@ html.intro-complete .hero__scroll {
 }
 
 .contact::after {
-    right: 3rem;
-    top: 2rem;
-    width: 220px;
-    height: 220px;
-    border-radius: 50%;
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    content: none;
 }
 
 .contact .section__title {
