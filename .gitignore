@@ -1,1 +1,3 @@
 .vscode/edge-run-profile/
+__pycache__/
+tools/uv/
