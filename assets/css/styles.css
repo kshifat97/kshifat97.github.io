@@ -4515,6 +4515,14 @@ html.intro-complete .hero__scroll {
         display: block;
     }
 
+    .hero {
+        min-height: calc(100vh + 96px);
+        min-height: calc(100svh + 96px);
+        min-height: calc(100dvh + 96px);
+        padding-top: calc(64px + 1.5rem);
+        padding-bottom: calc(7rem + env(safe-area-inset-bottom));
+    }
+
     .hero__container {
         text-align: center;
         padding: 2rem 1.5rem 3.5rem;
@@ -4533,6 +4541,13 @@ html.intro-complete .hero__scroll {
     .hero__name-row {
         width: 100%;
         text-align: center;
+    }
+
+    .hero__scroll {
+        bottom: auto;
+        top: calc(100vh - 5rem - env(safe-area-inset-bottom));
+        top: calc(100svh - 5rem - env(safe-area-inset-bottom));
+        top: calc(100dvh - 5rem - env(safe-area-inset-bottom));
     }
 
     .about__container {
@@ -5816,6 +5831,63 @@ html.intro-complete .hero__poster {
     max-width: 1400px;
 }
 
+.poster-gallery-wrap {
+    position: relative;
+    margin-top: 0.35rem;
+}
+
+.poster-gallery__nav {
+    position: absolute;
+    top: 50%;
+    z-index: 3;
+    width: 2.9rem;
+    height: 2.9rem;
+    border: 1px solid rgba(27, 58, 107, 0.16);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.94);
+    color: var(--navy);
+    box-shadow: var(--shadow-md);
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    transform: translateY(-50%);
+    transition: transform var(--transition), background var(--transition), color var(--transition), opacity var(--transition), border-color var(--transition);
+}
+
+.poster-gallery__nav--prev {
+    left: 0.25rem;
+}
+
+.poster-gallery__nav--next {
+    right: 0.25rem;
+}
+
+.poster-gallery__nav i {
+    font-size: 1.55rem;
+    line-height: 1;
+}
+
+.poster-gallery__nav:hover:not(:disabled) {
+    background: var(--navy);
+    color: var(--gold-light);
+    border-color: var(--navy);
+    transform: translateY(-50%) scale(1.06);
+}
+
+.poster-gallery__nav:focus-visible {
+    outline: 3px solid rgba(196, 154, 10, 0.45);
+    outline-offset: 3px;
+}
+
+.poster-gallery__nav:disabled {
+    opacity: 0.28;
+    cursor: default;
+}
+
+.poster-gallery-wrap--static .poster-gallery__nav {
+    display: none;
+}
+
 .poster-gallery {
     display: flex;
     flex-wrap: nowrap;
@@ -5825,10 +5897,15 @@ html.intro-complete .hero__poster {
     scroll-behavior: smooth;
     scroll-snap-type: x proximity;
     overscroll-behavior-inline: contain;
-    padding: 0.45rem 0.25rem 1rem;
+    padding: 0.45rem 3.25rem 1rem;
     margin-inline: -0.25rem;
     scrollbar-width: thin;
     scrollbar-color: rgba(27, 58, 107, 0.32) transparent;
+}
+
+.poster-gallery:focus-visible {
+    outline: 3px solid rgba(196, 154, 10, 0.35);
+    outline-offset: 5px;
 }
 
 .poster-gallery::-webkit-scrollbar {
@@ -5963,6 +6040,7 @@ html.intro-complete .hero__poster {
 @media (max-width: 900px) {
     .poster-gallery {
         gap: 1rem;
+        padding-inline: 2.95rem;
     }
 
     .poster-gallery__item {
@@ -5971,8 +6049,26 @@ html.intro-complete .hero__poster {
 }
 
 @media (max-width: 480px) {
+    .poster-gallery__nav {
+        width: 2.45rem;
+        height: 2.45rem;
+    }
+
+    .poster-gallery__nav i {
+        font-size: 1.35rem;
+    }
+
+    .poster-gallery__nav--prev {
+        left: 0.15rem;
+    }
+
+    .poster-gallery__nav--next {
+        right: 0.15rem;
+    }
+
     .poster-gallery {
         -webkit-overflow-scrolling: touch;
+        padding-inline: 2.75rem;
         scrollbar-width: none;
     }
 

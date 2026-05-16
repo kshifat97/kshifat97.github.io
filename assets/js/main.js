@@ -866,6 +866,56 @@ document.querySelectorAll('.btn--primary, .btn--outline, .btn--outline-navy').fo
     })
 })
 
+/*===== POSTER GALLERY SCROLL CONTROLS =====*/
+;(function () {
+    const gallery = document.querySelector('.poster-gallery')
+    const wrap    = gallery && gallery.closest('.poster-gallery-wrap')
+    const prevBtn = document.querySelector('[data-poster-scroll="prev"]')
+    const nextBtn = document.querySelector('[data-poster-scroll="next"]')
+
+    if (!gallery || !wrap || !prevBtn || !nextBtn) return
+
+    const getScrollStep = () => {
+        const item = gallery.querySelector('.poster-gallery__item')
+        if (!item) return gallery.clientWidth * 0.85
+
+        const galleryStyles = window.getComputedStyle(gallery)
+        const gapValue = galleryStyles.columnGap === 'normal' ? galleryStyles.gap : galleryStyles.columnGap
+        const gap = parseFloat(gapValue) || 0
+        return item.getBoundingClientRect().width + gap
+    }
+
+    const updateButtons = () => {
+        const maxScroll = gallery.scrollWidth - gallery.clientWidth
+        const canScroll = maxScroll > 2
+
+        wrap.classList.toggle('poster-gallery-wrap--static', !canScroll)
+        prevBtn.disabled = !canScroll || gallery.scrollLeft <= 2
+        nextBtn.disabled = !canScroll || gallery.scrollLeft >= maxScroll - 2
+    }
+
+    const moveGallery = direction => {
+        gallery.scrollBy({
+            left: direction * getScrollStep(),
+            behavior: 'smooth'
+        })
+    }
+
+    prevBtn.addEventListener('click', () => moveGallery(-1))
+    nextBtn.addEventListener('click', () => moveGallery(1))
+
+    gallery.addEventListener('keydown', event => {
+        if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return
+        event.preventDefault()
+        moveGallery(event.key === 'ArrowLeft' ? -1 : 1)
+    })
+
+    gallery.addEventListener('scroll', () => window.requestAnimationFrame(updateButtons), { passive: true })
+    window.addEventListener('resize', updateButtons)
+    window.addEventListener('load', updateButtons)
+    updateButtons()
+})()
+
 /*===== POSTER LIGHTBOX =====*/
 function openPosterModal(src) {
     const modal = document.getElementById('posterModal')
@@ -1129,219 +1179,87 @@ document.querySelectorAll('.timeline').forEach(tl => {
     const researchCards = document.querySelectorAll('[data-research-card]')
     if (!researchCards.length) return
 
-    let activeCard = null
-    let activePage = null
-    let closeTimer = null
-
-    function getGrid(card) {
-        return card.closest('.research__grid')
-    }
-
-    function getCardsHeight(grid) {
-        const cards = Array.from(grid.querySelectorAll('[data-research-card]'))
-        return cards.reduce((height, card) => {
-            return Math.max(height, card.offsetTop + card.offsetHeight)
-        }, 0)
-    }
-
-    function setGridHeight(grid) {
-        if (!grid) return
-
-        if (window.matchMedia('(max-width: 900px)').matches || !activePage) {
-            grid.style.minHeight = ''
-            return
-        }
-
-        const cardHeight = getCardsHeight(grid)
-        const pageHeight = activePage.offsetTop + activePage.offsetHeight
-        grid.style.minHeight = `${Math.max(cardHeight, pageHeight)}px`
-    }
-
-    function collapseCard(card) {
+    function setToggleState(card, isOpen) {
         const toggle = card.querySelector('.research__card-toggle')
         if (!toggle) return
 
-        card.removeAttribute('data-expanded')
-        toggle.setAttribute('aria-expanded', 'false')
-        toggle.querySelector('.research__card-toggle-text').textContent = 'See More'
-        toggle.removeAttribute('aria-controls')
+        card.toggleAttribute('data-expanded', isOpen)
+        toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false')
+        toggle.querySelector('.research__card-toggle-text').textContent = isOpen ? 'See Less' : 'See More'
     }
 
-    function finishExpandedClose(card, page, grid, restoreFocus = false) {
-        collapseCard(card)
-        if (page) page.remove()
-        if (grid) {
-            grid.removeAttribute('data-overlay-open')
-            grid.style.minHeight = ''
-        }
-
-        if (activePage === page) {
-            activeCard = null
-            activePage = null
-        }
-
-        closeTimer = null
-        if (restoreFocus) card.querySelector('.research__card-toggle')?.focus()
-    }
-
-    function closeExpandedPage(options = {}) {
-        if (!activeCard) return
-
-        const { immediate = false, restoreFocus = false } = options
-        const grid = getGrid(activeCard)
-        const card = activeCard
-        const page = activePage
-
-        if (closeTimer) {
-            clearTimeout(closeTimer)
-            closeTimer = null
-        }
-
-        if (!page || immediate || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-            finishExpandedClose(card, page, grid, restoreFocus)
-            return
-        }
-
-        if (page.classList.contains('research__expanded-page--closing')) return
-
-        if (grid && !window.matchMedia('(max-width: 900px)').matches) {
-            grid.style.minHeight = `${grid.offsetHeight}px`
-            requestAnimationFrame(() => {
-                grid.style.minHeight = `${getCardsHeight(grid)}px`
-            })
-        }
-
-        page.classList.remove('research__expanded-page--open')
-        page.classList.add('research__expanded-page--closing')
-
-        closeTimer = window.setTimeout(() => {
-            finishExpandedClose(card, page, grid, restoreFocus)
-        }, 420)
-    }
-
-    function createExpandedPage(card, grid) {
-        const title = card.querySelector('.research__card-title')?.textContent?.trim() || 'Research Focus'
-        const preview = card.querySelector('.research__card-preview')
+    function openCard(card) {
         const body = card.querySelector('.research__card-body')
-        const cards = Array.from(grid.querySelectorAll('[data-research-card]'))
-        const isRightCard = cards.indexOf(card) % 2 === 1
+        const toggle = card.querySelector('.research__card-toggle')
+        if (!body || !toggle) return
 
-        const page = document.createElement('article')
-        page.className = `research__expanded-page${isRightCard ? ' research__expanded-page--from-right' : ''}`
-        page.id = `research-expanded-${cards.indexOf(card) + 1}`
-        page.setAttribute('role', 'region')
-        page.setAttribute('aria-label', `${title} expanded details`)
-        page.style.top = `${card.offsetTop}px`
+        window.clearTimeout(body._researchHideTimer)
+        body.hidden = false
+        body.style.maxHeight = '0px'
+        setToggleState(card, true)
 
-        const head = document.createElement('div')
-        head.className = 'research__expanded-head'
+        requestAnimationFrame(() => {
+            body.style.maxHeight = `${body.scrollHeight}px`
+        })
+    }
 
-        const headingWrap = document.createElement('div')
-        const kicker = document.createElement('span')
-        kicker.className = 'research__expanded-kicker'
-        kicker.textContent = 'Expanded research focus'
+    function closeCard(card) {
+        const body = card.querySelector('.research__card-body')
+        const toggle = card.querySelector('.research__card-toggle')
+        if (!toggle || !body) return
+        if (!card.hasAttribute('data-expanded') && body.hidden) return
 
-        const heading = document.createElement('h3')
-        heading.className = 'research__expanded-title'
-        heading.textContent = title
+        setToggleState(card, false)
+        body.style.maxHeight = `${body.scrollHeight}px`
+        window.clearTimeout(body._researchHideTimer)
 
-        headingWrap.append(kicker, heading)
-
-        const closeButton = document.createElement('button')
-        closeButton.className = 'research__expanded-close'
-        closeButton.type = 'button'
-        closeButton.setAttribute('aria-label', 'Close expanded research focus')
-
-        const closeIcon = document.createElement('i')
-        closeIcon.className = 'uil uil-times'
-        closeIcon.setAttribute('aria-hidden', 'true')
-        closeButton.append(closeIcon)
-
-        closeButton.addEventListener('click', event => {
-            event.stopPropagation()
-            closeExpandedPage({ restoreFocus: true })
+        requestAnimationFrame(() => {
+            body.style.maxHeight = '0px'
         })
 
-        head.append(headingWrap, closeButton)
-        page.append(head)
-
-        if (preview) {
-            const previewPanel = document.createElement('div')
-            previewPanel.className = 'research__expanded-preview'
-            Array.from(preview.children).forEach(child => {
-                previewPanel.append(child.cloneNode(true))
-            })
-            page.append(previewPanel)
+        const hideBody = event => {
+            if (event.target !== body || card.hasAttribute('data-expanded')) return
+            body.hidden = true
+            body.removeEventListener('transitionend', hideBody)
         }
-
-        if (body) {
-            const bodyPanel = document.createElement('div')
-            bodyPanel.className = 'research__expanded-body'
-            Array.from(body.children).forEach(child => {
-                bodyPanel.append(child.cloneNode(true))
-            })
-            page.append(bodyPanel)
-        }
-
-        return page
+        body.addEventListener('transitionend', hideBody)
+        body._researchHideTimer = window.setTimeout(() => {
+            if (!card.hasAttribute('data-expanded')) body.hidden = true
+        }, 560)
     }
 
-    researchCards.forEach(card => {
+    researchCards.forEach((card, index) => {
         const toggle = card.querySelector('.research__card-toggle')
         const body = card.querySelector('.research__card-body')
         if (!toggle || !body) return
+
+        if (!body.id) body.id = `research-card-body-${index + 1}`
         body.hidden = true
+        body.style.maxHeight = '0px'
+        toggle.setAttribute('aria-controls', body.id)
 
         toggle.addEventListener('click', event => {
             event.preventDefault()
             event.stopPropagation()
 
-            const isExpanded = card.hasAttribute('data-expanded')
-            
-            if (isExpanded) {
-                closeExpandedPage()
+            if (card.hasAttribute('data-expanded')) {
+                closeCard(card)
                 return
             }
 
-            closeExpandedPage({ immediate: true })
-
-            const grid = getGrid(card)
-            if (!grid) return
-
-            const page = createExpandedPage(card, grid)
-            card.after(page)
-
-            activeCard = card
-            activePage = page
-            grid.setAttribute('data-overlay-open', '')
-            card.setAttribute('data-expanded', '')
-            toggle.setAttribute('aria-expanded', 'true')
-            toggle.setAttribute('aria-controls', page.id)
-            toggle.querySelector('.research__card-toggle-text').textContent = 'See Less'
-
-            requestAnimationFrame(() => {
-                page.classList.add('research__expanded-page--open')
-                setGridHeight(grid)
-                page.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
+            researchCards.forEach(other => {
+                if (other !== card) closeCard(other)
             })
+            openCard(card)
         })
     })
 
-    document.addEventListener('click', event => {
-        if (!event.target.closest('[data-research-card]') && !event.target.closest('.research__expanded-page')) {
-            closeExpandedPage()
-        }
-    })
-
-    document.addEventListener('keydown', event => {
-        if (event.key === 'Escape') closeExpandedPage()
-    })
-
     window.addEventListener('resize', () => {
-        const grid = activeCard ? getGrid(activeCard) : null
-        if (!grid || !activePage) return
-        activePage.style.top = `${activeCard.offsetTop}px`
-        setGridHeight(grid)
+        researchCards.forEach(card => {
+            if (!card.hasAttribute('data-expanded')) return
+            const body = card.querySelector('.research__card-body')
+            if (body) body.style.maxHeight = `${body.scrollHeight}px`
+        })
     })
 })()
 
